@@ -5,9 +5,11 @@ import InstaLogoIcon from "/public/asset/instaLogo.svg"
 import WebLogoIcon from "/public/asset/webLogo.svg"
 import VimeoLogoIcon from "/public/asset/vimeoLogo.svg"
 import Footer from "@/app/component/footer"
-// import ReactPlayer from "react-player"
+import ReactPlayer from "react-player"
 
 export default async function Portfolio(props){
+
+
 
     const id = parseInt(props.params.id);
     const data = await fetchContentful('portfolio');
@@ -40,6 +42,13 @@ export default async function Portfolio(props){
                 <div >
                     {portfolio.mainVimeoEmbedLink ? (
                         <div className="video-wrap">
+                            <iframe 
+                                width="100%"
+                                src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&mute=1`}
+                                frameborder="0" 
+                                allowfullscreen
+                                allow="autoplay"
+                            ></iframe>
                             {/* <ReactPlayer
                             className='react-player'
                             url={portfolio.mainVimeoEmbedLink}    // 플레이어 url
@@ -117,8 +126,13 @@ export default async function Portfolio(props){
                 </div>
                 <div className="vedio-wrap">
                     {portfolio.bottomEmbed&&
-                    <iframe src={`https:${portfolio.topEmbed}`}
-                    ></iframe>}
+                    <iframe 
+                    width="100%"
+                    src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&mute=1`}
+                    frameborder="0" 
+                    allowfullscreen
+                    allow="autoplay"
+                ></iframe>}
                 </div>
             </div>
             <div className="portfolio-box3">
