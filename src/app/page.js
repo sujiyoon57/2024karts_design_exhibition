@@ -1,9 +1,12 @@
-import Image from 'next/image'
+"use client"
+import { useEffect, useState } from 'react';
+import MainPage from './page/mainPage/mainPage';
 
 export default function Home() {
+
   return (
-    <main>
-      <h1>hu byul im byul</h1>
-    </main>
+    <div className='layout-container'>
+        <MainPage/>
+    </div>
   )
 }

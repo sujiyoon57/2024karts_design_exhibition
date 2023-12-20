@@ -1,0 +1,710 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+/*--------------header--------------*/
+header{
+    width: 100%;
+    height: 91px;
+    background-color: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    position: fixed;
+}
+.header-icon-wrap{
+    width: 313.67px;
+    position: absolute;
+    /* bottom: 32px; */
+    left: 4.010vw;
+    top: 29px;
+}
+.web-nav{
+    position: absolute;
+    right: 74px;
+    bottom: 38px;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.mobile-nav{display: none;}
+nav span{
+    margin-left: 80px;
+}
+.menu-icon-wrap{
+    display: none;
+}
+@media screen and (max-width:870px) {
+    header{
+        height: 103px;
+    }
+    .header-icon-wrap{
+        width: 259.21px;
+        /* bottom: 21px; */
+        top: 60px;
+        left: 6.111vw;
+    }
+    .web-nav{display: none;}
+    .mobile-nav{
+        display: inline;
+        position: absolute;
+        text-transform: uppercase;
+        font-size: 16px;
+        top: 103px;
+        right: 0;
+        background-color: #FFF;
+        width: 132px;
+        height: calc(100vh - 103px);
+    }
+    nav span{
+        display: block;
+        margin-left: 17px;
+        margin-top: 36px;
+    }
+    .menu-icon-wrap{
+        display: inline;
+        width: 21.31px;
+        height: auto;
+        position: absolute;
+        bottom: 21px;
+        right: 16.69px;
+    }
+}
+/*---------------------------------*/
+/*-------------Main page--------------------*/
+.layout-container{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: aquamarine; */
+    /* overflow: hidden; */
+}
+.main-container{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-top: 91px;
+}
+.img-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+.img-container img{
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+/*web main poster*/
+.mobile-poster{display: none;}
+@media screen and (min-width:871px) and (max-aspect-ratio:1) {
+    .img-container img{
+        height: 100%;
+        width: auto;
+    }
+}
+@media screen and (min-width:871px) and (min-aspect-ratio:1) and (max-aspect-ratio:1920/988){
+    .img-container img{
+        height: 100%;
+        width: auto;
+    }
+}
+@media screen and (min-width:871px) and (min-aspect-ratio:1920/988){
+    .img-container img{
+        height: auto;
+        width: 100%;
+    }
+}
+
+/*모바일 메인 포스터*/
+@media screen and (max-width:870px) and (max-aspect-ratio:1) {
+    .img-container{
+        margin-top: 103px;
+    }
+    .img-container img{
+        height: 100%;
+        width: auto;
+    }
+    .mobile-poster{display: inline;}
+    .web-poster{display: none;}
+}
+@media screen and (max-width:870px) and (min-aspect-ratio:1) and (max-aspect-ratio:360/780){
+    .img-container{
+        margin-top: 103px;
+    }
+    .img-container img{
+        height: 100%;
+        width: auto;
+    }
+    .mobile-poster{display: inline;}
+    .web-poster{display: none;}
+}
+@media screen and (max-width:870px) and (min-aspect-ratio:360/780){
+    .img-container{
+        margin-top: 103px;
+    }
+    .img-container img{
+        height: auto;
+        width: 100%;
+    }
+    .mobile-poster{display: inline;}
+    .web-poster{display: none;}
+}
+
+/*--------------------------------------------------*/
+/*-------------------scroll down---------------------*/
+
+.scroll-down-wrap{
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 11.979vw;
+    height: auto;
+}
+.bounce-out-down {
+  animation: bounce-out-down 2s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bounce-out-down {
+  0%,50%{
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  25%,75% {
+    transform: translate(-50%, 10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 10px);
+    opacity: 0; /* 100%에서 투명도를 0으로 설정하여 페이드아웃 효과 추가 */
+  }
+}
+/*--------------------------------------------------*/
+/*-------------------exhibition-----------------------*/
+.exhibition{
+    padding: 91px 8.646vw 58px;
+    position: relative;
+    min-height: 100vh; /*footer 밑으로 보내기*/
+    box-sizing: border-box;
+  }
+  .exhibition .exhibition-title{
+    font-size: 0.9375vw;
+    margin: 35px 0 24px 0;
+    text-transform: uppercase;
+  }
+  .exhibition-container{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding-bottom: 2.5vw;
+  }
+  .exhibition-container a{
+    border-left: 1px rgba(0, 0, 0, 0.15) solid;
+    padding: 0 0 2.5vw;
+  }
+  .exhibition-container img{
+    width: 100%;
+    height: auto;
+  }
+  .exhibition-image-container{
+    position: relative;
+    padding-left: 1.042vw;
+    padding-right: 1.042vw;
+  }
+  .exhibition-info{
+    position: absolute;
+    bottom: 20px;
+    left:calc(1.042vw + 20px);
+  }
+  .exhibition-student-name{
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  @media screen and (min-width:1134px){
+    .exhibition-container a:nth-last-of-type(-n+4){
+      border: none;
+    }
+    .exhibition-container a:nth-last-of-type(-n+4) .exhibition-image-container::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      height: calc(100% - 2.5vw);
+      width: 1.042vw ;
+      border-left: rgba(0, 0, 0, 0.15) solid 1px;
+    }
+    .exhibition-info >div:first-child{font-size: 0.9375vw;}
+    .exhibition-info > div:last-child{font-size: 0.8333vw;}
+  }
+  @media screen and (min-width:870px) and (max-width:1133px){
+    .exhibition-container{
+      grid-template-columns: 33.33% 33.33% 33.33%;
+  
+    }
+    .exhibition-container a:nth-last-of-type(-n+3){
+      border: none;
+    }
+    .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      height: calc(100% - 2.5vw);
+      width: 1.042vw ;
+      border-left: rgba(0, 0, 0, 0.15) solid 1px;
+    }
+    .exhibition-info{
+      position: absolute;
+      bottom: 15px;
+      left:calc(1.042vw + 15px);
+    }
+    .exhibition-info >div:first-child{font-size: 1.5887vw;}
+    .exhibition-info > div:last-child{font-size: 1.4122vw;}
+  }
+  @media screen and (min-width:567px) and (max-width:869px){
+    .exhibition-container{
+      grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+    .exhibition-container a:nth-last-of-type(-n+3){
+      border: none;
+    }
+    .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      height: calc(100% - 2.5vw);
+      width: 1.042vw ;
+      border-left: rgba(0, 0, 0, 0.15) solid 1px;
+    }
+    .exhibition-info{
+      position: absolute;
+      bottom: 10px;
+      left:calc(1.042vw + 10px);
+    }
+    .exhibition-info >div:first-child{font-size: 1.5887vw;}
+    .exhibition-info > div:last-child{font-size: 1.4122vw;}
+  }
+  @media screen and (max-width:566px){
+    .exhibition{
+      padding: 103px 7.333vw 0;
+      position: relative;
+    }
+    .exhibition .exhibition-title{
+      font-size: 4.444vw;
+      text-align: center;
+    }
+    .exhibition-container{
+      grid-template-columns: 100%;
+      position: relative;
+    }
+    .exhibition-container a{
+      border-left: 0.0625vh #000 solid;
+      padding: 0 0 11.111vw 0;
+    }
+    .exhibition-container a:first-child{
+      padding-top: 12px;
+      margin-top: 20px;
+    }
+    .exhibition-container a:first-child::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 12px;
+      width: 66.667vw;
+      border-top: rgba(0, 0, 0, 0.15) solid 1px;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    .exhibition-info >div:first-child{font-size: 3.889vw;}
+    .exhibition-info > div:last-child{font-size: 3.333vw;}
+    .exhibition-container a{
+      border: none;
+    }
+  }
+/*--------------------------------------------------*/
+/*---------------------Footer-----------------------------*/
+footer{
+    /* width: 100vw; */
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    right: 51px;
+    left: 57px;
+    z-index: 3;
+    height: 58px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  footer >span:nth-of-type(1){
+    position: absolute;
+    width: 4.5vw;
+    height: auto;
+    top: 14px;
+    left: 0;
+  }
+  footer > span:nth-of-type(2){
+    position: absolute;
+    right: 0;
+    top: 14px;
+    position: absolute;
+    display: inline;
+    height: 1.481vw;
+    width: auto;
+  }
+  footer > span:nth-of-type(3){
+    display: none;
+  }
+  @media screen and (max-width:960px) {
+    footer{
+      height: 44px;
+      right: 35px;
+      left: 35px;
+    }
+    footer >span:nth-of-type(1){
+      position: absolute;
+      width: auto;
+      height: 1.667vw;
+      top: 4px;
+      left: 0;
+    }
+    footer > span:nth-of-type(2){
+      display: none;
+    }
+    footer > span:nth-of-type(3){
+      display: inline;
+      position: absolute;
+      right: 0;
+      width: auto;
+      height: 1.667vw;
+      top: 4px;
+    }
+  }
+
+  /*--------------------------------------------------*/
+  /*-----------------------Portfolio---------------------------*/
+.portfolio-container{
+  padding-top: 91px;
+  padding-bottom: 7.9688vw;
+  width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+}
+.portfolio-box1,.portfolio-box2,.portfolio-box3{
+  margin-left: 18.75vw;
+  margin-right: 18.75vw;
+}
+.portfolio-box1{
+  margin-bottom: 1.3021vw;
+}
+.navigation{
+  font-size: 0.9375vw;
+  margin-bottom: 2.4479vw;
+  margin-top: 36px;
+}
+.portfolio-box1 .project-name{
+  font-size: 3.229vw;
+  line-height: 3.2797vw;
+  margin-bottom: 0.4167vw;
+}
+.portfolio-box2{
+  margin-bottom: 0;
+  margin-top: 2.5vw;
+}
+.student-info{
+  position: relative;
+  font-size: 1.3021vw;
+  /* line-height: 1.353vw; */
+}
+.student-info div{
+  display: inline;
+  margin-right: 1.1458vw;
+}
+.student-info div:last-child::before{
+  content: '| ';
+}
+.portfolio-box1, .project-name, .value, .move-page{
+  text-transform: uppercase;
+}
+.key{
+  text-transform: capitalize;
+  font-size: 0.8435vw;
+  color: rgba(0, 0, 0, 0.50);
+}
+.value{
+  font-size: 0.8435vw;
+}
+.portfolio-image-container{
+  width: 100%;
+}
+.portfolio-image-wrap{
+  margin-left: 18.75vw;
+  margin-right: 18.75vw;
+}
+.video-wrap{width: 100%;}
+.portfolio-image-wrap img{
+  width: 100%;
+  height: auto;
+}
+.project-info-wrap{
+  width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 22.5% 77.5%;
+}
+.project-info{
+  padding-right: 13.284%;
+}
+.project-info .project-name{
+  font-size: 1.3021vw;
+  margin-bottom: 1.458vw;
+  word-wrap: break-word;
+}
+.project-detail{
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.project-detail > div:first-child >div, .project-detail > div:last-child{
+  display: grid;
+  grid-template-columns: 52.766% 47.234%;
+}
+.project-detail >div>div{
+  margin-bottom: 1.0417vw;
+}
+.portfolio-cation-wrap{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-size: 0.8333vw;
+  /* font-size: 16px; */
+} 
+.portfolio-cation-wrap p{
+  margin-left: 3%;
+  word-wrap: break-word;
+  line-height: 1.4583vw;
+}
+.portfolio-cation-wrap >div{
+  /* line-height: 28px; */
+  /* line-height: 1.458vw; */
+  margin-bottom: 7.344vw;
+}
+.portfolio-cation-wrap div:last-child{
+  /* line-height: 26px; */
+  /* line-height: 1.354vw; */
+}
+.portfolio-box3{
+  margin-top: 6.6667vw;
+  /* margin-bottom: 7.9688vw; */
+}
+.student-info-detail{
+  display: grid;
+  grid-template-columns: 23.1667% 76.8333%;
+  width: 100%;
+  height: 4.4792vw;
+  margin-bottom: 2.8125vw;
+}
+.student-info-detail >div:first-child >div:first-child{
+  font-size: 1.5625vw;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.student-info-detail >div:first-child >div:last-child{
+  text-transform: capitalize;
+  font-size: 1.25vw;
+  font-weight: 400;
+}
+.student-info-detail >div:last-child{
+  border-left: 1px solid #000;
+  display: grid;
+  grid-template-columns: 43.360% 55.6399%;
+  grid-template-rows: 50% 50%;
+}
+.student-info-detail >div:last-child >div{
+  margin-left: 1.5625vw;
+  font-size: 0.8333vw;
+  margin-top: 8px;
+}
+.link-container{
+  text-align: center;
+  margin-bottom: 3.1771vw;
+}
+.link-container span{
+  margin: 0 1.302vw 0;
+}
+.link-container span svg{
+  width: 1.8432vw;
+}
+.move-page{
+  font-size: 0.9375vw;
+}
+.move-page >div:first-child{
+  margin-bottom: 2.2917vw;
+}
+.page-image-wrap{
+  display: grid;
+  grid-template-columns: 48.75% 48.75%;
+  gap: 2.5%;
+}
+.page-image-wrap img{
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width:870px) {
+  .portfolio-container{
+    padding-top: 103px;
+    width: 100vw;
+    box-sizing: border-box;
+    padding-bottom: 20.278vw;
+  }
+  .portfolio-box1,.portfolio-box2,.portfolio-box3{
+    margin-left: 9.1667vw;
+    margin-right: 9.1667vw;
+  }
+  .portfolio-box1{
+    margin-bottom: 7.5vw;
+  }
+  .navigation{
+    text-align: right;
+    font-size: 3.333vw;
+    margin-bottom: 8.0556vw;
+    margin-top: 5.8333vw;
+  }
+  .navigation > div:first-child{
+    margin-bottom: 2vw;
+  }
+  #small{
+    font-size: 4.891vw;
+  }
+  .portfolio-box1 .project-name{
+    font-size: 6.667vw;
+    line-height: 5.2322vw;
+    margin-bottom: 6.667vw;
+    word-wrap: break-word;
+  }
+  .student-info{
+    position: relative;
+    font-size: 3.333vw;
+    width: 100%;
+    display: flex;
+  justify-content: space-between;
+  }
+  .student-info div{
+    display: inline;
+    margin-right: 0;
+  }
+  .student-info div:first-child{
+    width: 41.967%;
+    margin-right: 8.333vw;
+  }
+  .student-info div:last-child::before{
+    content: '';
+  }
+  .portfolio-box2{
+    margin-bottom: 7.5vw;
+    margin-top: 7.5vw;
+  }
+  .portfolio-image-wrap{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .value,.key{
+    font-size: 2.778vw;
+  }
+  .project-info-wrap{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  .project-info{
+    margin-bottom: 9.722vw;
+    padding: 0;
+    
+  }
+  .project-info .project-name{
+    font-size: 3.333vw;
+    margin-bottom: 5.556vw;
+    word-wrap: break-word;
+  }
+  .project-detail{
+    display: grid;
+    grid-template-columns: 52.844% 47.157%;
+    
+  }
+  .project-detail > div:first-child >div, .project-detail > div:last-child{
+    display: grid;
+    grid-template-columns: 36.0759% 63.924%;
+  }
+  .project-detail >div>div{
+    margin-bottom: 1.944vw;
+  }
+  .portfolio-cation-wrap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    font-size: 3.333vw;
+    /* font-size: 16px; */
+  } 
+  .portfolio-cation-wrap p{
+    margin-left: 0;
+    word-wrap: break-word;
+    line-height: 6.111vw;
+  }
+  .portfolio-cation-wrap div:first-child{
+    /* line-height: 28px; */
+  }
+  .portfolio-cation-wrap div:last-child{
+    /* line-height: 26px; */
+  }
+  .portfolio-box3{
+    margin-top: 11.111vw;
+  }
+  .student-info-detail{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    width: 100%;
+    height: 30.833vw;
+    margin-bottom: 16.667vw;
+  }
+  .student-info-detail >div:first-child >div:first-child{
+    font-size: 6.667vw;
+    margin-bottom: 8px;
+  }
+  .student-info-detail >div:first-child >div:last-child{
+    font-size: 3.333vw;
+  }
+  .student-info-detail >div:last-child{
+    border-left: 1px solid #000;
+    display: grid;
+    grid-template-columns: 43.360% 55.6399%;
+    grid-template-rows: 50% 50%;
+  }
+  .student-info-detail >div:last-child >div{
+    margin-left: 3.647vw;
+    font-size: 2.2222vw;
+    margin-top: 8px;
+  }
+  .link-container{
+    text-align: center;
+    margin-bottom: 16.667vw;
+  }
+  .link-container span{
+    margin: 0 4.1667vw 0;
+  }
+  .link-container span svg{
+    width: 5.8333vw;
+  }
+  .move-page{
+    font-size: 3.333vw;
+  }
+  .move-page >div:first-child{
+    margin-bottom: 2.003vw;
+  }
+}
+/*--------------------------------------------------*/
