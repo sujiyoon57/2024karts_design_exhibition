@@ -10,7 +10,7 @@ const nextConfig = {
       },
       reactStrictMode: false,
       images: {
-        domains: ['images.ctfassets.net'],
+        domains: ['images.ctfassets.net','downloads.ctfassets.net'],
       },
 }
 

@@ -28,7 +28,6 @@ export default function Designer(){
           try{
             var data = await fetchContentful('portfolio');
             setPortfolio(data);
-            // console.log(data);
             if(data.length>0){
               const storedCount = parseInt(localStorage.getItem("count")) || 0;
               const nextCount = (storedCount + 1) % data.length;
