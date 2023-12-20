@@ -23,8 +23,8 @@ export default function Header({exhibitionOn, archiveOn}){
             </nav>
             {menuOn&&<nav className="mobile-nav">
                 <span>karts</span>
-                <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>
-                <span>archive</span>
+                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>}
+                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>archive</span></Link>}
             </nav>}
         </header>
     )
