@@ -14,12 +14,12 @@ export default async function Portfolio(props){
 
     const id = parseInt(props.params.id);
     const data = await fetchContentful('portfolio');
-    const portfolio = await data[id].fields;
+    const portfolio = data[id].fields;
     const len  = data.length > 0 && data.length;
-    const preIndex = id == 0 ? len - 1 : id - 1;
-    const nextIndex = id == (len - 1) ? 0 : id + 1;
-    const preUrl = await data[preIndex] ? data[preIndex].fields.mainImage.fields.file.url : '';
-    const nextUrl = await data[nextIndex] ? data[nextIndex].fields.mainImage.fields.file.url : '';
+    const preIndex = id === 0 ? len - 1 : id - 1;
+    const nextIndex = id === (len - 1) ? 0 : id + 1;
+    const preUrl = data[preIndex] ? data[preIndex].fields.mainImage.fields.file.url : '';
+    const nextUrl = data[nextIndex] ? data[nextIndex].fields.mainImage.fields.file.url : '';
 
     
 

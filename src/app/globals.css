@@ -108,7 +108,7 @@ nav span{
     transform: translate(-50%,-50%);
 }
 .img-container img{
-  
+
   height: 100%;
   width: auto;
 }
@@ -794,7 +794,7 @@ iframe{
   /* display: flex; */
   box-sizing: border-box;
 }
-.designers-image-wrap{
+.designer-image-wrap{
   height: 100%;
 }
 /* #horizontalImage{
