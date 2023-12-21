@@ -54,12 +54,12 @@ export default function Karts(){
                 </div>
                 {aboutButton ? (
                   <div className='karts-wrap'>
-                    <p>
+                    {/* <p>
                     “문화적 뿌리와 토양을 강화하지 않고서는 결코 산업을 꽃피울 수 없다”는 이념을 바탕으로 설립된 디자인과는 4년제 예술사과정 및 2년제 예술전문사과정을 통해 새로운 시대를 이끌 수 있는 디자인 전문가를 양성하는 국내 유일의 국립 디자인 콘서버토리이다. 끊임없이 변해가는 삶의 환경에 부합하는 새로운 가치와 시스템을 제시하는 것을 디자인의 주된 역할로 여기는 디자인과는, 개념적이고도 실제적 측면에서 디자인 문제를 논리적으로 탐구하여 혁신적 가치를 제시할 수 있는 미래지향형 디자인 전문가 양성을 위해 융합형 교육을 목표로 두고 있다.
                     </p>
                     <p>
                     Established based on the idea that "the industry can never blossom without strengthening cultural roots and soil," the Design Department is the only national design conservatory in Korea that fosters design experts who can lead a new era through a four-year art history course and a two-year art history course. The Design Department, which considers the main role of design to present new values and systems that fit the ever-changing environment of life, aims to foster convergence education to foster future-oriented design experts who can logically explore design issues in both conceptual and practical terms and present innovative values.
-                    </p>
+                    </p> */}
                     {/* {about && about.map((data)=>(
                       <div>
                         <div className="flex-container karts-images-container">
