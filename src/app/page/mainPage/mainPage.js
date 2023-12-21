@@ -16,10 +16,11 @@ export default async function MainPage(){
                 <div className="video-container"></div>
             ):(
             <div className='img-container'>
-                <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster"/>
+                <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster" style={{ width: '100%', height: 'auto' }}/>
                 <Image src={`https:${mobilePoster}`} alt='..' width={0} height={0} sizes='100vw' className="mobile-poster"/>
             </div>)}
             <ScrollDown/>
         </div>
     )
 }
+

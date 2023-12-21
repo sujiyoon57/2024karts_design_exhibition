@@ -110,9 +110,9 @@ export default function Designer(){
                 </div>
             </div>
             <div className="designers-thumbnail-container">
-                {portfolio[selectedStudent] &&
-                <Link href={`page/portfolio/${selectedStudent}`}>
-                    <div className="lineD">
+                <div className="designer-image-wrap">
+                    {portfolio[selectedStudent] &&
+                        <Link href={`page/portfolio/${selectedStudent}`}>
                          <Image 
                             src={'https:' + portfolio[selectedStudent].fields.thumbnail.fields.file.url} alt=".." 
                             width={0} height={0} 
@@ -120,8 +120,8 @@ export default function Designer(){
                             onLoad={handleImageLoad}
                             id={isImageVertical ? '' : 'horizontalImage'}
                             />
-                    </div>
-                </Link>}
+                        </Link>}
+                </div>
             </div>
         </div>
         <Footer/>
