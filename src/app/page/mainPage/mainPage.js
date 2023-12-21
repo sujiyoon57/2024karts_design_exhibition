@@ -7,11 +7,11 @@ import { useSearchParams } from "next/navigation";
 import { useState,useEffect } from "react";
 
 export default function MainPage(){
-
     const [poster ,setPoster]=useState();
     const [mobilePoster,setMobilePoster]=useState();
     const [embedLink, setEmbedLink]=useState();
-    const [scroll, setScrolㅣ]=useState(false);
+    const [scrollup, setScrollup] = useState(false);
+    // const [counter, setCounter] = useState(0);
 
     useEffect(() => {
         const getContentful=async()=>{
@@ -28,34 +28,43 @@ export default function MainPage(){
         }
 
         getContentful();
-      }, []);
+    }, []);
 
-      useEffect(() => {
-        const handleScroll = (e) => {
-          if (scroll) {
-            e.preventDefault();
-          }
-        };
+    // const onScroll = e => {
+    //     if(once){
+    //         setTimeout(() => {
+    //         window.scrollTo({
+    //           top: 0,
+    //           behavior: 'smooth', // Optional: Adds smooth scrolling effect
+    //         });
+    //       }, 50);
+    //     if(scrollup === false) {
+    //         setScrollup(true);
+    //         setTimeout(() => {
+    //             setScrollup(false);
+    //           }, 1500);
+    //     }
+    //     }
+        
+    // }
     
-        window.addEventListener("scroll", handleScroll);
-    
-        // Cleanup the event listener when the component unmounts
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }, [scroll]);
-
 
     return(
-        <div className='main-container'>
+        <div className='main-container'  > 
+        {/* onWheel={(e) => onScroll(e)} */}
             {embedLink?(
                 <div className="video-container"></div>
             ):(
             <div className='img-container'>
-                {poster && <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster" />}
+                {poster && <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster"/>}
                 {mobilePoster && <Image src={`https:${mobilePoster}`} alt='..' width={0} height={0} sizes='100vw' className="mobile-poster"/>}
             </div>)}
-            <About/>
+            <div className={`content-container ${scrollup ? 'up':'down'}`} >
+                <div className="content">
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>       
             <ScrollDown/>
         </div>
     )

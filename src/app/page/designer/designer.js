@@ -24,6 +24,8 @@ export default function Designer(){
     const [portfolio,setPortfolio]=useState([]);
     const [isMobile, setIsMobile]=useState(false);
     const [len, setLen] =useState(0);
+    const [selectedStudentMobile, setSelectedStudenttMobile]=useState(0);
+
 
     useEffect(() => {
         const getContentful=async()=>{
@@ -38,13 +40,7 @@ export default function Designer(){
               const nextCount = (storedCount + 1) % data.length;
               setCount(nextCount);
               localStorage.setItem("count", nextCount.toString());
-              setSelectedStudent(0);
-
-              const firstPart = data.slice(nextCount); 
-              const secondPart = data.slice(0, nextCount); 
-              const newArray = [...firstPart, ...secondPart];
-            //   console.log(newArray);
-              setStudents(newArray);
+              setSelectedStudent(nextCount);
             }
           }catch (error) {
             console.error("Error fetching data:", error);
@@ -72,7 +68,7 @@ export default function Designer(){
     // };
 
     const handleSlideChange = (swiper) => {
-      setSelectedStudent(swiper.realIndex);
+      setSelectedStudenttMobile(swiper.realIndex);
     };
 
     return (
@@ -80,16 +76,7 @@ export default function Designer(){
         <div className="designers-container" >
             <div className="name-container">
                 <div className="web-name-list">
-                    {students && students.map((std, index)=>{
-                        return(<li
-                        key={index}
-                        id={index === selectedStudent ? 'selected' : 'notSelected'}
-                        onClick={()=>setSelectedStudent(index)}
-                        >
-                        {std.fields.nameEng}
-                        </li>)
-                    })}
-                    {/* {portfolio && portfolio.map((student, index)=>{
+                    {portfolio && portfolio.map((student, index)=>{
                         if(student.fields && (count<=index && index<portfolio.length)){
                         return(
                             <li
@@ -114,7 +101,7 @@ export default function Designer(){
                             </li>
                         )
                         }
-                    })} */}
+                    })}
                 </div>
                 <div className="mobile-name-list">
                     {isMobile && <Swiper
@@ -129,10 +116,9 @@ export default function Designer(){
                     onSlideChange={(swiper) => handleSlideChange(swiper)}
                     className="mySwiper"
                     >
-                    {students.map((student, index) => (
+                    {portfolio.map((student, index) => (
                         <SwiperSlide id="swiperslide" key={index}>
-                        <div className={`slidename ${index === selectedStudent ? 'current' : '' }`}
-                        s>
+                        <div className={`slidename ${index === selectedStudentMobile ? 'current' : '' }`}>
                             {student.fields.nameEng}
                         </div>
                         </SwiperSlide>
@@ -141,15 +127,28 @@ export default function Designer(){
                 </div>
             </div>
             <div className="designers-thumbnail-container">
-                <div className="designer-image-wrap">
-                    {students[selectedStudent] &&
-                        <Link href={`page/portfolio/${(selectedStudent+4)%len}`}>
+                <div className="designer-image-wrap web-thumbnail">
+                    {portfolio[selectedStudent] &&
+                        <Link href={`page/portfolio/${selectedStudent}`}>
                          <Image 
-                            src={'https:' + students[(selectedStudent+4)%len].fields.thumbnail.fields.file.url} alt=".." 
+                            src={'https:' + portfolio[selectedStudent].fields.thumbnail.fields.file.url} alt=".." 
                             width={0} height={0} 
                             sizes="100vw"
                             // onLoad={handleImageLoad}
-                            id={isImageVertical ? '' : 'horizontalImage'}
+                            // id={isImageVertical ? '' : 'horizontalImage'}
+                            className="thumbnail-image"
+                            />
+                        </Link>}
+                </div>
+                <div className="designer-image-wrap mobile-thumbnail">
+                    {portfolio[selectedStudentMobile] &&
+                        <Link href={`page/portfolio/${selectedStudentMobile}`}>
+                         <Image 
+                            src={'https:' + portfolio[selectedStudentMobile].fields.thumbnail.fields.file.url} alt=".." 
+                            width={0} height={0} 
+                            sizes="100vw"
+                            // onLoad={handleImageLoad}
+                            // id={isImageVertical ? '' : 'horizontalImage'}
                             className="thumbnail-image"
                             />
                         </Link>}

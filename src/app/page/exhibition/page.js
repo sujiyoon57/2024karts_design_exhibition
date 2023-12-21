@@ -10,6 +10,7 @@ export default async function Exhibition(){
     data = await fetchContentful('poster');
     const title = data[0].fields.exhibitionTitle;
     
+    
 
     return(
       <div className="exhibition">
@@ -19,9 +20,9 @@ export default async function Exhibition(){
                 <Link href={ `/page/portfolio/${index}`} key={index}>
                     <div className="exhibition-image-container">
                     {data.fields.thumbnail.fields.file.url &&<Image src={'https:'+data.fields.thumbnail.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>}
-                        <div className="exhibition-info">
-                        <div>{data.fields.projectName}</div>
-                        <div className="exhibition-student-name">{data.fields.nameEng}</div>
+                        <div className={`exhibition-info ${data.fields.thumbnailBlack ? 'whiteFont':''}`}>
+                            <div>{data.fields.projectName}</div>
+                            <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? 'whiteFont':''}`}>{data.fields.nameEng}</div>
                         </div>
                     </div>
                 </Link>

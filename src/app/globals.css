@@ -276,7 +276,7 @@ nav span{
   .exhibition-student-name{
     color: rgba(0, 0, 0, 0.5);
   }
-  
+  .whiteFont{color: white;}
   @media screen and (min-width:1134px){
     .exhibition-container a:nth-last-of-type(-n+4){
       border: none;
@@ -504,9 +504,13 @@ footer{
 .video-wrap{
   margin-left: 18.75vw;
   margin-right: 18.75vw;
+  /* /// */
+  /* position: relative;
+  padding-bottom: 56.25%;
+  height: 0; */
 }
 iframe{
-  height: 35.15625vw;
+  height: 35.3vw;
 }
 
 .portfolio-image-wrap img{
@@ -681,8 +685,7 @@ iframe{
     margin-right: 0;
   }
   iframe{
-    height: 55vw;
-    /* width: 10vw; */
+    height: 56.25vw;
   }
   
   .value,.key{
@@ -860,6 +863,10 @@ iframe{
   color: rgba(0, 0, 0, 0.50);
   width: auto;
 }
+.mobile-thumbnail{
+  display: none;
+}
+.web-thumnail{display: block;}
 /* @media screen and (min-width:871px) and (min-aspect-ratio : 1677.40649/1080){
   #horizontalImage{
   width: 100%;
@@ -873,6 +880,8 @@ iframe{
 }
 } */
 @media screen and (max-width:870px){
+  .web-thumbnail{display: none;}
+  .mobile-thumbnail{display: block;}
   .mobile-name-list{
     display: block;
   }
@@ -938,6 +947,7 @@ iframe{
     height: 100%;
     box-sizing: border-box;
   }
+  
   #selected{
     color: #000;
   }
@@ -1057,7 +1067,7 @@ iframe{
   }
 }
 /*--------------------------------------------------*/
-
+/*------------------------abou-----------------------*/
 .content-container{
   position: absolute;
   z-index: 3;
@@ -1068,6 +1078,11 @@ iframe{
   padding: 182px 29.427vw 0;
   background: rgba(255, 255, 255, 0.90);
   animation: fadeInUp 1.5s ease-in-out;
+}
+.up{
+  display: block;
+}
+.down{
   display: none;
 }
 .content-container .content > p:first-child{

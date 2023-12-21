@@ -70,6 +70,7 @@ export default async function Portfolio(props){
             <div className="portfolio-box2">
                 <div className="project-info-wrap">
                     <div className="project-info">
+                        {portfolio.studentid}
                         <div className="project-name">{portfolio.projectName}</div>
                         <div className="project-detail">
                             <div>
@@ -117,7 +118,12 @@ export default async function Portfolio(props){
             <div className="portfolio-image-container">
                 <div className="vedio-wrap">
                     {portfolio.topEmbed&&
-                    <iframe src={`https:${portfolio.topEmbed}`}
+                    <iframe 
+                        width="100%"
+                        src={`${portfolio.topEmbed}&mute=1&autoplay=1&loop=1`}
+                        frameborder="0" 
+                        allowfullscreen
+                        allow="autoplay"
                     ></iframe>}
                 </div>
                 <div className="portfolio-image-wrap">
@@ -129,7 +135,7 @@ export default async function Portfolio(props){
                     {portfolio.bottomEmbed&&
                     <iframe 
                     width="100%"
-                    src={`${portfolio.bottomEmbed}&mute=1autoplay=1&loop=1`}
+                    src={`${portfolio.bottomEmbed}&mute=1&autoplay=1&loop=1`}
                     frameborder="0" 
                     allowfullscreen
                     allow="autoplay"
