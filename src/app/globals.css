@@ -393,6 +393,7 @@ footer{
       height: 44px;
       right: 35px;
       left: 35px;
+      background-color: red;
     }
     footer >span:nth-of-type(1){
       position: absolute;
