@@ -108,6 +108,7 @@ nav span{
     transform: translate(-50%,-50%);
 }
 .img-container img{
+  
   height: 100%;
   width: auto;
 }
