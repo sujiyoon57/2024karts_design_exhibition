@@ -1,13 +1,49 @@
+"use client"
 import Image from "next/image"
 import { fetchContentful } from "@/app/contentful/contentful"
 import ScrollDown from "@/app/component/scrollDown"
+import About from "@/app/component/about";
+import { useSearchParams } from "next/navigation";
+import { useState,useEffect } from "react";
 
-export default async function MainPage(){
+export default function MainPage(){
 
-    const data = await fetchContentful('poster');
-    const poster = data[0].fields.posterImage.fields.file.url;
-    const mobilePoster = data[0].fields.posterImageMobile.fields.file.url;
-    const embedLink = data[0].fields.videoEmbedLink || null;
+    const [poster ,setPoster]=useState();
+    const [mobilePoster,setMobilePoster]=useState();
+    const [embedLink, setEmbedLink]=useState();
+    const [scroll, setScrolㅣ]=useState(false);
+
+    useEffect(() => {
+        const getContentful=async()=>{
+          try{
+            var data = await fetchContentful('poster');
+            setPoster(data[0].fields.posterImage.fields.file.url);
+            console.log(data[0].fields.posterImage.fields.file.url);
+            setMobilePoster(data[0].fields.posterImageMobile.fields.file.url);
+            console.log(data[0].fields.posterImageMobile.fields.file.url);
+            setEmbedLink(data[0].fields.videoEmbedLink || null);
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+
+        getContentful();
+      }, []);
+
+      useEffect(() => {
+        const handleScroll = (e) => {
+          if (scroll) {
+            e.preventDefault();
+          }
+        };
+    
+        window.addEventListener("scroll", handleScroll);
+    
+        // Cleanup the event listener when the component unmounts
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, [scroll]);
 
 
     return(
@@ -16,9 +52,10 @@ export default async function MainPage(){
                 <div className="video-container"></div>
             ):(
             <div className='img-container'>
-                <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster" />
-                <Image src={`https:${mobilePoster}`} alt='..' width={0} height={0} sizes='100vw' className="mobile-poster"/>
+                {poster && <Image src={`https:${poster}`} alt='..' width={0} height={0} sizes='100vw' className="web-poster" />}
+                {mobilePoster && <Image src={`https:${mobilePoster}`} alt='..' width={0} height={0} sizes='100vw' className="mobile-poster"/>}
             </div>)}
+            <About/>
             <ScrollDown/>
         </div>
     )

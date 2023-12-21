@@ -129,7 +129,7 @@ export default async function Portfolio(props){
                     {portfolio.bottomEmbed&&
                     <iframe 
                     width="100%"
-                    src={`${portfolio.mainVimeoEmbedLink}&mute=1autoplay=1&loop=1`}
+                    src={`${portfolio.bottomEmbed}&mute=1autoplay=1&loop=1`}
                     frameborder="0" 
                     allowfullscreen
                     allow="autoplay"

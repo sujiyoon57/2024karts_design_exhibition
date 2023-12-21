@@ -22,32 +22,52 @@ export default function Designer(){
     const [isImageVertical,setIsImageVertical]=useState(true);
     const [count, setCount] = useState(0);
     const [portfolio,setPortfolio]=useState([]);
+    const [isMobile, setIsMobile]=useState(false);
 
     useEffect(() => {
         const getContentful=async()=>{
           try{
             var data = await fetchContentful('portfolio');
             setPortfolio(data);
+            
             if(data.length>0){
               const storedCount = parseInt(localStorage.getItem("count")) || 0;
+              console.log('count'+storedCount);
               const nextCount = (storedCount + 1) % data.length;
-              setCount(nextCount);
+            //   setCount(nextCount);
               localStorage.setItem("count", nextCount.toString());
-              setSelectedStudent(nextCount);
+              setSelectedStudent(0);
+
+              const firstPart = data.slice(nextCount); 
+              const secondPart = data.slice(0, nextCount); 
+              const newArray = [...firstPart, ...secondPart];
+            //   console.log(newArray);
+              setStudents(newArray);
             }
           }catch (error) {
             console.error("Error fetching data:", error);
           }
         }
         getContentful();
+
+        const windowWidth = window.innerWidth;
+
+      // 윈도우의 너비가 870px 이하이면 변수 업데이트
+      if (windowWidth <= 870) {
+        setIsMobile(true);
+      }else{
+        setIsMobile(false);
+      }
         
     }, []);
+
+    // console.log(students);
   
-    const handleImageLoad = (event) => {
-      const image = event.target;
-      const vertical = image.naturalWidth < image.naturalHeight;
-      setIsImageVertical(vertical);
-    };
+    // const handleImageLoad = (event) => {
+    //   const image = event.target;
+    //   const vertical = image.naturalWidth < image.naturalHeight;
+    //   setIsImageVertical(vertical);
+    // };
 
     const handleSlideChange = (swiper) => {
       setSelectedStudent(swiper.realIndex);
@@ -58,12 +78,21 @@ export default function Designer(){
         <div className="designers-container" >
             <div className="name-container">
                 <div className="web-name-list">
-                    {portfolio && portfolio.map((student, index)=>{
+                    {students && students.map((std, index)=>{
+                        return(<li
+                        key={index}
+                        id={index === selectedStudent ? 'selected' : 'notSelected'}
+                        onClick={()=>setSelectedStudent(index)}
+                        >
+                        {std.fields.nameEng}
+                        </li>)
+                    })}
+                    {/* {portfolio && portfolio.map((student, index)=>{
                         if(student.fields && (count<=index && index<portfolio.length)){
                         return(
                             <li
                             key={index}
-                            id={student === selectedStudent ? 'selected' : 'notSelected'}
+                            id={index === selectedStudent ? 'selected' : 'notSelected'}
                             onClick={()=>setSelectedStudent(index)}
                             >
                             {student.fields.nameEng}
@@ -83,10 +112,10 @@ export default function Designer(){
                             </li>
                         )
                         }
-                    })}
+                    })} */}
                 </div>
                 <div className="mobile-name-list">
-                    <Swiper
+                    {isMobile && <Swiper
                     slidesPerView={'auto'}
                     spaceBetween={'70'}
                     centeredSlides={true}
@@ -98,7 +127,7 @@ export default function Designer(){
                     onSlideChange={(swiper) => handleSlideChange(swiper)}
                     className="mySwiper"
                     >
-                    {portfolio.map((student, index) => (
+                    {students.map((student, index) => (
                         <SwiperSlide id="swiperslide" key={index}>
                         <div className={`slidename ${index === selectedStudent ? 'current' : '' }`}
                         s>
@@ -106,19 +135,20 @@ export default function Designer(){
                         </div>
                         </SwiperSlide>
                     ))}
-                    </Swiper> 
+                    </Swiper> }
                 </div>
             </div>
             <div className="designers-thumbnail-container">
                 <div className="designer-image-wrap">
-                    {portfolio[selectedStudent] &&
+                    {students[selectedStudent] &&
                         <Link href={`page/portfolio/${selectedStudent}`}>
                          <Image 
-                            src={'https:' + portfolio[selectedStudent].fields.thumbnail.fields.file.url} alt=".." 
+                            src={'https:' + students[selectedStudent].fields.thumbnail.fields.file.url} alt=".." 
                             width={0} height={0} 
                             sizes="100vw"
-                            onLoad={handleImageLoad}
+                            // onLoad={handleImageLoad}
                             id={isImageVertical ? '' : 'horizontalImage'}
+                            className="thumbnail-image"
                             />
                         </Link>}
                 </div>
