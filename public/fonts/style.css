@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Moderat';
+    src: local("AnyTestFont"), 
+          url("Moderat-Regular.eot?#iefix") format("embedded-opentype"),
+          url('Moderat-Regular.woff') format('woff'),
+          url('Moderat-Regular.woff2') format('woff'),
+          url('Moderat-Regular.otf') format('opentype');
+    unicode-range:U+0041-005A, U+0061-007A;
+}
+@font-face {
+    font-family: 'SUIT';
+    src: local("AnyTestFont"), 
+          url("SUIT-Regular.ttf") format("truetype");
+}

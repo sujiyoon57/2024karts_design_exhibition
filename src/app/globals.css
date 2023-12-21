@@ -1,6 +1,23 @@
+@font-face {
+  font-family: Moderat;
+  src: local("AnyTestFont"), 
+        url("/public/fonts/Moderat-Regular.eot?#iefix") format("embedded-opentype"),
+        url('/public/fonts/Moderat-Regular.woff') format('woff'),
+        url('/public/fonts/Moderat-Regular.woff2') format('woff'),
+        url('/public/fonts/Moderat-Regular.otf') format('opentype');
+  unicode-range:U+0041-005A, U+0061-007A;
+}
+@font-face {
+  font-family: SUIT;
+  src: local("AnyTestFont"), 
+        url("/public/fonts/SUIT-Regular.ttf") format("truetype");
+  unicode-range: U+AC00-D7A3;
+}
+
 body{
     padding: 0;
     margin: 0;
+    font-family: Moderat, SUIT;
 }
 a{
     text-decoration: none;
@@ -8,7 +25,7 @@ a{
 }
 li{
   list-style: none;
-}
+}\p{margin-top: 0; margin-bottom: 0;}
 /*--------------header--------------*/
 header{
     width: 100%;
@@ -223,6 +240,7 @@ nav span{
     position: relative;
     min-height: 100vh; /*footer 밑으로 보내기*/
     box-sizing: border-box;
+    font-family: 'Moderat';
   }
   .exhibition .exhibition-title{
     font-size: 0.9375vw;
@@ -420,6 +438,7 @@ footer{
   width: 100vw;
   box-sizing: border-box;
   position: relative;
+  font-family: 'Moderat';
 }
 .portfolio-box1,.portfolio-box2,.portfolio-box3{
   margin-left: 18.75vw;
@@ -513,21 +532,20 @@ iframe{
   display: grid;
   grid-template-columns: 50% 50%;
   font-size: 0.8333vw;
-  /* font-size: 16px; */
 } 
 .portfolio-cation-wrap p{
-  margin-left: 3%;
   word-wrap: break-word;
-  line-height: 1.4583vw;
+  word-break: keep-all;
 }
 .portfolio-cation-wrap >div{
-  /* line-height: 28px; */
-  /* line-height: 1.458vw; */
   margin-bottom: 7.344vw;
+  margin-left: 3%;
+}
+.portfolio-cation-wrap >div:first-child{
+  line-height: 1.458vw;
 }
 .portfolio-cation-wrap div:last-child{
-  /* line-height: 26px; */
-  /* line-height: 1.354vw; */
+  line-height: 1.354vw;
 }
 .portfolio-box3{
   margin-top: 6.6667vw;
@@ -544,6 +562,7 @@ iframe{
   font-size: 1.5625vw;
   font-weight: 700;
   margin-bottom: 8px;
+  font-family: 'SUIT';
 }
 .student-info-detail >div:first-child >div:last-child{
   text-transform: capitalize;
@@ -555,6 +574,9 @@ iframe{
   display: grid;
   grid-template-columns: 43.360% 55.6399%;
   grid-template-rows: 50% 50%;
+}
+.student-info-detail >div:last-child >div:first-child{
+  font-family: 'SUIT';
 }
 .student-info-detail >div:last-child >div{
   margin-left: 1.5625vw;
