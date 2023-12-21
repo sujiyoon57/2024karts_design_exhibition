@@ -152,6 +152,7 @@ nav span{
 
 /*모바일 메인 포스터*/
 @media screen and (max-width:870px) and (max-aspect-ratio:1) {
+  .main-container{padding-top: 103px;}
     .img-container{
         margin-top: 0px;
     }
@@ -163,7 +164,8 @@ nav span{
     .web-poster{display: none;}
 }
 @media screen and (max-width:870px) and (min-aspect-ratio:1) and (max-aspect-ratio:360/780){
-    .img-container{
+  .main-container{padding-top: 103px;}  
+  .img-container{
         margin-top: 0px;
     }
     .img-container img{
@@ -174,7 +176,8 @@ nav span{
     .web-poster{display: none;}
 }
 @media screen and (max-width:870px) and (min-aspect-ratio:360/780){
-    .img-container{
+  .main-container{padding-top: 103px;}  
+  .img-container{
         margin-top: 0px;
     }
     .img-container img{
@@ -389,7 +392,8 @@ footer{
   }
   footer >span:nth-of-type(1){
     position: absolute;
-    width: 4.5vw;
+    /* width: 4.5vw; */
+    width: 59px;
     height: auto;
     top: 14px;
     left: 0;
@@ -400,8 +404,10 @@ footer{
     top: 14px;
     position: absolute;
     display: inline;
-    height: 1.481vw;
-    width: auto;
+    /* height: 1.481vw; */
+    /* width: auto; */
+    width: 419px;
+    height: auto;
   }
   footer > span:nth-of-type(3){
     display: none;
@@ -413,8 +419,10 @@ footer{
       left: 35px;
     }
     footer >span:nth-of-type(1){
-      width: auto;
-      height: 1.667vw;
+      /* width: auto;
+      height: 1.667vw; */
+      width: 30.45px;
+      height: auto;
       top: 4px;
     }
     footer > span:nth-of-type(2){
@@ -424,8 +432,10 @@ footer{
       display: inline;
       position: absolute;
       right: 0;
-      width: auto;
-      height: 1.667vw;
+      /* width: auto;
+      height: 1.667vw; */
+      width: 122px;
+      height: auto;
       top: 4px;
     }
   }
@@ -813,6 +823,7 @@ iframe{
   position: relative;
   /* display: flex; */
   box-sizing: border-box;
+  overflow-x: auto;
 }
 .designer-image-wrap{
   height: 100%;
