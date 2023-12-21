@@ -23,6 +23,7 @@ export default function Designer(){
     const [count, setCount] = useState(0);
     const [portfolio,setPortfolio]=useState([]);
     const [isMobile, setIsMobile]=useState(false);
+    const [len, setLen] =useState(0);
 
     useEffect(() => {
         const getContentful=async()=>{
@@ -33,8 +34,9 @@ export default function Designer(){
             if(data.length>0){
               const storedCount = parseInt(localStorage.getItem("count")) || 0;
               console.log('count'+storedCount);
+              setLen(data.length);
               const nextCount = (storedCount + 1) % data.length;
-            //   setCount(nextCount);
+              setCount(nextCount);
               localStorage.setItem("count", nextCount.toString());
               setSelectedStudent(0);
 
@@ -53,11 +55,11 @@ export default function Designer(){
         const windowWidth = window.innerWidth;
 
       // 윈도우의 너비가 870px 이하이면 변수 업데이트
-      if (windowWidth <= 870) {
+       if (windowWidth <= 870) {
         setIsMobile(true);
-      }else{
+       }else{
         setIsMobile(false);
-      }
+       }
         
     }, []);
 
@@ -141,9 +143,9 @@ export default function Designer(){
             <div className="designers-thumbnail-container">
                 <div className="designer-image-wrap">
                     {students[selectedStudent] &&
-                        <Link href={`page/portfolio/${selectedStudent}`}>
+                        <Link href={`page/portfolio/${(selectedStudent+4)%len}`}>
                          <Image 
-                            src={'https:' + students[selectedStudent].fields.thumbnail.fields.file.url} alt=".." 
+                            src={'https:' + students[(selectedStudent+4)%len].fields.thumbnail.fields.file.url} alt=".." 
                             width={0} height={0} 
                             sizes="100vw"
                             // onLoad={handleImageLoad}
