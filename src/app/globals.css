@@ -393,14 +393,11 @@ footer{
       height: 44px;
       right: 35px;
       left: 35px;
-      background-color: red;
     }
     footer >span:nth-of-type(1){
-      position: absolute;
       width: auto;
       height: 1.667vw;
       top: 4px;
-      left: 0;
     }
     footer > span:nth-of-type(2){
       display: none;
