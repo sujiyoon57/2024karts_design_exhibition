@@ -30,28 +30,11 @@ export default function MainPage(){
         getContentful();
     }, []);
 
-    // const onScroll = e => {
-    //     if(once){
-    //         setTimeout(() => {
-    //         window.scrollTo({
-    //           top: 0,
-    //           behavior: 'smooth', // Optional: Adds smooth scrolling effect
-    //         });
-    //       }, 50);
-    //     if(scrollup === false) {
-    //         setScrollup(true);
-    //         setTimeout(() => {
-    //             setScrollup(false);
-    //           }, 1500);
-    //     }
-    //     }
-        
-    // }
+   
     
 
     return(
         <div className='main-container'  > 
-        {/* onWheel={(e) => onScroll(e)} */}
             {embedLink?(
                 <div className="video-container"></div>
             ):(

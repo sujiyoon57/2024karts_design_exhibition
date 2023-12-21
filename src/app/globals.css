@@ -572,6 +572,9 @@ iframe{
   height: 4.4792vw;
   margin-bottom: 2.8125vw;
 }
+.student-info-detail >div:first-child{
+  margin-bottom: 24px;
+}
 .student-info-detail >div:first-child >div:first-child{
   font-size: 1.5625vw;
   font-weight: 700;
@@ -583,11 +586,23 @@ iframe{
   font-size: 1.25vw;
   font-weight: 400;
 }
-.student-info-detail >div:last-child{
+/* .student-info-detail >div:last-child{
   border-left: 1px solid #000;
   display: grid;
   grid-template-columns: 43.360% 55.6399%;
   grid-template-rows: 50% 50%;
+} */
+.student-info-detail >div:last-child{
+  border-left: 1px solid #000;
+	display: flex;
+	flex-wrap: wrap;
+  gap: 0.614vw;
+  word-wrap: break-word;
+  word-break: keep-all
+  
+}
+.student-info-detail >div:last-child > div{
+	flex: 1 1 40%;
 }
 .student-info-detail >div:last-child >div:first-child{
   font-family: 'SUIT';
@@ -596,6 +611,7 @@ iframe{
   margin-left: 1.5625vw;
   font-size: 0.8333vw;
   margin-top: 8px;
+  margin-bottom: 8px;
 }
 .link-container{
   text-align: center;
@@ -748,12 +764,13 @@ iframe{
   .student-info-detail >div:first-child >div:last-child{
     font-size: 3.333vw;
   }
-  .student-info-detail >div:last-child{
+  /* .student-info-detail >div:last-child{
     border-left: 1px solid #000;
     display: grid;
     grid-template-columns: 43.360% 55.6399%;
     grid-template-rows: 50% 50%;
-  }
+
+  } */
   .student-info-detail >div:last-child >div{
     margin-left: 3.647vw;
     font-size: 2.2222vw;
@@ -866,7 +883,11 @@ iframe{
 .mobile-thumbnail{
   display: none;
 }
-.web-thumnail{display: block;}
+.web-thumbnail{
+  display: block;
+  position: relative;
+}
+
 /* @media screen and (min-width:871px) and (min-aspect-ratio : 1677.40649/1080){
   #horizontalImage{
   width: 100%;
@@ -909,7 +930,7 @@ iframe{
     margin: 0;
     display: grid;
     grid-template-columns : 100%;
-    grid-template-rows: 43px auto;
+    grid-template-rows: 11.944vw auto;
     position: relative;
   }
   .name-container{
@@ -945,6 +966,8 @@ iframe{
     /* padding: 9.8556vw; */
     display: block;
     height: 100%;
+    padding-top: 7.778vw;
+    padding-bottom: 7.778vw;
     box-sizing: border-box;
   }
   

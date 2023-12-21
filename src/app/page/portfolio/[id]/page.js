@@ -120,7 +120,7 @@ export default async function Portfolio(props){
                     {portfolio.topEmbed&&
                     <iframe 
                         width="100%"
-                        src={`${portfolio.topEmbed}&mute=1&autoplay=1&loop=1`}
+                        src={`${portfolio.topEmbed}&mute=1&autoplay=1`}
                         frameborder="0" 
                         allowfullscreen
                         allow="autoplay"
@@ -135,7 +135,7 @@ export default async function Portfolio(props){
                     {portfolio.bottomEmbed&&
                     <iframe 
                     width="100%"
-                    src={`${portfolio.bottomEmbed}&mute=1&autoplay=1&loop=1`}
+                    src={`${portfolio.bottomEmbed}&mute=1&autoplay=1`}
                     frameborder="0" 
                     allowfullscreen
                     allow="autoplay"

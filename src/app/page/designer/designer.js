@@ -128,6 +128,7 @@ export default function Designer(){
             </div>
             <div className="designers-thumbnail-container">
                 <div className="designer-image-wrap web-thumbnail">
+                <div style={{borderLeft:'1px solid rgba(0, 0, 0, 0.30)', width:'10px', height:'88%', display:'inline-block', position:'absolute', top:'0' }}></div>
                     {portfolio[selectedStudent] &&
                         <Link href={`page/portfolio/${selectedStudent}`}>
                          <Image 
@@ -141,6 +142,7 @@ export default function Designer(){
                         </Link>}
                 </div>
                 <div className="designer-image-wrap mobile-thumbnail">
+                    <div style={{marginLeft:'50%', transform:'translate(-50%)',borderTop:'1px solid rgba(0, 0, 0, 0.30)', width:'80%', height:'15px'}}></div>
                     {portfolio[selectedStudentMobile] &&
                         <Link href={`page/portfolio/${selectedStudentMobile}`}>
                          <Image 
@@ -155,7 +157,7 @@ export default function Designer(){
                 </div>
             </div>
         </div>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     );
   }
