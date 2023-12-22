@@ -68,7 +68,7 @@ export default function MainPage(){
                     <p>The 21 waves maintain their own tremors and freely cross each other, 
 Share new movements and tremors. 
 Our own waves are creating their own trajectories with constant movement. 
-The trajectories of the waves are woven into each other's flow and we introduce the first reverberation that resonates in the world.</p>
+The trajectories of the waves are woven into each other&rsquos flow and we introduce the first reverberation that resonates in the world.</p>
                 </div>
             </div>  
             <ScrollDown/>
