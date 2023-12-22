@@ -1,8 +1,6 @@
 "use client"
-// import { useEffect, useState } from 'react';
 import MainPage from './page/mainPage/mainPage';
 import Designer from './page/designer/designer';
-import { useEffect, useState } from 'react';
 
 export default function Home() {
 
