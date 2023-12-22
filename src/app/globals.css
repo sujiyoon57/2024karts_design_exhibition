@@ -930,7 +930,7 @@ iframe{
     margin: 0;
     display: grid;
     grid-template-columns : 100%;
-    grid-template-rows: 11.944vw auto;
+    grid-template-rows: 11.94vw auto;
     position: relative;
   }
   .name-container{
@@ -1098,9 +1098,12 @@ iframe{
   top: 0;
   left: 0;
   right: 0;
-  padding: 182px 29.427vw 0;
+  padding: 103px 29.427vw 0;
   background: rgba(255, 255, 255, 0.90);
   animation: fadeInUp 1.5s ease-in-out;
+}
+.content-container .content{
+  margin-top: 5vw;
 }
 .up{
   display: block;
@@ -1109,11 +1112,13 @@ iframe{
   display: none;
 }
 .content-container .content > p:first-child{
-  margin-bottom: 80px;
-  font-size: 18px;
+  margin-bottom: 3.125vw;
+  font-size: 0.9375vw;
+  line-height: 1.4583vw;
 }
 .content-container .content > p:nth-of-type(2){
-  font-size: 16px;
+  font-size: 0.8333vw;
+  line-height: 1.3542vw;
 }
 @keyframes fadeInUp {
   from{

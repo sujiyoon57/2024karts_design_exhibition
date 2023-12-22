@@ -28,6 +28,23 @@ export default function MainPage(){
         }
 
         getContentful();
+
+        const aboutTimeout = setTimeout(() => {
+            setScrollup(true);
+          }, 1500);
+      
+          // Set another timeout to add the 'down' class to About after 20 seconds
+          const downTimeout = setTimeout(() => {
+            setScrollup(false);
+          }, 20000);
+      
+          // Clear the timeouts to prevent them from running after the component unmounts
+          return () => {
+            clearTimeout(aboutTimeout);
+            clearTimeout(downTimeout);
+          };
+      
+
     }, []);
 
    
@@ -44,10 +61,16 @@ export default function MainPage(){
             </div>)}
             <div className={`content-container ${scrollup ? 'up':'down'}`} >
                 <div className="content">
-                    <p></p>
-                    <p></p>
+                    <p>21명의 파동은 각자의 고유한 떨림을 유지하며 서로 자유로이 교차되며, 
+새로운 움직임과 떨림을 공유합니다. 
+우리의 고유한 파동은 끊임없는 움직임으로 각자의 궤적을 일구고 있습니다. 
+그 파동들의 궤적이 서로의 흐름으로 엮이며 세상에 울려나가는 그 첫 울림을 소개합니다.</p>
+                    <p>The 21 waves maintain their own tremors and freely cross each other, 
+Share new movements and tremors. 
+Our own waves are creating their own trajectories with constant movement. 
+The trajectories of the waves are woven into each other's flow and we introduce the first reverberation that resonates in the world.</p>
                 </div>
-            </div>       
+            </div>  
             <ScrollDown/>
         </div>
     )
