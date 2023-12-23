@@ -29,7 +29,7 @@ export default function MainPage(){
 
         const handleScroll = () => {
           // 스크롤이 100vh 이상인 경우 scrollup을 false로 설정
-          if (window.scrollY >=  0.4 * window.innerHeight) {
+          if (window.scrollY >=  0.2 * window.innerHeight) {
             setScrollup(false);
           } else {
             const aboutTimeout = setTimeout(() => {
@@ -42,7 +42,7 @@ export default function MainPage(){
 
         window.addEventListener("scroll", handleScroll);
 
-        if (window.scrollY >=  0.4 * window.innerHeight) {
+        if (window.scrollY >=  0.2 * window.innerHeight) {
           const aboutTimeout = setTimeout(() => {
             setScrollup(true);
           }, 7000);
