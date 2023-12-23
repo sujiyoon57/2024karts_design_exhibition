@@ -551,7 +551,7 @@ iframe{
 }
 .portfolio-cation-wrap >div{
   margin-bottom: 7.344vw;
-  margin-left: 3%;
+  /* margin-left: 3%; */
 }
 .portfolio-cation-wrap >div:first-child{
   line-height: 1.458vw;
