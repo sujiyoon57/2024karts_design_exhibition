@@ -32,7 +32,7 @@ export default async function Portfolio(props){
                     <div><Link href='/' as="/#specific-section">&#123; back &#125;</Link></div>
                 </div>
                 <div className="project-intro">
-                    <div className="project-name">{portfolio.projectName}</div>
+                    <div className="project-name big">{portfolio.projectName}</div>
                     <div className="student-info">
                         <div>{portfolio.nameEng}</div>
                         <div>{portfolio.major}</div>
