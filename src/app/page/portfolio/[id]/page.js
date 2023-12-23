@@ -21,7 +21,7 @@ export default async function Portfolio(props){
     const preUrl = data[preIndex] ? data[preIndex].fields.mainImage.fields.file.url : '';
     const nextUrl = data[nextIndex] ? data[nextIndex].fields.mainImage.fields.file.url : '';
 
-    
+    const projectNameLength = portfolio.projectName.length;
 
     
     return(

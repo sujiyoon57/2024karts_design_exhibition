@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'Moderat';
   src: local("AnyTestFont"), 
-        url("/public/fonts/Moderat-Regular.eot?#iefix") format("embedded-opentype"),
-        url('/public/fonts/Moderat-Regular.woff') format('woff'),
-        url('/public/fonts/Moderat-Regular.woff2') format('woff'),
-        url('/public/fonts/Moderat-Regular.otf') format('opentype');
+        url("/fonts/Moderat-Regular.eot?#iefix") format("embedded-opentype"),
+        url('/fonts/Moderat-Regular.woff') format('woff'),
+        url('/fonts/Moderat-Regular.woff2') format('woff'),
+        url('/fonts/Moderat-Regular.otf') format('opentype');
   unicode-range:U+0041-005A, U+0061-007A;
 }
 @font-face {
   font-family: 'SUIT';
   src: local("AnyTestFont"), 
-        url("/public/fonts/SUIT-Regular.ttf") format("truetype");
+        url("/fonts/SUIT-Regular.ttf") format("truetype");
   unicode-range: U+AC00-D7A3;
 }
 
@@ -37,6 +37,7 @@ header{
     right: 0;
     z-index: 5;
     position: fixed;
+    font-family: 'Moderat';
 }
 .header-icon-wrap{
     width: 313.67px;
@@ -61,12 +62,14 @@ nav span{
 }
 @media screen and (max-width:870px) {
     header{
-        height: 103px;
+        /* height: 103px; */
+        height: 91px;
     }
     .header-icon-wrap{
         width: 259.21px;
         /* bottom: 21px; */
-        top: 60px;
+        /* top: 60px; */
+        top:30px;
         left: 6.111vw;
     }
     .web-nav{display: none;}
@@ -75,7 +78,7 @@ nav span{
         position: absolute;
         text-transform: uppercase;
         font-size: 16px;
-        top: 103px;
+        top: 91px;
         right: 0;
         background-color: #FFF;
         width: 132px;
@@ -91,7 +94,8 @@ nav span{
         width: 21.31px;
         height: auto;
         position: absolute;
-        bottom: 21px;
+        /* bottom: 21px; */
+        top: 30px;
         right: 16.69px;
     }
 }
@@ -152,7 +156,7 @@ nav span{
 
 /*모바일 메인 포스터*/
 @media screen and (max-width:870px) and (max-aspect-ratio:1) {
-  .main-container{padding-top: 103px;}
+  .main-container{padding-top: 91px;}
     .img-container{
         margin-top: 0px;
     }
@@ -164,7 +168,7 @@ nav span{
     .web-poster{display: none;}
 }
 @media screen and (max-width:870px) and (min-aspect-ratio:1) and (max-aspect-ratio:360/780){
-  .main-container{padding-top: 103px;}  
+  .main-container{padding-top: 91px;}  
   .img-container{
         margin-top: 0px;
     }
@@ -176,7 +180,7 @@ nav span{
     .web-poster{display: none;}
 }
 @media screen and (max-width:870px) and (min-aspect-ratio:360/780){
-  .main-container{padding-top: 103px;}  
+  .main-container{padding-top: 91px;}  
   .img-container{
         margin-top: 0px;
     }
@@ -341,7 +345,7 @@ nav span{
   }
   @media screen and (max-width:566px){
     .exhibition{
-      padding: 103px 7.333vw 0;
+      padding: 91px 7.333vw 0;
       position: relative;
     }
     .exhibition .exhibition-title{
@@ -462,9 +466,17 @@ footer{
 }
 .portfolio-box1 .project-name{
   font-size: 3.229vw;
-  line-height: 3.2797vw;
+  line-height: 9.2797vw;
   margin-bottom: 0.4167vw;
 }
+/* .portfolio-box1 .big{
+  font-size: 3.229vw;
+  line-height: 3.2797vw;
+}
+.portfolio-box1 .small{
+  font-size: 4.739vw;
+  display: none;
+} */
 .portfolio-box2{
   margin-bottom: 0;
   margin-top: 2.5vw;
@@ -638,7 +650,7 @@ iframe{
 }
 @media screen and (max-width:870px) {
   .portfolio-container{
-    padding-top: 103px;
+    padding-top: 91px;
     width: 100vw;
     box-sizing: border-box;
     padding-bottom: 20.278vw;
@@ -650,6 +662,7 @@ iframe{
   .portfolio-box1{
     margin-bottom: 7.5vw;
   }
+ 
   .navigation{
     text-align: right;
     font-size: 3.333vw;
@@ -664,10 +677,17 @@ iframe{
   }
   .portfolio-box1 .project-name{
     font-size: 6.667vw;
-    line-height: 5.2322vw;
+    line-height: 7.2322vw;
     margin-bottom: 6.667vw;
     word-wrap: break-word;
   }
+  /* .portfolio-box1 .big{
+    font-size: 6.667vw;
+    line-height: 5.2322vw;
+  } */
+  /* .portfolio-box1 .small{
+    display: block;
+  } */
   .student-info{
     position: relative;
     font-size: 3.333vw;
@@ -681,7 +701,7 @@ iframe{
   }
   .student-info div:first-child{
     width: 41.967%;
-    margin-right: 8.333vw;
+    margin-right: 5.333vw;
   }
   .student-info div:last-child::before{
     content: '';
@@ -887,7 +907,7 @@ iframe{
   display: block;
   position: relative;
 }
-
+.viewallicon{display: none;}
 /* @media screen and (min-width:871px) and (min-aspect-ratio : 1677.40649/1080){
   #horizontalImage{
   width: 100%;
@@ -919,7 +939,8 @@ iframe{
     border-top:  rgba(0, 0, 0, 0.15) solid 1px;;
   }
   .designers{
-    min-height: 100vh;
+    height: auto;
+    /* min-height: 100vh; */
     margin-top: 58px;
     padding-left: 35px;
     padding-right: 35px;
@@ -928,14 +949,17 @@ iframe{
   .designers-container{
     height: 100%;
     margin: 0;
-    display: grid;
-    grid-template-columns : 100%;
-    grid-template-rows: 11.94vw auto;
+    /* display: grid; */
+    /* grid-template-columns : 100%;
+    grid-template-rows: 11.94vw auto; */
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
   }
   .name-container{
     /* margin-top: 9.015%; */
     margin-top: 20px;
+    width: 100%;
   }
   .designers-container img{
     padding: 0;
@@ -965,9 +989,9 @@ iframe{
   .designers-thumbnail-container{
     /* padding: 9.8556vw; */
     display: block;
-    height: 100%;
+    height: auto;
     padding-top: 7.778vw;
-    padding-bottom: 7.778vw;
+    padding-bottom: 16.667vw;
     box-sizing: border-box;
   }
   
@@ -979,6 +1003,15 @@ iframe{
   }
   .swiper-wapper .swiper-slide{
     word-wrap: break-word;
+  }
+  .viewallicon {
+    display: block;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 6.667vw;
+  }
+  .viewallicon svg{
+    width: 31.111vw;
   }
 }
 
@@ -1011,22 +1044,33 @@ iframe{
   margin-bottom: 1.667vw;
 } */
 .karts-content-container button{
-  width: 162px;
-  height: 39px;
+  /* width: 162px; */
+  width: 8.4375vw;
+  /* height: 39px; */
+  height: 2.03125vw;
   background: #FFF;
   text-transform: uppercase;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 0.9375vw;
   margin-bottom: 1.667vw;
 }
 .karts-images-container img{
   margin-bottom: 1.458vw;
 }
 .karts-description-container p{
-  margin-bottom: 40px;
-  font-size: 16px;
-  line-height: 28px;
+  margin-bottom: 2.0833vw;
+  /* font-size: 16px; */
+  /* line-height: 28px; */
   word-wrap: break-word;
   word-break: keep-all;
+}
+.karts-description-container >p:first-child{
+  font-size: 0.8333vw;
+  line-height: 1.458vw;
+}
+.karts-description-container >p:last-child{
+  font-size: 0.8333vw;
+  line-height: 1.354vw;
 }
 .flex-container{
 	display: flex;
@@ -1034,23 +1078,39 @@ iframe{
   gap: 1.458vw;
 }
 .flex-item-wraper{
-	flex: 1 1 40%;
+	/* flex: 1 1 40%; */
+  width: 40%;
 }
+/* 임시 */
+.flex-item-wraper div{
+  font-family: 'SUIT';
+  font-size: 0.8333vw;
+  line-height: 1.458vw;
+}
+.flex-item-wraper p{
+  font-family: 'Moderat';
+  font-size: 0.8333vw;
+  line-height: 1.354vw;
+}
+.flex-item-wraper img{
+  margin-bottom: 1.458vw;
+}
+/* 임시 */
 .flex-item-wraper img{
   width: 100%;
   height: auto;
 }
 .karts-container .active{
-  border: 2px solid rgba(0, 0, 0, 1);
+  border: 0.1042vw black solid;
   color: rgba(0, 0, 0, 1);
 }
 .karts-container .inactive{
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border: 0.1042vw solid rgba(0, 0, 0, 0.5);
   color: rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width:870px) {
   .karts-container{
-    padding: 103px 0 58px;
+    padding: 91px 0 58px;
   }
   .karts-link-wraper{
     width: 89.43px;
@@ -1086,7 +1146,8 @@ iframe{
     /* gap: 5.555vw; */
   }
   .flex-item-wraper{
-    flex: 1 1 100%;
+    /* flex: 1 1 100%; */
+    width: 100%;
   }
   .flex-item-wraper img{
     width: 100%;
@@ -1102,8 +1163,36 @@ iframe{
     /* margin-bottom: 5.555vw; */
   }
   .karts-description-container p{
-    margin-bottom: 0w;
+    /* margin-bottom: 0w; */
+    margin-bottom: 11.111vw;
   }
+  .karts-description-container >p:first-child{
+    font-size: 3.333vw;
+    line-height: 6.125vw;
+  }
+  .karts-description-container >p:last-child{
+    font-size: 3.333vw;
+    line-height: 4.865vw;
+  }
+  .flex-item-wraper img{
+    margin-bottom: 11.111vw;
+  }
+.flex-item-wraper div{
+  font-family: 'SUIT';
+  font-size: 3.333vw;
+    line-height: 6.125vw;
+}
+.flex-item-wraper p{
+  font-family: 'Moderat';
+  font-size: 3.333vw;
+    line-height: 4.865vw;
+    margin-bottom: 11.111vw;
+}
+.flex-item-wraper div , .flex-item-wraper p{
+  margin-left: 8.333vw;
+  margin-right: 8.333vw;
+}
+/* 임시 */
 }
 /*--------------------------------------------------*/
 /*------------------------abou-----------------------*/

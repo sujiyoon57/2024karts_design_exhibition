@@ -31,12 +31,12 @@ export default function MainPage(){
 
         const aboutTimeout = setTimeout(() => {
             setScrollup(true);
-          }, 1500);
+          }, 8000);
       
           // Set another timeout to add the 'down' class to About after 20 seconds
           const downTimeout = setTimeout(() => {
             setScrollup(false);
-          }, 20000);
+          }, 10000);
       
           // Clear the timeouts to prevent them from running after the component unmounts
           return () => {

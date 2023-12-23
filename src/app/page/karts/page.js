@@ -1,6 +1,6 @@
 "use client"
 
-// import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { fetchContentful } from '../../contentful/contentful';
 
 import { useState, useEffect, Children } from "react";
@@ -36,6 +36,8 @@ export default function Karts(){
       }
       getContentful();
     }, []);
+
+    console.log(faculty);
 
     return(
         <div className="karts-container">
@@ -82,7 +84,7 @@ export default function Karts(){
                   </div>
                 ):(<></>)}
               </section>
-              {/* <section>
+              <section>
                 <div className="karts-button-wraper">
                   <button 
                     onClick={()=>setAboutFacultyButton(!aboutFacultyButton)}
@@ -91,27 +93,48 @@ export default function Karts(){
                 </div>
                 {aboutFacultyButton ? (
                   <div>
-                  {faculty && faculty.map((data)=>(
-                    <div>
-                      <div className="flex-container karts-images-container">
-                        {data.fields.Images && data.fields.Images.map((img)=>(
-                          <div className="flex-item-wraper" key={img.id}>
-                            <Image src={'https:'+img.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex-container karts-description-container">
-                        {data.fields.caption && data.fields.caption.content.map((data)=>(
-                          <p className="flex-item-wraper" key={data.id}>
-                            {documentToReactComponents(data)}</p>
-                        ))}
-                      </div>
+                    <div className='flex-container'>
+                    <div className='flex-item-wraper temp'>
+                      <img src='/images/양승무.jpeg' alt='..'></img>
+                      <div>양승무 교수</div>
+                      <p style={{wordBreak:'break-all'}}>
+                        http://karts.ac.kr/usr/dpt/BBSCTG_0020050000000/professorDetail.do?prfNo=102</p>
                     </div>
-                  ))}
+                    <div className='flex-item-wraper temp'>
+                      <img src='/images/김경균.jpeg' alt='..'></img>
+                      <div>김경균 교수</div>
+                      <p style={{wordBreak:'break-all'}}>
+                      http://karts.ac.kr/usr/dpt/BBSCTG_0020050000000/professorDetail.do?prfNo=156</p>
+                    </div>
+                    <div className='flex-item-wraper temp'>
+                      <img src='/images/심규하.jpeg' alt='..'></img>
+                      <div>심규하 부교수</div>
+                      <p style={{wordBreak:'break-all'}}>
+                      https://www.karts.ac.kr/usr/dpt/BBSCTG_0020050000000/professorDetail.do?prfNo=577</p>
+                    </div>
+                    <div className='flex-item-wraper temp'>
+                      <img src='/images/김기현.jpeg' alt='..'></img>
+                      <div>김기현 조교수 (학과장)</div>
+                      <p style={{wordBreak:'break-all'}}>
+                      https://www.karts.ac.kr/usr/dpt/BBSCTG_0020050000000/professorDetail.do?prfNo=574</p>
+                    </div>
+                    <div className='flex-item-wraper temp'>
+                      <img src='/images/황보형호.png' alt='..'></img>
+                      <div style={{marginBottom:'48px'}}>황보형호 객원교수</div>
+                    </div>
                 </div>
+                    {/* <div className='flex-container'>
+                      {faculty && faculty.map((data)=>(
+                        <div className="flex-item-wraper">
+                          <Image src={'https:'+data?.fields?.image?.fields?.file?.url} alt=".." width={0} height={0} sizes="100vw"/>
+                          <p>{documentToReactComponents(data?.fields?.caption)}</p>
+                        </div>
+                      ))}
+                    </div> */}
+                  </div>
                 ):(<></>)}
               </section>
-              <section>
+              {/* <section>
                 <div className="karts-button-wraper">
                   <button 
                     onClick={()=>setContactButton(!contactButton)}
@@ -134,3 +157,26 @@ export default function Karts(){
         </div>
     )
 }
+
+
+// {aboutFacultyButton ? (
+//   <div>
+//   {faculty && faculty.map((data)=>(
+//     <div>
+//       <div className="flex-container karts-images-container">
+//         {data?.fields?.Images && data.fields.Images.map((img)=>(
+//           <div className="flex-item-wraper" key={img.id}>
+//             <Image src={'https:'+img.fields?.file?.url} alt=".." width={0} height={0} sizes="100vw"/>
+//           </div>
+//         ))}
+//       </div>
+//       <div className="flex-container karts-description-container">
+//         {data.fields.caption && data.fields.caption.content.map((data)=>(
+//           <p className="flex-item-wraper" key={data.id}>
+//             {documentToReactComponents(data)}</p>
+//         ))}
+//       </div>
+//     </div>
+//   ))}
+// </div>
+// ):(<></>)}
