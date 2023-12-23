@@ -1068,10 +1068,12 @@ iframe{
   word-break: keep-all;
 }
 .karts-description-container >p:first-child{
+  font-family: 'SUIT';
   font-size: 0.8333vw;
   line-height: 1.458vw;
 }
 .karts-description-container >p:last-child{
+  font-family: 'Moderat';
   font-size: 0.8333vw;
   line-height: 1.354vw;
 }
@@ -1082,7 +1084,7 @@ iframe{
 }
 .flex-item-wraper{
 	/* flex: 1 1 40%; */
-  width: 40%;
+  width: 48%;
 }
 /* 임시 */
 .flex-item-wraper div{
