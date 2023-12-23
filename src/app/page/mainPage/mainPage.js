@@ -42,9 +42,12 @@ export default function MainPage(){
 
         window.addEventListener("scroll", handleScroll);
 
-        const aboutTimeout = setTimeout(() => {
-          setScrollup(true);
-        }, 7000);
+        if (window.scrollY >=  0.4 * window.innerHeight) {
+          const aboutTimeout = setTimeout(() => {
+            setScrollup(true);
+          }, 7000);
+        }
+        
       
           // Set another timeout to add the 'down' class to About after 20 seconds
           // const downTimeout = setTimeout(() => {
