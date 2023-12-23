@@ -10,11 +10,11 @@ const About=()=>{
 
 
     return(
-        <div className="content-container">
-            <div className="content">
+        <div>
+            {/* <div className="content">
                 <p></p>
                 <p></p>
-            </div>
+            </div> */}
         </div>
     )
 }
