@@ -31,22 +31,16 @@ export default function MainPage(){
           // 스크롤이 100vh 이상인 경우 scrollup을 false로 설정
           if (window.scrollY >=  0.2 * window.innerHeight) {
             setScrollup(false);
-          } else {
-            const aboutTimeout = setTimeout(() => {
-              setScrollup(true);
-            }, 7000);
-          }
+          } 
         };
 
         getContentful();
 
         window.addEventListener("scroll", handleScroll);
 
-        if (window.scrollY >=  0.2 * window.innerHeight) {
-          const aboutTimeout = setTimeout(() => {
-            setScrollup(true);
-          }, 7000);
-        }
+        const aboutTimeout = setTimeout(() => {
+          setScrollup(true);
+        }, 7000);
         
       
           // Set another timeout to add the 'down' class to About after 20 seconds

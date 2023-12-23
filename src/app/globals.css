@@ -827,8 +827,11 @@ iframe{
   padding-right: 62px;
   padding-top: 91px;
   box-sizing: border-box;
+  z-index: 4;
+  background-color: white;
 }
 .designers-container{
+  background-color: white;
  height: 100%;
   display: grid;
   grid-template-columns : 18.714% 81.286%;
@@ -836,6 +839,7 @@ iframe{
   position: relative;
 }
 .name-container{
+  background-color: white;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
