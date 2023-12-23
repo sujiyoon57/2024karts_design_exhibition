@@ -27,21 +27,35 @@ export default function MainPage(){
           }
         }
 
+        const handleScroll = () => {
+          // 스크롤이 100vh 이상인 경우 scrollup을 false로 설정
+          if (window.scrollY >= window.innerHeight) {
+            setScrollup(false);
+          } else {
+            const aboutTimeout = setTimeout(() => {
+              setScrollup(true);
+            }, 7000);
+          }
+        };
+
         getContentful();
 
+        window.addEventListener("scroll", handleScroll);
+
         const aboutTimeout = setTimeout(() => {
-            setScrollup(true);
-          }, 8000);
+          setScrollup(true);
+        }, 7000);
       
           // Set another timeout to add the 'down' class to About after 20 seconds
-          const downTimeout = setTimeout(() => {
-            setScrollup(false);
-          }, 10000);
+          // const downTimeout = setTimeout(() => {
+          //   setScrollup(false);
+          // }, 18000);
       
           // Clear the timeouts to prevent them from running after the component unmounts
           return () => {
             clearTimeout(aboutTimeout);
-            clearTimeout(downTimeout);
+            window.removeEventListener("scroll", handleScroll);
+            // clearTimeout(downTimeout);
           };
       
 
