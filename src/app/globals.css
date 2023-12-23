@@ -466,7 +466,7 @@ footer{
 }
 .portfolio-box1 .project-name{
   font-size: 3.229vw;
-  line-height: 9.2797vw;
+  line-height: 3.2797vw;
   margin-bottom: 0.4167vw;
 }
 /* .portfolio-box1 .big{
@@ -478,7 +478,7 @@ footer{
   display: none;
 } */
 .portfolio-box2{
-  margin-bottom: 0;
+  margin-bottom: 7.344vw;
   margin-top: 2.5vw;
 }
 .student-info{
@@ -562,7 +562,7 @@ iframe{
   word-break: keep-all;
 }
 .portfolio-cation-wrap >div{
-  margin-bottom: 7.344vw;
+  /* margin-bottom: 7.344vw; */
   margin-left: 3%;
 }
 .portfolio-cation-wrap >div:first-child{
@@ -765,6 +765,9 @@ iframe{
   .portfolio-cation-wrap p{
     word-wrap: break-word;
     line-height: 6.111vw;
+  }
+  .portfolio-cation-wrap > div:first-of-type{
+    margin-bottom: 5.389vw;
   }
   .portfolio-box3{
     margin-top: 11.111vw;
