@@ -70,7 +70,6 @@ export default async function Portfolio(props){
             <div className="portfolio-box2">
                 <div className="project-info-wrap">
                     <div className="project-info">
-                        {portfolio.studentid}
                         <div className="project-name">{portfolio.projectName}</div>
                         <div className="project-detail">
                             <div>
