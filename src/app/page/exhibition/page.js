@@ -14,7 +14,7 @@ export default async function Exhibition(){
 
     return(
       <div className="exhibition">
-        <div className="exhibition-title">{title}</div>
+        {/* <div className="exhibition-title">{title}</div> */}
         <div className="exhibition-container">
             {portfolio && portfolio.map((data,index)=>(
                 <Link href={ `/page/portfolio/${index}`} key={index}>

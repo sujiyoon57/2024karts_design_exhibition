@@ -8,9 +8,21 @@
   unicode-range:U+0041-005A, U+0061-007A;
 }
 @font-face {
+  font-family: 'Alex';
+  src: local("AnyTestFont"), 
+        url("/fonts/AlexBrush-Regular.ttf") format("truetype");
+        unicode-range:U+0041-005A, U+0061-007A;
+}
+@font-face {
   font-family: 'SUIT';
   src: local("AnyTestFont"), 
         url("/fonts/SUIT-Regular.ttf") format("truetype");
+  unicode-range: U+AC00-D7A3;
+}
+@font-face {
+  font-family: 'korea';
+  src: local("AnyTestFont"), 
+        url("/fonts/testkoreafont.ttf") format("truetype");
   unicode-range: U+AC00-D7A3;
 }
 
@@ -38,6 +50,7 @@ header{
     z-index: 5;
     position: fixed;
     font-family: 'Moderat';
+    letter-spacing: 1px;
 }
 .header-icon-wrap{
     width: 313.67px;
@@ -258,6 +271,7 @@ nav span{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     padding-bottom: 2.5vw;
+    margin-top: 3.75vw;
   }
   .exhibition-container a{
     border-left: 1px rgba(0, 0, 0, 0.15) solid;
@@ -277,8 +291,12 @@ nav span{
     bottom: 20px;
     left:calc(1.042vw + 20px);
   }
+  .exhibition-info > div:first-child{
+    font-family: 'Moderat', 'SUIT';
+  }
   .exhibition-student-name{
     color: rgba(0, 0, 0, 0.5);
+    font-family: 'Moderat';
   }
   .whiteFont{color: white;}
   @media screen and (min-width:1134px){
@@ -463,11 +481,13 @@ footer{
   font-size: 0.9375vw;
   margin-bottom: 2.4479vw;
   margin-top: 36px;
+  font-family: 'Moderat';
 }
 .portfolio-box1 .project-name{
   font-size: 3.229vw;
   line-height: 3.2797vw;
   margin-bottom: 0.4167vw;
+  font-family: 'Moderat', 'SUIT';
 }
 /* .portfolio-box1 .big{
   font-size: 3.229vw;
@@ -490,8 +510,11 @@ footer{
   display: inline;
   margin-right: 1.1458vw;
 }
-.student-info div:last-child::before{
-  content: '| ';
+.student-info >div:first-child{
+  font-family: 'Moderat';
+}
+.student-info>div:last-child{
+  font-family: 'Moderat', 'SUIT';
 }
 .portfolio-box1, .project-name, .value, .move-page{
   text-transform: uppercase;
@@ -500,9 +523,11 @@ footer{
   text-transform: capitalize;
   font-size: 0.8435vw;
   color: rgba(0, 0, 0, 0.50);
+  font-family: 'Moderat';
 }
 .value{
   font-size: 0.8435vw;
+  font-family: 'Moderat', 'SUIT';
 }
 .portfolio-image-container{
   width: 100%;
@@ -540,6 +565,7 @@ iframe{
   font-size: 1.3021vw;
   margin-bottom: 1.458vw;
   word-wrap: break-word;
+  font-family: 'Moderat','SUIT';
 }
 .project-detail{
   display: grid;
@@ -560,6 +586,7 @@ iframe{
 .portfolio-cation-wrap p{
   word-wrap: break-word;
   word-break: keep-all;
+  font-family: 'Moderat', 'SUIT';
 }
 .portfolio-cation-wrap >div{
   /* margin-bottom: 7.344vw; */
@@ -567,9 +594,11 @@ iframe{
 }
 .portfolio-cation-wrap >div:first-child{
   line-height: 1.458vw;
+  font-family: 'SUIT';
 }
 .portfolio-cation-wrap div:last-child{
   line-height: 1.354vw;
+  font-family: 'Moderat';
 }
 .portfolio-box3{
   margin-top: 6.6667vw;
@@ -580,7 +609,8 @@ iframe{
   grid-template-columns: 23.1667% 76.8333%;
   width: 100%;
   height: 4.4792vw;
-  margin-bottom: 2.8125vw;
+  margin-bottom: 4.167vw;
+  font-family: 'Moderat', 'SUIT';
 }
 .student-info-detail >div:first-child{
   margin-bottom: 24px;
@@ -589,12 +619,13 @@ iframe{
   font-size: 1.5625vw;
   font-weight: 700;
   margin-bottom: 8px;
-  font-family: 'SUIT';
+  /* font-family: 'SUIT'; */
 }
 .student-info-detail >div:first-child >div:last-child{
   text-transform: capitalize;
   font-size: 1.25vw;
   font-weight: 400;
+  /* font-family: 'Moderat'; */
 }
 /* .student-info-detail >div:last-child{
   border-left: 1px solid #000;
@@ -615,7 +646,7 @@ iframe{
 	flex: 1 1 40%;
 }
 .student-info-detail >div:last-child >div:first-child{
-  font-family: 'SUIT';
+  /* font-family: 'SUIT'; */
 }
 .student-info-detail >div:last-child >div{
   margin-left: 1.5625vw;
@@ -625,13 +656,14 @@ iframe{
 }
 .link-container{
   text-align: center;
-  margin-bottom: 3.1771vw;
+  margin-bottom: 3.152vw;
 }
 .link-container span{
   margin: 0 1.302vw 0;
 }
 .link-container span svg{
-  width: 1.95vw;
+  /* width: 1.95vw; */
+  width: 2.135vw;
 }
 .move-page{
   font-size: 0.9375vw;
@@ -843,6 +875,7 @@ iframe{
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  font-family: 'Moderat';
 }
 .name-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/

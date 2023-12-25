@@ -28,11 +28,11 @@ export default async function Portfolio(props){
         <div className="portfolio-container">
             <div className="portfolio-box1">
                 <div className="navigation">
-                    <div><Link href='/page/exhibition'>&#123; view all projects &#125;</Link></div>
-                    <div><Link href='/' as="/#specific-section">&#123; back &#125;</Link></div>
+                    <div><Link href='/page/exhibition'>view all projects</Link></div>
+                    <div><Link href='/' as="/#specific-section">back</Link></div>
                 </div>
                 <div className="project-intro">
-                    <div className="project-name big">{portfolio.projectName}</div>
+                    <div className="project-name">{portfolio.projectName}</div>
                     <div className="student-info">
                         <div>{portfolio.nameEng}</div>
                         <div>{portfolio.major}</div>
