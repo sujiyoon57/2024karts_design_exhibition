@@ -152,7 +152,25 @@ nav span{
 }
 /*web main poster*/
 .mobile-poster{display: none;}
-@media screen and (min-width:871px) and (max-aspect-ratio:1) {
+@media screen and (min-width:871px) and (max-aspect-ratio:1) { 
+  .img-container img{
+      width: 100%;
+      height: auto;
+  }
+}
+@media screen and (min-width:871px) and (min-aspect-ratio:1) and (max-aspect-ratio:1920/988){
+  .img-container img{
+      width: 100%;
+      height: auto;
+  }
+}
+@media screen and (min-width:871px) and (min-aspect-ratio:1920/988){
+  .img-container img{
+      width: auto;
+      height: 100%;
+  }
+}
+/* @media screen and (min-width:871px) and (max-aspect-ratio:1) { // 잘리는 포스터
     .img-container img{
         height: 100%;
         width: auto;
@@ -169,10 +187,35 @@ nav span{
         height: auto;
         width: 100%;
     }
-}
+} */
 
 /*모바일 메인 포스터*/
-@media screen and (max-width:870px) and (max-aspect-ratio:1) {
+@media screen and (max-width:870px) and (max-aspect-ratio:360/780){
+  .main-container{padding-top: 91px;}  
+  .img-container{
+        margin-top: 0px;
+    }
+    .img-container img{
+        width: 100%;
+        height: auto;
+    }
+    .mobile-poster{display: inline;}
+    .web-poster{display: none;}
+}
+@media screen and (max-width:870px) and (min-aspect-ratio:360/780){
+  .main-container{padding-top: 91px;}  
+  .img-container{
+        margin-top: 0px;
+    }
+    .img-container img{
+        width: auto;
+        height: 100%;
+    }
+    .mobile-poster{display: inline;}
+    .web-poster{display: none;}
+}
+
+/* @media screen and (max-width:870px) and (max-aspect-ratio:1) {
   .main-container{padding-top: 91px;}
     .img-container{
         margin-top: 0px;
@@ -207,7 +250,7 @@ nav span{
     }
     .mobile-poster{display: inline;}
     .web-poster{display: none;}
-}
+} */
 
 /*--------------------------------------------------*/
 /*-------------------scroll down---------------------*/
