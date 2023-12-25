@@ -84,7 +84,7 @@ export default function Karts(){
                   </div>
                 ):(<></>)}
               </section>
-              {/* <section>
+              <section>
                 <div className="karts-button-wraper">
                   <button 
                     onClick={()=>setAboutFacultyButton(!aboutFacultyButton)}
@@ -127,17 +127,17 @@ export default function Karts(){
                       <div style={{marginBottom:'48px'}}>황보형호 객원교수</div>
                     </div>
                 </div>
-                    <div className='flex-container'>
+                    {/* <div className='flex-container'>
                       {faculty && faculty.map((data)=>(
                         <div className="flex-item-wraper">
                           <Image src={'https:'+data?.fields?.image?.fields?.file?.url} alt=".." width={0} height={0} sizes="100vw"/>
                           <p>{documentToReactComponents(data?.fields?.caption)}</p>
                         </div>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 ):(<></>)}
-              </section> */}
+              </section>
               {/* <section>
                 <div className="karts-button-wraper">
                   <button 

@@ -5,13 +5,17 @@
         url('/fonts/Moderat-Regular.woff') format('woff'),
         url('/fonts/Moderat-Regular.woff2') format('woff'),
         url('/fonts/Moderat-Regular.otf') format('opentype');
-  unicode-range:U+0041-005A, U+0061-007A;
+  unicode-range:U+0041-005A, U+0061-007A, 
+  U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E,
+  U+0030-0039;
 }
 @font-face {
   font-family: 'Alex';
   src: local("AnyTestFont"), 
         url("/fonts/AlexBrush-Regular.ttf") format("truetype");
-        unicode-range:U+0041-005A, U+0061-007A;
+        unicode-range:U+0041-005A, U+0061-007A, 
+        U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E,
+        U+0030-0039;
 }
 @font-face {
   font-family: 'SUIT';
@@ -1075,6 +1079,7 @@ iframe{
   position: relative;
   box-sizing: border-box;
   min-height: 100vh;
+  font-family: 'Moderat', 'SUIT';
 }
 .karts-content-container{
   width: 100%;
@@ -1105,6 +1110,7 @@ iframe{
   /* font-size: 18px; */
   font-size: 0.9375vw;
   margin-bottom: 1.667vw;
+  font-family: 'Moderat';
 }
 .karts-images-container img{
   margin-bottom: 1.458vw;
@@ -1117,12 +1123,12 @@ iframe{
   word-break: keep-all;
 }
 .karts-description-container >p:first-child{
-  font-family: 'SUIT';
+  /* font-family: 'SUIT'; */
   font-size: 0.8333vw;
   line-height: 1.458vw;
 }
 .karts-description-container >p:last-child{
-  font-family: 'Moderat';
+  /* font-family: 'Moderat'; */
   font-size: 0.8333vw;
   line-height: 1.354vw;
 }
@@ -1137,12 +1143,12 @@ iframe{
 }
 /* 임시 */
 .flex-item-wraper div{
-  font-family: 'SUIT';
+  /* font-family: 'SUIT'; */
   font-size: 0.8333vw;
   line-height: 1.458vw;
 }
 .flex-item-wraper p{
-  font-family: 'Moderat';
+  /* font-family: 'Moderat'; */
   font-size: 0.8333vw;
   line-height: 1.354vw;
 }
@@ -1232,12 +1238,12 @@ iframe{
     margin-bottom: 11.111vw;
   }
 .flex-item-wraper div{
-  font-family: 'SUIT';
+  /* font-family: 'SUIT'; */
   font-size: 3.333vw;
     line-height: 6.125vw;
 }
 .flex-item-wraper p{
-  font-family: 'Moderat';
+  /* font-family: 'Moderat'; */
   font-size: 3.333vw;
     line-height: 4.865vw;
     margin-bottom: 11.111vw;
