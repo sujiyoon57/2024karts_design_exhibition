@@ -100,6 +100,7 @@ nav span{
         background-color: #FFF;
         width: 132px;
         height: calc(100vh - 103px);
+        /* animation: fadeInRight 1.5s ease-in-out; */
     }
     nav span{
         display: block;
@@ -899,7 +900,7 @@ iframe{
 
 /*---------------------designer----------------------*/
 .designers{
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   padding-bottom: 96px;
   padding-left: 62px;
@@ -1065,8 +1066,8 @@ iframe{
   }
   .current{
     color: rgba(0, 0, 0, 1);
-    font-size: 3.5vw;
-    transform: translateY(-3.8px);
+    /* font-size: 3.5vw; */
+    /* transform: translateY(-3.8px); */
   }
   .name-container{
     overflow: auto;
@@ -1149,7 +1150,8 @@ iframe{
   /* height: 39px; */
   height: 2.03125vw;
   background: #FFF;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  letter-spacing: 1px;
   /* font-size: 18px; */
   font-size: 0.9375vw;
   margin-bottom: 1.667vw;
@@ -1267,7 +1269,7 @@ iframe{
   }
   .karts-description-container p{
     /* margin-bottom: 0w; */
-    margin-bottom: 11.111vw;
+    margin-bottom: 5.556vw;
   }
   .karts-description-container >p:first-child{
     font-size: 3.333vw;
