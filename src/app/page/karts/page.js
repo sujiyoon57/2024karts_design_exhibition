@@ -8,7 +8,7 @@ import Link from "next/link";
 import Footer from '@/app/component/footer';
 import KartsLinkLogo from "/public/asset/kartsLinkLogo.svg";
 
-export default function(){
+export default function Karts(){
 
     const [about, setAbout]=useState();
     const [faculty, setFaculty] =useState();
