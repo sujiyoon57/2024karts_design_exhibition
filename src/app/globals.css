@@ -121,7 +121,7 @@ nav span{
     }
     nav span{
         display: block;
-        margin-left: 17px;
+        margin-left: 6.111vw;
         margin-top: 36px;
     }
     .menu-icon-wrap{
@@ -380,8 +380,11 @@ nav span{
   .exhibition-info > div:first-child{
     font-family: 'Moderat', 'SUIT';
   }
-  .exhibition-image-container:hover .exhibition-info{
-    height: calc(100% - 4px);
+  
+  @media (hover: hover) {
+    .exhibition-image-container:hover .exhibition-info{
+      height: calc(100% - 4px);
+    }
   }
   .exhibition-student-name{
     /* color: rgba(0, 0, 0, 0.5); */
