@@ -27,16 +27,16 @@ export default function MainPage(){
           }
         }
 
-        const handleScroll = () => {
-          // 스크롤이 100vh 이상인 경우 scrollup을 false로 설정
-          if (window.scrollY >=  0.2 * window.innerHeight) {
-            setScrollup(false);
-          } 
-        };
+        // const handleScroll = () => {
+        //   // 스크롤이 100vh 이상인 경우 scrollup을 false로 설정
+        //   if (window.scrollY >=  0.2 * window.innerHeight) {
+        //     setScrollup(false);
+        //   } 
+        // };
 
         getContentful();
 
-        window.addEventListener("scroll", handleScroll);
+        // window.addEventListener("scroll", handleScroll);
 
         const aboutTimeout = setTimeout(() => {
           setScrollup(true);
@@ -51,7 +51,7 @@ export default function MainPage(){
           // Clear the timeouts to prevent them from running after the component unmounts
           return () => {
             clearTimeout(aboutTimeout);
-            window.removeEventListener("scroll", handleScroll);
+            // window.removeEventListener("scroll", handleScroll);
             // clearTimeout(downTimeout);
           };
       
@@ -71,8 +71,8 @@ export default function MainPage(){
                 {mobilePoster && <Image src={`https:${mobilePoster}`} alt='..' width={0} height={0} sizes='100vw' className="mobile-poster"/>}
             </div>)}
             <div className={`content-container ${scrollup ? 'up':'down'}`} >
-              <div style={{position:'absolute', right:'100px', top:'120px'}}
-              onClick={()=>setScrollup(false)}>X</div>
+              <div className="aboutExit" 
+              onClick={()=>setScrollup(false)}>닫기X</div>
                 <div className="content">
                     <p>21명의 파동은 각자의 고유한 떨림을 유지하며 서로 자유로이 교차되며, 
 새로운 움직임과 떨림을 공유합니다. 
