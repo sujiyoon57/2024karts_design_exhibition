@@ -63,7 +63,7 @@ export default function(){
                 {aboutButton && about && about.map((data)=>(
                     <div className="flex-box">
                         {data.fields.Images && data.fields.Images.map((img)=>(
-                            <div key={img.id} className="about-flex-item">
+                            <div key={data.id} className="about-flex-item">
                               <Image src={'https:'+img.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
                             </div>
                         ))}
