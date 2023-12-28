@@ -61,9 +61,9 @@ export default function Karts(){
                     </button>
                 </div>
                 {aboutButton && about && about.map((data)=>(
-                    <div className="flex-box">
+                    <div key={data.id} className="flex-box">
                         {data.fields.Images && data.fields.Images.map((img)=>(
-                            <div key={data.id} className="about-flex-item">
+                            <div key={img.id} className="about-flex-item">
                               <Image src={'https:'+img.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
                             </div>
                         ))}
