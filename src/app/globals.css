@@ -375,7 +375,7 @@ nav span{
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0,0,0,0.2);
   }
   .exhibition-info > div:first-child{
     font-family: 'Moderat', 'SUIT';
@@ -1548,6 +1548,7 @@ iframe{
   margin-right: 0.4167vw;
   padding: 0.677vw 2.65625vw;
   border: 0.1042vw solid #000;
+  color: #000;
 }
 .button-wrap button:last-child{
   margin-right: 0;
