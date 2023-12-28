@@ -19,7 +19,10 @@ export default async function Exhibition(){
             {portfolio && portfolio.map((data,index)=>(
                 <Link href={ `/page/portfolio/${index}`} key={index}>
                     <div className="exhibition-image-container">
-                    {data.fields.thumbnail.fields.file.url &&<Image src={'https:'+data.fields.thumbnail.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>}
+                        {data.fields.thumbnail.fields.file.url &&
+                            <Image src={'https:'+data.fields.thumbnail.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
+                        }
+                        {/* <div className="blackback"></div> */}
                         <div className={`exhibition-info ${data.fields.thumbnailBlack ? 'whiteFont':''}`}>
                             <div>{data.fields.projectName}</div>
                             <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? 'whiteFont':''}`}>{data.fields.nameEng}</div>

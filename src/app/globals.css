@@ -160,14 +160,14 @@ nav span{
   position:absolute;
   /* right:100px;
   top:120px; */
-  font-size: 0.694vw;
+  font-size: 14px;
   bottom: 25px;
   left: 50%;
   transform: translate(-50%);
 }
 @media screen and (max-width:870px) {
   .aboutExit{
-    font-size: 2.594vw;
+    font-size: 12px;
   }
 }
 /*web main poster*/
@@ -354,18 +354,31 @@ nav span{
     padding-right: 1.042vw;
   }
   .exhibition-info{
+    box-sizing: border-box;
+    color: #FFF;
     position: absolute;
-    bottom: 20px;
-    left:calc(1.042vw + 20px);
+    bottom: 4px;
+    left: 1.042vw;
+    width: calc(100% - 2.084vw);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: rgba(0,0,0,0.1);
   }
   .exhibition-info > div:first-child{
     font-family: 'Moderat', 'SUIT';
+    margin-left: 20px;
+  }
+  .exhibition-info > div:last-child{
+    margin-left: 20px;
+  }
+  .exhibition-image-container:hover .exhibition-info{
+    height: calc(100% - 4px);
   }
   .exhibition-student-name{
-    color: rgba(0, 0, 0, 0.5);
+    /* color: rgba(0, 0, 0, 0.5); */
     font-family: 'Moderat';
   }
-  .whiteFont{color: white;}
+  /* .whiteFont{color: white;} */
   @media screen and (min-width:1134px){
     .exhibition-container a:nth-last-of-type(-n+4){
       border: none;
@@ -398,12 +411,17 @@ nav span{
       border-left: rgba(0, 0, 0, 0.15) solid 1px;
     }
     .exhibition-info{
-      position: absolute;
-      bottom: 15px;
-      left:calc(1.042vw + 15px);
+      padding-bottom: 15px;
+      padding-top: 15px;
     }
-    .exhibition-info >div:first-child{font-size: 1.5887vw;}
-    .exhibition-info > div:last-child{font-size: 1.4122vw;}
+    .exhibition-info > div:first-child{
+      margin-left: 15px;
+      font-size: 1.5887vw;
+    }
+    .exhibition-info > div:last-child{
+      margin-left: 15px;
+      font-size: 1.4122vw;
+    }
   }
   @media screen and (min-width:567px) and (max-width:869px){
     .exhibition-container{
@@ -421,12 +439,17 @@ nav span{
       border-left: rgba(0, 0, 0, 0.15) solid 1px;
     }
     .exhibition-info{
-      position: absolute;
-      bottom: 10px;
-      left:calc(1.042vw + 10px);
+      padding-bottom: 15px;
+      padding-top: 15px;
     }
-    .exhibition-info >div:first-child{font-size: 1.5887vw;}
-    .exhibition-info > div:last-child{font-size: 1.4122vw;}
+    .exhibition-info > div:first-child{
+      margin-left: 15px;
+      font-size: 1.5887vw;
+    }
+    .exhibition-info > div:last-child{
+      margin-left: 15px;
+      font-size: 1.4122vw;
+    }
   }
   @media screen and (max-width:566px){
     .exhibition{
