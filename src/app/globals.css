@@ -104,9 +104,20 @@ nav span{
         top: 91px;
         right: 0;
         background-color: #FFF;
-        width: 132px;
-        height: calc(100vh - 103px);
-        /* animation: fadeInRight 1.5s ease-in-out; */
+        /* width: 132px; */
+        width: 100%;
+        height: calc(100vh - 91px);
+        animation: fadeInRight 1.2s ease-in-out;
+    }
+    @keyframes fadeInRight {
+      from{
+        opacity: 100;
+        transform: translateX(-100%);
+      }
+      to{
+        opacity: 100;
+        transform: none;
+      }
     }
     nav span{
         display: block;
