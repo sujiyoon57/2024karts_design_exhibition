@@ -362,7 +362,7 @@ nav span{
     width: calc(100% - 2.084vw);
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.15);
   }
   .exhibition-info > div:first-child{
     font-family: 'Moderat', 'SUIT';
@@ -1173,7 +1173,7 @@ iframe{
   position: relative;
 }
 .karts-link-wraper{
-  width: 5.9375vw;
+  width: 5.9375vw; 
   height: auto;
   position: absolute;
   top: 0;
@@ -1644,7 +1644,8 @@ iframe{
     font-size: 3.333vw;
   }
   .link-wraper{
-    width: 24.842vw;
+    /* width: 24.842vw; */
+    width: 89.43px;
     top: 13.056vw;
     right: 8.333vw;
   }
