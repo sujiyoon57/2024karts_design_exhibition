@@ -40,7 +40,7 @@ export default function MainPage(){
 
         const aboutTimeout = setTimeout(() => {
           setScrollup(true);
-        }, 7000);
+        }, 5000);
         
       
           // Set another timeout to add the 'down' class to About after 20 seconds
