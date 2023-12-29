@@ -171,14 +171,16 @@ nav span{
   position:absolute;
   /* right:100px;
   top:120px; */
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 0.8333vw;
   bottom: 25px;
   left: 50%;
   transform: translate(-50%);
 }
 @media screen and (max-width:870px) {
   .aboutExit{
-    font-size: 12px;
+    /* font-size: 12px; */
+    font-size: 3vw;
   }
 }
 /*web main poster*/
