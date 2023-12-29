@@ -1474,6 +1474,8 @@ iframe{
   padding: 91px 29.427vw 0;
   background: rgba(255, 255, 255, 0.90);
   animation: fadeInUp 1.5s ease-in-out;
+  height: 100vh;
+  box-sizing: border-box;
 }
 .content-container .content{
   margin-top: 5vw;
