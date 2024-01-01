@@ -17,12 +17,12 @@ export default function Header({exhibitionOn, archiveOn}){
                 {menuOn ? (<ExitIcon/>) : (<MenuIcon/>)}
             </div> 
             <nav className="web-nav">
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>karts</span></Link>
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>k-arts</span></Link>
                 {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>}
                 {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>archive</span></Link>}
             </nav>
             {menuOn&&<nav className="mobile-nav">
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>karts</span></Link>
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>k-arts</span></Link>
                 {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>}
                 {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>archive</span></Link>}
             </nav>}

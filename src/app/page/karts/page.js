@@ -43,11 +43,9 @@ export default function Karts(){
     return(
         <div className="container1">
             <div className="container2">
-                <div className="link-wraper">
-                    <Link href="https://www.karts.ac.kr/" passHref>
-                    <KartsLinkLogo/>
-                    </Link>
-                </div>
+                <Link href="https://www.karts.ac.kr/" passHref className="link-wraper">
+                <KartsLinkLogo/>
+                </Link>
                 <div className="button-wrap">
                     <button 
                         onClick={()=>buttonClick("about")}
