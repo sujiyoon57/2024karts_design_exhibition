@@ -82,7 +82,7 @@ export default function Designer(){
                         return(
                             <li
                             key={index}
-                            id={index === selectedStudent ? 'selected' : 'notSelected'}
+                            className={index === selectedStudent ? 'selected' : 'notSelected'}
                             onClick={()=>setSelectedStudent(index)}
                             >
                             {student.fields.nameEng}
@@ -95,7 +95,7 @@ export default function Designer(){
                         return(
                             <li
                             key={index}
-                            id={student === selectedStudent ? 'selected' : 'notSelected'}
+                            className={index === selectedStudent ? 'selected' : 'notSelected'}
                             onClick={()=>setSelectedStudent(index)}
                             >
                             {student.fields.nameEng}
