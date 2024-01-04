@@ -1054,11 +1054,18 @@ iframe{
 .name-container li{
   list-style: none;
   margin-bottom: 10px;
-  color: rgba(0, 0, 0, 0.50);
+  /* color: rgba(0, 0, 0, 0.50); */
   font-size: 16px;
   text-transform: uppercase;
 }
 .name-container li:hover{
+  color: #000;
+  margin-left: 10px;
+}
+.notSelected{
+  color: rgba(0, 0, 0, 0.50);
+}
+.selected{
   color: #000;
   margin-left: 10px;
 }
@@ -1219,11 +1226,10 @@ iframe{
     overflow-x: hidden;
   }
   
-  .selected{
+  #selected{
     color: #000;
-    margin-left: 10px;
   }
-  .notSelected{
+  #notSelected{
     color: rgba(0, 0, 0, 0.50);
   }
   .swiper-wapper .swiper-slide{
