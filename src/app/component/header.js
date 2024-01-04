@@ -12,19 +12,19 @@ export default function Header({exhibitionOn, archiveOn}){
     
     return(
         <header>
-            <div className="header-icon-wrap"><Link href='/'><HeaderIcon/></Link></div>
+            <div className="header-icon-wrap"><Link href='/'><HeaderIcon onClick={()=>setMenuOn(false)}/></Link></div>
             <div className="menu-icon-wrap" onClick={()=>setMenuOn(!menuOn)}>
                 {menuOn ? (<ExitIcon/>) : (<MenuIcon/>)}
             </div> 
             <nav className="web-nav">
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>k-arts</span></Link>
-                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>}
-                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>archive</span></Link>}
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>Design at K-ARTS</span></Link>
+                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>Exhibition</span></Link>}
+                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>Archive</span></Link>}
             </nav>
-            {menuOn&&<nav className="mobile-nav">
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>k-arts</span></Link>
-                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>exhibition</span></Link>}
-                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>archive</span></Link>}
+            {<nav className={`mobile-nav ${menuOn?'menuActive' : 'menuInactive'}`}>
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>Design at k-ARTS</span></Link>
+                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>Exhibition</span></Link>}
+                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>Archive</span></Link>}
             </nav>}
         </header>
     )

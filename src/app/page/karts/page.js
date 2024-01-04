@@ -76,9 +76,11 @@ export default function Karts(){
                         {faculty && faculty.map((data, index)=>(
                         <div key={index} className="faculty-flex-item">
                             <Image src={'https:'+data.fields.image.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
-                            {data.fields.name && <div>{data.fields.name}</div>}
-                            {data.fields.position && <div>{data.fields.position}</div>}
-                            {data.fields.link && <div><Link href={data.fields.link}>상세보기</Link></div>}
+                            <div className="faculty-info">
+                                {data.fields.name && <div>{data.fields.name}</div>}
+                                {data.fields.position && <div>{data.fields.position}</div>}
+                                {data.fields.link && <div><Link href={data.fields.link}>상세보기</Link></div>}
+                            </div>
                         </div>
                         ))}
                     </div> 

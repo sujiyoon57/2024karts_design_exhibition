@@ -27,10 +27,6 @@ export default async function Portfolio(props){
     return(
         <div className="portfolio-container">
             <div className="portfolio-box1">
-                <div className="navigation">
-                    <div><Link href='/page/exhibition'>view all projects</Link></div>
-                    <div><Link href='/' as="/#specific-section">back</Link></div>
-                </div>
                 <div className="project-intro">
                     <div className="project-name">{portfolio.projectName}</div>
                     <div className="student-info">
@@ -77,10 +73,10 @@ export default async function Portfolio(props){
                                     <div className="key">student</div>
                                     <div className="value">{portfolio.nameEng}</div>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <div className="key">advisor</div>
                                     <div className="value">{portfolio.advisor}</div>
-                                </div>
+                                </div> */}
                             </div>
                             <div>
                                 <div className="key">category</div>
@@ -149,12 +145,29 @@ export default async function Portfolio(props){
                     </div>
                     <div>
                         <div>{portfolio.introductionKr}</div>
+                        {/* <div>{portfolio.email}</div> */}
+                        <div className="link-container">
+                        {portfolio.instagramLink !== undefined && portfolio.instagramLink !== '' ? (
+                            <Link href={portfolio.instagramLink}>
+                                <span><InstaLogoIcon/></span>
+                            </Link>
+                        ) : null}
+                        {portfolio.webLink !== undefined && portfolio.webLink !== '' ? (
+                            <Link href={portfolio.webLink}>
+                                <span><WebLogoIcon/></span>
+                            </Link>
+                        ) : null}
+                        {portfolio.vimeoLink !== undefined && portfolio.vimeoLink !== '' ? (
+                            <Link href={portfolio.vimeoLink}>
+                                <span><VimeoLogoIcon/></span>
+                            </Link>
+                        ) : null}
+                        </div>
                         <div>{portfolio.introductionEng}</div>
                         <div>{portfolio.email}</div>
-                        <div>{portfolio.phoneNumber}</div>
                     </div>
                 </div>
-                <div className="link-container">
+                {/* <div className="link-container">
                 {portfolio.instagramLink !== undefined && portfolio.instagramLink !== '' ? (
                     <Link href={portfolio.instagramLink}>
                         <span><InstaLogoIcon/></span>
@@ -170,6 +183,10 @@ export default async function Portfolio(props){
                         <span><VimeoLogoIcon/></span>
                     </Link>
                 ) : null}
+                </div> */}
+                <div className="navigation">
+                    <div><Link href='/page/exhibition'>view all projects</Link></div>
+                    <div><Link href='/' as="/#specific-section">back</Link></div>
                 </div>
                 <div className="move-page">
                     <div>other projects</div>
