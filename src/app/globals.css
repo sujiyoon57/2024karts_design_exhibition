@@ -524,7 +524,7 @@ nav span{
       position: absolute;
       top: 0;
       height: 12px;
-      width: 66.667vw;
+      width: 100%;
       border-top: #f0f0f0 solid 1px;
       margin-left: 50%;
       transform: translate(-50%);
