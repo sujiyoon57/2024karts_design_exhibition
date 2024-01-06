@@ -413,6 +413,7 @@ nav span{
   }
   .exhibition-info > div:first-child{
     font-family: 'Moderat', 'SUIT';
+    margin-bottom: 2px;
   }
   
   @media (hover: hover) {
@@ -727,7 +728,7 @@ iframe{
   grid-template-columns: 52.766% 47.234%;
 }
 .project-detail >div>div{
-  margin-bottom: 1.0417vw;
+  margin-bottom: 0.8333vw;
 }
 .portfolio-cation-wrap{
   display: grid;
@@ -741,7 +742,7 @@ iframe{
 }
 .portfolio-cation-wrap >div{
   /* margin-bottom: 7.344vw; */
-  margin-left: 3%;
+  margin-left: 0.9375vw;
 }
 .portfolio-cation-wrap >div:first-child{
   line-height: 1.458vw;
@@ -759,7 +760,7 @@ iframe{
   display: grid;
   grid-template-columns: 23.1667% 76.8333%;
   width: 100%;
-  height: 4.4792vw;
+  /* height: 4.4792vw; -------------------------------------*/
   margin-bottom: 4.7396vw;
   font-family: 'Moderat', 'SUIT';
 }
@@ -867,7 +868,7 @@ iframe{
     font-size: 6.667vw;
     line-height: 7.2322vw;
     /* margin-bottom: 6.667vw; */
-    margin-bottom: 4.444vw;
+    margin-bottom: 3.333vw;
     word-wrap: break-word;
   }
   /* .portfolio-box1 .big{
@@ -971,7 +972,7 @@ iframe{
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     width: 100%;
-    height: 30.833vw;
+    /* height: 30.833vw; ----------------------*/
     margin-bottom: 10.556vw;
   }
   .student-info-detail >div:first-child{
@@ -980,6 +981,7 @@ iframe{
   .student-info-detail >div:first-child >div:first-child{
     font-size: 6.667vw;
     margin-bottom: 4px;
+    font-weight: lighter;
   }
   .student-info-detail >div:first-child >div:last-child{
     font-size: 3.333vw;
@@ -1693,11 +1695,14 @@ iframe{
 .link-wraper svg{
   width: 6.771vw;
   height: auto;
-  position: absolute;
+  /* position: absolute; */
   /* top: 1.875vw; */
   /* right: 18.802vw; */
-  top: 1.25vw;
-  left: 18.802vw;
+  /* top: 1.25vw;
+  left: 18.802vw; */
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 3.59375vw;
 }
 @media screen and (max-width:870px) {
   .container1{
@@ -1754,10 +1759,10 @@ iframe{
     bottom: 4.9vw;
   }
   .link-wraper svg{
-    /* width: 24.842vw; */
     width: 89.43px;
-    top: 13.056vw;
+    /* top: 13.056vw; */
     /* right: 8.333vw; */
-    left: 8.333vw;
+    /* left: 8.333vw; */
+    margin-top: 8.889vw;
   }
 }
