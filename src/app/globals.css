@@ -500,7 +500,7 @@ nav span{
   }
   @media screen and (max-width:566px){
     .exhibition{
-      padding: 91px 7.333vw 0;
+      padding: 91px 7.333vw 40px;
       position: relative;
     }
     .exhibition .exhibition-title{
@@ -579,8 +579,8 @@ footer{
   @media screen and (max-width:870px) {
     footer{
       height: 44px;
-      right: 35px;
-      left: 35px;
+      right: 16px;
+      left: 16px;
     }
     footer >span:nth-of-type(1){
       /* width: auto;
@@ -1169,8 +1169,8 @@ iframe{
     min-height: 100vh;
     /* min-height: 100vh; */
     margin-top: 58px;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-bottom: 96px;
   }
   .designers-container{
