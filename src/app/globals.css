@@ -156,7 +156,7 @@ nav span{
         height: auto;
         position: absolute;
         /* bottom: 21px; */
-        top: 30px;
+        top: 32px;
         right: 16.69px;
     }
 }
@@ -868,7 +868,7 @@ iframe{
     font-size: 6.667vw;
     line-height: 7.2322vw;
     /* margin-bottom: 6.667vw; */
-    margin-bottom: 3.333vw;
+    margin-bottom: 2.7778vw;
     word-wrap: break-word;
   }
   /* .portfolio-box1 .big{
@@ -931,7 +931,7 @@ iframe{
   .project-info .project-name{
     font-size: 3.333vw;
     /* margin-bottom: 5.556vw; */
-    margin-bottom: 3.444vw;
+    margin-bottom: 2.7778vw;
     word-wrap: break-word;
   }
   .project-detail{
@@ -981,6 +981,7 @@ iframe{
   .student-info-detail >div:first-child >div:first-child{
     font-size: 6.667vw;
     margin-bottom: 4px;
+    margin-left: -2px;
     font-weight: lighter;
   }
   .student-info-detail >div:first-child >div:last-child{
