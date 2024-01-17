@@ -1009,7 +1009,7 @@ iframe{
     text-align: left;
     margin-bottom: 16.667vw;
   }
-  .link-container span{
+  .link-container a{
     margin-right: 2.222vw;
   }
   .link-container span svg{
