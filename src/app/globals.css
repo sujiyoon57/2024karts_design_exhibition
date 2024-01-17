@@ -1240,9 +1240,11 @@ iframe{
   }
   .viewallicon {
     display: block;
-    margin-left: 50%;
+    left: 50%;
     transform: translate(-50%);
-    margin-bottom: 6.667vw;
+    /* margin-bottom: 6.667vw; */
+    position: absolute;
+    bottom: 104px;
   }
   .viewallicon svg{
     width: 31.111vw;

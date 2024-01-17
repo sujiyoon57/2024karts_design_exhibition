@@ -157,8 +157,8 @@ export default function Designer(){
                         </Link>}
                 </div>
             </div>
-            <div className="viewallicon"><Link href='/page/exhibition'><ViewAll/></Link></div>
         </div>
+        <div className="viewallicon"><Link href='/page/exhibition'><ViewAll/></Link></div>
         <Footer/>
       </div>
     );
