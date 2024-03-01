@@ -20,6 +20,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 export default function Designer() {
   const [portfolio, setPortfolio] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(0);
+  const [firstSelectedStudent, setFirstSelectedStudent] = useState(0);
   const [selectedStudentMobile, setSelectedStudentMobile] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -31,9 +32,10 @@ export default function Designer() {
 
         if (data.length > 0) {
           const storedCount = parseInt(localStorage.getItem("count")) || 0;
-          console.log('count' + storedCount);
+          // console.log('count' + storedCount);
           const nextCount = (storedCount + 1) % data.length;
           setSelectedStudent(nextCount);
+          setFirstSelectedStudent(nextCount);
           localStorage.setItem("count", nextCount.toString());
         }
       } catch (error) {
@@ -67,7 +69,7 @@ export default function Designer() {
         <div className="name-container">
           <div className="web-name-list">
             {portfolio && portfolio.map((student, index) => {
-              if (student.fields && (selectedStudent <= index && index < portfolio.length)) {
+              if (student.fields && (firstSelectedStudent <= index && index < portfolio.length)) {
                 return (
                   <li
                     key={index}
@@ -80,7 +82,7 @@ export default function Designer() {
               }
             })}
             {portfolio && portfolio.map((student, index) => {
-              if (student.fields && (0 <= index && index < selectedStudent)) {
+              if (student.fields && (0 <= index && index < firstSelectedStudent)) {
                 return (
                   <li
                     key={index}
