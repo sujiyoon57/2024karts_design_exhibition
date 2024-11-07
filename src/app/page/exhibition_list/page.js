@@ -19,7 +19,7 @@ export default async function Exhibition(){
             <div className="listtype_hd"> 
                 <div>학생명  Student Name</div>
                 <div>작품이름 Project Name</div>
-                <div>전공 이름</div>
+                <div>전공 이름 </div>
             </div>
             {portfolio && portfolio.map((data,index)=>(
                 <Link href={ `/page/portfolio/${index}`} key={index}>

@@ -35,6 +35,7 @@ export default async function Exhibition(){
                         <div>{data.fields.projectName}</div>
                         <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? 'whiteFont':''}`}>{data.fields.nameEng}</div>
                     </div>
+                    
                 </Link>
             ))}
         </div>
