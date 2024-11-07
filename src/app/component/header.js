@@ -17,14 +17,30 @@ export default function Header({exhibitionOn, archiveOn}){
                 {menuOn ? (<ExitIcon/>) : (<MenuIcon/>)}
             </div> 
             <nav className="web-nav">
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>Design at K-ARTS</span></Link>
-                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>Exhibition</span></Link>}
-                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>Archive</span></Link>}
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>About</span></Link>
+                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>2024 Exhibition</span></Link>}
+                {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>Archive</span></Link>} 
+                <div>
+                    <span>PDF</span>
+                    <p>
+                        <Link href=""><span>2023</span></Link>
+                        <Link href=""><span>2022</span></Link>
+                    </p>
+                </div> 
+                <Link href="" onClick={()=>setMenuOn(false)}><span>Instagram</span></Link>
             </nav>
             {<nav className={`mobile-nav ${menuOn?'menuActive' : 'menuInactive'}`}>
-                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>Design at k-ARTS</span></Link>
-                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>Exhibition</span></Link>}
+                <Link href="/page/karts" onClick={()=>setMenuOn(false)}><span>About</span></Link>
+                {exhibitionOn && <Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>Exhibition 2024</span></Link>}
                 {archiveOn && <Link href="/" onClick={()=>setMenuOn(false)}><span>Archive</span></Link>}
+                <div>
+                    <span>Archive</span>
+                    <p>
+                        <Link href=""><span>2023</span></Link>
+                        <Link href=""><span>2022</span></Link>
+                        <Link href=""><span>2021</span></Link>
+                    </p>
+                </div> 
             </nav>}
         </header>
     )

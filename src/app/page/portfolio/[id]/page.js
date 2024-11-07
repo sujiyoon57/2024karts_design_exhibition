@@ -31,11 +31,12 @@ export default async function Portfolio(props){
                     <div className="project-name">{portfolio.projectName}</div>
                     <div className="student-info">
                         <div>{portfolio.nameEng}</div>
-                        <div>{portfolio.major}</div>
+                        {/* <div>{portfolio.major}</div> */}
                     </div>
                 </div>
             </div>
-            <div className="portfolio-image-container">
+            <div className="portfolio-flex">
+                <div className="portfolio-image-container">
                 <div >
                     {portfolio.mainVimeoEmbedLink ? (
                         <div className="video-wrap">
@@ -62,79 +63,80 @@ export default async function Portfolio(props){
                         <div className="portfolio-image-wrap">{portfolio.mainImage && <Image src={'https:'+portfolio.mainImage.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>}</div>
                     )}
                 </div>
-            </div>
-            <div className="portfolio-box2">
-                <div className="project-info-wrap">
-                    <div className="project-info">
-                        <div className="project-name">{portfolio.projectName}</div>
-                        <div className="project-detail">
-                            <div>
+                </div>
+                <div className="portfolio-box2">
+                    <div className="project-info-wrap">
+                        {/* <div className="project-info">
+                            <div className="project-name">{portfolio.projectName}</div>
+                            <div className="project-detail">
                                 <div>
-                                    <div className="key">student</div>
-                                    <div className="value">{portfolio.nameEng}</div>
+                                    <div>
+                                        <div className="key">student</div>
+                                        <div className="value">{portfolio.nameEng}</div>
+                                    </div>
+                                    <div>
+                                        <div className="key">advisor</div>
+                                        <div className="value">{portfolio.advisor}</div>
+                                    </div>
                                 </div>
-                                {/* <div>
-                                    <div className="key">advisor</div>
-                                    <div className="value">{portfolio.advisor}</div>
-                                </div> */}
+                                <div>
+                                    <div className="key">category</div>
+                                    <div className="value">
+                                        {portfolio.category && portfolio.category.map((type, index)=>(
+                                            <div key={index}>{type}</div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> */}
+                        <div className="portfolio-cation-wrap">
+                            <div>
+                                {portfolio.statementKr && portfolio.statementKr.content.map((data,index)=>(
+                                index==0?(
+                                    <p key={index}>{data.content[0].value}</p>
+                                ):(
+                                    <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
+                                )
+                                ))}
                             </div>
                             <div>
-                                <div className="key">category</div>
-                                <div className="value">
-                                    {portfolio.category && portfolio.category.map((type, index)=>(
-                                        <div key={index}>{type}</div>
-                                    ))}
-                                </div>
+                                {portfolio.statementEng && portfolio.statementEng.content.map((data,index)=>(
+                                index==0?(
+                                    <p key={index}>{data.content[0].value}</p>
+                                ):(
+                                    <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
+                                )
+                                ))}
                             </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-cation-wrap">
-                        <div>
-                            {portfolio.statementKr && portfolio.statementKr.content.map((data,index)=>(
-                               index==0?(
-                                <p key={index}>{data.content[0].value}</p>
-                               ):(
-                                <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
-                               )
-                            ))}
-                        </div>
-                        <div>
-                            {portfolio.statementEng && portfolio.statementEng.content.map((data,index)=>(
-                               index==0?(
-                                <p key={index}>{data.content[0].value}</p>
-                               ):(
-                                <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
-                               )
-                            ))}
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="portfolio-image-container">
-                <div className="vedio-wrap">
-                    {portfolio.topEmbed&&
-                    <iframe 
+                <div className="portfolio-image-container">
+                    <div className="vedio-wrap">
+                        {portfolio.topEmbed&&
+                        <iframe 
+                            width="100%"
+                            src={`${portfolio.topEmbed}&mute=1&autoplay=1`}
+                            frameborder="0" 
+                            allowfullscreen
+                            allow="autoplay"
+                        ></iframe>}
+                    </div>
+                    <div className="portfolio-image-wrap">
+                        {portfolio.works&&portfolio.works.map((data, index)=>(
+                            <Image key={index} src={'https:'+data.fields.file.url} alt=".." width={0} height={0} sizes="100vw" style={{display:'block'}}/>
+                        ))}
+                    </div>
+                    <div className="vedio-wrap">
+                        {portfolio.bottomEmbed&&
+                        <iframe 
                         width="100%"
-                        src={`${portfolio.topEmbed}&mute=1&autoplay=1`}
+                        src={`${portfolio.bottomEmbed}&mute=1&autoplay=1`}
                         frameborder="0" 
                         allowfullscreen
                         allow="autoplay"
                     ></iframe>}
-                </div>
-                <div className="portfolio-image-wrap">
-                    {portfolio.works&&portfolio.works.map((data, index)=>(
-                        <Image key={index} src={'https:'+data.fields.file.url} alt=".." width={0} height={0} sizes="100vw" style={{display:'block'}}/>
-                    ))}
-                </div>
-                <div className="vedio-wrap">
-                    {portfolio.bottomEmbed&&
-                    <iframe 
-                    width="100%"
-                    src={`${portfolio.bottomEmbed}&mute=1&autoplay=1`}
-                    frameborder="0" 
-                    allowfullscreen
-                    allow="autoplay"
-                ></iframe>}
+                    </div>
                 </div>
             </div>
             <div className="portfolio-box3">
@@ -184,10 +186,10 @@ export default async function Portfolio(props){
                     </Link>
                 ) : null}
                 </div> */}
-                <div className="navigation">
+                {/* <div className="navigation">
                     <div><Link href='/page/exhibition'>view all projects</Link></div>
                     <div><Link href='/' as="/#specific-section">back</Link></div>
-                </div>
+                </div>*/}
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">
