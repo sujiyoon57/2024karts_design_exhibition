@@ -35,6 +35,7 @@ export default async function Portfolio(props){
                     </div>
                 </div>
             </div>
+            
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
                 <div >
