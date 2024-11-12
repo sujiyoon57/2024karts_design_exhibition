@@ -508,7 +508,8 @@ nav span{
   }
   @media screen and (max-width:566px){
     .exhibition{
-      padding: 91px 7.333vw 40px;
+      /* padding: 91px 7.333vw 40px; */
+      padding: 91px 16.69px 40px;
       position: relative;
     }
     .exhibition .exhibition-title{
