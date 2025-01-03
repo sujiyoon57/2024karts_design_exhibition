@@ -2,6 +2,7 @@ import './globals.css'
 import { pageStore } from './zustand/zustand'
 
 import Header from './component/header'
+import Footer from './component/footer'
 import { fetchContentful } from './contentful/contentful'
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default async function RootLayout({ children }) {
         <div>
           <Header exhibitionOn={exhibitionOn} archiveOnOn={archiveOn} />
           {children}
+          <Footer />
         </div> 
       </body>
     </html>

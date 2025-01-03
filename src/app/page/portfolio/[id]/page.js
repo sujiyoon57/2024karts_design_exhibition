@@ -206,8 +206,7 @@ export default async function Portfolio(props){
                         }
                     </div>
                 </div>
-                <ScrollUp/>
-                <Footer/>
+                <ScrollUp/> 
             </div>
         </div>
     )

@@ -1993,6 +1993,6 @@ iframe{
   .archive_intro .credit{width:100%;}
   .archive_intro .credit dl + h4{margin-top:30px;}
   .archive_intro .credit dl dt{width:93px; ;}
-  .archive_intro .credit dl dd{width:calc(100% - 93px); } 
+  .archive_intro .credit dl dd{width:calc(100% - 93px); }  
   
 }

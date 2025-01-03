@@ -38,8 +38,7 @@ export default async function Exhibition(){
                     
                 </Link>
             ))}
-        </div>
-        <Footer/>
+        </div> 
       </div>
     )
 }
