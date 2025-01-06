@@ -4,7 +4,6 @@ import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful"; 
 
 export default async function Notice(){
-
     var data = await fetchContentful('notice');
     const notice = data;
     
@@ -15,7 +14,12 @@ export default async function Notice(){
                 <li>
                     <a href="/page/archiveIntro"> 
                         <div className="archive-info">
-                            <img src="/asset/archive2024.png" />
+                           <Image
+                                src="/asset/archive2024.png"
+                                alt="Archive 2024"
+                                width={300}
+                                height={200}
+                            />
                             <div>2024</div>
                         </div> 
                     </a>
@@ -23,7 +27,12 @@ export default async function Notice(){
                 <li>
                     <a href="/page/exhibition"> 
                         <div className="archive-info">
-                            <img src="/asset/archive2023.png" />
+                            <Image
+                                src="/asset/archive2023.png"
+                                alt="Archive 2023"
+                                width={300}
+                                height={200}
+                            />
                             <div>2023</div>
                         </div> 
                     </a>
