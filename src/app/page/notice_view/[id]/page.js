@@ -31,7 +31,7 @@ export default async function Notice(props){
             <div className="notiview-cont"> 
                 {notice.contents && notice.contents.content.map((data)=>(
                     <p key={data.id} className="about-flex-item">
-                        {documentToReactComponents(data)}1</p>
+                        {documentToReactComponents(data)}</p>
                 ))}
             </div> 
             <div className="notiview-back"><Link href='/page/notice'>Back to List</Link></div> 
