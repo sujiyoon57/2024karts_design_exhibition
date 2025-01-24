@@ -10,19 +10,15 @@ import KartsLinkLogo from "/public/asset/kartsLinkLogo.svg";
 
 export default function Karts(){
 
-    const [about, setAbout]=useState();
-    const [faculty, setFaculty] =useState();
-    const [aboutButton, setAboutButton] = useState(true);
-    const [facultyButton, setFacultyButton] =useState(false);
+    const [professor, setProfessor] = useState([]);
 
     useEffect(() => {
         const getContentful=async()=>{
           try{
-            var data = await fetchContentful('karts');
-            setAbout(data);
-            data = await fetchContentful('kartsAboutFaculty');
-            setFaculty(data);
-            console.log(data);
+
+            var data = await fetchContentful('professor');
+            setProfessor(data);
+
           }catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -42,38 +38,17 @@ export default function Karts(){
                  
                  
                 <div className="professor_list">
-                    <div className="prof_con">
-                        <div className="prof_name">고베드로 강사</div>
-                        <div className="prof_info">
-                            <p><span>전공분야</span> <em>인터랙션 디자인</em></p>
-                            <p><span>학위정보</span> <em>전공분야</em></p>
-                            <p><span>이메일</span> <em>bedro_ko@naver.com</em></p>
-                        </div> 
-                    </div>         
-                    <div className="prof_con">
-                        <div className="prof_name">고베드로 강사</div>
-                        <div className="prof_info">
-                            <p><span>전공분야</span> <em>인터랙션 디자인</em></p>
-                            <p><span>학위정보</span> <em>전공분야</em></p>
-                            <p><span>이메일</span> <em>bedro_ko@naver.com</em></p>
-                        </div> 
-                    </div>         
-                    <div className="prof_con">
-                        <div className="prof_name">고베드로 강사</div>
-                        <div className="prof_info">
-                            <p><span>전공분야</span> <em>인터랙션 디자인</em></p>
-                            <p><span>학위정보</span> <em>전공분야</em></p>
-                            <p><span>이메일</span> <em>bedro_ko@naver.com</em></p>
-                        </div> 
-                    </div>         
-                    <div className="prof_con">
-                        <div className="prof_name">고베드로 강사</div>
-                        <div className="prof_info">
-                            <p><span>전공분야</span> <em>인터랙션 디자인</em></p>
-                            <p><span>학위정보</span> <em>전공분야</em></p>
-                            <p><span>이메일</span> <em>bedro_ko@naver.com</em></p>
-                        </div> 
-                    </div>         
+                     {professor && professor.map((data, index)=>(
+                        <div className="prof_con">
+                            <div className="prof_name">{data.fields.name}</div>
+                            <div className="prof_info">
+                                <p><span>전공분야</span> <em>{data.fields.major}</em></p>
+                                <p><span>학위정보</span> <em>{data.fields.degree}</em></p>
+                                <p><span>이메일</span> <em>{data.fields.email}</em></p>
+                            </div> 
+                        </div>      
+                    ))}
+
                 </div> 
               
             </div> 
