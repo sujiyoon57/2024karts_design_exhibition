@@ -18,7 +18,24 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 export default function MainPage(){
 
-    
+    const [banner ,setBanner]=useState();
+
+    useEffect(() => {
+        const getContentful=async()=>{
+          try{
+
+            var data = await fetchContentful('banner');
+            setBanner(data);
+
+            //console.log(data);
+
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+        getContentful();
+      }, []);
+
     return(
         <div className="main-banner">
             <Swiper  
@@ -41,9 +58,10 @@ export default function MainPage(){
                 navigation={true} modules={[Navigation]}
                 className="mainBannerSwiper "
                 >
-                <SwiperSlide><img src="/asset/ex_main_banner.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_main_banner.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_main_banner.png" /></SwiperSlide>
+                {banner && banner.map((data)=>(
+                    <SwiperSlide><img src={'https:'+data.fields.image.fields.file.url} /></SwiperSlide>  
+                ))}
+                
             </Swiper>
         </div>
     )
