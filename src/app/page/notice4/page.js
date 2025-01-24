@@ -23,7 +23,7 @@ export default async function Notice4(){
             <ul className="notice_list">
             {notice && notice.map((data,index)=>(
                 <li>
-                <Link href={ `/page/notice_view/${index}`} key={index}>
+                <Link href={ `/page/notice4_view/${index}`} key={index}>
                      
                     <div className="notice-info">
                         <div className="type04">기타</div>

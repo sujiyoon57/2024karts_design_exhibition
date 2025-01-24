@@ -18,8 +18,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 export default function MainPage(){
 
-     
-
+    
     return(
         <div className="main-banner">
             <Swiper  
