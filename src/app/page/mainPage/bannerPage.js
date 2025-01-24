@@ -58,7 +58,7 @@ export default function MainPage(){
                 navigation={true} modules={[Navigation]}
                 className="mainBannerSwiper "
                 >
-                {banner && banner.map((data)=>(
+                {banner && banner.map((data, index)=>(
                     <SwiperSlide><img src={'https:'+data.fields.image.fields.file.url} /></SwiperSlide>  
                 ))}
                 
