@@ -8,6 +8,7 @@ import VimeoLogoIcon from "/public/asset/vimeoLogo.svg"
 import Footer from "@/app/component/footer"
 import ScrollUp from "@/app/component/scrollUp"
 import ReactPlayer from "react-player"
+import { useSearchParams } from 'next/navigation'
 
 
 export default async function Notice(props){
@@ -15,7 +16,11 @@ export default async function Notice(props){
     const id = parseInt(props.params.id);
     const data = await fetchContentful('notice');
     const notice = data[id].fields;
+    const sys = data[id].sys;
     const len  = data.length > 0 && data.length; 
+    //const timeFormat = searchParams.get("timeFormat")
+
+    //console.log(notice);
 
     return(
 
@@ -23,9 +28,11 @@ export default async function Notice(props){
             <div className="notiview-top">
                 <div className="notiview_tit">{notice.title}</div>
                 <div className="notiview-info"> 
-                    <div><span>작성자</span> <em>user</em></div>
-                    <div><span>작성일</span> <em>2024-00-00</em></div>
-                    <div><span>첨부파일</span> <em><Link href=''>pdf.pdf(213kb)</Link></em></div> 
+                    <div><span>작성자</span> <em>{notice.writer}</em></div>
+                    <div><span>작성일</span> <em>{sys.createdAt}</em></div>
+                    {notice.file !== undefined && notice.file.fields.file.url !== '' ? (
+                        <div><span>첨부파일</span> <em><Link href={'https:'+notice.file.fields.file.url}>{notice.file.fields.file.fileName}({notice.file.fields.file.details.size}byte)</Link></em></div> 
+                    ) : null}
                 </div>
             </div>
             <div className="notiview-cont"> 
