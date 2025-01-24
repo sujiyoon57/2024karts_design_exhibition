@@ -2,17 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful"; 
 
-export default async function Notice(){
+export default async function Notice3(){
 
-    var data = await fetchContentful('notice');
+    var data = await fetchContentful('notice3');
     const notice = data;
     
     return( 
         <div className="notice-container">
             <div className="notice_type">
-                <button className="type01 active">학과</button>
+                <button className="type01">학과</button>
                 <button className="type02">행사</button>
-                <button className="type03">채용</button>
+                <button className="type03 active">채용</button>
                 <button className="type04">기타</button>
             </div>
             <ul className="notice_th">
@@ -26,7 +26,7 @@ export default async function Notice(){
                 <Link href={ `/page/notice_view/${index}`} key={index}>
                      
                     <div className="notice-info">
-                        <div className="type01">학과</div>
+                        <div className="type03">채용</div>
                         <div>{data.fields.title}</div>
                         <div>{data.sys.createdAt}</div>
                     </div>
