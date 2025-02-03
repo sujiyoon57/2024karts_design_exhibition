@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import Image from "next/image"
 import { fetchContentful } from "@/app/contentful/contentful"
@@ -29,7 +30,7 @@ export default async function Notice3(props){
                 <div className="notiview_tit">{notice.title}</div>
                 <div className="notiview-info"> 
                     <div><span>작성자</span> <em>{notice.writer}</em></div>
-                    <div><span>작성일</span> <em>{sys.createdAt}</em></div>
+                    <div><span>작성일</span> <em>{(sys.createdAt).substr(0, 10)}</em></div>
                     {notice.file !== undefined && notice.file.fields.file.url !== '' ? (
                         <div><span>첨부파일</span> <em><Link href={'https:'+notice.file.fields.file.url}>{notice.file.fields.file.fileName}({notice.file.fields.file.details.size}byte)</Link></em></div> 
                     ) : null}
@@ -41,7 +42,7 @@ export default async function Notice3(props){
                         {documentToReactComponents(data)}</p>
                 ))}
             </div> 
-            <div className="notiview-back"><Link href='/page/notice'>Back to List</Link></div> 
+            <div className="notiview-back"><Link href='/page/notice3'>Back to List</Link></div> 
         </div>
     );
 }

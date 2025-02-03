@@ -10,10 +10,10 @@ export default async function Notice4(){
     return( 
         <div className="notice-container">
             <div className="notice_type">
-                <button className="type01">학과</button>
-                <button className="type02">행사</button>
-                <button className="type03">채용</button>
-                <button className="type04 active">기타</button>
+                <button className="type01"><Link href={ `/page/notice`}>학과</Link></button>
+                <button className="type02"><Link href={ `/page/notice2`}>행사</Link></button>
+                <button className="type03"><Link href={ `/page/notice3`}>채용</Link></button>
+                <button className="type04 active"><Link href={ `/page/notice4`}>기타</Link></button>
             </div>
             <ul className="notice_th">
                 <li>분류</li>
@@ -28,7 +28,7 @@ export default async function Notice4(){
                     <div className="notice-info">
                         <div className="type04">기타</div>
                         <div>{data.fields.title}</div>
-                        <div>{data.sys.createdAt}</div>
+                        <div>{(data.sys.createdAt).substr(0, 10)}</div>
                     </div>
                     
                 </Link>

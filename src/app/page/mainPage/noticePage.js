@@ -13,18 +13,65 @@ export default function MainPage(){
     const [scrollup, setScrollup] = useState(false);
     // const [counter, setCounter] = useState(0);
 
+    const [title ,setTitle]=useState();
+    const [title2 ,setTitle2]=useState();
+    const [title3 ,setTitle3]=useState();
+    const [title4 ,setTitle4]=useState();
+
+    const [date ,setDate]=useState();
+    const [date2 ,setDate2]=useState();
+    const [date3 ,setDate3]=useState();
+    const [date4 ,setDate4]=useState();
+
+
+
     useEffect(() => {
         const getContentful=async()=>{
+          
           try{
-            var data = await fetchContentful('poster');
-            setPoster(data[0].fields.posterImage.fields.file.url);
-            console.log(data[0].fields.posterImage.fields.file.url);
-            setMobilePoster(data[0].fields.posterImageMobile.fields.file.url);
-            console.log(data[0].fields.posterImageMobile.fields.file.url);
-            setEmbedLink(data[0].fields.videoEmbedLink || null);
+
+            var data = await fetchContentful('notice');
+
+            setTitle(data[0].fields.title);
+            setDate((data[0].sys.createdAt).substr(0, 10));
+
           }catch (error) {
             console.error("Error fetching data:", error);
           }
+
+          try{
+          
+            var data = await fetchContentful('notice2');
+
+            setTitle2(data[0].fields.title);
+            setDate2((data[0].sys.createdAt).substr(0, 10));
+
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+
+          try{
+
+            var data = await fetchContentful('notice3');
+
+            setTitle3(data[0].fields.title);
+            setDate3((data[0].sys.createdAt).substr(0, 10));
+
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+
+          try{
+
+            var data = await fetchContentful('notice4'); 
+
+            setTitle4(data[0].fields.title);
+            setDate4((data[0].sys.createdAt).substr(0, 10));
+
+          }catch (error) {
+            console.error("Error fetching data:", error);
+          }
+
         }
 
         // const handleScroll = () => {
@@ -65,33 +112,54 @@ export default function MainPage(){
         <div className="main-notice"> 
             <h3>공지사항</h3>
             <ul className="notice_list">
+               {title !== undefined && title !== '' ? (
                 <li>
-                  <a href="">
+                  <a href={ `/page/notice_view/0`}>
                     <div className="notice-info">
                       <div className="type01">학과</div>
-                      <div>[대학내일 자회사 NHR] 디자인 어시스턴트 모집</div> 
-                      <div>2024-12-06</div>
+                      <div>{title}</div> 
+                      <div>{date}</div>
                     </div>
                   </a>
                 </li>
+                ) : null}
+
+               {title2 !== undefined && title2 !== '' ? (
                 <li>
-                  <a href="">
+                  <a href={ `/page/notice2_view/0`}>
                     <div className="notice-info">
-                      <div className="type02">채용</div>
-                      <div>[대학내일 자회사 NHR] 디자인 어시스턴트 모집</div> 
-                      <div>2024-12-06</div>
+                      <div className="type02">행사</div>
+                      <div>{title2}</div> 
+                      <div>{date2}</div>
                     </div>
                   </a>
                 </li>
+                ) : null}
+
+                {title3 !== undefined && title3 !== '' ? (
                 <li>
-                  <a href="">
+                  <a href={ `/page/notice3_view/0`}>
                     <div className="notice-info">
-                      <div className="type03">기타</div>
-                      <div>[대학내일 자회사 NHR] 디자인 어시스턴트 모집</div> 
-                      <div>2024-12-06</div>
+                      <div className="type03">채용</div>
+                      <div>{title3}</div> 
+                      <div>{date3}</div>
+                    </div>
+                  </a>
+                </li>
+                ) : null}
+
+                {title4 !== undefined && title4 !== '' ? (
+                <li>
+                  <a href={ `/page/notice4_view/0`}>
+                    <div className="notice-info">
+                      <div className="type04">기타</div>
+                      <div>{title4}</div> 
+                      <div>{date4}</div>
                     </div>
                   </a>
                 </li> 
+                 ) : null}      
+
             </ul>
             <a href="/page/notice" className="more">전체 보기</a> 
         </div>
