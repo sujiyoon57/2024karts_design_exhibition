@@ -9,7 +9,7 @@ export default function Footer(){
                 <span><KartsLogo/></span>
                 <span>석관동캠퍼스 본부동 (02789)<br />서울특별시 성북구 화랑로32길 146-37</span>
             </div>
-            <p>Copyright(C) Korea National University of Arts Design Dept. All rights reserved</p>
+            <p>Copyright(C) Korea National University of Arts Design Department. All rights reserved</p>
         </footer>
     )
 }
