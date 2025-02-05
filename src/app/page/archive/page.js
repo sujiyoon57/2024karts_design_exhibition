@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful"; 
@@ -18,7 +17,7 @@ export default async function Notice(){
                                 src="/asset/archive2024.png"
                                 alt="Archive 2024"
                                 width={300}
-                                height={200}
+                                height={177} // ✅ 비율 유지 적용
                             />
                             <div>2024</div>
                         </div> 
@@ -31,7 +30,7 @@ export default async function Notice(){
                                 src="/asset/archive2023.png"
                                 alt="Archive 2023"
                                 width={300}
-                                height={200}
+                                height={177} // ✅ 비율 유지 적용
                             />
                             <div>2023</div>
                         </div> 
