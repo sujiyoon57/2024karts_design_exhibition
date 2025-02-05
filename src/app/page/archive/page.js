@@ -8,7 +8,6 @@ export default async function Notice(){
     
     return( 
         <div className="archive-container"> 
-             
             <ul className="archive_list"> 
                 <li>
                     <a href="/page/archiveIntro"> 
@@ -16,8 +15,10 @@ export default async function Notice(){
                            <Image
                                 src="/asset/archive2024.png"
                                 alt="Archive 2024"
-                                width={300}
-                                height={177} // ✅ 비율 유지 적용
+                                width={620} 
+                                height={366} 
+                                layout="intrinsic" // ✅ 원본 비율 유지
+                                objectFit="cover" // ✅ 비율을 유지하면서 잘리는 부분 조절
                             />
                             <div>2024</div>
                         </div> 
@@ -29,8 +30,10 @@ export default async function Notice(){
                             <Image
                                 src="/asset/archive2023.png"
                                 alt="Archive 2023"
-                                width={300}
-                                height={177} // ✅ 비율 유지 적용
+                                width={620} 
+                                height={366} 
+                                layout="intrinsic" // ✅ 원본 비율 유지
+                                objectFit="cover" // ✅ 비율을 유지하면서 잘리는 부분 조절
                             />
                             <div>2023</div>
                         </div> 
