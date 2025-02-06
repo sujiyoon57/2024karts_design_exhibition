@@ -357,7 +357,7 @@ header{
 .notice_list li .notice-info div:nth-child(1).type02{color:rgba(145, 165, 255, 1); border:1px solid rgba(145, 165, 255, 1);}
 .notice_list li .notice-info div:nth-child(1).type03{color:rgba(59, 85, 255, 1); border:1px solid rgba(59, 85, 255, 1);}
 .notice_list li .notice-info div:nth-child(1).type04{color:rgba(29, 204, 96, 1);  border: 1px solid rgba(29, 204, 96, 1)}
-.notice_list li .notice-info div:nth-child(3){position:absolute;top:10px;right:0;padding:0 10px 0 20px; line-height: 32px; border-left:1px solid rgba(0, 0, 0, 0.2);}
+.notice_list li .notice-info div:nth-child(3){position:absolute;top:10px;right:0;padding:0 10px 0 20px; line-height: 32px; border-left:1px solid rgba(0, 0, 0, 0.2); min-width: 120px; box-sizing: border-box;}
 
 @media screen and (max-width:870px) {
   .notice-container{padding:91px 16px 0;}
@@ -730,7 +730,7 @@ footer{
   footer div{display: flex;}
   footer div span{padding-right:40px;} 
   footer div span svg{width:95px;}
-
+  footer > p {text-align: right;}
   @media screen and (max-width:870px) {
     footer{ 
       flex-direction: column;
