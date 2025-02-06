@@ -10,6 +10,7 @@ export default async function Notice4(){
     return( 
         <div className="notice-container">
             <div className="notice_type">
+                <button><Link href={ ` `}>전체</Link></button>
                 <button className="type01"><Link href={ `/page/notice`}>학과</Link></button>
                 <button className="type02"><Link href={ `/page/notice2`}>행사</Link></button>
                 <button className="type03"><Link href={ `/page/notice3`}>채용</Link></button>

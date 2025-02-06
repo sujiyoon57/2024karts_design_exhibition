@@ -326,7 +326,7 @@ header{
 /*--------------------------------------------------*/
 
 /*------------------- notice ---------------------*/
-.notice-container{padding:91px 80px 66px;}
+.notice-container{padding:91px 80px 66px; min-height: calc(100vh - 126px); box-sizing: border-box;}
 .notice_type{padding-bottom:35px;display:flex;}
 .notice_type button{margin-right:8px; height:32px;padding:0 10px; box-sizing:border-box;background:#fff; border-radius:999px; border:1px solid #000; font-size:14px;}
 .notice_type button.active{color:#fff;background:#000;}
@@ -360,7 +360,7 @@ header{
 .notice_list li .notice-info div:nth-child(3){position:absolute;top:10px;right:0;padding:0 10px 0 20px; line-height: 32px; border-left:1px solid rgba(0, 0, 0, 0.2); min-width: 120px; box-sizing: border-box;}
 
 @media screen and (max-width:870px) {
-  .notice-container{padding:91px 16px 0;}
+  .notice-container{padding:91px 16px 0; min-height: calc(100vh - 225px);}
 
   .notice_type button{height:26px; padding:0 8px; font-size:12px;}
 
@@ -670,7 +670,7 @@ opacity:1;}
 .exhibition_tab{display:flex;padding-bottom:15px;}
 .exhibition_tab a{padding:0 12px; margin-right:8px; line-height:32px; color:#999; border-radius:999px; border:1px solid #999;font-size:14px; font-weight:600;}
 .exhibition_tab a:hover{color:#000;border-color:#000;}
-.exhibition_tab a.active{ color:#fff; background: #000;border-color:#000;}
+.exhibition_tab a.active{ color:#000; background: #d9d9d9;border-color:#d9d9d9;}
 
 .listtype_hd{display:flex;padding:10px 0;border-bottom:1px solid #d9d9d9;}
 .listtype_hd > div{position:relative;padding:0 25px; box-sizing:border-box; color:#999999;}
@@ -726,6 +726,8 @@ footer{
     font-size: 12px; 
     line-height:18px;
     padding-top:60px;
+    height: 126px;
+    box-sizing: border-box;
   }
   footer div{display: flex;}
   footer div span{padding-right:40px;} 
@@ -737,6 +739,7 @@ footer{
       width:calc(100% - 32px);
       right: 16px;
       left: 16px;
+      height: 225px;
     }
     footer div{flex-direction: column; width:100%;}
     footer div span + span{margin-top:20px;}
@@ -1777,6 +1780,12 @@ iframe{
   position: relative;
   /* padding: 1.875vw 18.802vw; */
   padding: 2.5vw 80px;
+}
+.container1.professor {
+  background: #F8F8F8;
+}
+.container1.professor .professor_list .prof_con {
+  background: #fff;
 }
 .button-wrap{
   margin-bottom: 32px;

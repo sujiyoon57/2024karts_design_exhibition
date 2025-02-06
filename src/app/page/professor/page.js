@@ -29,7 +29,7 @@ export default function Karts(){
     
 
     return(
-        <div className="container1">
+        <div className="container1 professor">
             <div className="container2">
                 <div className="exhibition_tab">   
                     <Link href={ `/page/karts`}>학과 및 교수 소개</Link>
