@@ -330,13 +330,18 @@ header{
 .notice_type{padding-bottom:35px;display:flex;}
 .notice_type button{margin-right:8px; height:32px;padding:0 10px; box-sizing:border-box;background:#fff; border-radius:999px; border:1px solid #000; font-size:14px;}
 .notice_type button.active{color:#fff;background:#000;}
-.notice_type button.type01{color:rgba(255, 110, 168, 1); border:1px solid rgba(255, 110, 168, 1);}
+.notice_type button.active a{color:#fff !important;}
+.notice_type button.type01{border:1px solid rgba(255, 110, 168, 1);}
+.notice_type button.type01 a{color:rgba(255, 110, 168, 1); }
 .notice_type button.type01.active{color:#fff; background:rgba(255, 110, 168, 1); border:1px solid rgba(255, 110, 168, 1);} 
-.notice_type button.type02{color:rgba(145, 165, 255, 1); border:1px solid rgba(145, 165, 255, 1);}
+.notice_type button.type02{ border:1px solid rgba(145, 165, 255, 1);}
+.notice_type button.type02 a{color:rgba(145, 165, 255, 1);}
 .notice_type button.type02.active{color:#fff; background:rgba(145, 165, 255, 1); border:1px solid rgba(145, 165, 255, 1);}  
 .notice_type button.type03{color:rgba(59, 85, 255, 1); border:1px solid rgba(59, 85, 255, 1);}
+.notice_type button.type03 a{color:rgba(59, 85, 255, 1);}
 .notice_type button.type03.active{color:#fff; background:rgba(59, 85, 255, 1); border:1px solid rgba(59, 85, 255, 1);}  
-.notice_type button.type04{color:rgba(29, 204, 96, 1);  border: 1px solid rgba(29, 204, 96, 1)}
+.notice_type button.type04{  border: 1px solid rgba(29, 204, 96, 1)}
+.notice_type button.type04 a{color:rgba(29, 204, 96, 1);}
 .notice_type button.type04.active{color:#fff; background:rgba(29, 204, 96, 1); border:1px solid rgba(29, 204, 96, 1);}
 
 .notice_th{display:flex; align-items: center; margin:0; padding:10px 0; font-weight:600;font-size:17px;}
