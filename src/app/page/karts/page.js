@@ -5,8 +5,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from '@/app/component/footer';
-import KartsLinkLogo from "/public/asset/kartsLinkLogo.svg";
 
 export default function Karts(){
 
@@ -62,9 +60,9 @@ export default function Karts(){
                             <Image src={'https:'+data.fields.image.fields.file.url} alt=".." width={0} height={0} sizes="100vw"/>
                             <div className="faculty-info">
                                 {data.fields.name && <div>{data.fields.name}</div>}
-                                <div>nameEng</div>
-                                <div>디자인과</div>
-                                <div>학력</div> 
+                                <div>{data.fields.nameEn}</div> 
+                                <div>{data.fields.major}</div>
+                                <div>{data.fields.education3}</div>
                             </div>
                         </div>
                         ))}
