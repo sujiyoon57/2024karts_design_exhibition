@@ -34,7 +34,7 @@ students, celebrating their journey of creative discovery and advancement.</p>
                             </div>
                     </div>
                     <div className="info_link">
-                        <p><a href="/page/archive">View All Projects</a></p>
+                        <p><a href="/page/exhibition">View All Projects</a></p>
                         <p><a href="">Download PDF</a></p>
                     </div>    
                     
@@ -139,7 +139,7 @@ students, celebrating their journey of creative discovery and advancement.</p>
                             </div>
                         </div>
                         <div className="info_link">
-                            <p><a href="/page/archive">View All Projects</a></p>
+                            <p><a href="/page/exhibition">View All Projects</a></p>
                             <p><a href="">Download PDF</a></p>
                         </div>    
                         

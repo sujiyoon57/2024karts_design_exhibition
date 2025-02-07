@@ -1,6 +1,4 @@
-"use client"
-import HeaderIcon from "/public/asset/headerIcon2.svg"
-import HeaderIconM from "/public/asset/headerIconM2.svg"
+"use client" 
 import MenuIcon from "/public/asset/menuIcon2.svg" 
 import ExitIcon from "/public/asset/exitIcon.svg"
 import LinkIcon from "/public/asset/linkIcon.svg"
@@ -16,8 +14,7 @@ export default function Header({exhibitionOn, archiveOn}){
         <header>
             <div className="header-icon-wrap">
                 <Link href='/'>
-                    <HeaderIcon onClick={()=>setMenuOn(false)} className="logo_pc"/>
-                    <HeaderIconM onClick={()=>setMenuOn(false)} className="logo_m"/> 
+                Korea National University of Arts<span> Design Department</span>
                 </Link>
             </div>
             <div className="menu-icon-wrap" onClick={()=>setMenuOn(!menuOn)}>

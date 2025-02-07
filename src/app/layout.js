@@ -18,7 +18,7 @@ export default async function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <div>
+        <div class="wrap">
           <Header exhibitionOn={exhibitionOn} archiveOnOn={archiveOn} />
           {children}
           <Footer />

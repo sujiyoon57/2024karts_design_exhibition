@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from '@/app/component/footer';
 import KartsLinkLogo from "/public/asset/kartsLinkLogo.svg";
+ 
 
 export default function Karts(){
 

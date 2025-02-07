@@ -150,13 +150,16 @@ export default async function Portfolio(props) {
             </div>
             <div className="portfolio-box3">
                 <div className="student-info-detail">
-                    <div>
+                    <div className="name">
                         <div>{portfolio.nameKr}</div>
                         <div>{portfolio.nameEng}</div>
                     </div>
-                    <div>
+                    <div className="introduct">
                         <div>{portfolio.introductionKr}</div>
-                        {/* <div>{portfolio.email}</div> */}
+                        <div>{portfolio.introductionEng}</div> 
+                    </div>
+                    <div className="contact">
+                        <div>{portfolio.email}</div>
                         <div className="link-container">
                             {portfolio.instagramLink !== undefined && portfolio.instagramLink !== '' ? (
                                 <Link href={portfolio.instagramLink}>
@@ -174,8 +177,6 @@ export default async function Portfolio(props) {
                                 </Link>
                             ) : null}
                         </div>
-                        <div>{portfolio.introductionEng}</div>
-                        <div>{portfolio.email}</div>
                     </div>
                 </div>
                 {/* <div className="link-container">
