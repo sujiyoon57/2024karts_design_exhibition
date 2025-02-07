@@ -62,7 +62,12 @@ export default function Karts(){
                                 {data.fields.name && <div>{data.fields.name}</div>}
                                 <div>{data.fields.nameEn}</div> 
                                 <div>{data.fields.major}</div>
-                                <div>{data.fields.education3}</div>
+                                {/* <div>{data.fields.education3}</div> */}
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: (data.fields.education3 || '').replace(/\n/g, '<br />')
+                                    }}
+                                />
                             </div>
                         </div>
                         ))}

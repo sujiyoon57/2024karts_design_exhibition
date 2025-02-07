@@ -12,7 +12,7 @@ export default function Notice() {
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
-      console.log("Fetched Data:", data); // 데이터 구조 확인
+      // console.log("Fetched Data:", data); // 데이터 구조 확인
       setNotices(data);
       setFilteredNotices(data);
     }
@@ -25,7 +25,7 @@ export default function Notice() {
     } else {
       setFilteredNotices(
         notices.filter((item) => {
-          console.log("Item Part2:", item.fields.part2); // 필드값 확인
+          // console.log("Item Part2:", item.fields.part2); // 필드값 확인
           return item.fields.part2.includes(selectedPart); // 배열 필터링
         })
       );
@@ -58,7 +58,18 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                  <div>{data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
+                <div
+                  className={
+                    data.fields.part2.includes("학과")
+                      ? "type01"
+                      : data.fields.part2.includes("행사")
+                      ? "type02"
+                      : data.fields.part2.includes("채용")
+                      ? "type03"
+                      : ""
+                  }
+                >
+                  {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
                   <div>{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
