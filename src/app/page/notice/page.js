@@ -28,22 +28,13 @@ export default function Notice() {
     }
   }, [selectedPart, notices]);
 
-  // ✅ 카테고리별 클래스 매핑 (색상 적용)
-  const categoryClasses = {
-    "전체": "type00", // 검정색
-    "학과": "type01", // 핑크 (#FF6EA8)
-    "행사": "type02", // 초록 (#1DCC60)
-    "채용": "type03", // 파랑 (#5B70F5)
-    "기타": "type04"  // 주황 (#F6945C)
-  };
-
   return (
     <div className="notice-container">
       <div className="notice_type">
-        {["전체", "학과", "행사", "채용", "기타"].map((part) => (
+        {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
           <button
             key={part}
-            className={`${selectedPart === part ? "active" : ""} ${categoryClasses[part]}`}
+            className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
             onClick={() => setSelectedPart(part)}
           >
             {part}
@@ -51,6 +42,7 @@ export default function Notice() {
         ))}
       </div>
 
+      {/* ✅ 테이블 스타일 유지 */}
       <ul className="notice_th">
         <li>분류</li>
         <li>내용</li>
@@ -63,11 +55,24 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                  <div className={categoryClasses[data.fields.part2] || ""}>
+                  {/* ✅ 여기서 <div> 대신 <span> 사용 */}
+                  <span
+                    className={
+                      data.fields.part2.includes("학과")
+                        ? "type01"
+                        : data.fields.part2.includes("행사")
+                        ? "type02"
+                        : data.fields.part2.includes("채용")
+                        ? "type03"
+                        : data.fields.part2.includes("기타")
+                        ? "type04"
+                        : ""
+                    }
+                  >
                     {data.fields.part2.join(", ")}
-                  </div>
-                  <div>{data.fields.title}</div>
-                  <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
+                  </span>
+                  <span className="notice-title">{data.fields.title}</span>
+                  <span className="notice-date">{new Date(data.sys.createdAt).toLocaleDateString()}</span>
                 </div>
               </Link>
             </li>
