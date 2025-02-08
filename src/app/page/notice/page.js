@@ -12,8 +12,14 @@ export default function Notice() {
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
-      setNotices(data);
-      setFilteredNotices(data);
+
+      // ✅ 고정된 글을 항상 상단에 배치
+      const sortedNotices = data.sort((a, b) => {
+        return (b.fields.fixed ? 1 : 0) - (a.fields.fixed ? 1 : 0);
+      });
+
+      setNotices(sortedNotices);
+      setFilteredNotices(sortedNotices);
     }
     getData();
   }, []);
@@ -54,6 +60,15 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
+                  {/* ✅ 고정된 글이면 핀 아이콘 표시 */}
+                  {data.fields.fixed && (
+                    <img
+                      src="/asset/boardPinIcon.svg"
+                      alt="Pinned"
+                      className="pin-icon"
+                    />
+                  )}
+
                   {/* ✅ 리스트 내 분류 컬러를 상단과 동일하게 적용 */}
                   <div
                     className={
