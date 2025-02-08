@@ -1983,6 +1983,14 @@ iframe{
   background-color: #F1F1F1 !important; /* 🔹 header/footer 강제 적용 */
 }
 
+/* ✅ 교수 페이지에서 footer 양쪽 화이트 여백 제거 */
+.professor-page footer {
+  width: 100vw !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
 /* ✅ 교수 리스트 스타일 */
 .professor_list {
   display: flex;
@@ -2057,6 +2065,7 @@ iframe{
     font-weight: 400;
   }
 }
+
 
 
 
