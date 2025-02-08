@@ -1968,19 +1968,19 @@ iframe{
 
 /* ✅ 교수 페이지에서만 전체 배경색을 본문과 동일하게 설정 */
 .professor-page {
-  background-color: #F8F8F8 !important; /* 본문과 동일한 배경색 */
+  background-color: #F8F8F8 !important; /* 본문과 동일한 배경색 유지 */
 }
 
 /* ✅ 교수 페이지에서만 header, footer 배경색 변경 */
 .professor-page header,
 .professor-page footer {
-  background-color: #F8F8F8 !important; /* 본문과 정확히 일치하는 배경색 */
+  background-color: #F1F1F1 !important; /* 🔹 header/footer만 #F1F1F1로 설정 */
 }
 
 /* ✅ Next.js 모듈 CSS 적용 시 강제 스타일 */
 :global(.professor-page header),
 :global(.professor-page footer) {
-  background-color: #F8F8F8 !important;
+  background-color: #F1F1F1 !important; /* 🔹 header/footer 강제 적용 */
 }
 
 /* ✅ 교수 리스트 스타일 */
@@ -2058,7 +2058,6 @@ iframe{
   }
 }
 
- 
 
 
 .archive-container{padding:58px 80px 150px 80px ;}
