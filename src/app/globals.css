@@ -1729,6 +1729,7 @@ iframe{
 }
 }
 /*--------------------------------------------------*/
+
 /*------------------------about-----------------------*/
 .content-container{
   position: absolute;
@@ -1749,6 +1750,7 @@ iframe{
 .content-container .content p{
   word-wrap: break-word;
   word-break: keep-all;
+  font-weight: 400; /* ✅ 학과 소개 본문 폰트 웨이트 400 적용 */
 }
 .up{
   display: block;
@@ -1793,167 +1795,12 @@ iframe{
   }
 }
 
-.container1{
-  padding: 0 0 58px 0;
-  position: relative;
-  box-sizing: border-box;
-  min-height: 100vh;
-}
-.container2{
-  position: relative;
-  padding: 2.5vw 80px;
-}
-.container1.professor {
-  background: #F1F1F1;
-}
-.container1.professor .professor_list .prof_con {
-  background: #fff;
-}
-.button-wrap{
-  margin-bottom: 32px;
-  height: auto;
-}
-.button-wrap button{
-  background: #FFF;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  font-size: 0.9375vw;
-  margin-right: 0.4167vw;
-  padding: 0.677vw 2.65625vw;
-  border: 0.1042vw solid #000;
-  color: #000;
-}
-.button-wrap button:last-child{
-  margin-right: 0;
-}
-.flex-box{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 80px;
-}
-.about-flex-item{
-  width: calc(50% - 0.729vw);  
-  font-size:18px;
-  line-height:1.8;
-}
-.about-flex-item img{
-  width: 100%;
-  height: auto;
-} 
-.faculty-flex-item{
-  width: calc( 50% - 40px );
-  display:flex;
-}
-.faculty-flex-item img{
-  width: 149px;
-  height: auto; 
-}
-.faculty-info{ 
-  position: relative;
-  width:calc(100% - 149px);
-  padding-left:37px;
-  box-sizing:border-box;
-  line-height:1.5;
-}
-.faculty-info > div:nth-of-type(1){ 
-  font-weight:600;
-}
-.faculty-info > div:nth-of-type(2){  
-  font-weight:600;
-}
-
-/* ✅ '설명' 부분 폰트 웨이트 400 적용 */
-.faculty-info > div:nth-of-type(4){
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width:calc(100% - 37px);
-  font-weight: 400;
-}
-
-/* ✅ 'major' (디자인과) 폰트 웨이트 400 적용 */
-.faculty-info > div:nth-of-type(3){
-  font-weight: 400;
-}
-
-/* ✅ 모바일에서도 동일하게 적용 */
+/* ✅ 모바일에서도 본문 폰트 웨이트 400 유지 */
 @media screen and (max-width:870px) {
-  .faculty-info > div:nth-of-type(3){
-    font-weight: 400;
-  }
-  .faculty-info > div:nth-of-type(4){
+  .content-container .content p{
     font-weight: 400;
   }
 }
-
-.container1 .inactive{
-  border-color:rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 0.5);
-}
-.link-wraper svg{
-  width: 6.771vw;
-  height: auto;
-  margin-left: 50%;
-  transform: translate(-50%);
-  margin-top: 3.59375vw;
-}
-@media screen and (max-width:870px) {
-  .container1{
-    padding: 74px 0 0 0;
-  }
-  .container2{
-    padding: 0 16px;
-  }
-  .button-wrap{
-    margin-bottom: 20px;
-  }
-  .button-wrap button{
-    font-size: 14px;
-    margin-right: 8.0px;
-    padding: 9.4px 21px;
-    border: 1.5px solid #000;
-  }
-  .flex-box{
-    gap: 30px;
-  }
-  .about-flex-item{
-    width: 100%;
-    font-size: 14px;
-  }
-  .faculty-flex-item{
-    width: 100%;
-  }
-  .faculty-flex-item img{width:83px;}
-  .faculty-info{ 
-    width: calc(100% - 83px);
-    padding-left: 20px;
-    font-size:12px;
-  }
-  .faculty-info > div:nth-of-type(1){
-    display: inline-block;
-    font-size: 14px; 
-  }
-  .faculty-info > div:nth-of-type(2){
-    display: inline-block;
-    padding-left:5px;
-    font-size: 14px;
-  }
-  .faculty-info > div:nth-of-type(3){
-    font-weight: 400; /* 모바일에서도 major(디자인과) 폰트 웨이트 400 적용 */
-  }
-  .faculty-info > div:nth-of-type(4){
-    position:sticky;
-    font-weight: 400; /* 모바일에서도 설명 폰트 웨이트 400 적용 */
-  }
-  .link-wraper svg{
-    width: 89.43px;
-    margin-top: 8.889vw;
-  }
-}
-
-.kart_tit{padding-bottom:20px; font-size:14px; font-weight:600;}
-.exhibition_tab + .kart_tit{margin-top:15px;}
-.flex-box + .kart_tit{margin-top:103px;}
 
 
 /*------------------------about 교수 -----------------------*/
