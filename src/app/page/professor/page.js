@@ -13,6 +13,10 @@ export default function Karts() {
         const getContentful = async () => {
             try {
                 var data = await fetchContentful('professor');
+
+                // ✅ 가나다순 정렬 추가
+                data.sort((a, b) => a.fields["강사이름"].localeCompare(b.fields["강사이름"], 'ko-KR'));
+
                 setProfessor(data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -41,7 +45,7 @@ export default function Karts() {
                 <div className="professor_list">
                     {professor && professor.map((data, index) => (
                         <div className="prof_con" key={index}>
-                            <div className="prof_name">{data.fields.name}</div>
+                            <div className="prof_name">{data.fields["강사이름"]}</div>
                             <div className="prof_info">
                                 <p><span>전공분야</span> <em>{data.fields.major}</em></p>
                                 <p><span>학위정보</span> <em>{data.fields.degree}</em></p>
