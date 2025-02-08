@@ -9,10 +9,12 @@ export default function Notice() {
   const [filteredNotices, setFilteredNotices] = useState([]);
   const [selectedPart, setSelectedPart] = useState("전체");
 
+  // ✅ 필터 버튼 순서 변경 ("전체 → 학과 → 채용 → 행사 → 기타")
+  const categoryOrder = ["전체", "학과", "채용", "행사", "기타"];
+
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
-      // console.log("Fetched Data:", data); // 데이터 구조 확인
       setNotices(data);
       setFilteredNotices(data);
     }
@@ -24,25 +26,23 @@ export default function Notice() {
       setFilteredNotices(notices);
     } else {
       setFilteredNotices(
-        notices.filter((item) => {
-          // console.log("Item Part2:", item.fields.part2); // 필드값 확인
-          return item.fields.part2.includes(selectedPart); // 배열 필터링
-        })
+        notices.filter((item) => item.fields.part2.includes(selectedPart))
       );
     }
   }, [selectedPart, notices]);
 
   return (
     <div className="notice-container">
+      {/* ✅ 필터 버튼 순서 변경 */}
       <div className="notice_type">
-        {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
-            <button
+        {categoryOrder.map((part, index) => (
+          <button
             key={part}
             className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
             onClick={() => setSelectedPart(part)}
-            >
+          >
             {part}
-            </button>
+          </button>
         ))}
       </div>
 
@@ -58,18 +58,7 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                <div
-                  className={
-                    data.fields.part2.includes("학과")
-                      ? "type01"
-                      : data.fields.part2.includes("행사")
-                      ? "type02"
-                      : data.fields.part2.includes("채용")
-                      ? "type03"
-                      : ""
-                  }
-                >
-                  {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
+                  <div>{data.fields.part2.join(", ")}</div>
                   <div>{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
