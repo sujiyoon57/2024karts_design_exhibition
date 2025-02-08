@@ -336,37 +336,37 @@ header{
 /*------------------- notice ---------------------*/
 .notice-container{padding:34px 80px 66px;  box-sizing: border-box;}
 .notice_type{padding-bottom:35px;display:flex;}
-.notice_type button{margin-right:8px; height:32px;padding:0 10px; box-sizing:border-box;background:#fff; border-radius:999px; border:1px solid #000; font-size:14px;}
+.notice_type button{margin-right:8px; height:32px;padding:0 10px; box-sizing:border-box;background:#fff; border-radius:999px; border:1.5px solid #000; font-size:14px;}
 .notice_type button.active{color:#fff;background:#000;}
 .notice_type button.active a{color:#fff !important;}
 
 /* ✅ 전체 - 검정 */
-.notice_type button.type01{border:1px solid #000; color:#000;}
-.notice_type button.type01.active{color:#fff; background:#000; border:1px solid #000;}
+.notice_type button.type01{border:1.5px solid #000; color:#000;}
+.notice_type button.type01.active{color:#fff; background:#000; border:1.5px solid #000;}
 
 /* ✅ 학과 - 핑크 */
-.notice_type button.type02{border:1px solid #FF6EA8; color: #FF6EA8;} 
-.notice_type button.type02.active{color:#fff; background:#FF6EA8; border:1px solid #FF6EA8;} 
+.notice_type button.type02{border:1.5px solid #FF6EA8; color: #FF6EA8;} 
+.notice_type button.type02.active{color:#fff; background:#FF6EA8; border:1.5px solid #FF6EA8;} 
 
 /* ✅ 채용 - 블루 */
-.notice_type button.type03{border:1px solid #5B70F5; color: #5B70F5;}
-.notice_type button.type03.active{color:#fff; background:#5B70F5; border:1px solid #5B70F5;}  
+.notice_type button.type03{border:1.5px solid #5B70F5; color: #5B70F5;}
+.notice_type button.type03.active{color:#fff; background:#5B70F5; border:1.5px solid #5B70F5;}  
 
 /* ✅ 행사 - 그린 */
-.notice_type button.type04{border:1px solid #1DCC60; color: #1DCC60;}
-.notice_type button.type04.active{color:#fff; background:#1DCC60; border:1px solid #1DCC60;}  
+.notice_type button.type04{border:1.5px solid #1DCC60; color: #1DCC60;}
+.notice_type button.type04.active{color:#fff; background:#1DCC60; border:1.5px solid #1DCC60;}  
 
 /* ✅ 기타 - 오렌지 */
-.notice_type button.type05{border:1px solid #F6945C; color: #F6945C;}
-.notice_type button.type05.active{color:#fff; background:#F6945C; border:1px solid #F6945C;}
+.notice_type button.type05{border:1.5px solid #F6945C; color: #F6945C;}
+.notice_type button.type05.active{color:#fff; background:#F6945C; border:1.5px solid #F6945C;}
 
 /* ✅ 리스트 내 필터 색상 (목록에도 동일한 색 적용) */
 .notice_list li .notice-info div:nth-child(1){padding:0 12px; margin-right:10px; display:inline-block;line-height:32px; box-sizing:border-box; border-radius:999px; font-style:normal;font-size:14px; }
-.notice_list li .notice-info div:nth-child(1).type01{color:#000; border:1px solid #000;}
-.notice_list li .notice-info div:nth-child(1).type02{color:#FF6EA8; border:1px solid #FF6EA8;}
-.notice_list li .notice-info div:nth-child(1).type03{color:#5B70F5; border:1px solid #5B70F5;}
-.notice_list li .notice-info div:nth-child(1).type04{color:#1DCC60; border:1px solid #1DCC60;}
-.notice_list li .notice-info div:nth-child(1).type05{color:#F6945C; border:1px solid #F6945C;}
+.notice_list li .notice-info div:nth-child(1).type01{color:#000; border:1.5px solid #000;}
+.notice_list li .notice-info div:nth-child(1).type02{color:#FF6EA8; border:1.5px solid #FF6EA8;}
+.notice_list li .notice-info div:nth-child(1).type03{color:#5B70F5; border:1.5px solid #5B70F5;}
+.notice_list li .notice-info div:nth-child(1).type04{color:#1DCC60; border:1.5px solid #1DCC60;}
+.notice_list li .notice-info div:nth-child(1).type05{color:#F6945C; border:1.5px solid #F6945C;}
 
 .notice_list li .notice-info div:nth-child(3){position:absolute;top:10px;right:0;padding:0 10px 0 20px; line-height: 32px; border-left:1px solid rgba(0, 0, 0, 0.2); min-width: 125px; box-sizing: border-box;}
 
@@ -412,6 +412,7 @@ header{
   .notiview-back a{ font-size:14px; }
 }
 /*--------------------------------------------------*/
+
 
 
 
