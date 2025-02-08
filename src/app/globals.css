@@ -351,6 +351,11 @@ header{
   font-weight: 600;
 }
 
+/* ✅ 작성자, 작성일, 첨부파일 내 <em> 태그의 기본 이탤릭 스타일 제거 */
+.notiview-info em {
+  font-style: normal; /* 기울임 제거 */
+}
+
 /* ✅ 본문 - Pretendard, weight 400 */
 .notiview-cont {
   font-family: 'Pretendard'; /* sans-serif 제거 */
@@ -489,6 +494,7 @@ header{
   .notiview-back a { font-size: 14px; }
 }
 /*--------------------------------------------------*/
+
 
 
 
