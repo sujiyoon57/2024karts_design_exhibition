@@ -1973,13 +1973,16 @@ iframe{
 .professor_list .prof_info p{display:flex; line-height:1.5;}
 .professor_list .prof_info p + p{margin-top:4px;}
 .professor_list .prof_info span{width:80px;font-weight:600;}
-.professor_list .prof_info em{width:calc(100% - 80px); font-style:normal;}
+.professor_list .prof_info em{width:calc(100% - 80px); font-style:normal; font-weight: 400;} /* ✅ 본문 내용 폰트 웨이트 400 적용 */
+
 @media screen and (max-width:870px) {
   .professor_list{ gap:16px; font-size:13px;}
   .professor_list .prof_con{width:100%; padding: 12px 20px 16px 20px;} 
   .professor_list .prof_name{padding-bottom:8px; font-size: 15px;}
+  .professor_list .prof_info em{font-weight: 400;} /* ✅ 모바일에서도 동일한 폰트 웨이트 적용 */
 }
 /*----------------------------------------------*/
+
  
 
 
