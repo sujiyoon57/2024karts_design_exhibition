@@ -1964,27 +1964,26 @@ iframe{
 .exhibition_tab + .kart_tit{margin-top:15px;}
 .flex-box + .kart_tit{margin-top:103px;}
 
-
 /*------------------------about 교수 -----------------------*/
 
-/* ✅ 교수 페이지에서만 배경색 변경 */
-.professor-page header,
-.professor-page footer,
+/* ✅ 본문의 배경색을 정확히 가져와 적용 */
 .professor-page {
-  background-color: #F8F8F8 !important; /* ✅ 해당 페이지에서만 배경색 변경 */
+  background-color: #F5F5F5 !important; /* 본문과 동일한 배경색 */
 }
 
-/* ✅ 특정 페이지에서 header와 footer 배경을 확실히 변경 */
-body.professor-page {
-  background-color: #F8F8F8 !important;
+/* ✅ 교수 페이지에서만 header, footer 배경색 변경 */
+.professor-page header,
+.professor-page footer {
+  background-color: #F5F5F5 !important; /* 본문과 정확히 일치하는 배경색 */
 }
 
-/* ✅ Next.js 모듈 CSS 사용 시 강제 적용 */
+/* ✅ Next.js 모듈 CSS 적용 시 강제 스타일 */
 .professor-page :global(header),
 .professor-page :global(footer) {
-  background-color: #F8F8F8 !important;
+  background-color: #F5F5F5 !important;
 }
 
+/* ✅ 교수 리스트 스타일 */
 .professor_list {
   display: flex;
   flex-wrap: wrap;
@@ -1993,15 +1992,17 @@ body.professor-page {
   font-size: 14px;
 }
 
+/* ✅ 교수 개별 카드 스타일 */
 .professor_list .prof_con {
   width: calc((100% - 40px) / 3);
-  background: #F8F8F8;
+  background: #FFFFFF; /* 개별 카드의 배경색 */
   padding: 16px 24px 20px 24px;
   border-radius: 4px;
   box-sizing: border-box;
   line-height: 1.5;
 }
 
+/* ✅ 교수 이름 스타일 */
 .professor_list .prof_name {
   padding-bottom: 12px;
   border-bottom: 1px solid #B8B8B8;
@@ -2009,6 +2010,7 @@ body.professor-page {
   font-weight: 600;
 }
 
+/* ✅ 교수 정보 텍스트 스타일 */
 .professor_list .prof_info {
   margin-top: 12px;
 }
@@ -2027,7 +2029,7 @@ body.professor-page {
   font-weight: 600;
 }
 
-/* ✅ 폰트 스타일 변경 없음 (폰트 웨이트 그대로 유지) */
+/* ✅ 폰트 스타일 유지 */
 .professor_list .prof_info em {
   width: calc(100% - 80px);
   font-style: normal;
@@ -2055,7 +2057,6 @@ body.professor-page {
     font-weight: 400;
   }
 }
-
 
  
 
