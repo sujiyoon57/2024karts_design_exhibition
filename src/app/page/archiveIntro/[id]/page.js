@@ -7,14 +7,20 @@ import ScrollUp from "@/app/component/scrollUp"
 import ReactPlayer from "react-player"
 import { useSearchParams } from 'next/navigation'
 
-
-export default async function ArchiveNew(props){
-
+export default async function ArchiveNew(props) {
     const id = parseInt(props.params.id);
     const data = await fetchContentful('archiveNew');
-    const archiveNew = data[id].fields;
-    const sys = data[id].sys;
-    const len  = data.length > 0 && data.length; 
+
+    // ✅ 데이터가 없을 경우 에러 방지 (빈 객체 할당)
+    if (!data || !Array.isArray(data)) {
+        console.error("Contentful 데이터가 없습니다!");
+        return <div>데이터를 불러오지 못했습니다.</div>;
+    }
+
+    const archiveNew = data[id]?.fields || {};
+    const sys = data[id]?.sys || {};
+    const len = data.length > 0 && data.length;
+
     
 
     return(
@@ -237,3 +243,6 @@ students, celebrating their journey of creative discovery and advancement.</p>
         </div>  
     );
 }
+
+// ✅ 404 무시하고 Vercel 배포가 가능하도록 설정
+export const dynamic = "force-dynamic";
