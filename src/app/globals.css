@@ -341,27 +341,27 @@ header{
 .notice_type button.active a{color:#fff !important;}
 
 /* ✅ 학과 - 핑크 */
-.notice_type button.type01{border:1px solid rgba(255, 110, 168, 1);}
+.notice_type button.type01{border:1px solid rgba(255, 110, 168, 1); color: rgba(255, 110, 168, 1);} 
 .notice_type button.type01 a{color:rgba(255, 110, 168, 1);}
 .notice_type button.type01.active{color:#fff; background:rgba(255, 110, 168, 1); border:1px solid rgba(255, 110, 168, 1);} 
 
 /* ✅ 채용 - 블루 */
-.notice_type button.type02{ border:1px solid rgba(145, 165, 255, 1);}
+.notice_type button.type02{border:1px solid rgba(145, 165, 255, 1); color: rgba(145, 165, 255, 1);}
 .notice_type button.type02 a{color:rgba(145, 165, 255, 1);}
 .notice_type button.type02.active{color:#fff; background:rgba(145, 165, 255, 1); border:1px solid rgba(145, 165, 255, 1);}  
 
 /* ✅ 행사 - 그린 */
-.notice_type button.type03{ border:1px solid rgba(29, 204, 96, 1);}
+.notice_type button.type03{border:1px solid rgba(29, 204, 96, 1); color: rgba(29, 204, 96, 1);}
 .notice_type button.type03 a{color:rgba(29, 204, 96, 1);}
 .notice_type button.type03.active{color:#fff; background:rgba(29, 204, 96, 1); border:1px solid rgba(29, 204, 96, 1);}  
 
-/* ✅ 기타 - 오렌지 (🔹 변경된 부분) */
-.notice_type button.type04{ border: 1px solid #F6945C;}
+/* ✅ 기타 - 오렌지 */
+.notice_type button.type04{border: 1px solid #F6945C; color: #F6945C;}
 .notice_type button.type04 a{color:#F6945C;}
 .notice_type button.type04.active{color:#fff; background:#F6945C; border:1px solid #F6945C;}
 
 /* ✅ 전체 - 검정 */
-.notice_type button.type05{ border:1px solid #000; color:#000; }
+.notice_type button.type05{border:1px solid #000; color:#000;}
 .notice_type button.type05.active{color:#fff; background:#000; border:1px solid #000;}
 
 /* ✅ 리스트 내 필터 색상 */
@@ -369,11 +369,12 @@ header{
 .notice_list li .notice-info div:nth-child(1).type01{color:rgba(255, 110, 168, 1); border:1px solid rgba(255, 110, 168, 1);}
 .notice_list li .notice-info div:nth-child(1).type02{color:rgba(145, 165, 255, 1); border:1px solid rgba(145, 165, 255, 1);}
 .notice_list li .notice-info div:nth-child(1).type03{color:rgba(29, 204, 96, 1); border:1px solid rgba(29, 204, 96, 1);}
-.notice_list li .notice-info div:nth-child(1).type04{color:#F6945C; border: 1px solid #F6945C;} /* 🔹 변경된 부분 */
+.notice_list li .notice-info div:nth-child(1).type04{color:#F6945C; border: 1px solid #F6945C;}
 .notice_list li .notice-info div:nth-child(1).type05{color:#000; border:1px solid #000;}
 
 .notice_list li .notice-info div:nth-child(3){position:absolute;top:10px;right:0;padding:0 10px 0 20px; line-height: 32px; border-left:1px solid rgba(0, 0, 0, 0.2); min-width: 125px; box-sizing: border-box;}
 
+/* 기존 코드 유지 */
 .notice_th{display:flex; align-items: center; margin:0; padding:10px 0; font-weight:600;font-size:17px;}
 .notice_th li:nth-child(1){width:60px;}
 .notice_th li:nth-child(2){width:calc(100% - 190px );}
@@ -398,7 +399,23 @@ header{
 } 
 
 .notiview-container{width:1160px; margin:0 auto; padding:103px 80px 145px 80px; box-sizing:border-box;}
-.notiview-top .notiview_tit{padding-bottom:
+.notiview-top .notiview_tit{padding-bottom:30px; border-bottom: 1px solid rgba(0, 0, 0, 0.2); font-size:47px; line-height:1.2;}
+.notiview-top .notiview-info{padding:30px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.2); font-weight:600; font-size:14px; line-height:1.5;}
+.notiview-cont{padding:50px 100px 145px 100px; font-size:18px; }
+.notiview-back{text-align:center;}
+.notiview-back a{font-size:22px; border-bottom:1px solid #000; }
+
+@media screen and (max-width:1160px) {
+  .notiview-container{width:100%;  }
+}
+@media screen and (max-width:870px) {
+  .notiview-container{width:100%; padding:30px 16px 60px; }
+  .notiview-top .notiview_tit{font-size:16px; font-weight:600;}
+  .notiview-top .notiview-info{padding:16px 0;}
+  .notiview-cont{padding:30px 0 70px 0; font-size:14px; }
+  .notiview-back a{ font-size:14px; }
+}
+/*--------------------------------------------------*/
 
 
 
