@@ -33,10 +33,14 @@ export default async function Exhibition() {
                     return (
                         <Link href={`/page/portfolio/${index}`} key={index}>
                             <div className={`exhibition-info-list ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
+                                {/* ✅ 학생명 (한글 + 영어, 띄어쓰기 2번 추가) */}
                                 <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
-                                    {data.fields.nameKr} {data.fields.nameEng}
+                                    {data.fields.nameKr}  {data.fields.nameEng}
                                 </div>
-                                <div>{data.fields.projectName}</div>
+                                {/* ✅ 작품명 (한글 + 영어, 띄어쓰기 2번 추가) */}
+                                <div>
+                                    {data.fields.projectName}  {data.fields.projectNameEng}
+                                </div>
                                 <div>{data.fields.major}</div>
                             </div>
                             <div className="exhibition-image-container-list">
