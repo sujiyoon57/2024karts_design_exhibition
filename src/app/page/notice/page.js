@@ -28,7 +28,7 @@ export default function Notice() {
     }
   }, [selectedPart, notices]);
 
-  // ✅ 필터 버튼 및 리스트 분류의 색상 정의 (활성화 & 비활성화 구분)
+  // ✅ 필터 버튼 및 리스트 분류의 색상 (정상적으로 적용되도록 수정)
   const categoryStyles = {
     전체: {
       default: "border border-black text-black rounded-full px-4 py-1 text-sm",
@@ -54,7 +54,7 @@ export default function Notice() {
 
   return (
     <div className="notice-container">
-      {/* ✅ 필터 버튼 색상 & 클릭 시 배경 변경 적용 */}
+      {/* ✅ 필터 버튼 색상 수정 & 정상 적용되도록 변경 */}
       <div className="notice_type">
         {["전체", "학과", "채용", "행사", "기타"].map((part) => (
           <button
@@ -63,6 +63,11 @@ export default function Notice() {
               selectedPart === part ? categoryStyles[part].active : categoryStyles[part].default
             }`}
             onClick={() => setSelectedPart(part)}
+            style={{
+              border: `2px solid ${selectedPart === part ? "transparent" : categoryStyles[part].default.split(" ")[1]}`,
+              backgroundColor: selectedPart === part ? categoryStyles[part].active.split(" ")[1] : "transparent",
+              color: selectedPart === part ? "white" : categoryStyles[part].default.split(" ")[1],
+            }}
           >
             {part}
           </button>
