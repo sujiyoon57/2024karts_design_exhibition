@@ -12,14 +12,9 @@ export default function Notice() {
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
-
-      // ✅ 고정된 글을 항상 상단에 배치
-      const sortedNotices = data.sort((a, b) => {
-        return (b.fields.fixed ? 1 : 0) - (a.fields.fixed ? 1 : 0);
-      });
-
-      setNotices(sortedNotices);
-      setFilteredNotices(sortedNotices);
+      // console.log("Fetched Data:", data); // 데이터 구조 확인
+      setNotices(data);
+      setFilteredNotices(data);
     }
     getData();
   }, []);
@@ -29,7 +24,10 @@ export default function Notice() {
       setFilteredNotices(notices);
     } else {
       setFilteredNotices(
-        notices.filter((item) => item.fields.part2.includes(selectedPart))
+        notices.filter((item) => {
+          // console.log("Item Part2:", item.fields.part2); // 필드값 확인
+          return item.fields.part2.includes(selectedPart); // 배열 필터링
+        })
       );
     }
   }, [selectedPart, notices]);
@@ -37,14 +35,15 @@ export default function Notice() {
   return (
     <div className="notice-container">
       <div className="notice_type">
+        {/* ✅ 필터 순서만 변경 (기존: ["전체", "학과", "행사", "채용", "기타"] → 변경: ["전체", "학과", "채용", "행사", "기타"]) */}
         {["전체", "학과", "채용", "행사", "기타"].map((part, index) => (
-          <button
+            <button
             key={part}
             className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
             onClick={() => setSelectedPart(part)}
-          >
+            >
             {part}
-          </button>
+            </button>
         ))}
       </div>
 
@@ -60,31 +59,18 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                  {/* ✅ 고정된 글이면 핀 아이콘 표시 */}
-                  {data.fields.fixed && (
-                    <img
-                      src="/asset/boardPinIcon.svg"
-                      alt="Pinned"
-                      className="pin-icon"
-                    />
-                  )}
-
-                  {/* ✅ 리스트 내 분류 컬러를 상단과 동일하게 적용 */}
-                  <div
-                    className={
-                      data.fields.part2.includes("학과")
-                        ? "type02"
-                        : data.fields.part2.includes("채용")
-                        ? "type03"
-                        : data.fields.part2.includes("행사")
-                        ? "type04"
-                        : data.fields.part2.includes("기타")
-                        ? "type05"
-                        : "type01"
-                    }
-                  >
-                    {data.fields.part2}
-                  </div>
+                <div
+                  className={
+                    data.fields.part2.includes("학과")
+                      ? "type01"
+                      : data.fields.part2.includes("행사")
+                      ? "type02"
+                      : data.fields.part2.includes("채용")
+                      ? "type03"
+                      : ""
+                  }
+                >
+                  {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
                   <div>{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
