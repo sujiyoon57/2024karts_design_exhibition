@@ -388,11 +388,9 @@ header{
   font-weight: 500;
 }
 
-/* ✅ 전체 버튼 클릭 시 배경색 & 글씨색 변경 */
-.notice_type button.type00.active {
-  background: #000;
-  color: #fff;
-}
+/* ✅ 전체 버튼 (type00) 스타일 추가 */
+.notice_type button.type00 { border: 1.5px solid #000; color: #000; }
+.notice_type button.type00.active { color: #fff; background: #000; }
 
 /* ✅ 필터 버튼 색상 추가 */
 .notice_type button.type01 { border: 1.5px solid #FF6EA8; color: #FF6EA8; }
@@ -508,6 +506,7 @@ header{
   .notiview-back a { font-size: 14px; }
 }
 /*--------------------------------------------------*/
+
 
 
 
