@@ -1,5 +1,5 @@
-"use client"
-import { generateStaticParams } from "./generateStaticParams";
+"use client" // 클라이언트 컴포넌트 지정
+
 import Link from "next/link"
 import Image from "next/image"
 import { fetchContentful } from "@/app/contentful/contentful"
@@ -8,14 +8,12 @@ import ScrollUp from "@/app/component/scrollUp"
 import ReactPlayer from "react-player"
 import { useSearchParams } from 'next/navigation'
 
-
-export default async function ArchiveNew(props){
-
+export default async function ArchiveNew(props) {
     const id = parseInt(props.params.id);
     const data = await fetchContentful('archiveNew');
-    const archiveNew = data[id].fields;
-    const sys = data[id].sys;
-    const len  = data.length > 0 && data.length; 
+    const archiveNew = data[id]?.fields; // 안전하게 데이터 접근
+    const sys = data[id]?.sys;
+    const len = data.length > 0 && data.length; 
     
 
     return(
