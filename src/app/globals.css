@@ -343,30 +343,39 @@ header{
 .notiview-top .notiview_tit {
   font-family: 'Pretendard'; /* sans-serif 제거 */
   font-weight: 400;
-  padding-bottom: 30px; /* ✅ 세미콜론 추가 */
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 47px;
+  line-height: 1.2;
 }
 
 /* ✅ 작성자, 작성일 - Pretendard, weight 600 */
 .notiview-top .notiview-info {
   font-family: 'Pretendard'; /* sans-serif 제거 */
   font-weight: 600;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ✅ 작성자, 작성일, 첨부파일 내 <em> 태그의 기본 이탤릭 스타일 제거 */
 .notiview-info em {
-  font-style: normal; /* 기울임 제거 */
+  font-style: normal;
 }
 
 /* ✅ 본문 - Pretendard, weight 400 */
 .notiview-cont {
-  font-family: 'Pretendard'; /* sans-serif 제거 */
+  font-family: 'Pretendard';
   font-weight: 400;
+  padding: 50px 100px 145px 100px;
+  font-size: 18px;
 }
 
 /* ✅ 버튼 - Pretendard, weight 400 */
 .notice_type button,
 .notiview-back a {
-  font-family: 'Pretendard'; /* sans-serif 제거 */
+  font-family: 'Pretendard';
   font-weight: 400;
 }
 
@@ -442,10 +451,10 @@ header{
 
 /* ✅ 기존 레이아웃 유지 */
 .notice_th { 
-  display: flex; 
-  align-items: center; 
-  margin: 0; 
-  padding: 10px 0; 
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 10px 0;
   font-weight: 600;
   font-size: 17px;
 }
@@ -467,7 +476,7 @@ header{
   .notice_list li .notice-info div:nth-child(1) { padding: 0 8px; margin-right: 8px; font-size: 12px; line-height: 26px; } 
   .notice_list li .notice-info div:nth-child(2) { order: 2; width: 100%; margin-top: 5px; } 
   .notice_list li .notice-info div:nth-child(3) { order: 1; position: static; border: 0; padding: 0; line-height: 26px; }  
-} 
+}
 
 .notiview-container {
   width: 1160px;
@@ -476,24 +485,14 @@ header{
   box-sizing: border-box;
 }
 
-.notiview-top .notiview_tit {
-  padding-bottom: 30px; /* ✅ 세미콜론 추가 */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 47px;
-  line-height: 1.2;
+.notiview-back { 
+  text-align: center; 
 }
 
-.notiview-top .notiview-info {
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.5;
+.notiview-back a { 
+  font-size: 22px;
+  border-bottom: 1px solid #000;
 }
-
-.notiview-cont { padding: 50px 100px 145px 100px; font-size: 18px; }
-.notiview-back { text-align: center; }
-.notiview-back a { font-size: 22px; border-bottom: 1px solid #000; }
 
 @media screen and (max-width: 1160px) {
   .notiview-container { width: 100%; }
@@ -506,8 +505,6 @@ header{
   .notiview-cont { padding: 30px 0 70px 0; font-size: 14px; }
   .notiview-back a { font-size: 14px; }
 }
-/*--------------------------------------------------*/
-
 
 
 
