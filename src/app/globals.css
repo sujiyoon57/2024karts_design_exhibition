@@ -349,8 +349,8 @@ header{
 .notice_type button.type02.active{color:#fff; background:#FF6EA8; border:1px solid #FF6EA8;} 
 
 /* ✅ 채용 - 블루 */
-.notice_type button.type03{border:1px solid #91A5FF; color: #91A5FF;}
-.notice_type button.type03.active{color:#fff; background:#91A5FF; border:1px solid #91A5FF;}  
+.notice_type button.type03{border:1px solid #5B70F5; color: #5B70F5;}
+.notice_type button.type03.active{color:#fff; background:#5B70F5; border:1px solid #5B70F5;}  
 
 /* ✅ 행사 - 그린 */
 .notice_type button.type04{border:1px solid #1DCC60; color: #1DCC60;}
@@ -364,7 +364,7 @@ header{
 .notice_list li .notice-info div:nth-child(1){padding:0 12px; margin-right:10px; display:inline-block;line-height:32px; box-sizing:border-box; border-radius:999px; font-style:normal;font-size:14px; }
 .notice_list li .notice-info div:nth-child(1).type01{color:#000; border:1px solid #000;}
 .notice_list li .notice-info div:nth-child(1).type02{color:#FF6EA8; border:1px solid #FF6EA8;}
-.notice_list li .notice-info div:nth-child(1).type03{color:#91A5FF; border:1px solid #91A5FF;}
+.notice_list li .notice-info div:nth-child(1).type03{color:#5B70F5; border:1px solid #5B70F5;}
 .notice_list li .notice-info div:nth-child(1).type04{color:#1DCC60; border:1px solid #1DCC60;}
 .notice_list li .notice-info div:nth-child(1).type05{color:#F6945C; border:1px solid #F6945C;}
 
@@ -412,6 +412,7 @@ header{
   .notiview-back a{ font-size:14px; }
 }
 /*--------------------------------------------------*/
+
 
 
 
