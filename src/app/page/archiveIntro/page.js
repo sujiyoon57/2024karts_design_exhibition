@@ -105,7 +105,7 @@ students, celebrating their journey of creative discovery and advancement.</p>
                         <dd>류창현<br />박준범</dd>
                     </dl>
 
-                    <h4>기자재 관리 Material Management</h4>
+                    <h4>기자재 관리 Material Management</h4>
                     <dl>
                         <dt>설치</dt>
                         <dd>송화<br />유나연<br />이인<br />이재호<br />이희재<br />최현우<br />한윤제</dd>
@@ -213,7 +213,7 @@ students, celebrating their journey of creative discovery and advancement.</p>
                             <dd>류창현<br />박준범</dd>
                         </dl>
 
-                        <h4>기자재 관리 Material Management</h4>
+                        <h4>기자재 관리 Material Management</h4>
                         <dl>
                             <dt>설치</dt>
                             <dd>송화<br />유나연<br />이인<br />이재호<br />이희재<br />최현우<br />한윤제</dd>
