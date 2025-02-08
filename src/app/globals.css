@@ -1966,21 +1966,21 @@ iframe{
 
 /*------------------------about 교수 -----------------------*/
 
-/* ✅ 본문의 배경색을 정확히 가져와 적용 */
+/* ✅ 교수 페이지에서만 전체 배경색을 본문과 동일하게 설정 */
 .professor-page {
-  background-color: #F5F5F5 !important; /* 본문과 동일한 배경색 */
+  background-color: #F8F8F8 !important; /* 본문과 동일한 배경색 */
 }
 
 /* ✅ 교수 페이지에서만 header, footer 배경색 변경 */
 .professor-page header,
 .professor-page footer {
-  background-color: #F5F5F5 !important; /* 본문과 정확히 일치하는 배경색 */
+  background-color: #F8F8F8 !important; /* 본문과 정확히 일치하는 배경색 */
 }
 
 /* ✅ Next.js 모듈 CSS 적용 시 강제 스타일 */
 .professor-page :global(header),
 .professor-page :global(footer) {
-  background-color: #F5F5F5 !important;
+  background-color: #F8F8F8 !important;
 }
 
 /* ✅ 교수 리스트 스타일 */
@@ -1995,7 +1995,7 @@ iframe{
 /* ✅ 교수 개별 카드 스타일 */
 .professor_list .prof_con {
   width: calc((100% - 40px) / 3);
-  background: #FFFFFF; /* 개별 카드의 배경색 */
+  background: #FFFFFF; /* 개별 카드의 배경색 (본문보다 약간 밝은 흰색 유지) */
   padding: 16px 24px 20px 24px;
   border-radius: 4px;
   box-sizing: border-box;
