@@ -24,7 +24,7 @@ export default function Karts(){
       }, []);
 
     return(
-        <div className="container1 professor professor-page"> {/* ✅ 특정 페이지 클래스 추가 */}
+        <div className="container1 professor professor-page"> {/* ✅ 특정 페이지에서만 스타일 적용 */}
             <div className="container2">
                 <div className="exhibition_tab">   
                     <Link href={ `/page/karts`}>학과 및 교수 소개</Link>
