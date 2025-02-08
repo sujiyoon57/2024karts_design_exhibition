@@ -237,3 +237,13 @@ students, celebrating their journey of creative discovery and advancement.</p>
         </div>  
     );
 }
+
+// ✅ Vercel에서 동적 라우팅을 인식하게 만들기 위해 `generateStaticParams` 사용
+export async function generateStaticParams() {
+    const data = await fetchContentful("archiveNew");
+
+    if (!data || !Array.isArray(data)) return [];
+
+    return data.map((_, index) => ({
+        id: index.toString(),
+    }));
