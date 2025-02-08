@@ -1966,22 +1966,84 @@ iframe{
 
 
 /*------------------------about 교수 -----------------------*/
-.professor_list{display:flex; flex-wrap: wrap; gap:20px; margin-top:55px;font-size:14px;}
-.professor_list .prof_con{width:calc((100% - 40px) / 3);background: #F8F8F8; padding: 16px 24px 20px 24px; border-radius: 4px; box-sizing:border-box;line-height:1.5;}
-.professor_list .prof_name{padding-bottom:12px; border-bottom: 1px solid #B8B8B8; font-size: 17px; font-weight: 600; } 
-.professor_list .prof_info{ margin-top:12px; } 
-.professor_list .prof_info p{display:flex; line-height:1.5;}
-.professor_list .prof_info p + p{margin-top:4px;}
-.professor_list .prof_info span{width:80px;font-weight:600;}
-.professor_list .prof_info em{width:calc(100% - 80px); font-style:normal; font-weight: 400;} /* ✅ 본문 내용 폰트 웨이트 400 적용 */
 
-@media screen and (max-width:870px) {
-  .professor_list{ gap:16px; font-size:13px;}
-  .professor_list .prof_con{width:100%; padding: 12px 20px 16px 20px;} 
-  .professor_list .prof_name{padding-bottom:8px; font-size: 15px;}
-  .professor_list .prof_info em{font-weight: 400;} /* ✅ 모바일에서도 동일한 폰트 웨이트 적용 */
+/* ✅ 교수 페이지에서만 배경색 변경 */
+.professor-page header,
+.professor-page footer {
+  background-color: #F8F8F8 !important; /* ✅ 해당 페이지에서만 배경색 변경 */
 }
-/*----------------------------------------------*/
+
+.professor_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 55px;
+  font-size: 14px;
+}
+
+.professor_list .prof_con {
+  width: calc((100% - 40px) / 3);
+  background: #F8F8F8;
+  padding: 16px 24px 20px 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.professor_list .prof_name {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #B8B8B8;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.professor_list .prof_info {
+  margin-top: 12px;
+}
+
+.professor_list .prof_info p {
+  display: flex;
+  line-height: 1.5;
+}
+
+.professor_list .prof_info p + p {
+  margin-top: 4px;
+}
+
+.professor_list .prof_info span {
+  width: 80px;
+  font-weight: 600;
+}
+
+/* ✅ 폰트 스타일 변경 없음 (폰트 웨이트 그대로 유지) */
+.professor_list .prof_info em {
+  width: calc(100% - 80px);
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* ✅ 모바일에서도 동일한 스타일 적용 */
+@media screen and (max-width: 870px) {
+  .professor_list {
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .professor_list .prof_con {
+    width: 100%;
+    padding: 12px 20px 16px 20px;
+  }
+
+  .professor_list .prof_name {
+    padding-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .professor_list .prof_info em {
+    font-weight: 400;
+  }
+}
+
 
  
 
