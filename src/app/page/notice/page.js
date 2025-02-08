@@ -12,7 +12,6 @@ export default function Notice() {
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
-      // console.log("Fetched Data:", data); // 데이터 구조 확인
       setNotices(data);
       setFilteredNotices(data);
     }
@@ -24,26 +23,49 @@ export default function Notice() {
       setFilteredNotices(notices);
     } else {
       setFilteredNotices(
-        notices.filter((item) => {
-          // console.log("Item Part2:", item.fields.part2); // 필드값 확인
-          return item.fields.part2.includes(selectedPart); // 배열 필터링
-        })
+        notices.filter((item) => item.fields.part2.includes(selectedPart))
       );
     }
   }, [selectedPart, notices]);
 
+  // ✅ 필터 버튼 및 리스트 분류의 색상 정의 (활성화 & 비활성화 구분)
+  const categoryStyles = {
+    전체: {
+      default: "border border-black text-black rounded-full px-4 py-1 text-sm",
+      active: "bg-black text-white rounded-full px-4 py-1 text-sm",
+    },
+    학과: {
+      default: "border border-[#ff6699] text-[#ff6699] rounded-full px-4 py-1 text-sm",
+      active: "bg-[#ff6699] text-white rounded-full px-4 py-1 text-sm",
+    },
+    채용: {
+      default: "border border-[#3366ff] text-[#3366ff] rounded-full px-4 py-1 text-sm",
+      active: "bg-[#3366ff] text-white rounded-full px-4 py-1 text-sm",
+    },
+    행사: {
+      default: "border border-[#33aa33] text-[#33aa33] rounded-full px-4 py-1 text-sm",
+      active: "bg-[#33aa33] text-white rounded-full px-4 py-1 text-sm",
+    },
+    기타: {
+      default: "border border-[#dd8844] text-[#dd8844] rounded-full px-4 py-1 text-sm",
+      active: "bg-[#dd8844] text-white rounded-full px-4 py-1 text-sm",
+    },
+  };
+
   return (
     <div className="notice-container">
+      {/* ✅ 필터 버튼 색상 & 클릭 시 배경 변경 적용 */}
       <div className="notice_type">
-        {/* ✅ 필터 순서만 변경 (기존: ["전체", "학과", "행사", "채용", "기타"] → 변경: ["전체", "학과", "채용", "행사", "기타"]) */}
-        {["전체", "학과", "채용", "행사", "기타"].map((part, index) => (
-            <button
+        {["전체", "학과", "채용", "행사", "기타"].map((part) => (
+          <button
             key={part}
-            className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
+            className={`filter-btn ${
+              selectedPart === part ? categoryStyles[part].active : categoryStyles[part].default
+            }`}
             onClick={() => setSelectedPart(part)}
-            >
+          >
             {part}
-            </button>
+          </button>
         ))}
       </div>
 
@@ -59,18 +81,10 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                <div
-                  className={
-                    data.fields.part2.includes("학과")
-                      ? "type01"
-                      : data.fields.part2.includes("행사")
-                      ? "type02"
-                      : data.fields.part2.includes("채용")
-                      ? "type03"
-                      : ""
-                  }
-                >
-                  {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
+                  {/* ✅ 리스트의 분류(Label)도 필터와 동일한 스타일 적용 */}
+                  <div className={categoryStyles[data.fields.part2[0]]?.active || ""}>
+                    {data.fields.part2.join(", ")}
+                  </div>
                   <div>{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
