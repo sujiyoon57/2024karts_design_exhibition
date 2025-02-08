@@ -353,10 +353,9 @@ header{
   border-radius: 999px;
   border: 1.5px solid #000;
   font-size: 14px;
-  font-weight: 400; /* ✅ 버튼 폰트 weight 400 적용 */
+  font-weight: 500;
 }
 
-/* ✅ 버튼 활성화 스타일 */
 .notice_type button.active { 
   color: #fff;
   background: #000;
@@ -365,6 +364,26 @@ header{
 .notice_type button.active a { 
   color: #fff !important;
 }
+
+/* ✅ 전체 - 검정 */
+.notice_type button.type01 { border: 1.5px solid #000; color: #000; }
+.notice_type button.type01.active { color: #fff; background: #000; border: 1.5px solid #000; }
+
+/* ✅ 학과 - 핑크 */
+.notice_type button.type02 { border: 1.5px solid #FF6EA8; color: #FF6EA8; } 
+.notice_type button.type02.active { color: #fff; background: #FF6EA8; border: 1.5px solid #FF6EA8; } 
+
+/* ✅ 채용 - 블루 */
+.notice_type button.type03 { border: 1.5px solid #5B70F5; color: #5B70F5; }
+.notice_type button.type03.active { color: #fff; background: #5B70F5; border: 1.5px solid #5B70F5; }  
+
+/* ✅ 행사 - 그린 */
+.notice_type button.type04 { border: 1.5px solid #1DCC60; color: #1DCC60; }
+.notice_type button.type04.active { color: #fff; background: #1DCC60; border: 1.5px solid #1DCC60; }  
+
+/* ✅ 기타 - 오렌지 */
+.notice_type button.type05 { border: 1.5px solid #F6945C; color: #F6945C; }
+.notice_type button.type05.active { color: #fff; background: #F6945C; border: 1.5px solid #F6945C; }
 
 /* ✅ 리스트 내 분류 색상 (상단 필터와 동일하게 적용) */
 .notice_list li .notice-info div:nth-child(1) {
@@ -386,46 +405,74 @@ header{
 .notice_list li .notice-info div:nth-child(1).type04 { color: #1DCC60; border: 1.5px solid #1DCC60; }
 .notice_list li .notice-info div:nth-child(1).type05 { color: #F6945C; border: 1.5px solid #F6945C; }
 
-/* ✅ 제목: Pretendard / weight: 400 */
-.notiview-top .notiview_tit {
-  font-family: Pretendard, sans-serif;
-  font-weight: 400;
-  font-size: 47px;
-  line-height: 1.2;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.notice_list li .notice-info div:nth-child(3) {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 0 10px 0 20px;
+  line-height: 32px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  min-width: 125px;
+  box-sizing: border-box;
 }
 
-/* ✅ 작성자, 작성일: Pretendard / weight: 600 */
+/* 기존 코드 유지 */
+.notice_th { 
+  display: flex; 
+  align-items: center; 
+  margin: 0; 
+  padding: 10px 0; 
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.notice_th li:nth-child(1) { width: 60px; }
+.notice_th li:nth-child(2) { width: calc(100% - 190px); }
+.notice_th li:nth-child(3) { width: 130px; box-sizing: border-box; padding-left: 20px; }
+
+.notice_list { margin: 0; padding: 0; }  
+.notice_list li { padding: 10px 130px 10px 0; position: relative; font-size: 16px; border-top: 1px solid rgba(0, 0, 0, 0.2); } 
+.notice_list li .notice-info { display: flex; align-items: center; }
+
+@media screen and (max-width: 870px) {
+  .notice-container { padding: 16px 16px 0; }
+
+  .notice_type button { height: 26px; padding: 0 8px; font-size: 12px; }
+
+  .notice_th { display: none; }
+
+  .notice_list li { padding: 10px 0; font-size: 14px; }
+  .notice_list li .notice-info { flex-wrap: wrap; }
+  .notice_list li .notice-info div:nth-child(1) { padding: 0 8px; margin-right: 8px; font-size: 12px; line-height: 26px; } 
+  .notice_list li .notice-info div:nth-child(2) { order: 2; width: 100%; margin-top: 5px; } 
+  .notice_list li .notice-info div:nth-child(3) { order: 1; position: static; border: 0; padding: 0; line-height: 26px; }  
+} 
+
+.notiview-container {
+  width: 1160px;
+  margin: 0 auto;
+  padding: 103px 80px 145px 80px;
+  box-sizing: border-box;
+}
+
+.notiview-top .notiview_tit {
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 47px;
+  line-height: 1.2;
+}
+
 .notiview-top .notiview-info {
-  font-family: Pretendard, sans-serif;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-weight: 600;
   font-size: 14px;
   line-height: 1.5;
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* ✅ 본문: Pretendard / weight: 400 */
-.notiview-cont { 
-  font-family: Pretendard, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  padding: 50px 100px 145px 100px;
-  line-height: 1.6;
-}
-
-/* ✅ 버튼 (Back to List): Pretendard / weight: 400 */
-.notiview-back {
-  text-align: center;
-}
-
-.notiview-back a {
-  font-family: Pretendard, sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  border-bottom: 1px solid #000;
-}
+.notiview-cont { padding: 50px 100px 145px 100px; font-size: 18px; }
+.notiview-back { text-align: center; }
+.notiview-back a { font-size: 22px; border-bottom: 1px solid #000; }
 
 @media screen and (max-width: 1160px) {
   .notiview-container { width: 100%; }
@@ -433,11 +480,12 @@ header{
 
 @media screen and (max-width: 870px) {
   .notiview-container { width: 100%; padding: 30px 16px 60px; }
-  .notiview-top .notiview_tit { font-size: 16px; font-weight: 400; }
+  .notiview-top .notiview_tit { font-size: 16px; font-weight: 600; }
   .notiview-top .notiview-info { padding: 16px 0; }
   .notiview-cont { padding: 30px 0 70px 0; font-size: 14px; }
   .notiview-back a { font-size: 14px; }
 }
+/*--------------------------------------------------*/
 
 
 
