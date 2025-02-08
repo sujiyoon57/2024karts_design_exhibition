@@ -38,9 +38,13 @@ export default async function Exhibition() {
                                 />
                             </div>
                             <div className={`exhibition-info ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
-                                <div>{data.fields.projectName}</div>
+                                {/* ✅ 작품 이름 (한글 + 영어) */}
+                                <div>
+                                    {data.fields.projectName} / {data.fields.projectNameEng}
+                                </div>
+                                {/* ✅ 학생 이름 (한글 + 영어) */}
                                 <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
-                                    {data.fields.nameEng}
+                                    {data.fields.nameKr} / {data.fields.nameEng}
                                 </div>
                             </div>
                         </Link>
