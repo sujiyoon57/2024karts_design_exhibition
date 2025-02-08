@@ -9,21 +9,10 @@ export default function Notice() {
   const [filteredNotices, setFilteredNotices] = useState([]);
   const [selectedPart, setSelectedPart] = useState("전체");
 
-  // ✅ 필터 버튼 순서 유지
-  const categoryOrder = ["전체", "학과", "채용", "행사", "기타"];
-
-  // ✅ 카테고리별 컬러 지정 (필터 버튼 + 공지 리스트 분류 스타일 동일하게 유지)
-  const categoryColors = {
-    전체: "bg-black text-white",
-    학과: "bg-[#ff6699] text-white rounded-full px-3 py-1 text-sm",
-    채용: "bg-[#66cc66] text-white rounded-full px-3 py-1 text-sm",
-    행사: "bg-[#6699ff] text-white rounded-full px-3 py-1 text-sm",
-    기타: "bg-[#ffcc66] text-white rounded-full px-3 py-1 text-sm",
-  };
-
   useEffect(() => {
     async function getData() {
       const data = await fetchContentful("notice");
+      // console.log("Fetched Data:", data); // 데이터 구조 확인
       setNotices(data);
       setFilteredNotices(data);
     }
@@ -35,25 +24,25 @@ export default function Notice() {
       setFilteredNotices(notices);
     } else {
       setFilteredNotices(
-        notices.filter((item) => item.fields.part2.includes(selectedPart))
+        notices.filter((item) => {
+          // console.log("Item Part2:", item.fields.part2); // 필드값 확인
+          return item.fields.part2.includes(selectedPart); // 배열 필터링
+        })
       );
     }
   }, [selectedPart, notices]);
 
   return (
     <div className="notice-container">
-      {/* ✅ 필터 버튼 (순서 유지 & 컬러 적용) */}
       <div className="notice_type">
-        {categoryOrder.map((part, index) => (
-          <button
+        {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
+            <button
             key={part}
-            className={`filter-btn ${categoryColors[part]} ${
-              selectedPart === part ? "active" : ""
-            }`}
+            className={${selectedPart === part ? "active" : ""} type0${index + 1}}
             onClick={() => setSelectedPart(part)}
-          >
+            >
             {part}
-          </button>
+            </button>
         ))}
       </div>
 
@@ -67,12 +56,20 @@ export default function Notice() {
         {filteredNotices.length > 0 ? (
           filteredNotices.map((data, index) => (
             <li key={index}>
-              <Link href={`/page/notice_view/${index}`}>
+              <Link href={/page/notice_view/${index}}>
                 <div className="notice-info">
-                  {/* ✅ 리스트의 분류(Label) 부분 - 상단 필터와 동일한 스타일 유지 */}
-                  <div className={`${categoryColors[data.fields.part2[0]] || ""}`}>
-                    {data.fields.part2.join(", ")}
-                  </div>
+                <div
+                  className={
+                    data.fields.part2.includes("학과")
+                      ? "type01"
+                      : data.fields.part2.includes("행사")
+                      ? "type02"
+                      : data.fields.part2.includes("채용")
+                      ? "type03"
+                      : ""
+                  }
+                >
+                  {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
                   <div>{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
