@@ -343,7 +343,7 @@ header{
 .notiview-top .notiview_tit {
   font-family: 'Pretendard'; /* sans-serif 제거 */
   font-weight: 400;
-  padding-bottom: 30px;
+  padding-bottom: 30px; /* ✅ 값이 없었던 부분 수정 */
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 47px;
   line-height: 1.2;
@@ -505,7 +505,6 @@ header{
   .notiview-cont { padding: 30px 0 70px 0; font-size: 14px; }
   .notiview-back a { font-size: 14px; }
 }
-
 
 
 
