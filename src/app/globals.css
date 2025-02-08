@@ -1969,13 +1969,19 @@ iframe{
 
 /* ✅ 교수 페이지에서만 배경색 변경 */
 .professor-page header,
-.professor-page footer {
+.professor-page footer,
+.professor-page {
   background-color: #F8F8F8 !important; /* ✅ 해당 페이지에서만 배경색 변경 */
 }
 
-/* ✅ 만약 header, footer가 글로벌 스타일을 따를 경우 */
-:global(.professor-page header),
-:global(.professor-page footer) {
+/* ✅ 특정 페이지에서 header와 footer 배경을 확실히 변경 */
+body.professor-page {
+  background-color: #F8F8F8 !important;
+}
+
+/* ✅ Next.js 모듈 CSS 사용 시 강제 적용 */
+.professor-page :global(header),
+.professor-page :global(footer) {
   background-color: #F8F8F8 !important;
 }
 
