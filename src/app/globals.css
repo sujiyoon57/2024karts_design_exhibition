@@ -339,6 +339,31 @@ header{
   box-sizing: border-box;
 }
 
+/* ✅ 제목 - Pretendard, weight 400 */
+.notiview-top .notiview_tit {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+}
+
+/* ✅ 작성자, 작성일 - Pretendard, weight 600 */
+.notiview-top .notiview-info {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+}
+
+/* ✅ 본문 - Pretendard, weight 400 */
+.notiview-cont {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+}
+
+/* ✅ 버튼 - Pretendard, weight 400 */
+.notice_type button,
+.notiview-back a {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+}
+
 .notice_type { 
   padding-bottom: 35px;
   display: flex;
@@ -486,6 +511,7 @@ header{
   .notiview-back a { font-size: 14px; }
 }
 /*--------------------------------------------------*/
+
 
 
 
