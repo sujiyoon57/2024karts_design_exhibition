@@ -245,5 +245,6 @@ export async function generateStaticParams() {
     if (!data || !Array.isArray(data)) return [];
 
     return data.map((_, index) => ({
-        id: index.toString(),
+        id: index.toString()
     }));
+}
