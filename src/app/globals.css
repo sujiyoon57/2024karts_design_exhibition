@@ -1983,6 +1983,13 @@ iframe{
   background-color: #F1F1F1 !important; /* 🔹 header/footer 강제 적용 */
 }
 
+/* ✅ 교수 페이지에서 footer 바깥 배경을 맞추기 위해 부모 요소에도 배경색 적용 */
+.professor-page .wrap,
+.professor-page .container1,
+.professor-page .container2 {
+  background-color: #F1F1F1 !important; /* 🔹 footer와 동일한 배경색 적용 */
+}
+
 /* ✅ 교수 리스트 스타일 */
 .professor_list {
   display: flex;
