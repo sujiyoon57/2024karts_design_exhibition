@@ -1978,8 +1978,8 @@ iframe{
 }
 
 /* ✅ Next.js 모듈 CSS 적용 시 강제 스타일 */
-.professor-page :global(header),
-.professor-page :global(footer) {
+:global(.professor-page header),
+:global(.professor-page footer) {
   background-color: #F8F8F8 !important;
 }
 
