@@ -35,7 +35,8 @@ export default function Notice() {
   return (
     <div className="notice-container">
       <div className="notice_type">
-        {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
+        {/* ✅ 필터 순서만 변경 (기존: ["전체", "학과", "행사", "채용", "기타"] → 변경: ["전체", "학과", "채용", "행사", "기타"]) */}
+        {["전체", "학과", "채용", "행사", "기타"].map((part, index) => (
             <button
             key={part}
             className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
