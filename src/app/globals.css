@@ -1750,6 +1750,12 @@ iframe{
   word-wrap: break-word;
   word-break: keep-all;
 }
+
+/* ✅ 학과 소개 본문 폰트 웨이트 400 적용 */
+.about-description {
+  font-weight: 400;
+}
+
 .up{
   display: block;
 }
@@ -1883,6 +1889,9 @@ iframe{
   }
   .faculty-info > div:nth-of-type(4){
     font-weight: 400;
+  }
+  .about-description {
+    font-weight: 400; /* 모바일에서도 학과 소개 본문 폰트 웨이트 유지 */
   }
 }
 
