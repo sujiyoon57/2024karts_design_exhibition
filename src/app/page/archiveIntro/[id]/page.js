@@ -1,5 +1,4 @@
-"use client" // 클라이언트 컴포넌트 지정
-
+"use client"
 import Link from "next/link"
 import Image from "next/image"
 import { fetchContentful } from "@/app/contentful/contentful"
@@ -8,17 +7,14 @@ import ScrollUp from "@/app/component/scrollUp"
 import ReactPlayer from "react-player"
 import { useSearchParams } from 'next/navigation'
 
-export default async function ArchiveNew(props) {
+
+export default async function ArchiveNew(props){
+
     const id = parseInt(props.params.id);
     const data = await fetchContentful('archiveNew');
-    
-    console.log("📌 전체 데이터 확인:", data); // ✅ Contentful에서 받은 데이터 출력
-    console.log("📌 현재 ID 값:", id); // ✅ 현재 페이지에서 보고 있는 ID 확인
-    console.log("📌 해당 ID 데이터 확인:", data[id]); // ✅ 해당 ID의 데이터 확인
-    
-    const archiveNew = data[id]?.fields || {}; // ❗ 데이터가 없으면 기본값 `{}` 사용
-    const sys = data[id]?.sys || {}; 
-    
+    const archiveNew = data[id].fields;
+    const sys = data[id].sys;
+    const len  = data.length > 0 && data.length; 
     
 
     return(
@@ -241,7 +237,3 @@ students, celebrating their journey of creative discovery and advancement.</p>
         </div>  
     );
 }
-
-console.log("Fetched Data:", data); // 전체 데이터 확인
-console.log("ID:", id); // 우리가 찾고 있는 ID 확인
-console.log("Data at ID:", data[id]); // 해당 ID의 데이터 확인
