@@ -38,7 +38,7 @@ export default function Notice() {
         {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
             <button
             key={part}
-            className={${selectedPart === part ? "active" : ""} type0${index + 1}}
+            className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
             onClick={() => setSelectedPart(part)}
             >
             {part}
@@ -56,7 +56,7 @@ export default function Notice() {
         {filteredNotices.length > 0 ? (
           filteredNotices.map((data, index) => (
             <li key={index}>
-              <Link href={/page/notice_view/${index}}>
+              <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
                 <div
                   className={
