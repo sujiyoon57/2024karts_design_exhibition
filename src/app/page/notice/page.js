@@ -1,9 +1,3 @@
-"use client";
-
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { fetchContentful } from "@/app/contentful/contentful";
-
 export default function Notice() {
   const [notices, setNotices] = useState([]);
   const [filteredNotices, setFilteredNotices] = useState([]);
@@ -28,23 +22,13 @@ export default function Notice() {
     }
   }, [selectedPart, notices]);
 
-  // ✅ 필터별 색상 적용을 위한 클래스 매핑 함수
-  const getCategoryClass = (category) => {
-    if (category.includes("학과")) return "type01";
-    if (category.includes("행사")) return "type02";
-    if (category.includes("채용")) return "type03";
-    if (category.includes("기타")) return "type04";
-    return "";
-  };
-
   return (
     <div className="notice-container">
-      {/* ✅ 필터 버튼에도 색상이 적용되도록 클래스 추가 */}
       <div className="notice_type">
         {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
           <button
             key={part}
-            className={`${selectedPart === part ? "active" : ""} ${getCategoryClass([part])}`}
+            className={`${selectedPart === part ? "active" : ""} type0${index}`}
             onClick={() => setSelectedPart(part)}
           >
             {part}
@@ -64,8 +48,19 @@ export default function Notice() {
             <li key={index}>
               <Link href={`/page/notice_view/${index}`}>
                 <div className="notice-info">
-                  {/* ✅ 리스트 내 공지 항목에도 색상 적용 */}
-                  <div className={getCategoryClass(data.fields.part2)}>
+                  <div
+                    className={
+                      data.fields.part2.includes("학과")
+                        ? "type01"
+                        : data.fields.part2.includes("행사")
+                        ? "type02"
+                        : data.fields.part2.includes("채용")
+                        ? "type03"
+                        : data.fields.part2.includes("기타")
+                        ? "type04"
+                        : "type00"
+                    }
+                  >
                     {data.fields.part2.join(", ")}
                   </div>
                   <div>{data.fields.title}</div>
