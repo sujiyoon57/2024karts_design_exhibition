@@ -343,6 +343,7 @@ header{
 .notiview-top .notiview_tit {
   font-family: 'Pretendard'; /* sans-serif 제거 */
   font-weight: 400;
+  padding-bottom: 30px; /* ✅ 세미콜론 추가 */
 }
 
 /* ✅ 작성자, 작성일 - Pretendard, weight 600 */
@@ -476,7 +477,7 @@ header{
 }
 
 .notiview-top .notiview_tit {
-  padding-bottom: 30px;
+  padding-bottom: 30px; /* ✅ 세미콜론 추가 */
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 47px;
   line-height: 1.2;
