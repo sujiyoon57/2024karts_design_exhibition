@@ -5,7 +5,12 @@ import Footer from "@/app/component/footer";
 
 export default async function Exhibition() {
     var data = await fetchContentful("portfolio");
-    const portfolio = data || []; // 데이터가 없을 경우 빈 배열 할당
+    let portfolio = data || []; // 데이터가 없을 경우 빈 배열 할당
+
+    // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
+    portfolio.sort((a, b) => {
+        return a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR");
+    });
 
     return (
         <div className="exhibition">
