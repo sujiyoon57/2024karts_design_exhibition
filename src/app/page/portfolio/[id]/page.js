@@ -90,18 +90,32 @@ export default async function Portfolio(props) {
                             ></iframe>
                         )}
                     </div>
+
+                    {/* ✅ 수정된 부분: 이미지 + MP4 비디오 파일 구분 */}
                     <div className="portfolio-image-wrap">
                         {Array.isArray(portfolio.works) &&
-                            portfolio.works.map((data, index) => (
-                                <Image
-                                    key={index}
-                                    src={data.fields?.file?.url ? "https:" + data.fields.file.url : ""}
-                                    alt=".."
-                                    width={0}
-                                    height={0}
-                                />
-                            ))}
+                            portfolio.works.map((data, index) => {
+                                const fileUrl = data.fields?.file?.url ? `https:${data.fields.file.url}` : "";
+                                const fileType = data.fields?.file?.contentType || ""; // ✅ 파일 유형 확인
+
+                                return fileType.startsWith("video/") ? ( // ✅ 비디오 파일이면 <video> 태그 사용
+                                    <video key={index} controls width="100%">
+                                        <source src={fileUrl} type={fileType} />
+                                        브라우저가 비디오 태그를 지원하지 않습니다.
+                                    </video>
+                                ) : ( // ✅ 이미지 파일이면 <Image> 태그 사용
+                                    <Image
+                                        key={index}
+                                        src={fileUrl}
+                                        alt="Portfolio Work"
+                                        width={800}
+                                        height={500}
+                                        layout="responsive"
+                                    />
+                                );
+                            })}
                     </div>
+
                     <div className="vedio-wrap">
                         {portfolio.bottomEmbed && (
                             <iframe

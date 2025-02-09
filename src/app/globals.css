@@ -432,12 +432,29 @@ header{
   font-weight: 500;
 }
 
-/* ✅ 리스트 필터 색상 */
-.notice_list li .notice-info div.type01 { color: #FF6EA8; border: 1.5px solid #FF6EA8; }
-.notice_list li .notice-info div.type02 { color: #1DCC60; border: 1.5px solid #1DCC60; }
-.notice_list li .notice-info div.type03 { color: #5B70F5; border: 1.5px solid #5B70F5; }
-.notice_list li .notice-info div.type04 { color: #F6945C; border: 1.5px solid #F6945C; }
+/* ✅ 리스트 필터 색상 (홈 & notice 페이지 동일 적용) */
+.notice_list li .notice-info div.type01,
+.notice-category.type01 { color: #FF6EA8; border: 1.5px solid #FF6EA8; }
+.notice_list li .notice-info div.type02,
+.notice-category.type02 { color: #1DCC60; border: 1.5px solid #1DCC60; }
+.notice_list li .notice-info div.type03,
+.notice-category.type03 { color: #5B70F5; border: 1.5px solid #5B70F5; }
+.notice_list li .notice-info div.type04,
+.notice-category.type04 { color: #F6945C; border: 1.5px solid #F6945C; }
 
+/* ✅ 공지사항 카테고리 스타일 (홈 & notice 페이지 동일 적용) */
+.notice-category {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 50px;
+  border: 1.5px solid;
+}
+
+/* ✅ 공지사항 날짜 스타일 유지 */
 .notice_list li .notice-info div:nth-child(3) {
   position: absolute;
   top: 10px;
