@@ -607,191 +607,133 @@ opacity:1;}
 /*---------------------------------------------------*/
 /*-------------------exhibition-----------------------*/
 .exhibition{
-    padding: 28px 80px 58px;
-    position: relative;
-    min-height: 100vh; /*footer 밑으로 보내기*/
-    box-sizing: border-box;
-    /*font-family: 'Moderat';*/
-  }
-  .exhibition .exhibition-title{
-    font-size: 0.9375vw;
-    margin: 35px 0 24px 0;
-    text-transform: uppercase;
-  }
-  .exhibition-container{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    padding-bottom: 2.5vw;
-    margin-top: 1vw;
-    margin-left: -1.042vw;
-    width: calc(100% + 2.084vw);
-  }
-  .exhibition-container a{ 
-    padding: 0 0 2.5vw;
-  }
-  .exhibition-container img{
-    width: 100%;
-    height: auto;
-  }
-  .exhibition-container .isVertical{
-    width: 100%;
-    height: auto;
-  }
-  .exhibition-image-container{
-    position: relative;
-    padding-left: 1.042vw;
-    padding-right: 1.042vw;
-    text-align: center;
-    line-height:0;
-  }
-  .exhibition-info{
-    box-sizing: border-box;
-    color: #000;
-    /* position: absolute; */
-    bottom: 0px;
-    /* left: 1.042vw; */
-    width: calc(100% - 2.084vw);
-    /* padding-bottom: 20px; */
-    padding-top: 0.8302vw;
-    padding-left: 1.042vw;
-    /* padding-right: 20px; */
-    /* padding-left: 20px; */
-    /* background-color: rgba(0,0,0,0.2); */
-  }
-  .exhibition-info > div:first-child{
-    /*font-family: 'Moderat', 'SUIT';*/
-    margin-bottom: 2px;
-  }
-  
-  @media (hover: hover) {
-    .exhibition-image-container:hover .exhibition-info{
+  padding: 28px 80px 58px;
+  position: relative;
+  min-height: 100vh; /*footer 밑으로 보내기*/
+  box-sizing: border-box;
+}
+.exhibition .exhibition-title{
+  font-size: 0.9375vw;
+  margin: 35px 0 24px 0;
+  text-transform: uppercase;
+}
+.exhibition-container{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  padding-bottom: 2.5vw;
+  margin-top: 1vw;
+  margin-left: -1.042vw;
+  width: calc(100% + 2.084vw);
+}
+.exhibition-container a{ 
+  padding: 0 0 2.5vw;
+}
+.exhibition-container img{
+  width: 100%;
+  height: auto;
+}
+.exhibition-container .isVertical{
+  width: 100%;
+  height: auto;
+}
+.exhibition-image-container{
+  position: relative;
+  padding-left: 1.042vw;
+  padding-right: 1.042vw;
+  text-align: center;
+  line-height: 0;
+}
+
+/* ✅ 작품 제목과 학생명 스타일 통일 */
+.exhibition-info > div:first-child,  /* 작품 제목 */
+.exhibition-info > div:last-child {  /* 학생명 */
+  font-family: 'Pretendard Variable', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.exhibition-info{
+  box-sizing: border-box;
+  color: #000;
+  bottom: 0px;
+  width: calc(100% - 2.084vw);
+  padding-top: 0.8302vw;
+  padding-left: 1.042vw;
+}
+
+@media (hover: hover) {
+  .exhibition-image-container:hover .exhibition-info{
       height: calc(100% - 4px);
-    }
   }
-  .exhibition-student-name{
-    /* color: rgba(0, 0, 0, 0.5); */
-    /*font-family: 'Moderat';*/
-  }
-  /* .whiteFont{color: white;} */
-  @media screen and (min-width:1134px){
-    .exhibition-container a:nth-last-of-type(-n+4){
+}
+
+@media screen and (min-width:1134px){
+  .exhibition-container a:nth-last-of-type(-n+4){
       border: none;
-    }
-    .exhibition-container a:nth-last-of-type(-n+4) .exhibition-image-container::before{
+  }
+  .exhibition-container a:nth-last-of-type(-n+4) .exhibition-image-container::before{
       content: "";
       position: absolute;
       left: 0;
       height: calc(100% - 2.5vw);
-      width: 1.042vw ;
+      width: 1.042vw;
       border-left: #f0f0f0 solid 1px;
-    }
-    .exhibition-info >div:first-child{font-size: 0.9375vw;}
-    .exhibition-info > div:last-child{font-size: 0.8333vw;}
   }
-  @media screen and (min-width:870px) and (max-width:1133px){
-    .exhibition-container{
+}
+
+@media screen and (min-width:870px) and (max-width:1133px){
+  .exhibition-container{
       grid-template-columns: 33.33% 33.33% 33.33%;
-  
-    }
-    .exhibition-container a:nth-last-of-type(-n+3){
+  }
+  .exhibition-container a:nth-last-of-type(-n+3){
       border: none;
-    }
-    .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
+  }
+  .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
       content: "";
       position: absolute;
       left: 0;
       height: calc(100% - 2.5vw);
-      width: 1.042vw ;
+      width: 1.042vw;
       border-left: #f0f0f0 solid 1px;
-    }
-    .exhibition-info{
-      /* padding-bottom: 15px; */
-      padding-top: 0.8302vw;
-      /* padding-left: 15px; */
-      /* padding-right: 15px; */
-    }
-    .exhibition-info > div:first-child{
-      font-size: 1.5887vw;
-    }
-    .exhibition-info > div:last-child{
-      font-size: 1.4122vw;
-    }
   }
-  @media screen and (min-width:567px) and (max-width:869px){
-    .exhibition-container{
+}
+
+@media screen and (min-width:567px) and (max-width:869px){
+  .exhibition-container{
       grid-template-columns: 33.33% 33.33% 33.33%;
-    }
-    .exhibition-container a:nth-last-of-type(-n+3){
+  }
+  .exhibition-container a:nth-last-of-type(-n+3){
       border: none;
-    }
-    .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
+  }
+  .exhibition-container a:nth-last-of-type(-n+3) .exhibition-image-container::before{
       content: "";
       position: absolute;
       left: 0;
       height: calc(100% - 2.5vw);
-      width: 1.042vw ;
+      width: 1.042vw;
       border-left: #f0f0f0 solid 1px;
-    }
-    .exhibition-info{
-      /* padding-bottom: 15px; */
-      padding-top: 0.8302vw;
-      /* padding-left: 15px; */
-      /* padding-right: 15px; */
-    }
-    .exhibition-info > div:first-child{
-      font-size: 1.5887vw;
-    }
-    .exhibition-info > div:last-child{
-      font-size: 1.4122vw;
-    }
   }
-  @media screen and (max-width:566px){
-    .exhibition{
-      /* padding: 91px 7.333vw 40px; */
+}
+
+@media screen and (max-width:566px){
+  .exhibition{
       padding: 10px 16.69px 40px;
       position: relative;
-    }
-    .exhibition .exhibition-title{
+  }
+  .exhibition .exhibition-title{
       font-size: 4.444vw;
       text-align: center;
-    }
-    .exhibition-container{
+  }
+  .exhibition-container{
       grid-template-columns: 50% 50%;
       position: relative;
-    }
-    .exhibition-container a{
+  }
+  .exhibition-container a{
       border-left: 0.0625vh #000 solid;
       padding: 0 0 16px 0;
-    }
-    /*
-    .exhibition-container a:first-child{
-      padding-top: 12px;
-      margin-top: 20px;
-    }
-    .exhibition-container a:first-child::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      height: 12px;
-      width: 100%;
-      border-top: #f0f0f0 solid 1px;
-      margin-left: 50%;
-      transform: translate(-50%);
-    }
-    */
-    .exhibition-info{
-      /* padding-bottom: 15px; */
-      padding-top: 1.889vw;
-      /* padding-left: 15px; */
-      /* padding-right: 15px; */
-    }
-    .exhibition-info >div:first-child{font-size:13px  ;}
-    .exhibition-info > div:last-child{font-size: 13px;}
-    .exhibition-container a{
-      border: none;
-    }
   }
-/*--------------------------------------------------*/
+}
+
 
 /*-------------------exhibition_list-----------------------*/
 .exhibition_tab{display:flex;padding-bottom:15px;}
@@ -875,14 +817,14 @@ footer{
   }
 
   /*--------------------------------------------------*/
-  /*-----------------------Portfolio---------------------------*/
+
+/*-----------------------Portfolio---------------------------*/
 .portfolio-container{ 
   padding-bottom: 7.9688vw;
   margin-left: 80px;
   margin-right: 80px; 
   box-sizing: border-box;
   position: relative;
-  /*font-family: 'Moderat';*/
 }
 .portfolio-container footer{left:0;right:0;} 
 .portfolio-box1{
@@ -890,34 +832,27 @@ footer{
   margin-bottom: 3vw;
 }
 .navigation{
-  /* text-align: right; */
   text-align: center;
   font-size: 1.0417vw;
   margin-bottom: 7.2917vw;
   margin-top: 0;
-  /*font-family: 'Moderat';*/
   text-transform: uppercase;
 }
 .navigation div a{
   color: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+/* ✅ 프로젝트 제목 (PC) */
 .portfolio-box1 .project-name{
-  font-size: 2.46vw;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 47.23px;
   line-height: 3.2797vw;
   margin-bottom: 0.4167vw;
-  /*font-family: 'Moderat', 'SUIT';*/
 }
-/* .portfolio-box1 .big{
-  font-size: 3.229vw;
-  line-height: 3.2797vw;
-}
-.portfolio-box1 .small{
-  font-size: 4.739vw;
-  display: none;
-} */
 
-.portfolio-flex{/*display:flex; flex-wrap: wrap;*/}
+.portfolio-flex{}
 .portfolio-flex:after {content: ''; clear: both; display: block;}
 .portfolio-flex .portfolio-image-container{width:58%; float: left;}
 .portfolio-flex .portfolio-image-container .video-wrap{margin:0;}
@@ -931,35 +866,23 @@ footer{
   margin-bottom: 6.25vw;
   margin-top: 2.5vw;
 }
+
+/* ✅ 학생 이름 스타일 (PC) */
 .student-info{
   position: relative;
-  font-size: 1.146vw;
-  /* line-height: 1.353vw; */
+  font-family: 'Pretendard', sans-serif;
   font-weight: 600;
+  font-size: 22px;
 }
 .student-info div{
   display: inline;
   margin-right: 1.458vw;
 }
-.student-info >div:first-child{
-  /*font-family: 'Moderat';*/
-}
-.student-info>div:last-child{
-  /*font-family: 'Moderat', 'SUIT';*/
-}
+
 .portfolio-box1, .project-name, .value, .move-page{
   text-transform: uppercase;
 }
-.key{
-  text-transform: capitalize;
-  font-size: 0.8435vw;
-  color: rgba(0, 0, 0, 0.50);
-  /*font-family: 'Moderat';*/
-}
-.value{
-  font-size: 0.8435vw;
-  /*font-family: 'Moderat', 'SUIT';*/
-}
+
 .portfolio-image-container{
   width: 100%;
 }
@@ -970,10 +893,6 @@ footer{
 .video-wrap{
   margin-left: 18.75vw;
   margin-right: 18.75vw;
-  /* /// */
-  /* position: relative;
-  padding-bottom: 56.25%;
-  height: 0; */
 }
 iframe{
   height: 35.3vw;
@@ -983,96 +902,62 @@ iframe{
   width: 100%;
   height: auto;
 }
-.project-info-wrap{
-  width: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 22.5% 77.5%;
-}
-.project-info{
-  padding-right: 13.284%;
-}
-.project-info .project-name{
-  font-size: 1.3021vw;
-  margin-bottom: 1.458vw;
-  word-wrap: break-word;
-  /*font-family: 'Moderat','SUIT';*/
-}
-.project-detail{
-  display: grid;
-  grid-template-rows: auto auto;
-}
-.project-detail > div:first-child >div, .project-detail > div:last-child{
-  display: grid;
-  grid-template-columns: 52.766% 47.234%;
-}
-.project-detail >div>div{
-  margin-bottom: 0.8333vw;
-}
+
 .portfolio-cation-wrap{
   display: grid;
   grid-template-columns: 50% 50%;
   font-size: 0.8333vw;
 } 
+
+/* ✅ 국문 & 영문 설명 스타일 (PC) */
 .portfolio-cation-wrap p{
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
   word-wrap: break-word;
   word-break: keep-all;
-  /*font-family: 'Moderat', 'SUIT';*/
 }
 .portfolio-cation-wrap >div{
-  /* margin-bottom: 7.344vw; */
   margin-left: 0.9375vw;
-}
-.portfolio-cation-wrap >div:first-child{
-  line-height: 1.458vw;
-  font-family: 'SUIT';
-}
-.portfolio-cation-wrap div:last-child{
-  line-height: 1.354vw;
-  /*font-family: 'Moderat';*/
 }
 .portfolio-box3{
   margin-top: 6.3021vw;
-  /* margin-bottom: 7.9688vw; */
 }
+
+/* ✅ 하단 학생명, 한줄소개, 정보 스타일 (PC) */
 .student-info-detail{
   display: flex;
-   
   width: 100%;
-  /* height: 4.4792vw; -------------------------------------*/
   margin-bottom: 4.7396vw;
-  /*font-family: 'Moderat', 'SUIT';*/
-  font-size:22px;font-weight:400;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
 } 
-.student-info-detail .name {width:20%;text-transform:uppercase}
+.student-info-detail .name {width:20%; text-transform:uppercase}
 .student-info-detail .introduct {width:90%;}
 .student-info-detail .contact  {width:50%;}
 .link-container{
-  /* text-align: center; */
   text-align: left;
   margin-bottom: 3.152vw;
 }
-.link-container span{
-  margin-right: 1.302vw;
-}
-.link-container span svg{
-  /* width: 2.135vw; */
-  width: 1.25vw;
-}
+
+/* ✅ Other Projects 버튼 스타일 (PC) */
 .move-page {
   font-size: 0.9375vw;
-  margin-top: 9vw; /* ✅ 여백을 넉넉하게 추가하여 아래로 이동 */
+  margin-top: 9vw;
 }
-
-.move-page >div:first-child {
+.move-page > div:first-child {
   margin-bottom: 2.2917vw;
   text-decoration: underline;
   text-align: center;
   text-transform: capitalize;
+  font-family: 'Pretendard', sans-serif;
   font-weight: 400;
   font-size: 22px;
 }
 
+/* ✅ Other Projects 이미지 비율 조정 */
 .page-image-wrap{
   display: grid;
   grid-template-columns: 32.33% 32.33% 32.33%;
@@ -1080,81 +965,49 @@ iframe{
 }
 .page-image-wrap img{
   width: 100%;
-  height: auto;
+  height: 291px; /* 기존 width 유지, height을 291px로 고정 */
+  object-fit: cover; /* 이미지가 비율을 유지하면서 꽉 차도록 설정 */
 }
-@media screen and (max-width:870px) {
+
+/* ✅ 반응형 디자인 유지 (모바일 전용 스타일) */
+@media screen and (max-width: 870px) {
   .portfolio-container{
     padding-top: 91px;
     width: 100vw;
     box-sizing: border-box;
     padding-bottom: 20.278vw; 
-    margin:0;
+    margin: 0;
+    padding-left: 4.444vw; /* ✅ 모바일 좌우 여백 추가 */
+    padding-right: 4.444vw;
   }
-  .portfolio-container footer{left:4.444vw; right:4.444vw;}
+  
   .portfolio-box1,.portfolio-box2,.portfolio-box3{
-    /* margin-left: 9.1667vw;
-    margin-right: 9.1667vw; */
     margin-left: 4.444vw;
     margin-right: 4.444vw;
   }
   .portfolio-box1{
-    /* margin-bottom: 7.5vw; */
     margin-top: 0;
     margin-bottom: 5.555vw;
   }
+  
+  /* ✅ 프로젝트 제목 (모바일 전용) */
+  .portfolio-box1 .project-name{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* ✅ 학생 이름 & 전공 (모바일 전용) */
+  .student-info{
+    font-size: 18px;
+    font-weight: 600;
+  }
+
   .portfolio-flex{display:block;}
   .portfolio-flex .portfolio-image-container{width:100%;}
   .portfolio-flex .portfolio-box2{width:auto; margin:8.889vw 4.444vw;}
-  .navigation{
-    text-align: center;
-    font-size: 3.333vw;
-    
-    margin-bottom: 15.556vw;
-    margin-top: 0;
-    text-transform: uppercase;
-  }
-  .navigation > div:first-child{
-    margin-bottom: 2vw;
-  }
-  #small{
-    font-size: 4.891vw;
-  }
-  .portfolio-box1 .project-name{
-    font-size: 6.667vw;
-    line-height: 7.2322vw;
-    /* margin-bottom: 6.667vw; */
-    margin-bottom: 2.7778vw;
-    word-wrap: break-word;
-  }
-  /* .portfolio-box1 .big{
-    font-size: 6.667vw;
-    line-height: 5.2322vw;
-  } */
-  /* .portfolio-box1 .small{
-    display: block;
-  } */
-  .student-info{
-    position: relative;
-    font-size: 3.333vw;
-    width: 100%;
-    display: flex;
-   /* justify-content: space-between; */
-  }
-  .student-info div{
-    display: inline;
-    margin-right: 0;
-  }
-  .student-info div:first-child{
-    /* width: 41.967%; */
-    /* margin-right: 5.333vw; */
-    margin-right: 3.333vw;
-  }
-  .student-info div:last-child::before{
-    content: '';
-  }
+  
   .portfolio-box2{
     margin-bottom: 8.889vw;
-    /* margin-top: 7.5vw; */
     margin-top: 8.889vw;
   }
   .portfolio-image-wrap{
@@ -1168,85 +1021,33 @@ iframe{
   iframe{
     height: 56.25vw;
   }
-  
-  .value,.key{
-    font-size: 2.778vw;
-  }
-  .project-info-wrap{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-  }
-  .project-info{
-    /* margin-bottom: 9.722vw; */
-    margin-bottom: 6.667vw;
-    padding: 0;
-    
-  }
-  .project-info .project-name{
-    font-size: 3.333vw;
-    /* margin-bottom: 5.556vw; */
-    margin-bottom: 2.7778vw;
-    word-wrap: break-word;
-  }
-  .project-detail{
-    display: grid;
-    grid-template-columns: 52.134% 47.866%;
-  }
-  .project-detail > div:first-child >div, .project-detail > div:last-child{
-    /* display: grid;
-    grid-template-columns: 36.0759% 63.924%; */
-    display: flex;
-    gap: 1.111vw;
-  }
-  .project-detail >div>div{
-    margin-bottom: 1.944vw;
-  }
+
   .portfolio-cation-wrap{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    font-size: 3.333vw;
-    /* font-size: 16px; */
   } 
-  .portfolio-cation-wrap >div{
-    margin-left: 0;
-  }
+
+  /* ✅ 프로젝트 설명 (모바일 전용) */
   .portfolio-cation-wrap p{
-    word-wrap: break-word;
-    line-height: 6.111vw;
+    font-size: 15px;
+    font-weight: 400;
   }
-  .portfolio-cation-wrap > div:first-of-type{
-    margin-bottom: 8.889vw;
-  }
+
   .portfolio-box3{
     margin-top: 11.111vw;
   }
-  .student-info-detail{
-     font-size:13px; flex-wrap: wrap;  row-gap: 17px;
-  } 
-  .student-info-detail .name{width:50%;}
-  .student-info-detail .introduct{width:100%;order:2;}
-  .student-info-detail .contact{width:50%;order:1;}
-
-  .link-container{
-    text-align: left; 
-  }
-  .link-container a{
-    margin-right: 2.222vw;
-  }
-  .link-container span svg{
-    width: 2.778vw;
-  }
-  .move-page{
-    font-size: 3.333vw;
-  }
-  .move-page >div:first-child{
-    font-size:10px; text-align:left;
+  
+  /* ✅ Other Projects 버튼 (모바일) */
+  .move-page > div:first-child {
+    font-size: 22px;
+    text-align: left;
     margin-bottom: 2.003vw;
   }
-  .page-image-wrap{grid-template-columns:48.5% 48.5%;}
+  
+  .page-image-wrap{grid-template-columns: 48.5% 48.5%;}
 }
+
 /*----------------------------------*/
 
 /*---------------------designer----------------------*/
@@ -2119,55 +1920,209 @@ iframe{
   .archive_list > li{width:100%;}  
 }
 
-.archive_intro{font-size:18px; line-height:1.5;}
-.archive_intro.archive_intro_web{display:flex; flex-wrap: wrap; justify-content: space-between;}
-.archive_intro.archive_intro_mo{display:none;}
+/*------------------- archive intro -----------------------*/
 
-.archive_intro .backtolist {width:100%; padding:0 0 30px 12px; box-sizing:border-box; font-size:16px;}
-.archive_intro .backtolist span{text-decoration:underline;}
-  
-.archive_intro .tit_img{width:calc(100% + 160px); margin-left:-80px; margin-right:-80px; padding-bottom:60px;}
-.archive_intro .tit_img img{width:100%;}
-.archive_intro .info {width:50%; padding:0 0 0 67px; box-sizing:border-box;}
-.archive_intro .info .info_txt div + div{margin-top:80px;}
-.archive_intro .info .info_txt p + p{margin-top:30px;}
-.archive_intro .info .info_link{padding:160px 0; text-align:center;}
-.archive_intro .info .info_link p + p{margin-top:16px;}
-.archive_intro .info .info_link a{text-decoration:underline; font-size:16px;}
-.archive_intro .credit{width:35%; box-sizing:border-box;}
-.archive_intro .credit h4{margin:0;padding-bottom:20px; font-weight:400;}
-.archive_intro .credit dl + h4{margin-top:40px;}
-.archive_intro .credit dl{display:flex;margin:0; }
-.archive_intro .credit dl + dl{margin-top:20px;}
-.archive_intro .credit dl dt{width:120px; margin:0; color:#555;}
-.archive_intro .credit dl dd{width:calc(100% - 120px);margin:0;} 
-.archive_intro .credit .committee{margin-bottom : 40px;}
-.archive_intro .credit .committee dl + dl{margin-top:5px;}
-
-@media screen and (max-width:1440px) {
-  .archive_intro .info {padding:0;} 
-  .archive_intro .credit{padding:0;}
+.archive_intro {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400; /* ✅ 전체 weight을 400으로 통일 */
 }
-@media screen and (max-width:870px) {
-  .archive_intro{font-size:13px;}
-  .archive_intro.archive_intro_web {display:none;}
-  .archive_intro.archive_intro_mo{display:block; } 
-  
-  .tab_cont_credit{display:none; }  
-  
-  .archive_intro .tit_img{width:calc(100% + 32px); margin-left:-16px; margin-right:-16px; padding-bottom:20px;}
 
-  .archive_intro .info {width:100%;} 
-  .archive_intro .info .title{padding-bottom:20px; font-weight:600;font-size:14px;}
-  .archive_intro .info .info_txt div + div{margin-top:40px;}
-  .archive_intro .info .info_txt p + p{margin-top:25px;}
-  .archive_intro .info .info_link{padding:55px 0; text-align:center;}
-  .archive_intro .info .info_link p + p{margin-top:16px;}
-  .archive_intro .info .info_link a{text-decoration:underline; font-size:14px;}
+.archive_intro.archive_intro_web {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-  .archive_intro .credit{width:100%;}
-  .archive_intro .credit dl + h4{margin-top:30px;}
-  .archive_intro .credit dl dt{width:93px; ;}
-  .archive_intro .credit dl dd{width:calc(100% - 93px); }  
-  
+.archive_intro.archive_intro_mo {
+  display: none;
+}
+
+.archive_intro .backtolist {
+  width: 100%;
+  padding: 0 0 30px 12px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 400; /* ✅ 폰트 굵기 통일 */
+}
+
+.archive_intro .backtolist span {
+  text-decoration: underline;
+}
+
+.archive_intro .tit_img {
+  width: calc(100% + 160px);
+  margin-left: -80px;
+  margin-right: -80px;
+  padding-bottom: 60px;
+}
+
+.archive_intro .tit_img img {
+  width: 100%;
+}
+
+.archive_intro .info {
+  width: 50%;
+  padding: 0 0 0 67px;
+  box-sizing: border-box;
+}
+
+.archive_intro .info .info_txt div + div {
+  margin-top: 80px;
+}
+
+.archive_intro .info .info_txt p + p {
+  margin-top: 30px;
+}
+
+.archive_intro .info .info_txt,
+.archive_intro .info .info_txt p {
+  font-weight: 400 !important; /* ✅ 모든 본문 폰트 weight 통일 */
+}
+
+.archive_intro .info .info_link {
+  padding: 160px 0;
+  text-align: center;
+}
+
+.archive_intro .info .info_link p + p {
+  margin-top: 16px;
+}
+
+.archive_intro .info .info_link a {
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 400 !important; /* ✅ 링크 폰트 weight 통일 */
+}
+
+.archive_intro .credit {
+  width: 35%;
+  box-sizing: border-box;
+}
+
+.archive_intro .credit h4 {
+  margin: 0;
+  padding-bottom: 20px;
+  font-weight: 400; /* ✅ 제목 폰트 weight 통일 */
+}
+
+.archive_intro .credit dl + h4 {
+  margin-top: 40px;
+}
+
+.archive_intro .credit dl {
+  display: flex;
+  margin: 0;
+}
+
+.archive_intro .credit dl + dl {
+  margin-top: 20px;
+}
+
+.archive_intro .credit dl dt {
+  width: 120px;
+  margin: 0;
+  color: #555;
+  font-weight: 400; /* ✅ 크레딧 항목 폰트 weight 통일 */
+}
+
+.archive_intro .credit dl dd {
+  width: calc(100% - 120px);
+  margin: 0;
+  font-weight: 400; /* ✅ 크레딧 내용 폰트 weight 통일 */
+}
+
+.archive_intro .credit .committee {
+  margin-bottom: 40px;
+}
+
+.archive_intro .credit .committee dl + dl {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 1440px) {
+  .archive_intro .info {
+    padding: 0;
+  }
+
+  .archive_intro .credit {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .archive_intro {
+    font-size: 13px;
+    font-weight: 400; /* ✅ 모바일에서도 weight 통일 */
+  }
+
+  .archive_intro.archive_intro_web {
+    display: none;
+  }
+
+  .archive_intro.archive_intro_mo {
+    display: block;
+  }
+
+  .tab_cont_credit {
+    display: none;
+  }
+
+  .archive_intro .tit_img {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-bottom: 20px;
+  }
+
+  .archive_intro .info {
+    width: 100%;
+  }
+
+  .archive_intro .info .title {
+    padding-bottom: 20px;
+    font-weight: 600 !important; /* ✅ 모바일 전시이름만 600으로 변경 */
+    font-size: 14px;
+  }
+
+  .archive_intro .info .info_txt div + div {
+    margin-top: 40px;
+  }
+
+  .archive_intro .info .info_txt p + p {
+    margin-top: 25px;
+  }
+
+  .archive_intro .info .info_link {
+    padding: 55px 0;
+    text-align: center;
+  }
+
+  .archive_intro .info .info_link p + p {
+    margin-top: 16px;
+  }
+
+  .archive_intro .info .info_link a {
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 400 !important; /* ✅ 모바일 링크 폰트 weight 통일 */
+  }
+
+  .archive_intro .credit {
+    width: 100%;
+  }
+
+  .archive_intro .credit dl + h4 {
+    margin-top: 30px;
+  }
+
+  .archive_intro .credit dl dt {
+    width: 93px;
+    font-weight: 400 !important;
+  }
+
+  .archive_intro .credit dl dd {
+    width: calc(100% - 93px);
+    font-weight: 400 !important;
+  }
 }

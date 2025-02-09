@@ -4,24 +4,45 @@ import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
 import Footer from "@/app/component/footer";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
-export default async function ExhibitionList() {
+export default function ExhibitionList() {
     const searchParams = useSearchParams();
     const year = searchParams.get("year"); // URL에서 `year` 값 가져오기
 
-    var data = await fetchContentful("portfolio", year); // ✅ 연도 필터 추가
-    let portfolio = data || []; // 데이터가 없을 경우 빈 배열 할당
+    const [portfolio, setPortfolio] = useState([]); // ✅ 상태값으로 데이터 관리
+    const [loading, setLoading] = useState(true);
 
-    // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
-    portfolio.sort((a, b) => {
-        return a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR");
-    });
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let data = await fetchContentful("portfolio");
+                if (!data) data = []; // 데이터가 없을 경우 빈 배열 처리
+
+                // ✅ 특정 연도(year)에 해당하는 프로젝트만 필터링
+                if (year) {
+                    data = data.filter((item) => String(item.fields.NEWexhibitionYear) === year);
+                }
+
+                // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
+                data.sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
+
+                setPortfolio(data);
+            } catch (error) {
+                console.error("Error fetching portfolio data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [year]);
 
     return (
         <div className="exhibition">
             <div className="exhibition_tab">
-                <Link href={`/page/exhibition?year=${year}`}>Projects</Link>
-                <Link href={`/page/exhibition_list?year=${year}`} className="active">Designers</Link>
+                <Link href={`/page/exhibition?year=${year}`}>프로젝트</Link>
+                <Link href={`/page/exhibition_list?year=${year}`} className="active">디자이너</Link>
             </div>
             <div className="exhibition_listtype">
                 <div className="listtype_hd">
@@ -29,7 +50,9 @@ export default async function ExhibitionList() {
                     <div>작품이름 Project Name</div>
                     <div>전공 이름</div>
                 </div>
-                {portfolio.length > 0 ? (
+                {loading ? (
+                    <p>데이터를 불러오는 중...</p> // ✅ 로딩 상태 표시
+                ) : portfolio.length > 0 ? (
                     portfolio.map((data) => {
                         const projectId = data.sys.id; // ✅ Contentful에서 가져온 고유 ID
                         const thumbnail = data.fields?.thumbnail?.fields?.file; // 안전한 접근

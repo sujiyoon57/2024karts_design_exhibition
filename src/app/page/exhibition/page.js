@@ -3,41 +3,57 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import Footer from "@/app/component/footer";
 
-export default async function Exhibition() {
+export default function Exhibition() {
     const searchParams = useSearchParams();
     const year = searchParams.get("year"); // URL에서 `year` 값 가져오기
 
-    // ✅ 연도를 기준으로 Contentful에서 데이터를 가져옴
-    var data = await fetchContentful("portfolio");
-    let portfolio = data || []; // 데이터가 없을 경우 빈 배열 할당
+    const [portfolio, setPortfolio] = useState([]); // ✅ 상태값으로 데이터 관리
+    const [loading, setLoading] = useState(true);
 
-    // ✅ 특정 연도(year)에 해당하는 프로젝트만 필터링
-    if (year) {
-        portfolio = portfolio.filter((item) => String(item.fields.NEWexhibitionYear) === year);
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let data = await fetchContentful("portfolio");
+                if (!data) data = []; // 데이터가 없으면 빈 배열 처리
 
-    // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
-    portfolio.sort((a, b) => {
-        return a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR");
-    });
+                // ✅ 특정 연도(year)에 해당하는 프로젝트만 필터링
+                if (year) {
+                    data = data.filter((item) => String(item.fields.NEWexhibitionYear) === year);
+                }
+
+                // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
+                data.sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
+
+                setPortfolio(data);
+            } catch (error) {
+                console.error("Error fetching portfolio data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [year]);
 
     return (
         <div className="exhibition">
             <div className="exhibition_tab">
-                <Link href={`/page/exhibition?year=${year}`} className="active">Projects</Link>
-                <Link href={`/page/exhibition_list?year=${year}`}>Designers</Link>
+                <Link href={`/page/exhibition?year=${year}`} className="active">프로젝트</Link>
+                <Link href={`/page/exhibition_list?year=${year}`}>디자이너</Link>
             </div>
             <div className="exhibition-container">
-                {portfolio.length > 0 ? (
+                {loading ? (
+                    <p>데이터를 불러오는 중...</p> // ✅ 로딩 상태 표시
+                ) : portfolio.length > 0 ? (
                     portfolio.map((data) => {
                         const thumbnail = data.fields?.thumbnail?.fields?.file;
                         const imageUrl = thumbnail?.url ? `https:${thumbnail.url}` : "/default-image.jpg";
                         const imageDetails = thumbnail?.details?.image;
 
                         return (
-                            // ✅ 기존 index 사용 대신 `sys.id` 사용하여 고유한 URL 생성
                             <Link href={`/page/portfolio/${data.sys.id}`} key={data.sys.id}>
                                 <div className="exhibition-image-container">
                                     <Image
@@ -50,9 +66,9 @@ export default async function Exhibition() {
                                     />
                                 </div>
                                 <div className={`exhibition-info ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
-                                    <div>{data.fields.projectName}  {data.fields.projectNameEng}</div>
+                                    <div>{data.fields.projectName} {data.fields.projectNameEng}</div>
                                     <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
-                                        {data.fields.nameKr}  {data.fields.nameEng}
+                                        {data.fields.nameKr} {data.fields.nameEng}
                                     </div>
                                 </div>
                             </Link>

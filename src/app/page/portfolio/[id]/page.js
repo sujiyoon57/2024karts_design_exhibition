@@ -16,9 +16,21 @@ export default async function Portfolio(props) {
     }
 
     const portfolio = portfolioItem.fields;
+    const currentYear = portfolio.NEWexhibitionYear; // ✅ 현재 프로젝트의 연도
 
-    // ✅ 현재 포트폴리오의 인덱스 찾기
-    const currentIndex = data.findIndex((item) => item.sys.id === id);
+    // ✅ 같은 연도의 프로젝트만 필터링 후 가나다순 정렬
+    const sameYearProjects = data
+        .filter((item) => item.fields.NEWexhibitionYear === currentYear)
+        .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
+
+    // ✅ 현재 포트폴리오의 인덱스 찾기 (가나다순 기준)
+    const currentIndex = sameYearProjects.findIndex((item) => item.sys.id === id);
+
+    // ✅ 다음 3개의 프로젝트 가져오기 (순환 구조)
+    const nextProjects = [];
+    for (let i = 1; i <= 3; i++) {
+        nextProjects.push(sameYearProjects[(currentIndex + i) % sameYearProjects.length]);
+    }
 
     return (
         <div className="portfolio-container">
@@ -34,20 +46,27 @@ export default async function Portfolio(props) {
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
                     <div>
+                        {/* ✅ Vimeo가 있으면 최우선으로 표시 */}
                         {portfolio.mainVimeoEmbedLink ? (
                             <div className="video-wrap">
                                 <iframe
                                     width="100%"
+                                    height="500"
                                     src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&mute=1`}
                                     frameBorder="0"
                                     allowFullScreen
                                     allow="autoplay"
                                 ></iframe>
                             </div>
+                        ) : portfolio.mainImage && portfolio.mainImage.fields.file.contentType.startsWith("video/") ? (
+                            <video controls width="100%">
+                                <source src={`https:${portfolio.mainImage.fields.file.url}`} type={portfolio.mainImage.fields.file.contentType} />
+                                브라우저가 비디오 태그를 지원하지 않습니다.
+                            </video>
                         ) : (
                             <div className="portfolio-image-wrap">
                                 {portfolio.mainImage && (
-                                    <Image src={"https:" + portfolio.mainImage.fields.file.url} alt=".." width={0} height={0} sizes="100vw" />
+                                    <Image src={"https:" + portfolio.mainImage.fields.file.url} alt=".." width={800} height={500} sizes="100vw" />
                                 )}
                             </div>
                         )}
@@ -91,19 +110,18 @@ export default async function Portfolio(props) {
                         )}
                     </div>
 
-                    {/* ✅ 수정된 부분: 이미지 + MP4 비디오 파일 구분 */}
                     <div className="portfolio-image-wrap">
                         {Array.isArray(portfolio.works) &&
                             portfolio.works.map((data, index) => {
                                 const fileUrl = data.fields?.file?.url ? `https:${data.fields.file.url}` : "";
-                                const fileType = data.fields?.file?.contentType || ""; // ✅ 파일 유형 확인
+                                const fileType = data.fields?.file?.contentType || "";
 
-                                return fileType.startsWith("video/") ? ( // ✅ 비디오 파일이면 <video> 태그 사용
+                                return fileType.startsWith("video/") ? (
                                     <video key={index} controls width="100%">
                                         <source src={fileUrl} type={fileType} />
                                         브라우저가 비디오 태그를 지원하지 않습니다.
                                     </video>
-                                ) : ( // ✅ 이미지 파일이면 <Image> 태그 사용
+                                ) : (
                                     <Image
                                         key={index}
                                         src={fileUrl}
@@ -150,13 +168,6 @@ export default async function Portfolio(props) {
                                     </Link>
                                 </div>
                             )}
-                            {portfolio.webLink && (
-                                <div>
-                                    <Link href={portfolio.webLink} target="_blank" rel="noopener noreferrer">
-                                        {new URL(portfolio.webLink).hostname.replace("www.", "")}
-                                    </Link>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
@@ -164,25 +175,19 @@ export default async function Portfolio(props) {
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">
-                        {Array.from({ length: 3 }).map((_, i) => {
-                            // ✅ 현재 프로젝트 이후의 인덱스를 계산 (초과하면 처음으로 돌아감)
-                            const projectIndex = (currentIndex + i + 1) % data.length;
-                            const project = data[projectIndex];
-
-                            return (
-                                <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
-                                    {project.fields.mainImage && (
-                                        <Image
-                                            src={`https:${project.fields.mainImage.fields.file.url}`}
-                                            alt="Project Thumbnail"
-                                            width={0}
-                                            height={0}
-                                            sizes="100vw"
-                                        />
-                                    )}
-                                </Link>
-                            );
-                        })}
+                        {nextProjects.map((project) => (
+                            <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
+                                {project.fields.mainImage && (
+                                    <Image
+                                        src={`https:${project.fields.mainImage.fields.file.url}`}
+                                        alt="Project Thumbnail"
+                                        width={0}
+                                        height={0}
+                                        sizes="100vw"
+                                    />
+                                )}
+                            </Link>
+                        ))}
                     </div>
                 </div>
                 <ScrollUp />
