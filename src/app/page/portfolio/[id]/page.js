@@ -1,28 +1,24 @@
-import Link from "next/link"
-import Image from "next/image"
-import { fetchContentful } from "@/app/contentful/contentful"
-import InstaLogoIcon from "/public/asset/instaLogo.svg"
-import WebLogoIcon from "/public/asset/webLogo.svg"
-import VimeoLogoIcon from "/public/asset/vimeoLogo.svg"
-import Footer from "@/app/component/footer"
-import ScrollUp from "@/app/component/scrollUp"
-import ReactPlayer from "react-player"
+import Link from "next/link";
+import Image from "next/image";
+import { fetchContentful } from "@/app/contentful/contentful";
+import Footer from "@/app/component/footer";
+import ScrollUp from "@/app/component/scrollUp";
 
 export default async function Portfolio(props) {
+    const id = props.params.id; // Contentful의 sys.id 값이 URL로 전달됨
+    const data = await fetchContentful("portfolio");
 
+    // ✅ 현재 포트폴리오 데이터 찾기
+    const portfolioItem = data.find((item) => item.sys.id === id);
 
+    if (!portfolioItem) {
+        return <div>해당 포트폴리오를 찾을 수 없습니다.</div>;
+    }
 
-    const id = parseInt(props.params.id);
-    const data = await fetchContentful('portfolio');
-    const portfolio = data[id].fields;
-    const len = data.length > 0 && data.length;
-    const preIndex = id === 0 ? len - 1 : id - 1;
-    const nextIndex = id === (len - 1) ? 0 : id + 1;
-    const preUrl = data[preIndex] ? data[preIndex].fields.mainImage.fields.file.url : '';
-    const nextUrl = data[nextIndex] ? data[nextIndex].fields.mainImage.fields.file.url : '';
+    const portfolio = portfolioItem.fields;
 
-    const projectNameLength = portfolio.projectName.length;
-
+    // ✅ 현재 포트폴리오의 인덱스 찾기
+    const currentIndex = data.findIndex((item) => item.sys.id === id);
 
     return (
         <div className="portfolio-container">
@@ -31,69 +27,38 @@ export default async function Portfolio(props) {
                     <div className="project-name">{portfolio.projectName}</div>
                     <div className="student-info">
                         <div>{portfolio.nameEng}</div>
-                        {/* <div>{portfolio.major}</div> */}
                     </div>
                 </div>
             </div>
 
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
-                    <div >
+                    <div>
                         {portfolio.mainVimeoEmbedLink ? (
                             <div className="video-wrap">
                                 <iframe
                                     width="100%"
                                     src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&mute=1`}
-                                    frameborder="0"
-                                    allowfullscreen
+                                    frameBorder="0"
+                                    allowFullScreen
                                     allow="autoplay"
                                 ></iframe>
-                                {/* <ReactPlayer
-                            className='react-player'
-                            url={portfolio.mainVimeoEmbedLink}    // 플레이어 url
-                            playing={true}        // 자동 재생 on
-                            muted={true}          // 자동 재생 on
-                            controls={false}       // 플레이어 컨트롤 노출 여부
-                            // light={false}         // 플레이어 모드
-                            
-                            width={'100%'}
-                            // sizes='100vw'
-                        /> */}
                             </div>
                         ) : (
-                            <div className="portfolio-image-wrap">{portfolio.mainImage && <Image src={'https:' + portfolio.mainImage.fields.file.url} alt=".." width={0} height={0} sizes="100vw" />}</div>
+                            <div className="portfolio-image-wrap">
+                                {portfolio.mainImage && (
+                                    <Image src={"https:" + portfolio.mainImage.fields.file.url} alt=".." width={0} height={0} sizes="100vw" />
+                                )}
+                            </div>
                         )}
                     </div>
                 </div>
                 <div className="portfolio-box2">
                     <div className="project-info-wrap">
-                        {/* <div className="project-info">
-                            <div className="project-name">{portfolio.projectName}</div>
-                            <div className="project-detail">
-                                <div>
-                                    <div>
-                                        <div className="key">student</div>
-                                        <div className="value">{portfolio.nameEng}</div>
-                                    </div>
-                                    <div>
-                                        <div className="key">advisor</div>
-                                        <div className="value">{portfolio.advisor}</div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="key">category</div>
-                                    <div className="value">
-                                        {portfolio.category && portfolio.category.map((type, index)=>(
-                                            <div key={index}>{type}</div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                         <div className="portfolio-cation-wrap">
                             <div>
-                                {portfolio.statementKr && portfolio.statementKr.content.map((data, index) => (
-                                    index == 0 ? (
+                                {portfolio.statementKr?.content.map((data, index) => (
+                                    index === 0 ? (
                                         <p key={index}>{data.content[0].value}</p>
                                     ) : (
                                         <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
@@ -101,8 +66,8 @@ export default async function Portfolio(props) {
                                 ))}
                             </div>
                             <div>
-                                {portfolio.statementEng && portfolio.statementEng.content.map((data, index) => (
-                                    index == 0 ? (
+                                {portfolio.statementEng?.content.map((data, index) => (
+                                    index === 0 ? (
                                         <p key={index}>{data.content[0].value}</p>
                                     ) : (
                                         <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
@@ -112,42 +77,45 @@ export default async function Portfolio(props) {
                         </div>
                     </div>
                 </div>
+
                 <div className="portfolio-image-container">
                     <div className="vedio-wrap">
-                        {portfolio.topEmbed &&
+                        {portfolio.topEmbed && (
                             <iframe
                                 width="100%"
                                 src={`${portfolio.topEmbed}&mute=1&autoplay=1`}
-                                frameborder="0"
-                                allowfullscreen
+                                frameBorder="0"
+                                allowFullScreen
                                 allow="autoplay"
-                            ></iframe>}
+                            ></iframe>
+                        )}
                     </div>
                     <div className="portfolio-image-wrap">
                         {Array.isArray(portfolio.works) &&
                             portfolio.works.map((data, index) => (
                                 <Image
                                     key={index}
-                                    src={data.fields?.file?.url ? "https:" + data.fields.file.url : "/default-image.jpg"}
+                                    src={data.fields?.file?.url ? "https:" + data.fields.file.url : ""}
                                     alt=".."
                                     width={0}
                                     height={0}
                                 />
                             ))}
                     </div>
-
                     <div className="vedio-wrap">
-                        {portfolio.bottomEmbed &&
+                        {portfolio.bottomEmbed && (
                             <iframe
                                 width="100%"
                                 src={`${portfolio.bottomEmbed}&mute=1&autoplay=1`}
-                                frameborder="0"
-                                allowfullscreen
+                                frameBorder="0"
+                                allowFullScreen
                                 allow="autoplay"
-                            ></iframe>}
+                            ></iframe>
+                        )}
                     </div>
                 </div>
             </div>
+
             <div className="portfolio-box3">
                 <div className="student-info-detail">
                     <div className="name">
@@ -161,62 +129,50 @@ export default async function Portfolio(props) {
                     <div className="contact">
                         <div>{portfolio.email}</div>
                         <div className="link-container">
-                            {portfolio.instagramLink !== undefined && portfolio.instagramLink !== '' ? (
-                                <Link href={portfolio.instagramLink}>
-                                    <span><InstaLogoIcon /></span>
-                                </Link>
-                            ) : null}
-                            {portfolio.webLink !== undefined && portfolio.webLink !== '' ? (
-                                <Link href={portfolio.webLink}>
-                                    <span><WebLogoIcon /></span>
-                                </Link>
-                            ) : null}
-                            {portfolio.vimeoLink !== undefined && portfolio.vimeoLink !== '' ? (
-                                <Link href={portfolio.vimeoLink}>
-                                    <span><VimeoLogoIcon /></span>
-                                </Link>
-                            ) : null}
+                            {portfolio.instagramLink && (
+                                <div>
+                                    <Link href={portfolio.instagramLink} target="_blank" rel="noopener noreferrer">
+                                        @{new URL(portfolio.instagramLink).pathname.replace("/", "")}
+                                    </Link>
+                                </div>
+                            )}
+                            {portfolio.webLink && (
+                                <div>
+                                    <Link href={portfolio.webLink} target="_blank" rel="noopener noreferrer">
+                                        {new URL(portfolio.webLink).hostname.replace("www.", "")}
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-                {/* <div className="link-container">
-                {portfolio.instagramLink !== undefined && portfolio.instagramLink !== '' ? (
-                    <Link href={portfolio.instagramLink}>
-                        <span><InstaLogoIcon/></span>
-                    </Link>
-                ) : null}
-                {portfolio.webLink !== undefined && portfolio.webLink !== '' ? (
-                    <Link href={portfolio.webLink}>
-                        <span><WebLogoIcon/></span>
-                    </Link>
-                ) : null}
-                {portfolio.vimeoLink !== undefined && portfolio.vimeoLink !== '' ? (
-                    <Link href={portfolio.vimeoLink}>
-                        <span><VimeoLogoIcon/></span>
-                    </Link>
-                ) : null}
-                </div> */}
-                {/* <div className="navigation">
-                    <div><Link href='/page/exhibition'>view all projects</Link></div>
-                    <div><Link href='/' as="/#specific-section">back</Link></div>
-                </div>*/}
+
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">
-                        {preUrl &&
-                            <Link href={`/page/portfolio/${preIndex}`}>
-                                <Image src={`https:${preUrl}`} alt=".." width={0} height={0} sizes="100vw" />
-                            </Link>
-                        }
-                        {nextUrl &&
-                            <Link href={`/page/portfolio/${nextIndex}`}>
-                                <Image src={`https:${nextUrl}`} alt=".." width={0} height={0} sizes="100vw" />
-                            </Link>
-                        }
+                        {Array.from({ length: 3 }).map((_, i) => {
+                            // ✅ 현재 프로젝트 이후의 인덱스를 계산 (초과하면 처음으로 돌아감)
+                            const projectIndex = (currentIndex + i + 1) % data.length;
+                            const project = data[projectIndex];
+
+                            return (
+                                <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
+                                    {project.fields.mainImage && (
+                                        <Image
+                                            src={`https:${project.fields.mainImage.fields.file.url}`}
+                                            alt="Project Thumbnail"
+                                            width={0}
+                                            height={0}
+                                            sizes="100vw"
+                                        />
+                                    )}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
                 <ScrollUp />
             </div>
         </div>
-    )
+    );
 }

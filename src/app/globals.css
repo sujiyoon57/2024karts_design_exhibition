@@ -1028,7 +1028,7 @@ iframe{
   font-size:22px;font-weight:400;
 } 
 .student-info-detail .name {width:20%;text-transform:uppercase}
-.student-info-detail .introduct {width:30%;}
+.student-info-detail .introduct {width:90%;}
 .student-info-detail .contact  {width:50%;}
 .link-container{
   /* text-align: center; */
@@ -1042,16 +1042,20 @@ iframe{
   /* width: 2.135vw; */
   width: 1.25vw;
 }
-.move-page{
+.move-page {
   font-size: 0.9375vw;
+  margin-top: 9vw; /* ✅ 여백을 넉넉하게 추가하여 아래로 이동 */
 }
-.move-page >div:first-child{
+
+.move-page >div:first-child {
   margin-bottom: 2.2917vw;
-  text-decoration:underline;
-  text-align:center;
-  text-transform:capitalize;
-  font-weight:400;font-size:22px;
+  text-decoration: underline;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 22px;
 }
+
 .page-image-wrap{
   display: grid;
   grid-template-columns: 32.33% 32.33% 32.33%;
