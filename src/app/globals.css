@@ -961,7 +961,7 @@ iframe{
   font-size: 22px;
 }
 
-/* ✅ Other Projects 이미지 비율 조정 */
+/* ✅ Other Projects 이미지 비율 조정 (PC) */
 .page-image-wrap{
   display: grid;
   grid-template-columns: 32.33% 32.33% 32.33%;
@@ -986,8 +986,8 @@ iframe{
   }
   
   .portfolio-box1,.portfolio-box2,.portfolio-box3{
-    margin-left: 4.444vw;
-    margin-right: 4.444vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
   }
   .portfolio-box1{
     margin-top: 0;
@@ -1049,10 +1049,24 @@ iframe{
     margin-bottom: 2.003vw;
   }
   
-  .page-image-wrap{grid-template-columns: 48.5% 48.5%;}
-}
+  /* ✅ 모바일에서 only 2개의 프로젝트만 표시 */
+  .page-image-wrap{
+    grid-template-columns: 48.5% 48.5%;
+    overflow: hidden;
+  }
+  
+  .page-image-wrap a:nth-child(n+3) {
+    display: none; /* 세 번째 프로젝트부터 숨기기 */
+  }
 
-/*----------------------------------*/
+  /* ✅ 모바일에서 썸네일 비율 조정 */
+  .page-image-wrap img {
+    width: 100%;
+    height: 30vw;
+    object-fit: cover; /* 이미지가 박스를 가득 채우도록 */
+  }
+
+}
 
 /*---------------------designer----------------------*/
 .designers{

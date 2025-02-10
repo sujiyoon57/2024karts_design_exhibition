@@ -45,30 +45,30 @@ export default async function Portfolio(props) {
 
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
-                    <div>
-                        {/* ✅ Vimeo가 있으면 최우선으로 표시 */}
+                    <div className="portfolio-image-wrap">
+                        {/* ✅ Vimeo가 있으면 썸네일을, 없으면 메인이미지를 표시 */}
                         {portfolio.mainVimeoEmbedLink ? (
-                            <div className="video-wrap">
-                                <iframe
-                                    width="100%"
-                                    height="500"
-                                    src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&mute=1`}
-                                    frameBorder="0"
-                                    allowFullScreen
-                                    allow="autoplay"
-                                ></iframe>
-                            </div>
-                        ) : portfolio.mainImage && portfolio.mainImage.fields.file.contentType.startsWith("video/") ? (
-                            <video controls width="100%">
-                                <source src={`https:${portfolio.mainImage.fields.file.url}`} type={portfolio.mainImage.fields.file.contentType} />
-                                브라우저가 비디오 태그를 지원하지 않습니다.
-                            </video>
+                            portfolio.thumbnail && portfolio.thumbnail.fields.file.url ? (
+                                <Image
+                                    src={`https:${portfolio.thumbnail.fields.file.url}`}
+                                    alt="Thumbnail Image"
+                                    width={800}
+                                    height={500}
+                                    sizes="100vw"
+                                />
+                            ) : (
+                                <div>썸네일 이미지 없음</div>
+                            )
+                        ) : portfolio.mainImage ? (
+                            <Image
+                                src={`https:${portfolio.mainImage.fields.file.url}`}
+                                alt="Main Image"
+                                width={800}
+                                height={500}
+                                sizes="100vw"
+                            />
                         ) : (
-                            <div className="portfolio-image-wrap">
-                                {portfolio.mainImage && (
-                                    <Image src={"https:" + portfolio.mainImage.fields.file.url} alt=".." width={800} height={500} sizes="100vw" />
-                                )}
-                            </div>
+                            <div>이미지가 없습니다.</div>
                         )}
                     </div>
                 </div>
@@ -177,14 +177,29 @@ export default async function Portfolio(props) {
                     <div className="page-image-wrap">
                         {nextProjects.map((project) => (
                             <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
-                                {project.fields.mainImage && (
-                                    <Image
-                                        src={`https:${project.fields.mainImage.fields.file.url}`}
-                                        alt="Project Thumbnail"
-                                        width={0}
-                                        height={0}
-                                        sizes="100vw"
-                                    />
+                                {/* ✅ Vimeo가 있는 경우 썸네일 표시, 없는 경우 메인이미지 표시 */}
+                                {project.fields.mainVimeoEmbedLink ? (
+                                    project.fields.thumbnail && project.fields.thumbnail.fields.file.url ? (
+                                        <Image
+                                            src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                            alt="Project Thumbnail"
+                                            width={800}
+                                            height={500}
+                                            sizes="100vw"
+                                        />
+                                    ) : (
+                                        <div>썸네일 이미지 없음</div>
+                                    )
+                                ) : (
+                                    project.fields.mainImage && (
+                                        <Image
+                                            src={`https:${project.fields.mainImage.fields.file.url}`}
+                                            alt="Project Thumbnail"
+                                            width={800}
+                                            height={500}
+                                            sizes="100vw"
+                                        />
+                                    )
                                 )}
                             </Link>
                         ))}
