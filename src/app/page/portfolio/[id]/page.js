@@ -148,8 +148,8 @@ export default async function Portfolio(props) {
                 <div className="student-info-detail">
                     <div className="top-section">
                         {/* ✅ 순서는 유지하되, CSS에서만 PC에서 순서 변경 */}
-                        <div className="name">{portfolio.nameKr}<br/>{portfolio.nameEng}</div>
-                        <div className="introduct">{portfolio.introductionKr}<br/>{portfolio.introductionEng}</div>
+                        <div className="name">{portfolio.nameKr}<br />{portfolio.nameEng}</div>
+                        <div className="introduct">{portfolio.introductionKr}<br />{portfolio.introductionEng}</div>
                         <div className="contact">
                             <div>{portfolio.email}</div>
                             <div className="link-container">
@@ -178,6 +178,14 @@ export default async function Portfolio(props) {
                                         height={500}
                                         sizes="100vw"
                                     />
+                                ) : project.fields.mainImage?.fields.file.contentType?.startsWith("video/") && project.fields.thumbnail ? (
+                                    <Image
+                                        src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                        alt="Project Thumbnail"
+                                        width={800}
+                                        height={500}
+                                        sizes="100vw"
+                                    />
                                 ) : (
                                     project.fields.mainImage && (
                                         <Image
@@ -189,6 +197,7 @@ export default async function Portfolio(props) {
                                         />
                                     )
                                 )}
+
                             </Link>
                         ))}
                     </div>
