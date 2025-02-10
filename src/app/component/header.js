@@ -35,8 +35,8 @@ export default function Header({exhibitionOn, archiveOn}){
                 <Link href="/page/notice" onClick={()=>setMenuOn(false)}>Notice</Link>
                 <dl>
                     <dt><Link href="/page/archive">Archive</Link></dt>
-                    <dd><Link href="/page/archiveIntro" onClick={()=>setMenuOn(false)}><span>학과 전시</span></Link></dd>
-                    <dd><Link href="/page/exhibition" onClick={()=>setMenuOn(false)}><span>졸업 전시</span></Link></dd>
+                    <dd><Link href="#" onClick={()=>setMenuOn(false)}><span>학과 전시</span></Link></dd>
+                    <dd><Link href="/page/archive" onClick={()=>setMenuOn(false)}><span>졸업 전시</span></Link></dd>
                 </dl> 
                 <Link href="https://www.karts.ac.kr/" onClick={()=>setMenuOn(false)}  target="_blank"><span>KNUA<LinkIcon /></span></Link> 
             </nav>}
