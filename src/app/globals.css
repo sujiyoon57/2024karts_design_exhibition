@@ -1779,6 +1779,7 @@ iframe{
   display: flex;
   flex-wrap: wrap;
   gap: 80px;
+  
 }
 .about-flex-item{
   /* width: calc(50% - 0.729vw);   */
