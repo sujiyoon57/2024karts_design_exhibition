@@ -944,22 +944,32 @@ iframe{
   margin-top: 6.3021vw;
 }
 
-/* ✅ 하단 학생명, 한줄소개, 정보 스타일 (PC) */
-.student-info-detail{
-  display: flex;
-  width: 100%;
-  margin-bottom: 4.7396vw;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-} 
-.student-info-detail .name {width:20%; text-transform:uppercase}
-.student-info-detail .introduct {width:90%;}
-.student-info-detail .contact  {width:50%;}
-.link-container{
-  text-align: left;
-  margin-bottom: 3.152vw;
+/* ✅ PC에서 하단 학생 정보 레이아웃 정리 */
+@media screen and (min-width: 871px) {
+  .top-section {
+    display: flex;
+    flex-direction: row;  /* PC에서만 가로 정렬 */
+    justify-content: space-between;
+    align-items: flex-start;
+    font-weight: 400;
+    font-size: 22px;
+  }
+
+  .top-section .name {
+    width: auto;
+  }
+
+  .top-section .introduct {
+    width: 50%;
+    margin-left: 0rem;
+  }
+
+  .top-section .contact {
+    width: 20%;
+    margin-right: 10rem;
+  }
 }
+
 
 /* ✅ Other Projects 버튼 스타일 (PC) */
 .move-page {
@@ -1052,39 +1062,32 @@ iframe{
 }
 /* ✅ 모바일에서 하단 학생명, 한줄소개, 정보 스타일 조정 */
 @media screen and (max-width: 870px) {
-  .student-info-detail {
-    display: flex;
-    flex-direction: column; /* 모바일에서 세로 배치 */
-    gap: 8px;
-  }
-
   .student-info-detail .top-section {
     display: flex;
-    justify-content: space-between; /* 이름과 연락처를 좌우 정렬 */
-    align-items: center;
+    flex-direction: row; /* ✅ 이름과 Contact를 같은 줄에 배치 */
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   .student-info-detail .name {
     width: auto;
     font-size: 13px;
-    
+    flex-grow: 1;
   }
 
   .student-info-detail .contact {
     width: auto;
     font-size: 11.72px;
-    text-align: right;
-    
+    text-align: left;
   }
 
+  /* ✅ 설명을 이름과 Contact 아래로 내리기 */
   .student-info-detail .introduct {
     width: 100%;
     font-size: 13px;
     margin-top: 8px;
   }
 }
-
-
 
 
   .portfolio-flex{display:block;}

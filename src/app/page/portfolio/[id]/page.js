@@ -48,7 +48,6 @@ export default async function Portfolio(props) {
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
                     <div className="portfolio-image-wrap">
-                        {/* ✅ Vimeo 또는 MP4가 있으면 직접 재생 */}
                         {portfolio.mainVimeoEmbedLink ? (
                             <iframe
                                 width="100%"
@@ -148,10 +147,9 @@ export default async function Portfolio(props) {
             <div className="portfolio-box3">
                 <div className="student-info-detail">
                     <div className="top-section">
-                        <div className="name">
-                            <div>{portfolio.nameKr}</div>
-                            <div>{portfolio.nameEng}</div>
-                        </div>
+                        {/* ✅ 순서는 유지하되, CSS에서만 PC에서 순서 변경 */}
+                        <div className="name">{portfolio.nameKr}<br/>{portfolio.nameEng}</div>
+                        <div className="introduct">{portfolio.introductionKr}<br/>{portfolio.introductionEng}</div>
                         <div className="contact">
                             <div>{portfolio.email}</div>
                             <div className="link-container">
@@ -165,10 +163,6 @@ export default async function Portfolio(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="introduct">
-                        <div>{portfolio.introductionKr}</div>
-                        <div>{portfolio.introductionEng}</div>
-                    </div>
                 </div>
 
                 <div className="move-page">
@@ -176,7 +170,6 @@ export default async function Portfolio(props) {
                     <div className="page-image-wrap">
                         {nextProjects.map((project) => (
                             <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
-                                {/* ✅ 다음 프로젝트에서는 썸네일 표시 */}
                                 {project.fields.mainVimeoEmbedLink && project.fields.thumbnail ? (
                                     <Image
                                         src={`https:${project.fields.thumbnail.fields.file.url}`}
