@@ -364,6 +364,12 @@ header{
   font-style: normal;
 }
 
+.notiview-top .notiview-info > div + div{margin-top:8px;}
+.notiview-top .notiview-info > div{display:flex;}
+.notiview-top .notiview-info > div span{width:70px;}
+.notiview-top .notiview-info > div em{width:calc(100% - 70px); font-style:normal;}
+.notiview-top .notiview-info > div em a{text-decoration: underline; color: rgba(29, 204, 96, 1);}
+
 /* ✅ 본문 - Pretendard, weight 400 */
 .notiview-cont {
   font-family: 'Pretendard';
@@ -404,20 +410,17 @@ header{
 
 /* ✅ 필터 버튼 색상 추가 */
 .notice_type button.type01 { border: 1.5px solid #FF6EA8; color: #FF6EA8; }
-.notice_type button.type01.active { color: #fff; background: #FF6EA8; }
+.notice_type button.type01.active { color: #fff; background: #FF6EA8; } 
 
-.notice_type button.type02 { border: 1.5px solid #1DCC60; color: #1DCC60; }
-.notice_type button.type02.active { color: #fff; background: #1DCC60; }
+.notice_type button.type02 { border: 1.5px solid #91A5FF; color: #91A5FF; }
+.notice_type button.type02.active { color: #fff; background: #91A5FF; }
 
-.notice_type button.type03 { border: 1.5px solid #5B70F5; color: #5B70F5; }
-.notice_type button.type03.active { color: #fff; background: #5B70F5; }
+.notice_type button.type03 { border: 1.5px solid #3B55FF; color: #3B55FF; }
+.notice_type button.type03.active { color: #fff; background: #3B55FF; }
 
-.notice_type button.type04 { border: 1.5px solid #F6945C; color: #F6945C; }
-.notice_type button.type04.active { color: #fff; background: #F6945C; }
-
-.notice_type button.active a { 
-  color: #fff !important;
-}
+.notice_type button.type04 { border: 1.5px solid #1DCC60; color: #1DCC60; }
+.notice_type button.type04.active { color: #fff; background: #1DCC60; }
+ 
 
 /* ✅ 리스트 내 필터 색상 */
 .notice_list li .notice-info div:nth-child(1) {
@@ -436,11 +439,11 @@ header{
 .notice_list li .notice-info div.type01,
 .notice-category.type01 { color: #FF6EA8; border: 1.5px solid #FF6EA8; }
 .notice_list li .notice-info div.type02,
-.notice-category.type02 { color: #1DCC60; border: 1.5px solid #1DCC60; }
+.notice-category.type02 { color: #91A5FF; border: 1.5px solid #91A5FF; }
 .notice_list li .notice-info div.type03,
-.notice-category.type03 { color: #5B70F5; border: 1.5px solid #5B70F5; }
+.notice-category.type03 { color: #3B55FF; border: 1.5px solid #3B55FF; }
 .notice_list li .notice-info div.type04,
-.notice-category.type04 { color: #F6945C; border: 1.5px solid #F6945C; }
+.notice-category.type04 { color: #1DCC60; border: 1.5px solid #1DCC60; }
 
 /* ✅ 공지사항 카테고리 스타일 (홈 & notice 페이지 동일 적용) */
 .notice-category {
@@ -813,6 +816,7 @@ footer{
     footer div{flex-direction: column; width:100%;}
     footer div span + span{margin-top:20px;}
     footer p{  width:100%;margin-top:20px;}
+    footer > p {text-align: left;}
      
   }
 
@@ -1679,7 +1683,7 @@ iframe{
   gap: 80px;
 }
 .about-flex-item{
-  width: calc(50% - 0.729vw);  
+  /* width: calc(50% - 0.729vw);   */
   font-size:18px;
   line-height:1.8;
 }
