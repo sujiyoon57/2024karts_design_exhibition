@@ -5,10 +5,9 @@ import Footer from "@/app/component/footer";
 import ScrollUp from "@/app/component/scrollUp";
 
 export default async function Portfolio(props) {
-    const id = props.params.id; // Contentful의 sys.id 값이 URL로 전달됨
+    const id = props.params.id;
     const data = await fetchContentful("portfolio");
 
-    // ✅ 현재 포트폴리오 데이터 찾기
     const portfolioItem = data.find((item) => item.sys.id === id);
 
     if (!portfolioItem) {
@@ -16,17 +15,14 @@ export default async function Portfolio(props) {
     }
 
     const portfolio = portfolioItem.fields;
-    const currentYear = portfolio.NEWexhibitionYear; // ✅ 현재 프로젝트의 연도
+    const currentYear = portfolio.NEWexhibitionYear;
 
-    // ✅ 같은 연도의 프로젝트만 필터링 후 가나다순 정렬
     const sameYearProjects = data
         .filter((item) => item.fields.NEWexhibitionYear === currentYear)
         .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
 
-    // ✅ 현재 포트폴리오의 인덱스 찾기 (가나다순 기준)
     const currentIndex = sameYearProjects.findIndex((item) => item.sys.id === id);
 
-    // ✅ 다음 3개의 프로젝트 가져오기 (순환 구조)
     const nextProjects = [];
     for (let i = 1; i <= 3; i++) {
         nextProjects.push(sameYearProjects[(currentIndex + i) % sameYearProjects.length]);
@@ -38,37 +34,36 @@ export default async function Portfolio(props) {
                 <div className="project-intro">
                     <div className="project-name">{portfolio.projectName}</div>
 
-                    {/* ✅ PC에서는 영어 이름만 표시, 모바일에서는 한글+영문 & 전공 표시 */}
                     <div className="student-info">
                         <div className="name-pc">{portfolio.nameEng}</div>
                         <div className="name-mobile">
-                            <span>{portfolio.nameKr} </span> {/* 한글 이름 뒤에 공백 추가 */}
+                            <span>{portfolio.nameKr} </span>
                             <span>{portfolio.nameEng}</span>
                             <span className="major">{portfolio.major}</span>
                         </div>
                     </div>
-
                 </div>
             </div>
-
 
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
                     <div className="portfolio-image-wrap">
-                        {/* ✅ Vimeo가 있으면 썸네일을, 없으면 메인이미지를 표시 */}
+                        {/* ✅ Vimeo 또는 MP4가 있으면 직접 재생 */}
                         {portfolio.mainVimeoEmbedLink ? (
-                            portfolio.thumbnail && portfolio.thumbnail.fields.file.url ? (
-                                <Image
-                                    src={`https:${portfolio.thumbnail.fields.file.url}`}
-                                    alt="Thumbnail Image"
-                                    width={800}
-                                    height={500}
-                                    sizes="100vw"
-                                />
-                            ) : (
-                                <div>썸네일 이미지 없음</div>
-                            )
-                        ) : portfolio.mainImage ? (
+                            <iframe
+                                width="100%"
+                                height="500"
+                                src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&muted=1`}
+                                frameBorder="0"
+                                allow="autoplay; fullscreen"
+                                allowFullScreen
+                            ></iframe>
+                        ) : portfolio.mainImage?.fields.file.contentType?.startsWith("video/") ? (
+                            <video controls width="100%">
+                                <source src={`https:${portfolio.mainImage.fields.file.url}`} type={portfolio.mainImage.fields.file.contentType} />
+                                브라우저가 비디오 태그를 지원하지 않습니다.
+                            </video>
+                        ) : portfolio.mainImage?.fields.file.url ? (
                             <Image
                                 src={`https:${portfolio.mainImage.fields.file.url}`}
                                 alt="Main Image"
@@ -81,25 +76,18 @@ export default async function Portfolio(props) {
                         )}
                     </div>
                 </div>
+
                 <div className="portfolio-box2">
                     <div className="project-info-wrap">
                         <div className="portfolio-cation-wrap">
                             <div>
                                 {portfolio.statementKr?.content.map((data, index) => (
-                                    index === 0 ? (
-                                        <p key={index}>{data.content[0].value}</p>
-                                    ) : (
-                                        <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
-                                    )
+                                    <p key={index}>{data.content[0].value}</p>
                                 ))}
                             </div>
                             <div>
                                 {portfolio.statementEng?.content.map((data, index) => (
-                                    index === 0 ? (
-                                        <p key={index}>{data.content[0].value}</p>
-                                    ) : (
-                                        <p key={index}>&nbsp;&nbsp;&nbsp;{data.content[0].value}</p>
-                                    )
+                                    <p key={index}>{data.content[0].value}</p>
                                 ))}
                             </div>
                         </div>
@@ -183,25 +171,20 @@ export default async function Portfolio(props) {
                     </div>
                 </div>
 
-
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">
                         {nextProjects.map((project) => (
                             <Link href={`/page/portfolio/${project.sys.id}`} key={project.sys.id}>
-                                {/* ✅ Vimeo가 있는 경우 썸네일 표시, 없는 경우 메인이미지 표시 */}
-                                {project.fields.mainVimeoEmbedLink ? (
-                                    project.fields.thumbnail && project.fields.thumbnail.fields.file.url ? (
-                                        <Image
-                                            src={`https:${project.fields.thumbnail.fields.file.url}`}
-                                            alt="Project Thumbnail"
-                                            width={800}
-                                            height={500}
-                                            sizes="100vw"
-                                        />
-                                    ) : (
-                                        <div>썸네일 이미지 없음</div>
-                                    )
+                                {/* ✅ 다음 프로젝트에서는 썸네일 표시 */}
+                                {project.fields.mainVimeoEmbedLink && project.fields.thumbnail ? (
+                                    <Image
+                                        src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                        alt="Project Thumbnail"
+                                        width={800}
+                                        height={500}
+                                        sizes="100vw"
+                                    />
                                 ) : (
                                     project.fields.mainImage && (
                                         <Image
