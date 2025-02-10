@@ -23,20 +23,20 @@ export default async function ArchiveNew(props) {
 
     return (
         <div className="archive-container">
-            
+
             {/* ✅ PC 버전 */}
-            <div className="archive_intro archive_intro_web"> 
+            <div className="archive_intro archive_intro_web">
                 <div className="backtolist">
                     <Link href="/page/archive">⟵<span>Back to Lists</span></Link>
                 </div>
-                
+
                 <p className="tit_img">
                     {archiveNew.titleimg ? (
-                        <Image 
-                            src={`https:${archiveNew.titleimg.fields.file.url}`} 
-                            alt={archiveNew.title || "Archive Image"} 
-                            width={800} 
-                            height={400} 
+                        <Image
+                            src={`https:${archiveNew.titleimg.fields.file.url}`}
+                            alt={archiveNew.title || "Archive Image"}
+                            width={800}
+                            height={400}
                             layout="intrinsic"
                         />
                     ) : (
@@ -44,7 +44,7 @@ export default async function ArchiveNew(props) {
                     )}
                 </p>
 
-                <div className="info"> 
+                <div className="info">
                     <div className="info_txt">
                         {archiveNew.post ? (
                             <div>
@@ -64,15 +64,15 @@ export default async function ArchiveNew(props) {
                         </p>
                         <p>
                             <Link href="">Download PDF</Link>
-                        </p> 
-                    </div>    
+                        </p>
+                    </div>
                 </div>
 
                 {/* ✅ 크리딧은 오직 `id === 0`일 때만 표시됨 */}
                 {id === 0 && (
-                    <div className="credit"> 
+                    <div className="credit">
                         <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                        <div className="committee"> 
+                        <div className="committee">
                             <dl><dt>졸준위원장</dt><dd>윤지수</dd></dl>
                             <dl><dt>커뮤 대표</dt><dd>윤수영</dd></dl>
                             <dl><dt>인터 대표</dt><dd>이승주</dd></dl>
@@ -120,7 +120,7 @@ export default async function ArchiveNew(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>커뮤니케이션<br /> 
+                            <dt>커뮤니케이션<br />
                                 심사위원
                             </dt>
                             <dd>박영하, 심대기, 어민선,<br />
@@ -128,7 +128,7 @@ export default async function ArchiveNew(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>인터랙션<br /> 
+                            <dt>인터랙션<br />
                                 심사위원
                             </dt>
                             <dd>심규하, 정윤하, 신수경,<br />
@@ -136,7 +136,7 @@ export default async function ArchiveNew(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>운송<br /> 
+                            <dt>운송<br />
                                 심사위원
                             </dt>
                             <dd>이한승, 최재혁, 김상제,<br />
@@ -144,7 +144,7 @@ export default async function ArchiveNew(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>제품<br /> 
+                            <dt>제품<br />
                                 심사위원
                             </dt>
                             <dd>김기현, 최민규, 황보형호,<br />
@@ -156,28 +156,30 @@ export default async function ArchiveNew(props) {
             </div>
 
             {/* ✅ 모바일 버전 */}
-            <div className="archive_intro archive_intro_mo"> 
+            <div className="archive_intro archive_intro_mo">
                 <div className="exhibition_tab mo-archive-tab">
                     <Link className="active" href="">Info</Link>
                     <Link href="">Credit</Link>
-                </div> 
-                
-                <div className="tab_cont_info"> 
+                </div>
+
+                <div className="tab_cont_info">
                     <p className="tit_img">
                         {archiveNew.titleimg ? (
-                            <Image 
-                                src={`https:${archiveNew.titleimg.fields.file.url}`} 
-                                alt={archiveNew.title || "Archive Image"} 
-                                width={800} 
-                                height={400} 
+                            <Image
+                                src={`https:${archiveNew.titleimg.fields.file.url}`}
+                                alt={archiveNew.title || "Archive Image"}
+                                width={800}
+                                height={400}
                                 layout="intrinsic"
                             />
                         ) : (
                             <img src="/asset/archiveintro2024.png" alt="Default Archive Image" />
                         )}
                     </p>
-                    <div className="info"> 
-                        <div className="title">전시이름</div>  
+                    <div className="info">
+                        <div className="title">
+                            {archiveNew.title ? archiveNew.title : "데이터를 불러오는 중..."}
+                        </div>
                         <div className="info_txt">
                             {archiveNew.post ? (
                                 <div>
@@ -198,13 +200,13 @@ export default async function ArchiveNew(props) {
                             <p>
                                 <Link href="">Download PDF</Link>
                             </p>
-                        </div>    
-                    </div>  
+                        </div>
+                    </div>
                 </div>
 
                 {/* ✅ 모바일에서도 `id === 0`일 때만 크리딧 표시 */}
                 {id === 0 && (
-                    <div className="tab_cont_credit"> 
+                    <div className="tab_cont_credit">
                         <div className="credit">
                             <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
                             <div className="committee">
@@ -219,7 +221,7 @@ export default async function ArchiveNew(props) {
                 )}
             </div>
 
-        </div>  
+        </div>
     );
 }
 
