@@ -37,11 +37,20 @@ export default async function Portfolio(props) {
             <div className="portfolio-box1">
                 <div className="project-intro">
                     <div className="project-name">{portfolio.projectName}</div>
+
+                    {/* ✅ PC에서는 영어 이름만 표시, 모바일에서는 한글+영문 & 전공 표시 */}
                     <div className="student-info">
-                        <div>{portfolio.nameEng}</div>
+                        <div className="name-pc">{portfolio.nameEng}</div>
+                        <div className="name-mobile">
+                            <span>{portfolio.nameKr} </span> {/* 한글 이름 뒤에 공백 추가 */}
+                            <span>{portfolio.nameEng}</span>
+                            <span className="major">{portfolio.major}</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
+
 
             <div className="portfolio-flex">
                 <div className="portfolio-image-container">
@@ -150,27 +159,30 @@ export default async function Portfolio(props) {
 
             <div className="portfolio-box3">
                 <div className="student-info-detail">
-                    <div className="name">
-                        <div>{portfolio.nameKr}</div>
-                        <div>{portfolio.nameEng}</div>
+                    <div className="top-section">
+                        <div className="name">
+                            <div>{portfolio.nameKr}</div>
+                            <div>{portfolio.nameEng}</div>
+                        </div>
+                        <div className="contact">
+                            <div>{portfolio.email}</div>
+                            <div className="link-container">
+                                {portfolio.instagramLink && (
+                                    <div>
+                                        <Link href={portfolio.instagramLink} target="_blank" rel="noopener noreferrer">
+                                            @{new URL(portfolio.instagramLink).pathname.replace("/", "")}
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
                     <div className="introduct">
                         <div>{portfolio.introductionKr}</div>
-                        <div>{portfolio.introductionEng}</div> 
-                    </div>
-                    <div className="contact">
-                        <div>{portfolio.email}</div>
-                        <div className="link-container">
-                            {portfolio.instagramLink && (
-                                <div>
-                                    <Link href={portfolio.instagramLink} target="_blank" rel="noopener noreferrer">
-                                        @{new URL(portfolio.instagramLink).pathname.replace("/", "")}
-                                    </Link>
-                                </div>
-                            )}
-                        </div>
+                        <div>{portfolio.introductionEng}</div>
                     </div>
                 </div>
+
 
                 <div className="move-page">
                     <div>other projects</div>
