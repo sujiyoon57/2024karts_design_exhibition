@@ -13,12 +13,12 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const data = await fetchContentful('pageOnoff');
   const exhibitionOn =  data[0].fields.exhibitionOnOff;
-  const archiveOn = data[0].fields.archiveOnOff
+  const archiveOn = data[0].fields.archiveOnOff;
   
   return (
     <html>
       <body>
-        <div class="wrap">
+        <div className="wrap"> {/* ✅ class → className 으로 변경 */}
           <Header exhibitionOn={exhibitionOn} archiveOnOn={archiveOn} />
           {children}
           <Footer />
