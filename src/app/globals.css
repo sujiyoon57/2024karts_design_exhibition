@@ -991,7 +991,7 @@ iframe{
 /* ✅ 반응형 디자인 유지 (모바일 전용 스타일) */
 @media screen and (max-width: 870px) {
   .portfolio-container{
-    padding-top: 30px;
+    padding-top: 18px;
     width: 100vw;
     box-sizing: border-box;
     padding-bottom: 20.278vw; 
@@ -1014,6 +1014,8 @@ iframe{
     font-size: 14px;
     font-weight: 600;
     line-height: 1.4;
+    margin-bottom: 2px;
+    
   }
 
   /* ✅ 모바일에서 한글+영문+전공 표시 */
@@ -1044,8 +1046,9 @@ iframe{
 .student-info .major::before {
   content: "|";
   color: #ccc;
-  margin: 0 8px;
-  font-size: 16px;
+  font-size: 15px; /* 기존보다 작게 설정 */
+  font-weight: 400; /* 너무 두껍지 않도록 조정 */
+  margin: 0 8px; /* 양옆 여백도 살짝 줄이기 */
 }
 /* ✅ 모바일에서 하단 학생명, 한줄소개, 정보 스타일 조정 */
 @media screen and (max-width: 870px) {
@@ -1118,7 +1121,7 @@ iframe{
   }
 
   .portfolio-box3{
-    margin-top: 5vw;
+    margin-top: 7vw;
   }
   
   /* ✅ Other Projects 버튼 (모바일) */
