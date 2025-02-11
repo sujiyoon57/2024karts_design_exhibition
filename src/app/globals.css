@@ -411,15 +411,17 @@ header{
 /* ✅ 필터 버튼 색상 추가 */
 .notice_type button.type01 { border: 1.5px solid #FF6EA8; color: #FF6EA8; }
 .notice_type button.type01.active { color: #fff; background: #FF6EA8; } 
+ 
 
-.notice_type button.type02 { border: 1.5px solid #91A5FF; color: #91A5FF; }
-.notice_type button.type02.active { color: #fff; background: #91A5FF; }
+.notice_type button.type02 { border: 1.5px solid #5B70F5; color: #5B70F5; }
+.notice_type button.type02.active { color: #fff; background: #5B70F5; }
 
-.notice_type button.type03 { border: 1.5px solid #3B55FF; color: #3B55FF; }
-.notice_type button.type03.active { color: #fff; background: #3B55FF; }
+.notice_type button.type03 { border: 1.5px solid #1DCC60; color: #1DCC60; }
+.notice_type button.type03.active { color: #fff; background: #1DCC60; }
 
-.notice_type button.type04 { border: 1.5px solid #1DCC60; color: #1DCC60; }
-.notice_type button.type04.active { color: #fff; background: #1DCC60; }
+.notice_type button.type04 { border: 1.5px solid #F6945C; color: #F6945C; }
+.notice_type button.type04.active { color: #fff; background: #F6945C; }
+ 
  
 
 /* ✅ 리스트 내 필터 색상 */
@@ -439,11 +441,11 @@ header{
 .notice_list li .notice-info div.type01,
 .notice-category.type01 { color: #FF6EA8; border: 1.5px solid #FF6EA8; }
 .notice_list li .notice-info div.type02,
-.notice-category.type02 { color: #91A5FF; border: 1.5px solid #91A5FF; }
+.notice-category.type02 { color: #5B70F5; border: 1.5px solid #5B70F5; }
 .notice_list li .notice-info div.type03,
-.notice-category.type03 { color: #3B55FF; border: 1.5px solid #3B55FF; }
+.notice-category.type03 { color: #1DCC60; border: 1.5px solid #1DCC60; }
 .notice_list li .notice-info div.type04,
-.notice-category.type04 { color: #1DCC60; border: 1.5px solid #1DCC60; }
+.notice-category.type04 { color: #F6945C; border: 1.5px solid #F6945C; }
 
 /* ✅ 공지사항 카테고리 스타일 (홈 & notice 페이지 동일 적용) */
 .notice-category {
@@ -649,10 +651,9 @@ opacity:1;}
 
 /* ✅ 작품 제목과 학생명 스타일 통일 */
 .exhibition-info > div:first-child,  /* 작품 제목 */
-.exhibition-info > div:last-child {  /* 학생명 */
-  font-family: 'Pretendard Variable', sans-serif;
+.exhibition-info > div:last-child {  /* 학생명 */ 
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .exhibition-info{
@@ -660,7 +661,7 @@ opacity:1;}
   color: #000;
   bottom: 0px;
   width: calc(100% - 2.084vw);
-  padding-top: 2.4vw;
+  padding-top: 1vw;
   padding-left: 1.042vw;
 }
 
@@ -732,7 +733,7 @@ opacity:1;}
       position: relative;
   }
   .exhibition-container a{
-      border-left: 0.0625vh #000 solid;
+     
       padding: 0 0 16px 0;
   }
 }
@@ -970,6 +971,11 @@ iframe{
   }
 }
 
+.portfolio-container .info_link{display:none;}
+@media screen and (max-width: 870px) {
+  .portfolio-container .info_link{display:block;text-align:center;margin-top:26px;} 
+  .portfolio-container .info_link p a{font-size:10px; text-decoration:underline;}
+}
 
 /* ✅ Other Projects 버튼 스타일 (PC) */
 .move-page {
@@ -1023,10 +1029,10 @@ iframe{
   .portfolio-box1 .project-name {
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 2px;
+    line-height: 1.4; 
     
   }
+  .portfolio-box1 .student-info{line-height:1.1;}
 
   /* ✅ 모바일에서 한글+영문+전공 표시 */
 .student-info .name-pc {
@@ -1067,32 +1073,39 @@ iframe{
     flex-direction: row; /* ✅ 이름과 Contact를 같은 줄에 배치 */
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    font-weight:400;
   }
 
   .student-info-detail .name {
-    width: auto;
+    
     font-size: 13px;
     flex-grow: 1;
+    width: 50%;
   }
 
-  .student-info-detail .contact {
-    width: auto;
+  .student-info-detail .contact { 
     font-size: 11.72px;
     text-align: left;
+    order:1;
+    width: 50%;
   }
 
   /* ✅ 설명을 이름과 Contact 아래로 내리기 */
   .student-info-detail .introduct {
     width: 100%;
     font-size: 13px;
-    margin-top: 8px;
+    margin-top: 18px;
+    order:2;
   }
 }
 
 
+
+
   .portfolio-flex{display:block;}
   .portfolio-flex .portfolio-image-container{width:100%;}
-  .portfolio-flex .portfolio-box2{width:auto; margin:8.889vw 4.444vw;}
+  .portfolio-flex .portfolio-box2{width:auto; margin:4.444vw 0;}
   
   .portfolio-box2{
     margin-bottom: 8.889vw;
@@ -1752,6 +1765,10 @@ iframe{
   position: relative;
   padding: 2.5vw 80px;
 }
+.container1 .about-flex-item p{width:50%;}
+@media screen and (max-width:870px) {
+  .container1 .about-flex-item p{width:100%;} 
+}
 .container1.professor {
   background: #F1F1F1;
 }
@@ -1818,7 +1835,7 @@ iframe{
   right: 0;
   bottom: 0;
   width:calc(100% - 37px);
-  font-weight: 400;
+  font-weight: 400;  
 }
 
 /* ✅ 'major' (디자인과) 폰트 웨이트 400 적용 */
@@ -1832,6 +1849,7 @@ iframe{
     font-weight: 400;
   }
   .faculty-info > div:nth-of-type(4){
+    width: calc(100% - 20px);
     font-weight: 400;
   }
   .about-description {
@@ -1852,7 +1870,7 @@ iframe{
 }
 @media screen and (max-width:870px) {
   .container1{
-    padding: 74px 0 0 0;
+    padding: 16px 0 0 0;
   }
   .container2{
     padding: 0 16px;
@@ -1895,7 +1913,7 @@ iframe{
     font-weight: 400; /* 모바일에서도 major(디자인과) 폰트 웨이트 400 적용 */
   }
   .faculty-info > div:nth-of-type(4){
-    position:sticky;
+     
     font-weight: 400; /* 모바일에서도 설명 폰트 웨이트 400 적용 */
   }
   .link-wraper svg{
@@ -1990,6 +2008,7 @@ iframe{
 /* ✅ 모바일에서도 동일한 스타일 적용 */
 @media screen and (max-width: 870px) {
   .professor_list {
+    margin-top:0;
     gap: 16px;
     font-size: 13px;
   }
@@ -2015,7 +2034,10 @@ iframe{
 .archive-container{padding:58px 80px 150px 80px ;}
 .archive_list{display:flex; flex-wrap: wrap; gap:40px; margin:0; padding:0;}
 .archive_list > li{width:calc(50% - 20px); font-size: 17px; font-weight: 600;  } 
-.archive_list > li img{width:100%; margin-bottom:15px;}
+.archive_list > li .archive-info > p{position:relative;width:100%; height:0; padding-bottom:56.04%; overflow:hidden;margin-bottom:15px;} 
+.archive_list > li img{ width:100%; height:100%; line-height:0; position:absolute; top:50%;left:50%;transform:translate(-50%, -50%);
+  -webkit-transform:translateY(-50%) translateX(-50%);transform:translateY(-50%) translateX(-50%); 
+ }
 
 @media screen and (max-width:870px) {
   
@@ -2172,9 +2194,8 @@ iframe{
   }
 
   .archive_intro .tit_img {
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
+    width: 100%;
+    margin:0;
     padding-bottom: 20px;
   }
 

@@ -66,7 +66,10 @@ export default function Notice() {
                   <div className={categoryClasses[data.fields.part2] || ""}>
                     {data.fields.part2.join(", ")}
                   </div>
-                  <div>{data.fields.title}</div>
+                  <div> 
+                    {/* <Image src="/asset/boardPinIcon.svg" /> */} 
+                    {data.fields.title}
+                  </div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
               </Link>

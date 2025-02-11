@@ -63,7 +63,7 @@ export default function MainPage(){
                 <li>
                   <a href={ `/page/notice_view/0`}>
                     <div className="notice-info">
-                      <div className="type02">학과</div>  {/* 학과 (핑크) */}
+                      <div className="type01">학과</div>  {/* 학과 (핑크) */}
                       <div>{title}</div> 
                       <div>{date}</div>
                     </div>
@@ -75,7 +75,7 @@ export default function MainPage(){
                 <li>
                   <a href={ `/page/notice2_view/0`}>
                     <div className="notice-info">
-                      <div className="type04">행사</div>  {/* 행사 (그린) */}
+                      <div className="type02">행사</div>  {/* 행사 (그린) */}
                       <div>{title2}</div> 
                       <div>{date2}</div>
                     </div>
@@ -99,7 +99,7 @@ export default function MainPage(){
                 <li>
                   <a href={ `/page/notice4_view/0`}>
                     <div className="notice-info">
-                      <div className="type05">기타</div>  {/* 기타 (오렌지) */}
+                      <div className="type04">기타</div>  {/* 기타 (오렌지) */}
                       <div>{title4}</div> 
                       <div>{date4}</div>
                     </div>

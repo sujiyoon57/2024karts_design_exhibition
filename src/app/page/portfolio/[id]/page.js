@@ -164,7 +164,16 @@ export default async function Portfolio(props) {
                         </div>
                     </div>
                 </div>
-
+                <div className="info_link">
+                    <p>
+                        <Link href=''>
+                            View All Projects
+                        </Link>
+                    </p>
+                    <p>
+                        <Link href="">Back</Link>
+                    </p> 
+                </div>   
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">

@@ -37,6 +37,7 @@ export default function ArchiveNew() {
                 <div className="archive-info">
                   {/* titleimg 필드에서 이미지 URL을 동적으로 가져오기 */}
                   {data?.fields?.titleimg?.fields?.file?.url ? (
+                    <p>
                     <Image
                       src={`https:${data.fields.titleimg.fields.file.url}`} // 'https:' 추가
                       alt={data.fields.title || "No title"} // 이미지의 alt 텍스트를 제목으로 설정
@@ -44,7 +45,9 @@ export default function ArchiveNew() {
                       height={366}
                       layout="intrinsic" // 원본 비율 유지
                       objectFit="cover" // 비율을 유지하면서 잘리는 부분 조절
+                      style={{objectFit: "cover"}}
                     />
+                    </p>
                   ) : (
                     <div>No Image</div> // 이미지가 없을 경우 표시
                   )}
