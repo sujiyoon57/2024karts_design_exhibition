@@ -480,6 +480,9 @@ header{
   font-weight: 600;
   font-size: 17px;
 }
+.notice_th li:nth-child(1){width:60px;}
+.notice_th li:nth-child(2){width:calc(100% - 190px );}
+.notice_th li:nth-child(3){width:130px; box-sizing:border-box; padding-left:20px;}
 
 .notice_list { margin: 0; padding: 0; }  
 .notice_list li { padding: 10px 130px 10px 0; position: relative; font-size: 16px; border-top: 1px solid rgba(0, 0, 0, 0.2); } 
