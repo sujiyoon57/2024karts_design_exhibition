@@ -5,8 +5,11 @@ import { fetchContentful } from "@/app/contentful/contentful";
 
 export default async function Notice(){
 
-    var data = await fetchContentful('notice');
-    const notice = data;
+    const id = parseInt(props.params.id);
+    const data = await fetchContentful('archiveNew');
+    const archiveNew = data[id].fields;
+    const sys = archiveNew[id].sys;
+    const len  = archiveNew.length > 0 && archiveNew.length; 
     
     return( 
         <div className="archive-container"> 
@@ -14,7 +17,18 @@ export default async function Notice(){
             <div className="archive_intro archive_intro_web"> 
                 <div className="backtolist"><a href="/page/archive">⟵<span>Back to Lists</span></a></div>
                 
-                <p className="tit_img"><img src="/asset/archiveintro2024.png" /></p>
+                <p className="tit_img">
+                    {archiveNew.fields.titleimg && (
+                    <Image
+                        src={`https:${archiveNew.fields.titleimg.fields.file.url}`} // 'https:' 추가
+                        alt={archiveNew.fields.title} // 이미지의 alt 텍스트를 제목으로 설정
+                        width={620}
+                        height={366}
+                        layout="intrinsic" // 원본 비율 유지
+                        objectFit="cover" // 비율을 유지하면서 잘리는 부분 조절
+                    />
+                    )}
+                </p>
                 <div className="info"> 
                     <div className="info_txt">
                             <div>
@@ -35,7 +49,15 @@ students, celebrating their journey of creative discovery and advancement.</p>
                     </div>
                     <div className="info_link">
                         <p><a href="/page/exhibition">View All Projects</a></p>
-                        <p><a href="">Download PDF</a></p>
+                        <p>
+                          {archiveNew.length > 0 && archiveNew[0].fields.download ? (
+                            <a href={`https:${archiveNew[0].fields.download.fields.file.url}`} download>
+                            Download PDF
+                            </a>
+                          ) : (
+                            <span>No PDF available</span>
+                          )}
+                        </p>
                     </div>    
                     
                 </div>
