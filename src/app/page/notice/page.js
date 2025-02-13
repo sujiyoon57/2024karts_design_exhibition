@@ -38,7 +38,7 @@ export default function Notice() {
         {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
             <button
             key={part}
-            className={`${selectedPart === part ? "active" : ""} type0${index + 1}`}
+            className={`${selectedPart === part ? "active" : ""} type0${index}`}
             onClick={() => setSelectedPart(part)}
             >
             {part}
@@ -66,6 +66,8 @@ export default function Notice() {
                       ? "type02"
                       : data.fields.part2.includes("채용")
                       ? "type03"
+                      : data.fields.part2.includes("기타")
+                      ? "type04"
                       : ""
                   }
                 >
