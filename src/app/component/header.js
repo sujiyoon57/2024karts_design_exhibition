@@ -11,7 +11,7 @@ export default function Header({exhibitionOn, archiveOn}){
 
     
     return(
-        <header>
+        <header style={{ backgroundColor: menuOn ? '#CCCCCC' : 'transparent' }}>
             <div className="header-icon-wrap">
                 <Link href='/'>
                 Korea National University of Arts<span> Design Department</span>

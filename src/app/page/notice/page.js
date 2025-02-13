@@ -72,7 +72,7 @@ export default function Notice() {
                   }
                 >
                   {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
-                  <div>{data.fields.title}</div>
+                  <div>{data.fields.fixed ? "고정 " : ""}{data.fields.title}</div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
               </Link>
