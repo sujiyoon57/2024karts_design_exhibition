@@ -69,22 +69,35 @@ export default function ArchiveIntroPage({ params }) {
                 {/* <p className="tit_img tit_img_pc"><img src="/asset/archiveintro2024.png" /></p>
                 <p className="tit_img tit_img_mo"><img src="https://images.ctfassets.net/vt7en4vb5az7/7s5gxLPx4g4S1un0K2xgxd/022295549158bba30a0d4aea75509840/2024_%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%84%B8%EB%A1%9C%ED%98%95.jpeg" /></p>  titleimg-mobile */}
                 <div className="info"> 
+                    <div className="title">
+                        {/*  title */}
+                        {archiveNew?.title ?? "제목 없음"}
+                    </div>  
                     <div className="info_txt">
-                         
+                        {archiveNew?.post 
+                        ? documentToReactComponents(archiveNew.post, options) 
+                        : "제목 없음"}
                     </div>
                     <div className="info_link">
-                        <p><Link href={archiveNew?.link ? archiveNew.link : "/default"}>View All Projects</Link></p>
-                        <p><Link href="">Download PDF</Link></p> 
+                        <p><Link href="/page/exhibition">View All Projects</Link></p>
+                        <button onClick={downloadFile}>Download PDF</button>
                     </div>    
                     
                 </div>
                 <div className="credit"> 
                     <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                    <div className="committee">  
-                        org
-                    </div>
+                    <div className="credit">
+                        <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
+                        <div className="committee"> 
+                            {archiveNew?.org 
+                                ? documentToReactComponents(archiveNew.org, options) 
+                                : "제목 없음"}
+                        </div> 
 
-                    org2
+                        {archiveNew?.org2 
+                            ? documentToReactComponents(archiveNew.org2, options) 
+                            : "제목 없음"}
+                    </div>
                 </div>
             </div>
             <div className="archive_intro archive_intro_mo">
@@ -141,18 +154,18 @@ export default function ArchiveIntroPage({ params }) {
                 {/* Credit 탭 내용 */}
                 {activeTab === "credit" && (
                     <div className="tab_cont_credit">
-                    <div className="credit">
-                        <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                        <div className="committee"> 
-                            {archiveNew?.org 
-                                ? documentToReactComponents(archiveNew.org, options) 
-                                : "제목 없음"}
-                        </div> 
+                        <div className="credit">
+                            <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
+                            <div className="committee"> 
+                                {archiveNew?.org 
+                                    ? documentToReactComponents(archiveNew.org, options) 
+                                    : "제목 없음"}
+                            </div> 
 
-                        {archiveNew?.org2 
-                            ? documentToReactComponents(archiveNew.org2, options) 
-                            : "제목 없음"}
-                    </div>
+                            {archiveNew?.org2 
+                                ? documentToReactComponents(archiveNew.org2, options) 
+                                : "제목 없음"}
+                        </div>
                     </div>
                 )}
             </div>
