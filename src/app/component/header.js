@@ -1,15 +1,12 @@
 "use client" 
+
 import MenuIcon from "/public/asset/menuIcon2.svg" 
 import ExitIcon from "/public/asset/exitIcon.svg"
 import LinkIcon from "/public/asset/linkIcon.svg"
 import Link from "next/link"
-import { useState } from "react"
 
-export default function Header({exhibitionOn, archiveOn}){
+export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
 
-    const [menuOn,setMenuOn]=useState(false);
-
-    
     return(
         <header>
             <div className="header-icon-wrap">

@@ -2,12 +2,34 @@
 
 import { fetchContentful } from "@/app/contentful/contentful";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import Footer from '@/app/component/footer';
+import Header from "@/app/component/header";
 
 export default function Karts() {
     const [professor, setProfessor] = useState([]);
+    const [menuOn, setMenuOn] = useState(false); // ✅ menuOn 상태 추가
+
+    useEffect(() => {
+        const getContentful = async () => {
+            try {
+                var data = await fetchContentful('professor');
+                data.sort((a, b) => a.fields.name.localeCompare(b.fields.name, 'ko-KR'));
+                setProfessor(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        getContentful();
+    }, []);
+
+    useEffect(() => {
+        if (menuOn) {
+            document.body.classList.remove("professor-page");
+        } else {
+            document.body.classList.add("professor-page");
+        }
+    }, [menuOn]);
 
     useEffect(() => {
         const getContentful = async () => {
@@ -37,6 +59,8 @@ export default function Karts() {
     }, []);
 
     return (
+        <>
+        <Header menuOn={menuOn} setMenuOn={setMenuOn} />
         <div className="container1 professor">
             <div className="container2">
                 <div className="exhibition_tab">   
@@ -58,5 +82,6 @@ export default function Karts() {
                 </div> 
             </div> 
         </div>
+        </>
     );
 }
