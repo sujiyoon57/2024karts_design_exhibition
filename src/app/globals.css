@@ -1933,7 +1933,7 @@ iframe{
 
 /* ✅ 교수 페이지에서만 전체 배경색을 본문과 동일하게 설정 */
 .professor-page {
-  background-color: #F8F8F8 !important; /* 본문과 동일한 배경색 유지 */
+  background-color: #FFFFFF !important; /* 본문과 동일한 배경색 유지 */
 }
 
 /* ✅ 교수 페이지에서만 header, footer 배경색 변경 */
@@ -2192,9 +2192,9 @@ iframe{
     display: block;
   }
 
-  .tab_cont_credit {
+  /* .tab_cont_credit {
     display: none;
-  }
+  } */
 
   .archive_intro .tit_img {
     width: 100%;
