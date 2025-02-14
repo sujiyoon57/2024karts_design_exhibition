@@ -78,10 +78,13 @@ export default function ArchiveIntroPage({ params }) {
                             : "제목 없음"}
                     </div>
                     <div className="info_link">
-                        {/* ✅ 년도별 이동 가능하도록 수정 */}
+                        {/* ✅ 'View All Projects' 스타일 그대로 유지 */}
                         <p><Link href={`/page/exhibition?year=${encodeURIComponent(exhibitionYear)}`}>View All Projects</Link></p>
-                        <button onClick={downloadFile}>Download PDF</button>
+
+                        {/* ✅ 'Download PDF' 버튼에 새로운 class 추가 */}
+                        <p><button className="download-btn" onClick={downloadFile}>Download PDF</button></p>
                     </div>
+
 
                 </div>
                 <div className="credit">
@@ -142,13 +145,13 @@ export default function ArchiveIntroPage({ params }) {
                             </div>
                             <div className="info_link">
                                 {/* ✅ 모바일에서도 년도별 페이지 이동 가능하도록 수정 */}
-                                <p>
-                                    <Link href={`/page/exhibition?year=${encodeURIComponent(archiveNew?.NEWexhibitionYear || (id === "1" ? "2023" : "2024"))}`}>
-                                        View All Projects
-                                    </Link>
-                                </p>
+                                <div className="info_link">
+                                    {/* ✅ 'View All Projects' 스타일 그대로 유지 */}
+                                    <p><Link href={`/page/exhibition?year=${encodeURIComponent(exhibitionYear)}`}>View All Projects</Link></p>
 
-                                <button onClick={downloadFile}>Download PDF</button>
+                                    {/* ✅ 'Download PDF' 버튼에 새로운 class 추가 */}
+                                    <p><button className="download-btn" onClick={downloadFile}>Download PDF</button></p>
+                                </div>
                             </div>
 
                         </div>

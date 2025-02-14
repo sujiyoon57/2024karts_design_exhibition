@@ -2085,6 +2085,35 @@ iframe{
 }
 
 /*------------------- archive intro -----------------------*/
+.archive-container > div:first-child {
+  display: none !important;
+}
+
+@media screen and (min-width: 871px) {
+  .archive_intro .title {
+    display: none !important;
+  }
+}
+
+/* ✅ 선택된 버튼(활성화된 상태) */
+.exhibition_tab button.active {
+  background-color: #ddd; /* 연한 회색 배경 */
+  color: #000; /* 검정색 텍스트 */
+  border: none; /* 테두리 제거 */
+  font-weight: bold; /* 글자 굵기 강조 */
+}
+
+/* ✅ 선택되지 않은 버튼(비활성화된 상태) */
+.exhibition_tab button:not(.active) {
+  background-color: transparent; /* 투명 배경 */
+  color: #888; /* 회색 텍스트 */
+  border: 1px solid #aaa; /* 연한 회색 테두리 */
+  font-weight: bold; /* 글자 굵기 유지 */
+}
+
+
+
+
 
 .archive_intro {
   font-size: 18px;
@@ -2291,4 +2320,5 @@ iframe{
     width: calc(100% - 93px);
     font-weight: 400 !important;
   }
+  
 }
