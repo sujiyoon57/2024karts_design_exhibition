@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { fetchContentful } from "@/app/contentful/contentful";
 import Header from "@/app/component/header";
@@ -75,7 +76,12 @@ export default function Notice() {
                   }
                 >
                   {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
-                  <div>{data.fields.fixed ? "고정 " : ""}{data.fields.title}</div>
+                  <div>
+                    {data.fields.fixed && (
+                      <Image src="/asset/boardPinIcon.svg" alt="Pin Icon" width={24} height={24} />
+                    )}
+                    {data.fields.title}
+                  </div>
                   <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
                 </div>
               </Link>
