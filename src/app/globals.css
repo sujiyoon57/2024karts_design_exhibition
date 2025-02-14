@@ -1830,6 +1830,9 @@ iframe{
     width: 83px !important;  /* 모바일에서 고정된 가로 크기 */
     height: 105px !important; /* 모바일에서 고정된 세로 크기 */
     object-fit: cover; /* ✅ 비율 유지하면서 채우기 */
+    margin-right: -3px;
+    
+
   }
 }
 
@@ -1862,34 +1865,35 @@ iframe{
 }
 
 /* ✅ 모바일에서도 동일하게 적용 */
-/* ✅ faculty-info: 텍스트 겹침 문제 해결 */
-@media screen and (max-width: 870px) {
-  .faculty-info {
+@media screen and (max-width:870px) {
+  
+  /* ✅ 한글 이름과 영문 이름을 같은 줄에 배치 */
+  .faculty-name {
     display: flex;
-    flex-direction: column; /* ✅ 세로 배치로 고정 */
-    justify-content: flex-start; 
-    width: calc(100% - 100px); /* ✅ 이미지 옆 공간 확보 */
-    padding-left: 15px; /* ✅ 텍스트 여백 조정 */
-    word-break: keep-all;
+    gap: 5px; /* 한글 이름과 영문 이름 사이 간격 조정 */
+    font-weight: 600;
   }
-
-  /* ✅ 이름, 영문이름, 전공 간격 조정 */
-  .faculty-info > div:nth-of-type(1) { font-weight: 600; margin-bottom: 2px; }
-  .faculty-info > div:nth-of-type(2) { font-weight: 600; color: black; margin-bottom: 2px; }
-  .faculty-info > div:nth-of-type(3) { font-weight: 400; margin-bottom: 4px; }
-
-  /* ✅ 설명 텍스트 (education-text) 정렬 조정 */
+  .faculty-info > div:nth-of-type(3){
+    font-weight: 400;
+  }
+  .faculty-info > div:nth-of-type(4){
+    width: calc(100% - 20px);
+    font-weight: 400;
+  }
+  .about-description {
+    font-weight: 400; /* 모바일에서도 학과 소개 본문 폰트 웨이트 유지 */
+  }
   .education-text {
     font-weight: 400;
+    font-size: 12px;
     width: 100%; /* ✅ 부모 요소 기준으로 정렬 */
-    position: relative; /* ✅ absolute 제거 → 레이아웃 자연스럽게 유지 */
+    position: auto; /* ✅ absolute 제거 → 레이아웃 자연스럽게 유지 */
     right: auto;
-    bottom: auto;
     text-align: left;
-    margin-top: 5px; /* ✅ 텍스트 간격 조정 */
+    margin-top: auto; /* ✅ 텍스트 간격 조정 */
+    line-height: 1.4;
   }
 }
-
 
 .container1 .inactive{
   border-color:rgba(0, 0, 0, 0.5);
@@ -1927,6 +1931,7 @@ iframe{
   }
   .faculty-flex-item{
     width: 100%;
+    gap: 0px;
   }
   .faculty-flex-item img{width:83px;}
   .faculty-info{ 
