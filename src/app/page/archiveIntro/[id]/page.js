@@ -1,13 +1,14 @@
 "use client"; // 클라이언트 컴포넌트로 지정
 
 import { fetchContentful } from "@/app/contentful/contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/app/component/header";
 
 export default function ArchiveIntroPage({ params }) {
     const { id } = params; // params에서 id 추출
-    const [archiveNew, setArchiveNew] = useState(null);
+    const [archiveNew, setArchiveNew] = useState({});
     const [activeTab, setActiveTab] = useState("info");
     const [menuOn, setMenuOn] = useState(false);
 
@@ -16,8 +17,8 @@ export default function ArchiveIntroPage({ params }) {
         const fetchData = async () => {
             if (id) {
                 const data = await fetchContentful("archiveNew");
-                //console.log(data);
                 if (data && data[id]) {
+                    console.log(data[id].fields);
                     setArchiveNew(data[id].fields);
                 }
             }
@@ -25,10 +26,35 @@ export default function ArchiveIntroPage({ params }) {
         fetchData();
     }, [id]);
 
-    if (!archiveNew) return <p>Loading...</p>;
+    const options = {
+        renderText: (text) => {
+          return text.split("\n").map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+          ));
+        },
+      };
+
+      const downloadFile = async () => {
+        const url = `https:${archiveNew?.download?.fields?.file?.url}`;
+        console.log(url);
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = "downloadedFile.pdf"; // 다운로드 파일명
+        link.click();
+        };
+
+    // if (!archiveNew) return <p>Loading...</p>;
 
     return (
         <div className="archive-container">
+            <div>
+                {archiveNew.title ? archiveNew.title : "데이터 로딩 중..."} {/* ✅ 상태가 변경되면 자동 업데이트됨 */}
+            </div>
             <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="archive_intro archive_intro_web"> 
                 <div className="backtolist"><Link href="/page/archive">⟵<span>Back to Lists</span></Link></div>
@@ -40,7 +66,7 @@ export default function ArchiveIntroPage({ params }) {
                          
                     </div>
                     <div className="info_link">
-                        <p><Link href={archiveNew.link}>View All Projects</Link></p>
+                        <p><Link href={archiveNew?.link ? archiveNew.link : "/default"}>View All Projects</Link></p>
                         <p><Link href="">Download PDF</Link></p> 
                     </div>    
                     
@@ -84,15 +110,17 @@ export default function ArchiveIntroPage({ params }) {
                         <div className="info"> 
                             <div className="title">
                                 {/*  title */}
-                                전시이름 
+                                {archiveNew?.title ?? "제목 없음"}
                             </div>  
                             <div className="info_txt">
-                                {/*  post */}
-                                내용 나오는 자리입니다
+                                {archiveNew?.post 
+                                ? documentToReactComponents(archiveNew.post, options) 
+                                : "제목 없음"}
                             </div>
                             <div className="info_link">
                                 <p><Link href="/page/exhibition">View All Projects</Link></p>
-                                <p><Link href="{/*  download */}">Download PDF</Link></p>
+                                {/* <p><a href={archiveNew?.download?.fields?.file?.url} download>Download PDF</a></p> */}
+                                <button onClick={downloadFile}>Download PDF</button>
                             </div>    
                             
                         </div>
@@ -105,10 +133,14 @@ export default function ArchiveIntroPage({ params }) {
                     <div className="credit">
                         <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
                         <div className="committee"> 
-                            org
+                            {archiveNew?.org 
+                                ? documentToReactComponents(archiveNew.org, options) 
+                                : "제목 없음"}
                         </div> 
 
-                        org2
+                        {archiveNew?.org2 
+                            ? documentToReactComponents(archiveNew.org2, options) 
+                            : "제목 없음"}
                     </div>
                     </div>
                 )}
