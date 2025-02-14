@@ -21,19 +21,3 @@ export default function Home() {
     </div>
   )
 }
-
-// const [scrollup, setScrollup] = useState(false);
-// onWheel={(e) => onScroll()}
-// const onScroll = e => {
-//  if(scrollup === false) {
-//    setScrollup(true);
-// }
-//  setTimeout(() => {
-//      window.scrollTo({
-//        top: 0,
-//          behavior: 'smooth', // Optional: Adds smooth scrolling effect
-//          });
-//  }, 10);
-
-     
-//  }
