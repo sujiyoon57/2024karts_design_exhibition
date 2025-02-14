@@ -18,7 +18,7 @@ export default function ArchiveIntroPage({ params }) {
             if (id) {
                 const data = await fetchContentful("archiveNew");
                 if (data && data[id]) {
-                    console.log(data[id].fields);
+                    console.log("이미지", data[id].fields.titleimg);
                     setArchiveNew(data[id].fields);
                 }
             }
@@ -58,9 +58,17 @@ export default function ArchiveIntroPage({ params }) {
             <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="archive_intro archive_intro_web"> 
                 <div className="backtolist"><Link href="/page/archive">⟵<span>Back to Lists</span></Link></div>
-                
-                <p className="tit_img tit_img_pc"><img src="/asset/archiveintro2024.png" /></p> {/*  titleimg */}
-                <p className="tit_img tit_img_mo"><img src="https://images.ctfassets.net/vt7en4vb5az7/7s5gxLPx4g4S1un0K2xgxd/022295549158bba30a0d4aea75509840/2024_%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%84%B8%EB%A1%9C%ED%98%95.jpeg" /></p> {/*  titleimg-mobile */}
+                <p className="tit_img tit_img_pc"><img
+                    src={archiveNew?.titleimg?.fields?.file?.url ? `https:${archiveNew.titleimg.fields.file.url}` : "/default-image.png"}
+                    alt="Title Image"
+                /></p>
+                <p className="tit_img tit_img_mo"><img
+                    src={archiveNew?.titleimgMobile?.fields?.file?.url ? `https:${archiveNew.titleimgMobile.fields.file.url}` : "/default-image.png"}
+                    alt="Title Image"
+                /></p>
+
+                {/* <p className="tit_img tit_img_pc"><img src="/asset/archiveintro2024.png" /></p>
+                <p className="tit_img tit_img_mo"><img src="https://images.ctfassets.net/vt7en4vb5az7/7s5gxLPx4g4S1un0K2xgxd/022295549158bba30a0d4aea75509840/2024_%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%84%B8%EB%A1%9C%ED%98%95.jpeg" /></p>  titleimg-mobile */}
                 <div className="info"> 
                     <div className="info_txt">
                          
@@ -100,12 +108,16 @@ export default function ArchiveIntroPage({ params }) {
                 {activeTab === "info" && (
                     <div className="tab_cont_info">
                         <p className="tit_img tit_img_pc">
-                            {/*  titleimg */}
-                            <img src="/asset/archiveintro2024.png" />
+                            <img
+                            src={archiveNew?.titleimg?.fields?.file?.url ? `https:${archiveNew.titleimg.fields.file.url}` : "/default-image.png"}
+                            alt="Title Image"
+                            />
                         </p>
                         <p className="tit_img tit_img_mo">
-                            {/*  titleimg-mobile */}
-                            <img src="https://images.ctfassets.net/vt7en4vb5az7/7s5gxLPx4g4S1un0K2xgxd/022295549158bba30a0d4aea75509840/2024_%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%84%B8%EB%A1%9C%ED%98%95.jpeg" /> 
+                            <img
+                            src={archiveNew?.titleimgMobile?.fields?.file?.url ? `https:${archiveNew.titleimgMobile.fields.file.url}` : "/default-image.png"}
+                            alt="Title Image"
+                            />
                         </p>
                         <div className="info"> 
                             <div className="title">
