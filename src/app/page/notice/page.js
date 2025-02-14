@@ -78,7 +78,7 @@ export default function Notice() {
                   {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
                   <div>
                     {data.fields.fixed && (
-                      <Image src="/asset/boardPinIcon.svg" alt="Pin Icon" width={24} height={24} />
+                      <Image src="/asset/boardPinIcon.svg" alt="Pin Icon" width={12} height={14} />
                     )}
                     {data.fields.title}
                   </div>

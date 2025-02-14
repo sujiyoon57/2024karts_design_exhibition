@@ -487,6 +487,7 @@ header{
 .notice_list { margin: 0; padding: 0; }  
 .notice_list li { padding: 10px 130px 10px 0; position: relative; font-size: 16px; border-top: 1px solid rgba(0, 0, 0, 0.2); } 
 .notice_list li .notice-info { display: flex; align-items: center; }
+.notice_list li .notice-info img{padding-right:5px} 
 
 /* ✅ 반응형 디자인 유지 */
 @media screen and (max-width: 870px) {
