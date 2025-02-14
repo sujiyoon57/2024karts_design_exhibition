@@ -1,10 +1,16 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
-import Footer from "@/app/component/footer";
 import ScrollUp from "@/app/component/scrollUp";
+import Header from "@/app/component/header";
+import { useState } from "react"
 
 export default async function Portfolio(props) {
+
+    const [menuOn, setMenuOn] = useState(false);
+
     const id = props.params.id;
     const data = await fetchContentful("portfolio");
 
@@ -30,6 +36,7 @@ export default async function Portfolio(props) {
 
     return (
         <div className="portfolio-container">
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="portfolio-box1">
                 <div className="project-intro">
                     <div className="project-name">{portfolio.projectName}</div>
@@ -166,7 +173,7 @@ export default async function Portfolio(props) {
                 </div>
                 <div className="info_link">
                     <p>
-                        <Link href=''>
+                        <Link href='/page/exhibition'>
                             View All Projects
                         </Link>
                     </p>

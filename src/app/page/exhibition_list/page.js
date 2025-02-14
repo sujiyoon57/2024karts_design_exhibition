@@ -5,6 +5,7 @@ import { fetchContentful } from "@/app/contentful/contentful";
 import Footer from "@/app/component/footer";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import Header from "@/app/component/header";
 
 export default function ExhibitionList() {
     const searchParams = useSearchParams();
@@ -12,6 +13,7 @@ export default function ExhibitionList() {
 
     const [portfolio, setPortfolio] = useState([]); // ✅ 상태값으로 데이터 관리
     const [loading, setLoading] = useState(true);
+    const [menuOn, setMenuOn] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,6 +42,7 @@ export default function ExhibitionList() {
 
     return (
         <div className="exhibition">
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="exhibition_tab">
                 <Link href={`/page/exhibition?year=${year}`}>프로젝트</Link>
                 <Link href={`/page/exhibition_list?year=${year}`} className="active">디자이너</Link>

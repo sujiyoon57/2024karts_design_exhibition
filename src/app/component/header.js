@@ -6,6 +6,9 @@ import LinkIcon from "/public/asset/linkIcon.svg"
 import Link from "next/link"
 
 export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
+    console.log("Header 렌더링됨!");  // ✅ Header가 렌더링되는지 확인
+    console.log("menuOn:", menuOn);  // ✅ menuOn 값 확인
+    console.log("setMenuOn:", setMenuOn);  // ✅ setMenuOn 값 확인
 
     return(
         <header>
@@ -14,7 +17,10 @@ export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
                 Korea National University of Arts<span> Design Department</span>
                 </Link>
             </div>
-            <div className="menu-icon-wrap" onClick={()=>setMenuOn(!menuOn)}>
+            <div className="menu-icon-wrap" onClick={() => {
+                     console.log("메뉴 아이콘 클릭됨!"); // ⬅️ 클릭 확인용
+                     setMenuOn(!menuOn);
+                 }}>
                 {menuOn ? (<ExitIcon/>) : (<MenuIcon/>)}
             </div> 
             <nav className="web-nav">

@@ -7,7 +7,7 @@ import Header from "@/app/component/header";
 
 export default function Karts() {
     const [professor, setProfessor] = useState([]);
-    const [menuOn, setMenuOn] = useState(false); // ✅ menuOn 상태 추가
+    const [menuOn, setMenuOn] = useState(false);
 
     useEffect(() => {
         const getContentful = async () => {
@@ -59,9 +59,8 @@ export default function Karts() {
     }, []);
 
     return (
-        <>
-        <Header menuOn={menuOn} setMenuOn={setMenuOn} />
         <div className="container1 professor">
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="container2">
                 <div className="exhibition_tab">   
                     <Link href={`/page/karts`}>학과 및 교수 소개</Link>
@@ -82,6 +81,5 @@ export default function Karts() {
                 </div> 
             </div> 
         </div>
-        </>
     );
 }

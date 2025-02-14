@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from '../../contentful/contentful';
 import Footer from "@/app/component/footer";
+import Header from "@/app/component/header";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // 주요 Swiper CSS 파일을 가져옵니다.
@@ -23,6 +24,7 @@ export default function Designer() {
   const [firstSelectedStudent, setFirstSelectedStudent] = useState(0);
   const [selectedStudentMobile, setSelectedStudentMobile] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [menuOn, setMenuOn] = useState(false);
 
   useEffect(() => {
     const getContentful = async () => {
@@ -65,6 +67,7 @@ export default function Designer() {
 
   return (
     <div className="designers" id="specific-section">
+      <Header menuOn={menuOn} setMenuOn={setMenuOn} />
       <div className="designers-container">
         <div className="name-container">
           <div className="web-name-list">

@@ -3,11 +3,13 @@
 import { fetchContentful } from "@/app/contentful/contentful";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Header from "@/app/component/header";
 
 export default function ArchiveIntroPage({ params }) {
     const { id } = params; // params에서 id 추출
     const [archiveNew, setArchiveNew] = useState(null);
-    const [activeTab, setActiveTab] = useState("info"); // 기본값은 info로 설정
+    const [activeTab, setActiveTab] = useState("info");
+    const [menuOn, setMenuOn] = useState(false);
 
     // 데이터를 가져오는 useEffect
     useEffect(() => {
@@ -27,6 +29,7 @@ export default function ArchiveIntroPage({ params }) {
 
     return (
         <div className="archive-container">
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="archive_intro archive_intro_web"> 
                 <div className="backtolist"><Link href="/page/archive">⟵<span>Back to Lists</span></Link></div>
                 

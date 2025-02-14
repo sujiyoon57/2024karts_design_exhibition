@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
+import Header from "@/app/component/header";
 
 export default function ArchiveNew() {
-  const [archiveNew, setArchiveNew] = useState([]); // 데이터를 저장할 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [archiveNew, setArchiveNew] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [menuOn, setMenuOn] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -29,6 +31,7 @@ export default function ArchiveNew() {
 
   return (
     <div className="archive-container">
+      <Header menuOn={menuOn} setMenuOn={setMenuOn} />
       <ul className="archive_list">
         {archiveNew.length > 0 ? (
           archiveNew.map((data, index) => (

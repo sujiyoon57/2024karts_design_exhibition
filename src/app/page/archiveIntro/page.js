@@ -4,11 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Header from "@/app/component/header";
 
 export default function ArchiveNew(props) {
     const id = parseInt(props.params.id);
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [menuOn, setMenuOn] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -37,7 +39,7 @@ export default function ArchiveNew(props) {
 
     return (
         <div className="archive-container">
-            
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             {/* ✅ PC 버전 */}
             <div className="archive_intro archive_intro_web"> 
                 <div className="backtolist">

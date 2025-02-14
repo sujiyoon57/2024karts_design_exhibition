@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { fetchContentful } from "@/app/contentful/contentful";
+import Header from "@/app/component/header";
 
 export default function Notice() {
   const [notices, setNotices] = useState([]);
   const [filteredNotices, setFilteredNotices] = useState([]);
   const [selectedPart, setSelectedPart] = useState("전체");
+  const [menuOn, setMenuOn] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -34,6 +36,7 @@ export default function Notice() {
 
   return (
     <div className="notice-container">
+      <Header menuOn={menuOn} setMenuOn={setMenuOn} />
       <div className="notice_type">
         {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
             <button

@@ -4,12 +4,14 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { fetchContentful } from "@/app/contentful/contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Header from "@/app/component/header";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 
 export default function Notice({ params }) {
     const id = parseInt(params.id);
     const [notice, setNotice] = useState(null);
     const [sys, setSys] = useState(null);
+    const [menuOn, setMenuOn] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,6 +43,7 @@ export default function Notice({ params }) {
 
     return (
         <div className="notiview-container">
+            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="notiview-top">
                 <div className="notiview_tit">{notice.title}</div>
                 <div className="notiview-info">

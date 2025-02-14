@@ -2,16 +2,18 @@
 
 import { fetchContentful } from "@/app/contentful/contentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from "@contentful/rich-text-types"; // ✅ Contentful 블록 타입 추가
+import { BLOCKS } from "@contentful/rich-text-types";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/app/component/header";
 
 export default function Karts() {
     const [about, setAbout] = useState();
     const [faculty, setFaculty] = useState();
     const [aboutButton, setAboutButton] = useState(true);
     const [facultyButton, setFacultyButton] = useState(false);
+    const [menuOn, setMenuOn] = useState(false);
 
     useEffect(() => {
         const getContentful = async () => {
@@ -38,6 +40,8 @@ export default function Karts() {
     };
 
     return (
+        <>
+        <Header menuOn={menuOn} setMenuOn={setMenuOn} />
         <div className="container1">
             <div className="container2">
                 <div className="exhibition_tab">
@@ -81,5 +85,6 @@ export default function Karts() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
