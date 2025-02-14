@@ -15,7 +15,7 @@ export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
                 </Link>
             </div>
             <div className="menu-icon-wrap" onClick={() => {
-                     console.log("메뉴 아이콘 클릭됨!"); // ⬅️ 클릭 확인용
+                    //console.log("메뉴 아이콘 클릭됨!"); // ⬅️ 클릭 확인용
                      setMenuOn(!menuOn);
                  }}>
                 {menuOn ? (<ExitIcon/>) : (<MenuIcon/>)}

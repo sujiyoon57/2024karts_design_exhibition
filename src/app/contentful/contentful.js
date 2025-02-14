@@ -25,11 +25,9 @@ export const fetchContentful = async (contentType, year = null) => {
         if (year !== null && year !== undefined) {
             query["fields.NEWexhibitionYear"] = year;
         }
-
-        console.log("🔍 Contentful 요청:", query);
+        
         const res = await client.getEntries(query);
-        console.log("📌 Contentful 응답 데이터:", res.items);
-
+        
         return res.items;
     } catch (error) {
         console.error('❌ Contentful 데이터 불러오기 실패:', error.message);

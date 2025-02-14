@@ -39,7 +39,6 @@ export default function ArchiveIntroPage({ params }) {
 
       const downloadFile = async () => {
         const url = `https:${archiveNew?.download?.fields?.file?.url}`;
-        console.log(url);
         const response = await fetch(url);
         const blob = await response.blob();
         const link = document.createElement('a');
