@@ -6,9 +6,6 @@ import LinkIcon from "/public/asset/linkIcon.svg"
 import Link from "next/link"
 
 export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
-    console.log("Header 렌더링됨!");  // ✅ Header가 렌더링되는지 확인
-    console.log("menuOn:", menuOn);  // ✅ menuOn 값 확인
-    console.log("setMenuOn:", setMenuOn);  // ✅ setMenuOn 값 확인
 
     return(
         <header>
