@@ -8,7 +8,7 @@ import Link from "next/link"
 export default function Header({exhibitionOn, archiveOn, menuOn, setMenuOn}){
 
     return(
-        <header>
+        <header style={{ backgroundColor: menuOn ? '#CCCCCC' : 'transparent' }}>
             <div className="header-icon-wrap">
                 <Link href='/'>
                 Korea National University of Arts<span> Design Department</span>
