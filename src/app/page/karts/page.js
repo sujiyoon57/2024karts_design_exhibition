@@ -78,11 +78,13 @@ export default function Karts() {
                                 <Image
                                     src={'https:' + data.fields.image.fields.file.url}
                                     alt="교수 이미지"
-                                    width={150}  // 적절한 width로 설정
-                                    height={150} // 적절한 height로 설정
+                                    className="faculty-image" // ✅ 추가된 className
+                                    width={150}  // ✅ 기본 크기 (PC)
+                                    height={150} // ✅ 기본 크기 (PC)
                                     sizes="100vw"
                                     layout="intrinsic"
                                 />
+
                                 <div className="faculty-info">
                                     {data.fields.name && <div>{data.fields.name}</div>}
                                     <div>{data.fields.nameEn}</div>
