@@ -28,16 +28,16 @@ export default function ArchiveIntroPage({ params }) {
 
     const options = {
         renderText: (text) => {
-          return text.split("\n").map((line, index) => (
-              <span key={index}>
-                {line}
-                <br />
-              </span>
-          ));
+            return text.split("\n").map((line, index) => (
+                <span key={index}>
+                    {line}
+                    <br />
+                </span>
+            ));
         },
-      };
+    };
 
-      const downloadFile = async () => {
+    const downloadFile = async () => {
         const url = `https:${archiveNew?.download?.fields?.file?.url}`;
         const response = await fetch(url);
         const blob = await response.blob();
@@ -45,9 +45,11 @@ export default function ArchiveIntroPage({ params }) {
         link.href = URL.createObjectURL(blob);
         link.download = "downloadedFile.pdf"; // 다운로드 파일명
         link.click();
-        };
+    };
 
-    // if (!archiveNew) return <p>Loading...</p>;
+    // ✅ exhibitionYear 값 추가 (년도별 페이지 이동 가능하도록 수정)
+    const exhibitionYear = archiveNew?.NEWexhibitionYear || (id === "1" ? "2023" : "2024");
+
 
     return (
         <div className="archive-container">
@@ -55,7 +57,7 @@ export default function ArchiveIntroPage({ params }) {
                 {archiveNew.title ? archiveNew.title : "데이터 로딩 중..."} {/* ✅ 상태가 변경되면 자동 업데이트됨 */}
             </div>
             <Header menuOn={menuOn} setMenuOn={setMenuOn} />
-            <div className="archive_intro archive_intro_web"> 
+            <div className="archive_intro archive_intro_web">
                 <div className="backtolist"><Link href="/page/archive">⟵<span>Back to Lists</span></Link></div>
                 <p className="tit_img tit_img_pc"><img
                     src={archiveNew?.titleimg?.fields?.file?.url ? `https:${archiveNew.titleimg.fields.file.url}` : "/default-image.png"}
@@ -66,36 +68,34 @@ export default function ArchiveIntroPage({ params }) {
                     alt="Title Image"
                 /></p>
 
-                {/* <p className="tit_img tit_img_pc"><img src="/asset/archiveintro2024.png" /></p>
-                <p className="tit_img tit_img_mo"><img src="https://images.ctfassets.net/vt7en4vb5az7/7s5gxLPx4g4S1un0K2xgxd/022295549158bba30a0d4aea75509840/2024_%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%84%B8%EB%A1%9C%ED%98%95.jpeg" /></p>  titleimg-mobile */}
-                <div className="info"> 
+                <div className="info">
                     <div className="title">
-                        {/*  title */}
                         {archiveNew?.title ?? "제목 없음"}
-                    </div>  
+                    </div>
                     <div className="info_txt">
-                        {archiveNew?.post 
-                        ? documentToReactComponents(archiveNew.post, options) 
-                        : "제목 없음"}
+                        {archiveNew?.post
+                            ? documentToReactComponents(archiveNew.post, options)
+                            : "제목 없음"}
                     </div>
                     <div className="info_link">
-                        <p><Link href="/page/exhibition">View All Projects</Link></p>
+                        {/* ✅ 년도별 이동 가능하도록 수정 */}
+                        <p><Link href={`/page/exhibition?year=${encodeURIComponent(exhibitionYear)}`}>View All Projects</Link></p>
                         <button onClick={downloadFile}>Download PDF</button>
-                    </div>    
-                    
+                    </div>
+
                 </div>
-                <div className="credit"> 
+                <div className="credit">
                     <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
                     <div className="credit">
                         <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                        <div className="committee"> 
-                            {archiveNew?.org 
-                                ? documentToReactComponents(archiveNew.org, options) 
+                        <div className="committee">
+                            {archiveNew?.org
+                                ? documentToReactComponents(archiveNew.org, options)
                                 : "제목 없음"}
-                        </div> 
+                        </div>
 
-                        {archiveNew?.org2 
-                            ? documentToReactComponents(archiveNew.org2, options) 
+                        {archiveNew?.org2
+                            ? documentToReactComponents(archiveNew.org2, options)
                             : "제목 없음"}
                     </div>
                 </div>
@@ -121,32 +121,36 @@ export default function ArchiveIntroPage({ params }) {
                     <div className="tab_cont_info">
                         <p className="tit_img tit_img_pc">
                             <img
-                            src={archiveNew?.titleimg?.fields?.file?.url ? `https:${archiveNew.titleimg.fields.file.url}` : "/default-image.png"}
-                            alt="Title Image"
+                                src={archiveNew?.titleimg?.fields?.file?.url ? `https:${archiveNew.titleimg.fields.file.url}` : "/default-image.png"}
+                                alt="Title Image"
                             />
                         </p>
                         <p className="tit_img tit_img_mo">
                             <img
-                            src={archiveNew?.titleimgMobile?.fields?.file?.url ? `https:${archiveNew.titleimgMobile.fields.file.url}` : "/default-image.png"}
-                            alt="Title Image"
+                                src={archiveNew?.titleimgMobile?.fields?.file?.url ? `https:${archiveNew.titleimgMobile.fields.file.url}` : "/default-image.png"}
+                                alt="Title Image"
                             />
                         </p>
-                        <div className="info"> 
+                        <div className="info">
                             <div className="title">
-                                {/*  title */}
                                 {archiveNew?.title ?? "제목 없음"}
-                            </div>  
+                            </div>
                             <div className="info_txt">
-                                {archiveNew?.post 
-                                ? documentToReactComponents(archiveNew.post, options) 
-                                : "제목 없음"}
+                                {archiveNew?.post
+                                    ? documentToReactComponents(archiveNew.post, options)
+                                    : "제목 없음"}
                             </div>
                             <div className="info_link">
-                                <p><Link href="/page/exhibition">View All Projects</Link></p>
-                                {/* <p><a href={archiveNew?.download?.fields?.file?.url} download>Download PDF</a></p> */}
+                                {/* ✅ 모바일에서도 년도별 페이지 이동 가능하도록 수정 */}
+                                <p>
+                                    <Link href={`/page/exhibition?year=${encodeURIComponent(archiveNew?.NEWexhibitionYear || (id === "1" ? "2023" : "2024"))}`}>
+                                        View All Projects
+                                    </Link>
+                                </p>
+
                                 <button onClick={downloadFile}>Download PDF</button>
-                            </div>    
-                            
+                            </div>
+
                         </div>
                     </div>
                 )}
@@ -156,14 +160,14 @@ export default function ArchiveIntroPage({ params }) {
                     <div className="tab_cont_credit">
                         <div className="credit">
                             <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                            <div className="committee"> 
-                                {archiveNew?.org 
-                                    ? documentToReactComponents(archiveNew.org, options) 
+                            <div className="committee">
+                                {archiveNew?.org
+                                    ? documentToReactComponents(archiveNew.org, options)
                                     : "제목 없음"}
-                            </div> 
+                            </div>
 
-                            {archiveNew?.org2 
-                                ? documentToReactComponents(archiveNew.org2, options) 
+                            {archiveNew?.org2
+                                ? documentToReactComponents(archiveNew.org2, options)
                                 : "제목 없음"}
                         </div>
                     </div>
