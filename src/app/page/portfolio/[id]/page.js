@@ -1,15 +1,17 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
 import ScrollUp from "@/app/component/scrollUp";
 import Header from "@/app/component/header";
-import { useState } from "react"
+import { useState } from "react";
 
 export default async function Portfolio(props) {
 
     const [menuOn, setMenuOn] = useState(false);
+    const router = useRouter();
 
     const id = props.params.id;
     const data = await fetchContentful("portfolio");
@@ -178,7 +180,12 @@ export default async function Portfolio(props) {
                         </Link>
                     </p>
                     <p>
-                        <Link href="">Back</Link>
+                        <Link href="#" onClick={(e) => {
+                            e.preventDefault();  // 기본 동작 막기
+                            router.back();       // 이전 페이지로 이동
+                            }}>
+                            Back
+                        </Link>
                     </p> 
                 </div>   
                 <div className="move-page">
