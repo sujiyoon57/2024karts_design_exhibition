@@ -2992,10 +2992,6 @@ iframe {
   /* 글자 굵기 유지 */
 }
 
-
-
-
-
 .archive_intro {
   font-size: 18px;
   line-height: 1.5;
@@ -3006,7 +3002,7 @@ iframe {
 .archive_intro.archive_intro_web {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
@@ -3044,11 +3040,10 @@ iframe {
 
 .archive_intro .info {
   width: 40%;
-  padding-right: 20px;
   /* Credit과의 간격 */
   box-sizing: border-box;
-  margin-right: 300px;
-  margin-left: 40px;
+  margin-right: 0px;
+  
 }
 
 .archive_intro .info .info_txt div+div {
@@ -3083,19 +3078,150 @@ iframe {
 
 
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 871px) {
   .archive_intro .info {
-    padding-right: 0;
-    margin-left: 0px;
+    padding-left: -40px;
+    padding-top: 20px;
+    margin-left: 80px;
   }
 
   .archive_intro .credit {
     width: 40%;
     margin-left: 0px;
-    margin-top: -20px;
+    margin-top: 0px;
+    
   }
 }
 
+@media screen and (min-width: 871px) {
+  /* 공통 스타일 */
+  .org-table {
+    width: 40%;
+    border-collapse: collapse;
+  }
+
+  /* 왼쪽 열 (항목) */
+  .org-table .column-0,
+  .org-container .org-column-0 {
+    width: 110px;
+    /* ✅ 원하는 크기로 조정 */
+    text-align: left;
+    color: #555555;
+    /* ✅ 왼쪽 여백 제거 */
+    padding-bottom: -10vw;
+    /* row-0 아래 여백 제거 */
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  /* 오른쪽 열 (이름) */
+  .org-table .column-1,
+  .org-container .org-column-1 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .archive_intro .credit dl+h4 {
+    margin-top: 10px;
+  }
+
+  .credit h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  .org2-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* 섹션 간격 */
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .org-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+
+  .org-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    /* 역할과 이름 사이 여백 */
+    align-items: flex-start;
+  }
+
+
+  /* 이름 */
+  .org-names {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .org-name-item {
+    padding-bottom: 5px;
+  }
+
+  .org2-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: -20px;
+    /* 제목과의 간격 */
+    table-layout: fixed;
+    /* 📌 테이블 너비 고정 */
+    empty-cells: show;
+  }
+
+  .org2-table td {
+    padding: 8px 0px;
+    vertical-align: top;
+  }
+
+  /* 왼쪽 열 (항목) */
+  .org2-table .column-0 {
+    width: 110px;
+    /* 원하는 크기로 조정 */
+    text-align: left;
+    color: #555555;
+    padding-left: 0;
+    /* ✅ 왼쪽 여백 제거 */
+    padding-bottom: -10vw;
+    /* row-0 아래 여백 제거 */
+  }
+
+  /* 오른쪽 열 (이름) */
+  .org2-table .column-1 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .credit h4 {
+    display: flex;         /* 플렉스를 사용하여 한 줄로 유지 */
+   /* 줄바꿈 방지 */
+    align-items: center;   /* 가운데 정렬 */
+    gap: 5px;             /* 한글과 영어 사이 간격 조절 */
+  }
+
+  .info .title {
+    display: none; /* PC에서만 title 숨김 */
+  }
+}
 
 
 @media screen and (max-width: 870px) {
@@ -3168,7 +3294,7 @@ iframe {
 
 
   .archive_intro .credit {
-    width: 50%;
+    width: 100%;
   }
 
   /* 공통 스타일 */
@@ -3286,6 +3412,4 @@ iframe {
     font-size: 13px;
     font-weight: 400;
   }
-
-  
 }
