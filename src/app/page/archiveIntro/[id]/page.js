@@ -88,20 +88,73 @@ export default function ArchiveIntroPage({ params }) {
 
                 </div>
                 <div className="credit">
-                    <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                    <div className="credit">
-                        <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                        <div className="committee">
-                            {archiveNew?.org
-                                ? documentToReactComponents(archiveNew.org, options)
-                                : "제목 없음"}
-                        </div>
+                    <h4>
+                        졸업준비위원회
+                        <br />
+                        <span className="credit-en">Graduation Preparatory Committee</span>
+                    </h4>
 
-                        {archiveNew?.org2
-                            ? documentToReactComponents(archiveNew.org2, options)
-                            : "제목 없음"}
-                    </div>
+                    {/* ✅ org 데이터 구조를 모바일처럼 적용 */}
+                    {archiveNew?.org && (
+                        <div className="org-container">
+                            {archiveNew.org.content.map((section, sectionIndex) => (
+                                <div key={sectionIndex} className="section">
+                                    {section.content.length === 1 ? (
+                                        <h4 className="section-title">
+                                            {documentToReactComponents(section.content[0])}
+                                        </h4>
+                                    ) : (
+                                        <table className="org-table">
+                                            <tbody>
+                                                {section.content.map((row, rowIndex) => (
+                                                    <tr key={rowIndex} className={`row-${rowIndex}`}>
+                                                        {row.content.map((cell, cellIndex) => (
+                                                            <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                {documentToReactComponents(cell)}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* ✅ org2도 모바일처럼 적용 */}
+                    {archiveNew?.org2 && (
+                        <div className="org2-container">
+                            {archiveNew.org2.content.map((section, sectionIndex) => (
+                                <div key={sectionIndex} className="section">
+                                    {section.content.length === 1 ? (
+                                        <h4 className="section-title">
+                                            {documentToReactComponents(section.content[0])}
+                                        </h4>
+                                    ) : (
+                                        <table className="org2-table">
+                                            <tbody>
+                                                {section.content.map((row, rowIndex) => (
+                                                    <tr key={rowIndex} className={`row-${rowIndex}`}>
+                                                        {row.content.map((cell, cellIndex) => (
+                                                            <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                {documentToReactComponents(cell)}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
+
+
+
             </div>
             <div className="archive_intro archive_intro_mo">
                 <div className="exhibition_tab mo-archive-tab">
@@ -158,24 +211,79 @@ export default function ArchiveIntroPage({ params }) {
                     </div>
                 )}
 
+
                 {/* Credit 탭 내용 */}
                 {activeTab === "credit" && (
                     <div className="tab_cont_credit">
                         <div className="credit">
-                            <h4>졸업준비위원회 Graduation Preparatory Committee</h4>
-                            <div className="committee">
-                                {archiveNew?.org
-                                    ? documentToReactComponents(archiveNew.org, options)
-                                    : "제목 없음"}
-                            </div>
+                            <h4>
+                                졸업준비위원회<br />
+                                <span className="credit-en">Graduation Preparatory Committee</span>
+                            </h4>
 
-                            {archiveNew?.org2
-                                ? documentToReactComponents(archiveNew.org2, options)
-                                : "제목 없음"}
+                            {archiveNew?.org && (
+                                <div className="org-container">
+                                    {archiveNew.org.content.map((section, sectionIndex) => (
+                                        <div key={sectionIndex} className="section">
+                                            {section.content.length === 1 ? (
+                                                <h4 className="section-title">
+                                                    {documentToReactComponents(section.content[0])}
+                                                </h4>
+                                            ) : (
+                                                <table className="org-table">
+                                                    <tbody>
+                                                        {section.content.map((row, rowIndex) => (
+                                                            <tr key={rowIndex} className={`row-${rowIndex}`}>
+                                                                {row.content.map((cell, cellIndex) => (
+                                                                    <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                        {documentToReactComponents(cell)}
+                                                                    </td>
+                                                                ))}
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+
+
+
+                            {/* ✅ org2 기존 코드 유지 */}
+                            {archiveNew?.org2 && (
+                                <div className="org2-container">
+                                    {archiveNew.org2.content.map((section, sectionIndex) => (
+                                        <div key={sectionIndex} className="section">
+                                            {section.content.length === 1 ? (
+                                                <h4 className="section-title">
+                                                    {documentToReactComponents(section.content[0])}
+                                                </h4>
+                                            ) : (
+                                                <table className="org2-table">
+                                                    <tbody>
+                                                        {section.content.map((row, rowIndex) => (
+                                                            <tr key={rowIndex} className={`row-${rowIndex}`}>
+                                                                {row.content.map((cell, cellIndex) => (
+                                                                    <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                        {documentToReactComponents(cell)}
+                                                                    </td>
+                                                                ))}
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
