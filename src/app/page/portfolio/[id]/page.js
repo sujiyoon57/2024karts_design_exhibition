@@ -122,7 +122,9 @@ export default async function Portfolio(props) {
                                 const fileType = data.fields?.file?.contentType || "";
 
                                 return fileType.startsWith("video/") ? (
-                                    <video key={index} controls width="100%">
+                                    <video key={index} controls width="100%" preload="metadata"
+                                        poster={`${fileUrl}#t=0.1`} // 첫 번째 프레임을 표시
+                                    >
                                         <source src={fileUrl} type={fileType} />
                                         브라우저가 비디오 태그를 지원하지 않습니다.
                                     </video>
@@ -136,6 +138,7 @@ export default async function Portfolio(props) {
                                         layout="responsive"
                                     />
                                 );
+
                             })}
                     </div>
 
@@ -183,11 +186,11 @@ export default async function Portfolio(props) {
                         <Link href="#" onClick={(e) => {
                             e.preventDefault();  // 기본 동작 막기
                             router.back();       // 이전 페이지로 이동
-                            }}>
+                        }}>
                             Back
                         </Link>
-                    </p> 
-                </div>   
+                    </p>
+                </div>
                 <div className="move-page">
                     <div>other projects</div>
                     <div className="page-image-wrap">
