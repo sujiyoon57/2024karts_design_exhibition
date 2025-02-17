@@ -3006,7 +3006,8 @@ iframe {
 .archive_intro.archive_intro_web {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .archive_intro.archive_intro_mo {
@@ -3043,8 +3044,11 @@ iframe {
 
 .archive_intro .info {
   width: 40%;
-  padding: 0 0 0 67px;
+  padding-right: 20px;
+  /* Credit과의 간격 */
   box-sizing: border-box;
+  margin-right: 300px;
+  margin-left: 40px;
 }
 
 .archive_intro .info .info_txt div+div {
@@ -3081,13 +3085,18 @@ iframe {
 
 @media screen and (max-width: 1440px) {
   .archive_intro .info {
-    padding: 0;
+    padding-right: 0;
+    margin-left: 0px;
   }
 
   .archive_intro .credit {
-    padding: 0;
+    width: 40%;
+    margin-left: 0px;
+    margin-top: -20px;
   }
 }
+
+
 
 @media screen and (max-width: 870px) {
   .archive_intro {
@@ -3159,7 +3168,7 @@ iframe {
 
 
   .archive_intro .credit {
-    width: 100%;
+    width: 50%;
   }
 
   /* 공통 스타일 */
@@ -3175,7 +3184,6 @@ iframe {
     /* ✅ 원하는 크기로 조정 */
     text-align: left;
     color: #555555;
-    padding-left: 0;
     /* ✅ 왼쪽 여백 제거 */
     padding-bottom: -10vw;
     /* row-0 아래 여백 제거 */
@@ -3279,6 +3287,5 @@ iframe {
     font-weight: 400;
   }
 
-
-
+  
 }
