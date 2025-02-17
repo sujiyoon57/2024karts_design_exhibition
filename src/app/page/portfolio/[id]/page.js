@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -7,9 +7,9 @@ import { fetchContentful } from "@/app/contentful/contentful";
 import ScrollUp from "@/app/component/scrollUp";
 import Header from "@/app/component/header";
 import { useState } from "react";
+import VideoComponent from "@/app/component/VideoComponent"; // ✅ 비디오 컴포넌트 추가
 
 export default async function Portfolio(props) {
-
     const [menuOn, setMenuOn] = useState(false);
     const router = useRouter();
 
@@ -67,10 +67,7 @@ export default async function Portfolio(props) {
                                 allowFullScreen
                             ></iframe>
                         ) : portfolio.mainImage?.fields.file.contentType?.startsWith("video/") ? (
-                            <video controls width="100%">
-                                <source src={`https:${portfolio.mainImage.fields.file.url}`} type={portfolio.mainImage.fields.file.contentType} />
-                                브라우저가 비디오 태그를 지원하지 않습니다.
-                            </video>
+                            <VideoComponent fileUrl={`https:${portfolio.mainImage.fields.file.url}`} fileType={portfolio.mainImage.fields.file.contentType} />
                         ) : portfolio.mainImage?.fields.file.url ? (
                             <Image
                                 src={`https:${portfolio.mainImage.fields.file.url}`}
@@ -122,8 +119,15 @@ export default async function Portfolio(props) {
                                 const fileType = data.fields?.file?.contentType || "";
 
                                 return fileType.startsWith("video/") ? (
-                                    <video key={index} controls width="100%" preload="metadata"
-                                        poster={`${fileUrl}#t=0.1`} // 첫 번째 프레임을 표시
+                                    <video
+                                        key={index}
+                                        controls
+                                        width="100%"
+                                        preload="metadata"
+                                        muted
+                                        autoplay
+                                        playsInline
+                                        poster={`${fileUrl}#t=0.1`} // 첫 번째 프레임을 자동으로 표시
                                     >
                                         <source src={fileUrl} type={fileType} />
                                         브라우저가 비디오 태그를 지원하지 않습니다.
@@ -138,7 +142,7 @@ export default async function Portfolio(props) {
                                         layout="responsive"
                                     />
                                 );
-
+                            
                             })}
                     </div>
 
@@ -159,7 +163,6 @@ export default async function Portfolio(props) {
             <div className="portfolio-box3">
                 <div className="student-info-detail">
                     <div className="top-section">
-                        {/* ✅ 순서는 유지하되, CSS에서만 PC에서 순서 변경 */}
                         <div className="name">{portfolio.nameKr}<br />{portfolio.nameEng}</div>
                         <div className="introduct">{portfolio.introductionKr}<br />{portfolio.introductionEng}</div>
                         <div className="contact">
@@ -184,8 +187,8 @@ export default async function Portfolio(props) {
                     </p>
                     <p>
                         <Link href="#" onClick={(e) => {
-                            e.preventDefault();  // 기본 동작 막기
-                            router.back();       // 이전 페이지로 이동
+                            e.preventDefault();
+                            router.back();
                         }}>
                             Back
                         </Link>
@@ -223,7 +226,6 @@ export default async function Portfolio(props) {
                                         />
                                     )
                                 )}
-
                             </Link>
                         ))}
                     </div>
