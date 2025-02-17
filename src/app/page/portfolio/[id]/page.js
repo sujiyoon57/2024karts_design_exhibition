@@ -127,7 +127,9 @@ export default async function Portfolio(props) {
                                         muted
                                         autoplay
                                         playsInline
-                                        poster={`${fileUrl}#t=0.1`} // 첫 번째 프레임을 자동으로 표시
+                                        {...(typeof window !== "undefined" && window.innerWidth <= 768
+                                            ? { poster: `${fileUrl}#t=0.1` } // 모바일일 때만 포스터 적용
+                                            : {})}
                                     >
                                         <source src={fileUrl} type={fileType} />
                                         브라우저가 비디오 태그를 지원하지 않습니다.
@@ -142,7 +144,7 @@ export default async function Portfolio(props) {
                                         layout="responsive"
                                     />
                                 );
-                            
+
                             })}
                     </div>
 
