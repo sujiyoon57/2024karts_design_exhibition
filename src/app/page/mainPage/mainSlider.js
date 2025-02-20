@@ -37,47 +37,43 @@ export default function MainPage(){
         getContentful();
       }, []);
 
-    return(
+      return (
         <div className="main_visual">
+            {/* PC 버전 */}
             <div className="main_visual_web">
-            <Swiper 
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
-                pagination={true} 
-                className="mySwiper"
+                <Swiper 
+                    autoplay={{ delay: 2500, disableOnInteraction: false }}
+                    pagination={true} 
+                    className="mySwiper"
                 >
-                {poster && poster.map((data,index)=>(
-                    <SwiperSlide><img src={'https:'+data.fields.posterImage.fields.file.url} /></SwiperSlide>
-                ))}
-                {/*
-                <SwiperSlide><img src="/asset/ex_mainvisul.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_mainvisul.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_mainvisul.png" /></SwiperSlide> 
-                */}
-            </Swiper>
+                    {poster && poster.map((data, index) => (
+                        <SwiperSlide key={index}>
+                            <a href={data.fields.link || "https://www.kartsdesign.co.kr/page/archiveIntro/0"} target="_blank" rel="noopener noreferrer">
+                                <img src={'https:' + data.fields.posterImage.fields.file.url} alt={`poster-${index}`} />
+                            </a>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
+    
+            {/* 모바일 버전 */}
             <div className="main_visual_mo">
-            <Swiper 
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
-                pagination={true} 
-                className="mySwiper"
+                <Swiper 
+                    autoplay={{ delay: 2500, disableOnInteraction: false }}
+                    pagination={true} 
+                    className="mySwiper"
                 >
-                {posterm && posterm.map((data,index)=>(
-                    <SwiperSlide><img src={'https:'+data.fields.posterImageMobile.fields.file.url} /></SwiperSlide>
-                ))}
-                {/*
-                <SwiperSlide><img src="/asset/ex_mainvisul_mo.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_mainvisul_mo.png" /></SwiperSlide>
-                <SwiperSlide><img src="/asset/ex_mainvisul_mo.png" /></SwiperSlide> 
-                */}
-            </Swiper>
+                    {posterm && posterm.map((data, index) => (
+                        <SwiperSlide key={index}>
+                            <a href={data.fields.link || "https://www.kartsdesign.co.kr/page/archiveIntro/0"} target="_blank" rel="noopener noreferrer">
+                                <img src={'https:' + data.fields.posterImageMobile.fields.file.url} alt={`poster-mobile-${index}`} />
+                            </a>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </div>
-    )
+    );
+    
 }
 
