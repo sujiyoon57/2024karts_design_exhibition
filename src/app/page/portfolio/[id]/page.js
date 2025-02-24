@@ -6,17 +6,30 @@ import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
 import ScrollUp from "@/app/component/scrollUp";
 import Header from "@/app/component/header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import VideoComponent from "@/app/component/VideoComponent"; // ✅ 비디오 컴포넌트 추가
 
-export default async function Portfolio(props) {
+export default function Portfolio({ params }) {
     const [menuOn, setMenuOn] = useState(false);
     const router = useRouter();
+    const { id } = params;
+    const [portfolioItem, setPortfolioItem] = useState(null);
+    const [allProjects, setAllProjects] = useState([]);
 
-    const id = props.params.id;
-    const data = await fetchContentful("portfolio");
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await fetchContentful("portfolio");
+                setAllProjects(data);
 
-    const portfolioItem = data.find((item) => item.sys.id === id);
+                const item = data.find((item) => item.sys.id === id);
+                setPortfolioItem(item);
+            } catch (error) {
+                console.error("데이터 불러오기 오류:", error);
+            }
+        };
+        fetchData();
+    }, [id]);
 
     if (!portfolioItem) {
         return <div>해당 포트폴리오를 찾을 수 없습니다.</div>;
@@ -25,12 +38,11 @@ export default async function Portfolio(props) {
     const portfolio = portfolioItem.fields;
     const currentYear = portfolio.NEWexhibitionYear;
 
-    const sameYearProjects = data
+    const sameYearProjects = allProjects
         .filter((item) => item.fields.NEWexhibitionYear === currentYear)
         .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
 
     const currentIndex = sameYearProjects.findIndex((item) => item.sys.id === id);
-
     const nextProjects = [];
     for (let i = 1; i <= 3; i++) {
         nextProjects.push(sameYearProjects[(currentIndex + i) % sameYearProjects.length]);
@@ -42,7 +54,6 @@ export default async function Portfolio(props) {
             <div className="portfolio-box1">
                 <div className="project-intro">
                     <div className="project-name">{portfolio.projectName}</div>
-
                     <div className="student-info">
                         <div className="name-pc">{portfolio.nameEng}</div>
                         <div className="name-mobile">

@@ -130,7 +130,7 @@ export default function ArchiveIntroPage({ params }) {
                                                     <tr key={rowIndex} className={`row-${rowIndex}`}>
                                                         {row.content.map((cell, cellIndex) => (
                                                             <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                {documentToReactComponents(cell)}
+                                                                {typeof cell === "string" ? cell : documentToReactComponents(cell)}
                                                             </td>
                                                         ))}
                                                     </tr>
@@ -159,11 +159,12 @@ export default function ArchiveIntroPage({ params }) {
                                                     <tr key={rowIndex} className={`row-${rowIndex}`}>
                                                         {row.content.map((cell, cellIndex) => (
                                                             <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                {documentToReactComponents(cell)}
+                                                                {typeof cell === "string" ? cell : documentToReactComponents(cell)}
                                                             </td>
                                                         ))}
                                                     </tr>
                                                 ))}
+
                                             </tbody>
                                         </table>
                                     )}
@@ -260,11 +261,12 @@ export default function ArchiveIntroPage({ params }) {
                                                             <tr key={rowIndex} className={`row-${rowIndex}`}>
                                                                 {row.content.map((cell, cellIndex) => (
                                                                     <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                        {documentToReactComponents(cell)}
+                                                                        {typeof cell === "string" ? cell : documentToReactComponents(cell)}
                                                                     </td>
                                                                 ))}
                                                             </tr>
                                                         ))}
+
                                                     </tbody>
                                                 </table>
                                             )}
@@ -292,11 +294,12 @@ export default function ArchiveIntroPage({ params }) {
                                                             <tr key={rowIndex} className={`row-${rowIndex}`}>
                                                                 {row.content.map((cell, cellIndex) => (
                                                                     <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                        {documentToReactComponents(cell)}
+                                                                        {typeof cell === "string" ? cell : documentToReactComponents(cell)}
                                                                     </td>
                                                                 ))}
                                                             </tr>
                                                         ))}
+
                                                     </tbody>
                                                 </table>
                                             )}
