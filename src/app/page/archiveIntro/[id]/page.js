@@ -128,15 +128,23 @@ export default function ArchiveIntroPage({ params }) {
                                             <tbody>
                                                 {section.content.map((row, rowIndex) => (
                                                     <tr key={rowIndex} className={`row-${rowIndex}`}>
-                                                        {row.content.map((cell, cellIndex) => (
-                                                            <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                        {/* row.content가 배열인지 체크한 후, 배열이면 map 실행 */}
+                                                        {Array.isArray(row.content) ? (
+                                                            row.content.map((cell, cellIndex) => (
+                                                                <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                    {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                </td>
+                                                            ))
+                                                        ) : (
+                                                            <td key={rowIndex} className={`column-${rowIndex}`}>
+                                                                {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
                                                             </td>
-                                                        ))}
+                                                        )}
                                                     </tr>
                                                 ))}
                                             </tbody>
                                         </table>
+
                                     )}
                                 </div>
                             ))}
@@ -157,16 +165,23 @@ export default function ArchiveIntroPage({ params }) {
                                             <tbody>
                                                 {section.content.map((row, rowIndex) => (
                                                     <tr key={rowIndex} className={`row-${rowIndex}`}>
-                                                        {row.content.map((cell, cellIndex) => (
-                                                            <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                        {/* row.content가 배열인지 체크한 후, 배열이면 map 실행 */}
+                                                        {Array.isArray(row.content) ? (
+                                                            row.content.map((cell, cellIndex) => (
+                                                                <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                    {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                </td>
+                                                            ))
+                                                        ) : (
+                                                            <td key={rowIndex} className={`column-${rowIndex}`}>
+                                                                {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
                                                             </td>
-                                                        ))}
+                                                        )}
                                                     </tr>
                                                 ))}
-
                                             </tbody>
                                         </table>
+
                                     )}
                                 </div>
                             ))}
@@ -259,16 +274,23 @@ export default function ArchiveIntroPage({ params }) {
                                                     <tbody>
                                                         {section.content.map((row, rowIndex) => (
                                                             <tr key={rowIndex} className={`row-${rowIndex}`}>
-                                                                {row.content.map((cell, cellIndex) => (
-                                                                    <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                        {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                {/* row.content가 배열인지 체크한 후, 배열이면 map 실행 */}
+                                                                {Array.isArray(row.content) ? (
+                                                                    row.content.map((cell, cellIndex) => (
+                                                                        <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                            {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                        </td>
+                                                                    ))
+                                                                ) : (
+                                                                    <td key={rowIndex} className={`column-${rowIndex}`}>
+                                                                        {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
                                                                     </td>
-                                                                ))}
+                                                                )}
                                                             </tr>
                                                         ))}
-
                                                     </tbody>
                                                 </table>
+
                                             )}
                                         </div>
                                     ))}
@@ -292,16 +314,23 @@ export default function ArchiveIntroPage({ params }) {
                                                     <tbody>
                                                         {section.content.map((row, rowIndex) => (
                                                             <tr key={rowIndex} className={`row-${rowIndex}`}>
-                                                                {row.content.map((cell, cellIndex) => (
-                                                                    <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                        {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                {/* row.content가 배열인지 체크한 후, 배열이면 map 실행 */}
+                                                                {Array.isArray(row.content) ? (
+                                                                    row.content.map((cell, cellIndex) => (
+                                                                        <td key={cellIndex} className={`column-${cellIndex}`}>
+                                                                            {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                        </td>
+                                                                    ))
+                                                                ) : (
+                                                                    <td key={rowIndex} className={`column-${rowIndex}`}>
+                                                                        {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
                                                                     </td>
-                                                                ))}
+                                                                )}
                                                             </tr>
                                                         ))}
-
                                                     </tbody>
                                                 </table>
+
                                             )}
                                         </div>
                                     ))}

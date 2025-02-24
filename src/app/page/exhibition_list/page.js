@@ -1,20 +1,29 @@
 "use client";
 
+import { Suspense } from "react"; // 추가
 import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
-import Footer from "@/app/component/footer";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation"; // ✅ useSearchParams 사용
 import { useState, useEffect } from "react";
 import Header from "@/app/component/header";
 
-export default function ExhibitionList() {
-    const searchParams = useSearchParams();
-    const projectIds = searchParams.get("projects")?.split(",") || []; // URL에서 `projects` 값 가져오기
+export default function Exhibition() {
+    return (
+        <Suspense fallback={<p>Loading...</p>}>
+            <ExhibitionContent />
+        </Suspense>
+    );
+}
+
+function ExhibitionContent() {
+    const searchParams = useSearchParams(); // ✅ useSearchParams 사용
+    const projectIds = searchParams.get("projects")?.split(",") || []; // ✅ projects 파라미터 가져오기
 
     const [portfolio, setPortfolio] = useState([]);
     const [loading, setLoading] = useState(true);
     const [menuOn, setMenuOn] = useState(false);
+
 
     useEffect(() => {
         const fetchData = async () => {

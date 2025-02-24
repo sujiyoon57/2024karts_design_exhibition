@@ -49,15 +49,15 @@ export default function Karts() {
                     </div>
                     <div className="kart_tit">학과소개</div>
 
-                    {aboutButton && about && about.map((data) => (
-                        <div key={data.id} className="flex-box">
-                            {data.fields.Images && data.fields.Images.map((img) => (
-                                <div key={img.id} className="about-flex-item">
+                    {aboutButton && about && about.map((data, index) => (
+                        <div key={data.id || index} className="flex-box"> {/* ✅ key 값 추가 */}
+                            {data.fields.Images && data.fields.Images.map((img, imgIndex) => (
+                                <div key={img.id || imgIndex} className="about-flex-item"> {/* ✅ key 값 추가 */}
                                     <Image
                                         src={'https:' + img.fields.file.url}
                                         alt="이미지"
-                                        width={432}  // 적절한 width로 설정
-                                        height={240} // 적절한 height로 설정
+                                        width={432}
+                                        height={240}
                                         sizes="100vw"
                                         layout="responsive"
                                     />
@@ -74,17 +74,16 @@ export default function Karts() {
                     <div className="kart_tit">교수진</div>
                     <div className="flex-box">
                         {faculty && faculty.map((data, index) => (
-                            <div key={data.id || index} className="faculty-flex-item">
+                            <div key={data.id || index} className="faculty-flex-item"> {/* ✅ key 값 추가 */}
                                 <Image
                                     src={'https:' + data.fields.image.fields.file.url}
                                     alt="교수 이미지"
-                                    className="faculty-image" // ✅ 추가된 className
-                                    width={150}  // ✅ 기본 크기 (PC)
-                                    height={150} // ✅ 기본 크기 (PC)
+                                    className="faculty-image"
+                                    width={150}
+                                    height={150}
                                     sizes="100vw"
                                     layout="intrinsic"
                                 />
-
                                 <div className="faculty-info">
                                     {data.fields.name && <div>{data.fields.name}</div>}
                                     <div>{data.fields.nameEn}</div>
