@@ -61,9 +61,9 @@ export default async function Portfolio(props) {
                             <iframe
                                 width="100%"
                                 height="500"
-                                src={`${portfolio.mainVimeoEmbedLink}?autoplay=1&loop=1&muted=1`}
+                                src={`${portfolio.mainVimeoEmbedLink}?autoPlay=1&loop=1&muted=1`}
                                 frameBorder="0"
-                                allow="autoplay; fullscreen"
+                                allow="autoPlay; fullscreen"
                                 allowFullScreen
                             ></iframe>
                         ) : portfolio.mainImage?.fields.file.contentType?.startsWith("video/") ? (
@@ -104,10 +104,10 @@ export default async function Portfolio(props) {
                         {portfolio.topEmbed && (
                             <iframe
                                 width="100%"
-                                src={`${portfolio.topEmbed}&mute=1&autoplay=1`}
+                                src={`${portfolio.topEmbed}&mute=1&autoPlay=1`}
                                 frameBorder="0"
                                 allowFullScreen
-                                allow="autoplay"
+                                allow="autoPlay"
                             ></iframe>
                         )}
                     </div>
@@ -125,7 +125,7 @@ export default async function Portfolio(props) {
                                         width="100%"
                                         preload="metadata"
                                         muted
-                                        autoplay
+                                        autoPlay
                                         playsInline
                                         {...(typeof window !== "undefined" && window.innerWidth <= 768
                                             ? { poster: `${fileUrl}#t=0.1` } // 모바일일 때만 포스터 적용
@@ -152,10 +152,10 @@ export default async function Portfolio(props) {
                         {portfolio.bottomEmbed && (
                             <iframe
                                 width="100%"
-                                src={`${portfolio.bottomEmbed}&mute=1&autoplay=1`}
+                                src={`${portfolio.bottomEmbed}&mute=1&autoPlay=1`}
                                 frameBorder="0"
                                 allowFullScreen
-                                allow="autoplay"
+                                allow="autoPlay"
                             ></iframe>
                         )}
                     </div>
