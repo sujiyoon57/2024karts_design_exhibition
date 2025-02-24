@@ -60,14 +60,14 @@ export default function ArchiveNew() {
                   {data?.fields?.titleimg?.fields?.file?.url ? (
                     <p>
                       <Image
-                        src={`https:${data.fields.titleimg.fields.file.url}`} 
-                        alt={data.fields.title || "No title"} 
+                        src={`https:${data.fields.titleimg.fields.file.url}`}
+                        alt={data.fields.title || "No title"}
                         width={620}
                         height={366}
-                        layout="intrinsic" 
-                        objectFit="cover"
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "cover", width: "100%", height: "auto" }} 
+                        priority // ✅ 추가!// ✅ 새로운 방식 적용
                       />
+
                     </p>
                   ) : (
                     <div>No Image</div> // 이미지가 없을 경우

@@ -132,14 +132,15 @@ export default function ArchiveIntroPage({ params }) {
                                                         {Array.isArray(row.content) ? (
                                                             row.content.map((cell, cellIndex) => (
                                                                 <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                    {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                    <div>{typeof cell === "string" ? cell : documentToReactComponents(cell)}</div>
                                                                 </td>
                                                             ))
                                                         ) : (
                                                             <td key={rowIndex} className={`column-${rowIndex}`}>
-                                                                {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
+                                                                <div>{typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}</div>
                                                             </td>
                                                         )}
+
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -169,14 +170,15 @@ export default function ArchiveIntroPage({ params }) {
                                                         {Array.isArray(row.content) ? (
                                                             row.content.map((cell, cellIndex) => (
                                                                 <td key={cellIndex} className={`column-${cellIndex}`}>
-                                                                    {typeof cell === "string" ? cell : documentToReactComponents(cell)}
+                                                                    <div>{typeof cell === "string" ? cell : documentToReactComponents(cell)}</div>
                                                                 </td>
                                                             ))
                                                         ) : (
                                                             <td key={rowIndex} className={`column-${rowIndex}`}>
-                                                                {typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}
+                                                                <div>{typeof row.content === "string" ? row.content : documentToReactComponents(row.content)}</div>
                                                             </td>
                                                         )}
+
                                                     </tr>
                                                 ))}
                                             </tbody>

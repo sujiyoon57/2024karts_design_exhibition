@@ -59,7 +59,7 @@ export default function Karts() {
                                         width={432}
                                         height={240}
                                         sizes="100vw"
-                                        layout="responsive"
+                                        style={{ width: "100%", height: "auto" }} // 새로운 방식 적용
                                     />
                                 </div>
                             ))}
@@ -82,7 +82,7 @@ export default function Karts() {
                                     width={150}
                                     height={150}
                                     sizes="100vw"
-                                    layout="intrinsic"
+                                    style={{ width: "20%", height: "auto" }} // 새로운 방식 적용
                                 />
                                 <div className="faculty-info">
                                     {data.fields.name && <div>{data.fields.name}</div>}

@@ -32,7 +32,7 @@ export default function Portfolio({ params }) {
     }, [id]);
 
     if (!portfolioItem) {
-        return <div>해당 포트폴리오를 찾을 수 없습니다.</div>;
+        return <div></div>;
     }
 
     const portfolio = portfolioItem.fields;
@@ -86,6 +86,7 @@ export default function Portfolio({ params }) {
                                 width={800}
                                 height={500}
                                 sizes="100vw"
+                                priority // ✅ 추가
                             />
                         ) : (
                             <div>이미지가 없습니다.</div>
@@ -144,6 +145,7 @@ export default function Portfolio({ params }) {
                                     >
                                         <source src={fileUrl} type={fileType} />
                                         브라우저가 비디오 태그를 지원하지 않습니다.
+                                        crossOrigin="anonymous" // ✅ 추가 (Third-Party Cookie 문제 방지)
                                     </video>
                                 ) : (
                                     <Image
@@ -152,7 +154,8 @@ export default function Portfolio({ params }) {
                                         alt="Portfolio Work"
                                         width={800}
                                         height={500}
-                                        layout="responsive"
+                                        style={{ width: "100%", height: "auto" }} // 새로운 방식 적용
+                                        priority // ✅ 추가
                                     />
                                 );
 
@@ -219,6 +222,7 @@ export default function Portfolio({ params }) {
                                         width={800}
                                         height={500}
                                         sizes="100vw"
+                                        priority // ✅ 추가
                                     />
                                 ) : project.fields.mainImage?.fields.file.contentType?.startsWith("video/") && project.fields.thumbnail ? (
                                     <Image
@@ -227,6 +231,7 @@ export default function Portfolio({ params }) {
                                         width={800}
                                         height={500}
                                         sizes="100vw"
+                                        priority // ✅ 추가
                                     />
                                 ) : (
                                     project.fields.mainImage && (
@@ -236,6 +241,7 @@ export default function Portfolio({ params }) {
                                             width={800}
                                             height={500}
                                             sizes="100vw"
+                                            priority // ✅ 추가
                                         />
                                     )
                                 )}
