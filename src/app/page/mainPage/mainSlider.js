@@ -47,7 +47,7 @@ export default function MainPage() {
                     className="mySwiper"
                 >
                     {poster && poster.map((data) => (
-                        <SwiperSlide key={data.sys.id || Math.random()}>  // ✅ Contentful의 `sys.id` 사용
+                        <SwiperSlide key={data.sys.id || Math.random()}>
                             <a href={data.fields.link || "https://www.kartsdesign.co.kr/page/archiveIntro/0"} target="_blank" rel="noopener noreferrer">
                                 <img src={'https:' + data.fields.posterImage.fields.file.url} alt={`poster-${data.sys.id}`} />
                             </a>
