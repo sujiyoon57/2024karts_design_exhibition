@@ -30,7 +30,7 @@ export default function Header({ exhibitionOn, archiveOn, menuOn, setMenuOn }) {
                 <dl>
                     <dt>About</dt>
                     <dd><Link href="/page/karts" onClick={() => setMenuOn(false)}><span>학과 소개</span></Link></dd>
-                    <dd><Link href="/page/professor" onClick={() => setMenuOn(false)}><span>교강사 및 커리큘럼</span></Link></dd>
+                    <dd><Link href="/page/karts" onClick={() => setMenuOn(false)}><span>교강사 리스트</span></Link></dd>
                 </dl>
                 <Link href="/page/notice" onClick={() => setMenuOn(false)}>Notice</Link>
                 <dl>

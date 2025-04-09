@@ -44,8 +44,8 @@ export default function Karts() {
             <div className="container1">
                 <div className="container2">
                     <div className="exhibition_tab">
-                        <Link href={`/page/karts`} className="active">학과 및 교수 소개</Link>
-                        <Link href={`/page/professor`}>겸임 · 강사</Link>
+                        <Link href={`/page/karts`} className="active">학과 소개 및 전임교수진</Link>
+                        <Link href={`/page/professor`}>겸임 및 강사진</Link>
                     </div>
                     <div className="kart_tit">학과소개</div>
 

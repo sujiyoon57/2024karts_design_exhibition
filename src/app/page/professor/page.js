@@ -63,8 +63,8 @@ export default function Karts() {
             <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="container2">
                 <div className="exhibition_tab">   
-                    <Link href={`/page/karts`}>학과 및 교수 소개</Link>
-                    <Link href={`/page/professor`} className="active">겸임 · 강사</Link>
+                    <Link href={`/page/karts`}>학과 소개 및 전임교수진</Link>
+                    <Link href={`/page/professor`} className="active">겸임 및 강사진</Link>
                 </div> 
                  
                 <div className="professor_list">
