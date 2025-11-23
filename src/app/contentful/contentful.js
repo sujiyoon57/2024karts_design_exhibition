@@ -19,18 +19,27 @@ export const client = createClient({
 // ✅ Contentful 데이터 가져오기 함수
 export const fetchContentful = async (contentType, year = null) => {
     try {
-        const query = { content_type: contentType };
-
-        // ✅ 연도(year) 필터링 (year 값이 유효할 때만 적용)
-        if (year !== null && year !== undefined) {
-            query["fields.NEWexhibitionYear"] = year;
-        }
-        
-        const res = await client.getEntries(query);
-        
-        return res.items;
+      const query = { content_type: contentType };
+  
+      // year 필터 쓰고 있다면 그대로 유지
+      if (year !== null && year !== undefined) {
+        query['fields.NEWexhibitionYear'] = year;
+      }
+  
+      console.log('🧪 Contentful query:', query);
+  
+      const res = await client.getEntries(query);
+  
+      console.log('🧪 Contentful raw response items length:', res.items?.length);
+      console.log(
+        '🧪 Contentful first item:',
+        JSON.stringify(res.items?.[0]?.fields, null, 2)
+      );
+  
+      return res.items;
     } catch (error) {
-        console.error('❌ Contentful 데이터 불러오기 실패:', error.message);
-        return [];
+      console.error('❌ Contentful fetch error:', error);
+      return [];
     }
-};
+  };
+  
