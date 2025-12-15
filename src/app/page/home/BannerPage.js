@@ -1,10 +1,4 @@
 "use client"
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Link from "next/link";
-import Image from "next/image";
-import { fetchContentful } from '../../contentful/contentful';
-
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // 주요 Swiper CSS 파일을 가져옵니다.
@@ -16,25 +10,7 @@ import SwiperCore from 'swiper';
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 
-export default function MainPage() {
-
-    const [banner, setBanner] = useState();
-
-    useEffect(() => {
-        const getContentful = async () => {
-            try {
-
-                var data = await fetchContentful('banner');
-                setBanner(data);
-
-                //console.log(data);
-
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
-        getContentful();
-    }, []);
+export default function BannerPage({ banner }) {
 
     return (
         <div className="main-banner">
