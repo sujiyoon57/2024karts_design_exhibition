@@ -1,9 +1,7 @@
 import './globals.css'
-import { pageStore } from './zustand/zustand'
 
 import Header from './component/header'
 import Footer from './component/footer'
-import { fetchContentful } from './contentful/contentful'
 
 export const metadata = {
   title: 'Graduation Exhibition',
@@ -11,15 +9,20 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  const data = await fetchContentful('pageOnoff');
-  const exhibitionOn =  data[0].fields.exhibitionOnOff;
-  const archiveOn = data[0].fields.archiveOnOff;
-  
+  /*
+  * 2025.12
+  * pageOnOff는 사용이 안되고있음.
+  * 필요없는 api 호출이므로 제거
+  * Header에 파ㅁ라미터로 넘기던 것도 제거*/
+  // const data = await fetchContentful('pageOnoff');
+  // const exhibitionOn =  data[0].fields.exhibitionOnOff;
+  // const archiveOn = data[0].fields.archiveOnOff;
+
   return (
     <html>
       <body>
         <div className="wrap"> {/* ✅ class → className 으로 변경 */}
-          <Header exhibitionOn={exhibitionOn} archiveOnOn={archiveOn} />
+          <Header/>
           {children}
           <Footer />
         </div> 
