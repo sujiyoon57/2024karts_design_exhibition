@@ -1,54 +1,22 @@
-"use client";
-
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Query Parameter 사용
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
-import Header from "@/app/component/header";
 
-export default function ArchiveNew() {
-  const [archiveNew, setArchiveNew] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [menuOn, setMenuOn] = useState(false);
-  const router = useRouter();
+export default async function ArchiveNew({searchParams}) {
+  // const router = useRouter(); // todo : 용도?
 
-  // 현재 URL에서 필터링할 카테고리 가져오기
-  const currentCategory =
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search).get("category")
-      : null;
+  // // 현재 URL에서 필터링할 카테고리 가져오기
+  const currentCategory = searchParams?.category;
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const data = await fetchContentful("archiveNew");
+  const data = await fetchContentful("archiveNew");
 
-        // ✅ category 필드를 기반으로 학과전시 & 졸업전시 필터링
-        if (currentCategory) {
-          const filteredData = data.filter((item) =>
-            item.fields.category?.includes(currentCategory)
-          );
-          setArchiveNew(filteredData);
-        } else {
-          setArchiveNew(data); // 기본적으로 모든 데이터 로드
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, [currentCategory]); // ✅ 카테고리가 변경될 때마다 다시 데이터 필터링
-
-  if (loading) {
-    return <p>Loading...</p>; // 로딩 중 표시
-  }
+  const archiveNew = currentCategory
+      ? data.filter((item) => item.fields.category?.includes(currentCategory))
+      : data;
 
   return (
     <div className="archive-container">
-      <Header menuOn={menuOn} setMenuOn={setMenuOn} />
+      {/*<Header menuOn={menuOn} setMenuOn={setMenuOn} />*/}
 
       <ul className="archive_list">
         {archiveNew.length > 0 ? (
