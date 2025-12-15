@@ -1,37 +1,18 @@
-"use client"
-
-import { fetchContentful } from "@/app/contentful/contentful";
-import { useState, useEffect } from "react";
-
-export default function MainPage() {
-  const [scrollup, setScrollup] = useState(false);
-  const [notices, setNotices] = useState([]);
-
-  useEffect(() => {
-    const getContentful = async () => {
-      try {
-        var data = await fetchContentful("notice");
-
-        // 최신 등록순 정렬 후 4개만 선택
-        const sortedData = data
-          .sort((a, b) => new Date(b.sys.createdAt) - new Date(a.sys.createdAt))
-          .slice(0, 4);
-
-        setNotices(sortedData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    getContentful();
-
-    const aboutTimeout = setTimeout(() => {
-      setScrollup(true);
-    }, 5000);
-    return () => {
-      clearTimeout(aboutTimeout);
-    };
-  }, []);
+export default function NoticePage({ notices }) {
+    /*
+    * 2025.12
+    * scrollup이 아무 역할도 하지 않고 있음.
+    * -> 주석처리
+    * */
+  // const [scrollup, setScrollup] = useState(false);
+  // useEffect(() => {
+  //   const aboutTimeout = setTimeout(() => {
+  //     setScrollup(true);
+  //   }, 5000);
+  //   return () => {
+  //     clearTimeout(aboutTimeout);
+  //   };
+  // }, []);
 
     return(
         <div className="main-notice"> 
