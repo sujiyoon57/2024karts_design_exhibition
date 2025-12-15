@@ -1,23 +1,23 @@
-"use client"
+import MainSlider from "@/app/page/home/MainSlider";
+import NoticePage from "@/app/page/home/NoticePage";
+import BannerPage from "@/app/page/home/BannerPage";
+import {fetchContentful} from "@/app/contentful/contentful";
 
-import { useEffect, useState } from "react";
-import MainPage from './page/mainPage/mainPage';
-import MainSlider from './page/mainPage/mainSlider';
-import NoticePage from './page/mainPage/noticePage';
-import BannerPage from './page/mainPage/bannerPage';
-import Header from "@/app/component/header";
-import Designer from './page/designer/designer';
+export default async function Home() {
+    const [banner, poster, noticeData] = await Promise.all([
+        fetchContentful("banner"),
+        fetchContentful("poster"),
+        fetchContentful("notice"),
+    ]);
+    const notices = noticeData
+        .sort((a, b) => new Date(b.sys.createdAt) - new Date(a.sys.createdAt))
+        .slice(0, 4);
 
-export default function Home() {
-
-  const [menuOn, setMenuOn] = useState(false);
-  
   return (
     <div className='layout-container'>
-      <Header menuOn={menuOn} setMenuOn={setMenuOn} />
-      <MainSlider/>
-      <NoticePage/>
-      <BannerPage/>
+        <MainSlider poster={poster}/>
+        <NoticePage notices={notices}/>
+        <BannerPage banner={banner}/>
     </div>
   )
 }
