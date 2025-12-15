@@ -1,66 +1,48 @@
-"use client";
-
 import { Suspense } from "react"; // 추가
 import Link from "next/link";
 import Image from "next/image";
 import { fetchContentful } from "@/app/contentful/contentful";
-import { useSearchParams } from "next/navigation"; // ✅ useSearchParams 사용
-import { useState, useEffect } from "react";
-import Header from "@/app/component/header";
 
-export default function Exhibition() {
+export default function Exhibition({searchParams}) {
+    const year = searchParams?.exhibitionYear;
+
     return (
         <Suspense fallback={<p>Loading...</p>}>
-            <ExhibitionContent />
+            <ExhibitionContent year={year}/>
         </Suspense>
     );
 }
 
-function ExhibitionContent() {
-    const searchParams = useSearchParams(); // ✅ useSearchParams 사용
-    const projectIds = searchParams.get("projects")?.split(",") || []; // ✅ projects 파라미터 가져오기
+async function ExhibitionContent({year}) {
+    // const projectIds = searchParams?.projects?.split(",") ?? [];
 
-    const [portfolio, setPortfolio] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [menuOn, setMenuOn] = useState(false);
+    const data = await fetchContentful("portfolio");
 
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                let data = await fetchContentful("portfolio");
-                if (!data) data = [];
-
-                // ✅ 특정 프로젝트 ID에 해당하는 데이터만 필터링
-                if (projectIds.length > 0) {
-                    data = data.filter((item) => projectIds.includes(item.sys.id));
-                }
-
-                // ✅ 학생 이름(한글 기준)으로 가나다순 정렬
-                data.sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"));
-
-                setPortfolio(data);
-            } catch (error) {
-                console.error("Error fetching portfolio data:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, [projectIds]); // ✅ projectIds가 변경될 때마다 데이터 다시 가져오기
+    /*
+    * 2025.12
+    * projectIds를 넘겨주는 방식에서, exhibitionYear을 넘겨주는 방식으로 변경
+    * year를 넘겨주는 방식의 경우 전체 작품 조회시 exhibitionYear=undefined 으로 넘어가는 상황 존재
+    * -> Link 이동시 year조건 추가
+    * */
+    // const portfolio = data?
+    //     data.filter((item) => projectIds.includes(item.sys.id))
+    //     .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR")) : [];
+    const portfolio =
+        data?
+            ( year? data.filter((item) => year===item.fields.NEWexhibitionYear) : data )
+                .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"))
+            : [];
 
     return (
         <div className="exhibition">
-            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="exhibition_tab">
-                <Link href={`/page/exhibition?projects=${projectIds.join(",")}`} className="active">프로젝트</Link>
-                <Link href={`/page/exhibition_list?projects=${projectIds.join(",")}`}>디자이너</Link>
+                {/*<Link href={`/page/exhibition?projects=${projectIds.join(",")}`} className="active">프로젝트</Link>*/}
+                {/*<Link href={`/page/exhibition_list?projects=${projectIds.join(",")}`}>디자이너</Link>*/}
+                <Link href={year ? `/page/exhibition?exhibitionYear=${year}` : `/page/exhibition`} className="active">프로젝트</Link>
+                <Link href={year ? `/page/exhibition_list?exhibitionYear=${year}` : `/page/exhibition_list`}>디자이너</Link>
             </div>
             <div className="exhibition-container">
-                {loading ? (
-                    <p>데이터를 불러오는 중...</p>
-                ) : portfolio.length > 0 ? (
+                {portfolio.length > 0 ? (
                     portfolio.map((data) => {
                         const thumbnail = data.fields?.thumbnail?.fields?.file;
                         const imageUrl = thumbnail?.url ? `https:${thumbnail.url}` : "/default-image.jpg";
