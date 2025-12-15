@@ -1,32 +1,13 @@
-"use client"
-
 import Link from "next/link"
-import { useState, useEffect } from "react"
 import { fetchContentful } from "@/app/contentful/contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Header from "@/app/component/header";
-import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 
-export default function Notice({ params }) {
+export default async function NoticeView({ params }) {
     const id = parseInt(params.id);
-    const [notice, setNotice] = useState(null);
-    const [sys, setSys] = useState(null);
-    const [menuOn, setMenuOn] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await fetchContentful('notice');
-                if (data[id]) {
-                    setNotice(data[id].fields);
-                    setSys(data[id].sys);
-                }
-            } catch (error) {
-                console.error("Error fetching notice data:", error);
-            }
-        };
-        fetchData();
-    }, [id]);
+    const data = await fetchContentful("notice");
+    const notice = data[id].fields;
+    const sys = data[id].sys
 
     if (!notice) return <div>Loading...</div>;
 
@@ -43,7 +24,6 @@ export default function Notice({ params }) {
 
     return (
         <div className="notiview-container">
-            <Header menuOn={menuOn} setMenuOn={setMenuOn} />
             <div className="notiview-top">
                 <div className="notiview_tit">{notice.title}</div>
                 <div className="notiview-info">
