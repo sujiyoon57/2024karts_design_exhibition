@@ -18,8 +18,7 @@ import SwiperCore from 'swiper';
 import ViewAll from "/public/asset/viewall.svg"
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-export default function Designer() {
-  const [portfolio, setPortfolio] = useState([]);
+export default function DesignerContents({portfolio}) {
   const [selectedStudent, setSelectedStudent] = useState(0);
   const [firstSelectedStudent, setFirstSelectedStudent] = useState(0);
   const [selectedStudentMobile, setSelectedStudentMobile] = useState(0);
@@ -29,9 +28,6 @@ export default function Designer() {
   useEffect(() => {
     const getContentful = async () => {
       try {
-        var data = await fetchContentful('portfolio');
-        setPortfolio(data);
-
         if (data.length > 0) {
           const storedCount = parseInt(localStorage.getItem("count")) || 0;
           // console.log('count' + storedCount);
