@@ -4,11 +4,18 @@ import MenuIcon from "/public/asset/menuIcon2.svg"
 import ExitIcon from "/public/asset/exitIcon.svg"
 import LinkIcon from "/public/asset/linkIcon.svg"
 import Link from "next/link"
+import {useState} from "react";
+import { usePathname } from "next/navigation";
 
-export default function Header({ exhibitionOn, archiveOn, menuOn, setMenuOn }) {
+export default function Header() {
+    const pathname = usePathname();
+    const [menuOn, setMenuOn] = useState(false);
+
+    // menu가 안열려있고 페이지가 professor일경우 헤더 색상을 professor-page으로 변경
+    const isProfessorPage = pathname === "/page/professor";
 
     return (
-        <header>
+        <header className={`${!menuOn && isProfessorPage ? "professor-page header" : ""}`}>
             <div className="header-icon-wrap">
                 <Link href='/'>
                     Korea National University of Arts<span> Design Department</span>
