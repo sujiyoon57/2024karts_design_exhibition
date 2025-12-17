@@ -1,65 +1,104 @@
-import { createClient } from 'contentful';
-
 // ✅ 환경 변수 유효성 검사 추가
 if (!process.env.NEXT_PUBLIC_SPACE_ID || !process.env.NEXT_PUBLIC_ACCESS_TOKEN) {
     console.error('❌ Contentful 환경 변수가 누락되었습니다. .env.local 파일을 확인하세요.');
     throw new Error('Contentful API 키가 설정되지 않았습니다.');
 }
 
-// ✅ Contentful 클라이언트 생성 (환경 변수 유효성 검사 후 실행)
-export const client = createClient({
-    space: process.env.NEXT_PUBLIC_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_ACCESS_TOKEN,
-});
+const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID;
+const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
-// ✅ Contentful 데이터 가져오기 함수
-export const fetchContentful = async (contentType, revalidate, year = null) => {
+const fetchContentful = async (params, revalidate) => {
+    const url = `https://cdn.contentful.com/spaces/${SPACE_ID}/entries?${params.toString()}`;
+
+    const res = await fetch(url, {
+        headers: {
+            Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+        next: {
+            cache: 'force-cache',
+            revalidate,
+        },
+    });
+
+    if (!res.ok) {
+        console.error('❌ Contentful fetch failed:', res.status);
+        return null;
+    }
+
+    const data = await res.json();
+    return resolveAssets(data.items, data.includes);
+}
+
+// ✅ Contentful 데이터 가져오기 함수 (기본)
+export const getEntries = async (contentType, revalidate, year = null) => {
     try {
-      const query = { content_type: contentType };
-  
-      // year 필터 쓰고 있다면 그대로 유지
-      if (year !== null && year !== undefined) {
-        query['fields.NEWexhibitionYear'] = year;
-      }
-  
-      console.log('🧪 Contentful query:', query);
-
-
       /*
       * 2025.12
       * getEntries방식은 NextJS가 캐싱하지 못함.
       * NextJs가 데이터를 캐싱할 수 있도록 직접 cdn으로 가져오는 방식으로 변경
       * */
       // const res = await client.getEntries(query);
-        const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID;
-        const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-        const url = `https://cdn.contentful.com/spaces/${SPACE_ID}/entries?content_type=${contentType}&include=10`;
-        const res = await fetch(url, {
-            headers: {
-                Authorization: `Bearer ${ACCESS_TOKEN}`,
-            },
-            next: {
-                cache: "force-cache",
-                revalidate: revalidate,
-            },
+
+        const params = new URLSearchParams({
+            content_type: contentType,
+            include: 10,
         });
 
-      // console.log('🧪 Contentful raw response items length:', res.items?.length);
-      // console.log(
-      //   '🧪 Contentful first item:',
-      //   JSON.stringify(res.items?.[0]?.fields, null, 2)
-      // );
-
-        const data = await res.json();
-        const items = resolveAssets(data.items, data.includes);
-
-        return items;
+        return fetchContentful(params, revalidate) ?? [];
     } catch (error) {
       console.error('❌ Contentful fetch error:', error);
       return [];
     }
   };
 
+/*
+* 2025/12
+* 특정 id값의 entry를 가져오는 fetch 메서드
+* */
+export const getEntryById = async (id, revalidate) => {
+    try {
+        const params = new URLSearchParams({
+            'sys.id': id,
+            include: 10,
+        });
+
+        const items = await fetchContentful(params, revalidate);
+        return items?.[0] ?? null;
+    } catch (error) {
+        console.error('❌ Contentful fetch error:', error);
+        return null;
+    }
+};
+
+/*
+* 2025/12
+* 커스텀된 params를 추가해 fetch 하는 메서드
+*
+* ex) getEntriesByFilter("portfolio", 21600, {NEWexhibitionYear: year});
+* */
+export const getEntriesByFilter = async (contentType, revalidate, filters = {}) => {
+    try {
+        /*
+        * 2025.12
+        * getEntries방식은 NextJS가 캐싱하지 못함.
+        * NextJs가 데이터를 캐싱할 수 있도록 직접 cdn으로 가져오는 방식으로 변경
+        * */
+        // const res = await client.getEntries(query);
+        const params = new URLSearchParams({
+            content_type: contentType,
+            include: 10,
+        });
+
+        Object.entries(filters).forEach(([key, value]) => {
+            params.append(`fields.${key}`, String(value));
+        });
+
+        return fetchContentful(params, revalidate) ?? [];
+    } catch (error) {
+        console.error('❌ Contentful fetch error:', error);
+        return [];
+    }
+};
 
 /*
 * 2025.12
