@@ -6,7 +6,7 @@ export default async function ArchiveIntroPage({ params }) {
     const { slug } = params; // ✅ URL에서 slug 값 가져오기
 
     const data = await getEntries("archiveNew", 21600); //6시간 캐싱
-    const archiveNew = data.find(item => item.fields.slug === slug).fields;
+    const archiveNew = data.find(item => item.fields.slug === slug)?.fields;
 
     if (!archiveNew) return <p>데이터를 불러올 수 없습니다.</p>; // ✅ 데이터가 없을 때 처리
 
