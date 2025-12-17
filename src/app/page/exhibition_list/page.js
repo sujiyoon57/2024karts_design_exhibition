@@ -1,7 +1,7 @@
 import { Suspense } from "react"; // 추가
 import Link from "next/link";
 import Image from "next/image";
-import { fetchContentful } from "@/app/contentful/contentful";
+import {getEntriesByFilter} from "@/app/contentful/contentful";
 
 export default function Exhibition({searchParams}) {
     const year = searchParams?.exhibitionYear;
@@ -16,24 +16,29 @@ export default function Exhibition({searchParams}) {
 async function ExhibitionContent({year}) {
     // const projectIds = searchParams?.projects?.split(",") ?? [];
 
-    const data = await fetchContentful("portfolio");
-
     /*
     * 2025.12
     * projectIds를 넘겨주는 방식에서, exhibitionYear을 넘겨주는 방식으로 변경
     * year를 넘겨주는 방식의 경우 전체 작품 조회시 exhibitionYear=undefined 으로 넘어가는 상황 존재
     * -> Link 이동시 year조건 추가
+    *
+    * 모든 데이터를 가져와 필터링되도록 하는 방식에서 애초에 필터링된 데이터를 가져오도록 수정
     * */
+
+    // const data = await fetchContentful("portfolio", 21600);
+    const data = await getEntriesByFilter("portfolio", 21600, {NEWexhibitionYear: year,}); // 6시간 캐싱
+
     // const portfolio = data?
     //     data.filter((item) => projectIds.includes(item.sys.id))
     //     .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR")) : [];
-    // const portfolio = data?
-    //     data.filter((item) => projectIds.includes(item.sys.id))
-    //         .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR")) : [];
+    // const portfolio =
+    //     data?
+    //         ( year? data.filter((item) => year===item.fields.NEWexhibitionYear) : data )
+    //             .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"))
+    //         : [];
     const portfolio =
         data?
-            ( year? data.filter((item) => year===item.fields.NEWexhibitionYear) : data )
-                .sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"))
+            data.sort((a, b) => a.fields.nameKr.localeCompare(b.fields.nameKr, "ko-KR"))
             : [];
 
     return (
@@ -58,7 +63,7 @@ async function ExhibitionContent({year}) {
                         const imageDetails = thumbnail?.details?.image;
 
                         return (
-                            <Link href={`/page/portfolio/${projectId}`} key={projectId} passHref legacyBehavior>
+                            <Link href={`/page/portfolio/${data.fields.NEWexhibitionYear}/${projectId}`} key={projectId} passHref legacyBehavior>
                                 <a>
                                     <div className={`exhibition-info-list ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
                                         <div className={`exhibition-student-name ${data.fields.thumbnailBlack ? "whiteFont" : ""}`}>
