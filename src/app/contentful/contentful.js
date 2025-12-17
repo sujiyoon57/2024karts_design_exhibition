@@ -13,7 +13,7 @@ export const client = createClient({
 });
 
 // ✅ Contentful 데이터 가져오기 함수
-export const fetchContentful = async (contentType, year = null) => {
+export const fetchContentful = async (contentType, revalidate, year = null) => {
     try {
       const query = { content_type: contentType };
   
@@ -39,7 +39,8 @@ export const fetchContentful = async (contentType, year = null) => {
                 Authorization: `Bearer ${ACCESS_TOKEN}`,
             },
             next: {
-                revalidate: 600,
+                cache: "force-cache",
+                revalidate: revalidate,
             },
         });
 
