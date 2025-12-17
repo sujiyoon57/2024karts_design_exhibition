@@ -4,6 +4,8 @@ import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import Link from "next/link";
 
 export default function Info({ archiveNew, id }){
+    const downloadUrl = archiveNew?.download?.fields?.file?.url;
+    const canDownload = Boolean(downloadUrl);
 
     const options = {
         renderText: (text) => {
@@ -17,7 +19,9 @@ export default function Info({ archiveNew, id }){
     };
 
     const downloadFile = async () => {
-        const url = `https:${archiveNew?.download?.fields?.file?.url}`;
+        if (!downloadUrl) return;
+
+        const url = `https:${downloadUrl}`;
         const response = await fetch(url);
         const blob = await response.blob();
         const link = document.createElement('a');
@@ -50,7 +54,7 @@ export default function Info({ archiveNew, id }){
                     </Link>
                 </p>
                 {/* ✅ 'Download PDF' 버튼에 새로운 class 추가 */}
-                <p><button className="download-btn" onClick={downloadFile}>Download PDF</button></p>
+                <p><button className="download-btn" onClick={downloadFile} disabled={!canDownload}>Download PDF</button></p>
             </div>
         </div>
     );
