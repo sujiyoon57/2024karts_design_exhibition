@@ -1,4 +1,4 @@
-import { fetchContentful } from "@/app/contentful/contentful";
+import { getEntries } from "@/app/contentful/contentful";
 import Link from "next/link";
 import Credit from "@/app/page/archiveIntro/Credit";
 import Info from "@/app/page/archiveIntro/Info";
@@ -7,11 +7,10 @@ import Mobile from "@/app/page/archiveIntro/Mobile";
 export default async function ArchiveIntroPage({ params }) {
     const { id } = params; // ✅ 이제 id가 slug 값이 됨
 
-    const data = await fetchContentful("archiveNew");
-    const filtered = id
-        ? data.find((item) => item.fields.slug===id)
-        : data;
-    const archiveNew = filtered.fields
+    const data = await getEntries("archiveNew", 21600); //6시간 캐싱
+    const archiveNew = id
+        ? data.find((item) => item.fields.slug===id).fields
+        : data.fields;
 
     if (!archiveNew) return <p>해당 slug를 가진 데이터를 찾을 수 없습니다.</p>; // ✅ 데이터 없을 경우 예외 처리
 

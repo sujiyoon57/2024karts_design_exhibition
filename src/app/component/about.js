@@ -1,5 +1,5 @@
 "use client"
-import { fetchContentful } from "../contentful/contentful";
+import { getEntries } from "../contentful/contentful";
 // import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const About=()=>{

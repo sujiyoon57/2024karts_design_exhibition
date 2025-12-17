@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import { fetchContentful } from '../../contentful/contentful';
+import { getEntries } from '../../contentful/contentful';
 import Footer from "@/app/component/footer";
 import Header from "@/app/component/header";
 

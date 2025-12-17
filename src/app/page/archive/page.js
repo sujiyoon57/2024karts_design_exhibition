@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { fetchContentful } from "@/app/contentful/contentful";
+import { getEntries } from "@/app/contentful/contentful";
 
 export default async function ArchiveNew({searchParams}) {
   // const router = useRouter(); // todo : 용도?
@@ -8,7 +8,7 @@ export default async function ArchiveNew({searchParams}) {
   // // 현재 URL에서 필터링할 카테고리 가져오기
   const currentCategory = searchParams?.category;
 
-  const data = await fetchContentful("archiveNew");
+  const data = await getEntries("archiveNew", 21600); // 6시간 캐싱
 
   const archiveNew = currentCategory
       ? data.filter((item) => item.fields.category?.includes(currentCategory))

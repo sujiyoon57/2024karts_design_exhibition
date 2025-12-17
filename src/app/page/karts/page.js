@@ -1,4 +1,4 @@
-import { fetchContentful } from "@/app/contentful/contentful";
+import { getEntries } from "@/app/contentful/contentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
@@ -13,8 +13,8 @@ export default async function Karts() {
     // const [aboutButton, setAboutButton] = useState(true);
     // const [facultyButton, setFacultyButton] = useState(false);
 
-    const about = await fetchContentful("karts");
-    const faculty = await fetchContentful("kartsAboutFaculty");
+    const about = await getEntries("karts", 21600); //6시간 캐싱
+    const faculty = await getEntries("kartsAboutFaculty", 86400); //24시간 캐싱
 
     // ✅ 학과 소개 본문에 font-weight 400 적용하는 옵션 추가
     const options = {

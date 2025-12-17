@@ -1,13 +1,13 @@
 import MainSlider from "@/app/page/home/MainSlider";
 import NoticePage from "@/app/page/home/NoticePage";
 import BannerPage from "@/app/page/home/BannerPage";
-import {fetchContentful} from "@/app/contentful/contentful";
+import {getEntries} from "@/app/contentful/contentful";
 
 export default async function Home() {
     const [banner, poster, noticeData] = await Promise.all([
-        fetchContentful("banner"),
-        fetchContentful("poster"),
-        fetchContentful("notice"),
+        getEntries("banner", 10800),
+        getEntries("poster", 10800),
+        getEntries("notice", 300),
     ]);
     const notices = noticeData
         .sort((a, b) => new Date(b.sys.createdAt) - new Date(a.sys.createdAt))

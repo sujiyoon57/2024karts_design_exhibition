@@ -1,9 +1,9 @@
-import { fetchContentful } from "@/app/contentful/contentful";
+import { getEntries } from "@/app/contentful/contentful";
 import Link from "next/link";
 
 export default async function Professor() {
 
-    const data = await fetchContentful('professor');
+    const data = await getEntries('professor', 21600); //6시간 캐싱
     const professor = data.sort((a, b) => a.fields.name.localeCompare(b.fields.name, 'ko-KR'));
 
     return (

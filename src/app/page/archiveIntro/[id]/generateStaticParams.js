@@ -1,7 +1,7 @@
-import { fetchContentful } from "@/app/contentful/contentful";
+import { getEntries } from "@/app/contentful/contentful";
 
 export async function generateStaticParams() {
-    const data = await fetchContentful("archiveNew");
+    const data = await getEntries("archiveNew");
 
     if (!data || !Array.isArray(data)) return [];
 

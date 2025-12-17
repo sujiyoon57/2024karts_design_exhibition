@@ -1,13 +1,13 @@
 import Link from "next/link"
-import { fetchContentful } from "@/app/contentful/contentful"
+import {getEntryById} from "@/app/contentful/contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default async function NoticeView({ params }) {
-    const id = parseInt(params.id);
+    const { id } = params;
 
-    const data = await fetchContentful("notice");
-    const notice = data[id].fields;
-    const sys = data[id].sys
+    const data = await getEntryById(id, 300); //5분 캐싱
+    const notice = data.fields;
+    const sys = data.sys;
 
     if (!notice) return <div>Loading...</div>;
 
