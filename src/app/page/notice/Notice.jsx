@@ -1,0 +1,81 @@
+"use client"
+
+import Link from "next/link";
+import Image from "next/image";
+import {useEffect, useState} from "react";
+
+export default function Notice({ notices}){
+
+    const [selectedPart, setSelectedPart] = useState("전체");
+    const [filteredNotices, setFilteredNotices] = useState([]);
+
+    useEffect(() => {
+        if (selectedPart === "전체") {
+            setFilteredNotices(notices);
+        } else {
+            setFilteredNotices(
+                notices.filter((item) => {
+                    return item.fields.part2.includes(selectedPart); // 배열 필터링
+                })
+            );
+        }
+    }, [selectedPart]);
+
+    return(
+        <div className="notice-container">
+            <div className="notice_type">
+                {["전체", "학과", "행사", "채용", "기타"].map((part, index) => (
+                    <button
+                        key={part}
+                        className={`${selectedPart === part ? "active" : ""} type0${index}`}
+                        onClick={() => setSelectedPart(part)}
+                    >
+                        {part}
+                    </button>
+                ))}
+            </div>
+
+            <ul className="notice_th">
+                <li>분류</li>
+                <li>내용</li>
+                <li>날짜</li>
+            </ul>
+
+            <ul className="notice_list">
+                {filteredNotices.length > 0 ? (
+                    filteredNotices.map((data, index) => (
+                        <li key={index}>
+                            <Link href={`/page/notice_view/${data.sys.id}`}> {/* 2025.12 : index넘겨주는 방식에서 고유 id 넘겨주는 방식으로 변경 */}
+                                <div className="notice-info">
+                                    <div
+                                        className={
+                                            data.fields.part2.includes("학과")
+                                                ? "type01"
+                                                : data.fields.part2.includes("행사")
+                                                    ? "type02"
+                                                    : data.fields.part2.includes("채용")
+                                                        ? "type03"
+                                                        : data.fields.part2.includes("기타")
+                                                            ? "type04"
+                                                            : ""
+                                        }
+                                    >
+                                        {data.fields.part2.join(", ")}</div> {/* 배열을 문자열로 변환 */}
+                                    <div>
+                                        {data.fields.fixed && (
+                                            <Image src="/asset/boardPinIcon.svg" alt="Pin Icon" width={12} height={14} />
+                                        )}
+                                        {data.fields.title}
+                                    </div>
+                                    <div>{new Date(data.sys.createdAt).toLocaleDateString()}</div>
+                                </div>
+                            </Link>
+                        </li>
+                    ))
+                ) : (
+                    <li>게시글이 없습니다.</li>
+                )}
+            </ul>
+        </div>
+    );
+}
